@@ -8,7 +8,7 @@ Step-by-step instructions to set up this wiki as an Obsidian vault.
 
 1. Open Obsidian
 2. Click **Open folder as vault**
-3. Select the `wiki_LM` directory (the root of this project)
+3. Select the `skills_retrieval` directory (the root of this project)
 4. Obsidian will create a `.obsidian/` config folder — this is gitignored
 
 ---

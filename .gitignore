@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Env / secrets
+.env
+.env.local
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Obsidian workspace state (keep plugin config, drop per-user layout)
+**/.obsidian/workspace.json
+**/.obsidian/workspace-mobile.json
