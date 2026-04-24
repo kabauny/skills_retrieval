@@ -2,7 +2,11 @@
 
 This is an LLM-maintained oncology knowledge base. Read `SCHEMA.md` for full instructions on how to operate the wiki — it defines the directory structure, page types, conventions, and workflows.
 
-Always read `SCHEMA.md` before performing any wiki operation (ingest, search, query, lint).
+Always read `SCHEMA.md` before performing any wiki operation (ingest, search, query, supersede, lint).
+
+## Active user
+
+**Default user: `jim.chen`.** All avatar operations (decisions, preferences, question-capture) target `wiki/avatar/jim.chen/` unless the session explicitly switches users with *"switch to user X"*. See SCHEMA.md § User identity for the full convention.
 
 ## Search tool
 
