@@ -45,3 +45,16 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Disambiguation introduced:** [[residual-disease-vs-mrd-positivity]] addresses a conflation in the search response between residual disease (histopath, KATHERINE eligibility) and MRD-positivity (ctDNA, additional risk stratifier). They are nested strata, not synonyms.
 - **Provenance:** every claim wikilinked to the source summary per the schema's provenance rule.
 - **kg_index:** not yet run (no MCP server configured in this session — to be run when graph tools are available).
+
+## [2026-04-24] query | ILD trade-off T-DM1 vs T-DXd adjuvantly
+
+- **User:** jim.chen
+- **Question:** "What's the ILD trade-off in switching from T-DM1 to T-DXd adjuvantly?"
+- **Trigger:** wiki-first retrieval test following Q3 ingest — probes whether the wiki can answer a Q3-adjacent question without Gemini.
+- **Wiki pages consulted:** [[trastuzumab-deruxtecan]], [[trastuzumab-emtansine]], [[destiny-breast05]], [[adjuvant-her2-positive-breast-cancer]]
+- **KG tools used:** none (no `knowledge-graph` MCP configured this session)
+- **Gemini calls:** 0 — justified (wiki had specific numbers 9.6% vs 1.6% + clinical decision framing + provenance chain; no genuine gap)
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 0
+- **Filed back:** none (synthesis already captured in [[adjuvant-her2-positive-breast-cancer]] decision skeleton; not a new reusable page)
+- **Decision captured:** none (retrieval test, no clinical judgment made by user)
