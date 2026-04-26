@@ -60,8 +60,11 @@ WIKI = ROOT / "wiki"
 RAW = ROOT / "raw"
 SESSIONS_DIR = RAW / "sessions"
 
-# User-specified main model for decision-making (synthesis, MC, entity extract)
-MODEL = "gemini-3.1-pro-preview"
+# Two-model split: Pro for heavy reasoning, Flash for light structured tasks.
+# - Pro: wiki + internet synthesis, MC preference probe (clinical reasoning + avatar quality)
+# - Flash: page routing, entity extraction (pattern-matching + structured output)
+MODEL_PRO = "gemini-3.1-pro-preview"
+MODEL_FLASH = "gemini-2.5-flash"
 DEFAULT_USER = "jim.chen"
 
 # ---------------------------------------------------------------------------
@@ -198,7 +201,7 @@ QUESTION:
 WIKI INDEX:
 {index}
 """
-    resp = _client.models.generate_content(model=MODEL, contents=prompt)
+    resp = _client.models.generate_content(model=MODEL_FLASH, contents=prompt)
     parsed = _extract_json(resp.text or "")
     pages = parsed if isinstance(parsed, list) else []
     valid: list[str] = []
@@ -245,7 +248,7 @@ QUESTION:
 WIKI PAGES:
 {pages_text}
 """
-    resp = _client.models.generate_content(model=MODEL, contents=prompt)
+    resp = _client.models.generate_content(model=MODEL_PRO, contents=prompt)
     answer = (resp.text or "").strip()
     sufficient = not answer.upper().startswith("INSUFFICIENT_WIKI_DATA")
     return answer, sufficient, _tokens(resp)
@@ -275,7 +278,7 @@ WIKI CONTEXT:
 {pages_text}
 """
     resp = _client.models.generate_content(
-        model=MODEL,
+        model=MODEL_PRO,
         contents=prompt,
         config=types.GenerateContentConfig(
             tools=[types.Tool(google_search=types.GoogleSearch())],
@@ -381,7 +384,7 @@ ANSWER:
 def extract_novel_entities(query: str, answer: str) -> tuple[list[dict], TokenUsage]:
     existing = ", ".join(_list_wiki_page_filenames())
     prompt = _ENTITY_EXTRACT_PROMPT.format(existing=existing, query=query, answer=answer)
-    resp = _client.models.generate_content(model=MODEL, contents=prompt)
+    resp = _client.models.generate_content(model=MODEL_FLASH, contents=prompt)
     parsed = _extract_json(resp.text or "")
     if not isinstance(parsed, list):
         return [], _tokens(resp)
@@ -548,7 +551,7 @@ ANSWER:
 
 def generate_preference_mc(query: str, answer: str) -> tuple[MCQuestion | None, TokenUsage]:
     resp = _client.models.generate_content(
-        model=MODEL, contents=_MC_PROMPT.format(question=query, answer=answer)
+        model=MODEL_PRO, contents=_MC_PROMPT.format(question=query, answer=answer)
     )
     parsed = _extract_json(resp.text or "")
     if not isinstance(parsed, dict) or not parsed.get("label"):
@@ -751,65 +754,42 @@ def load_today_session(user: str) -> list[Turn]:
 # ---------------------------------------------------------------------------
 
 
-def run_query(question: str, user: str, auto_ingest_enabled: bool) -> Turn:
+def run_query_phase1(question: str, user: str):
+    """Synchronous phase: route, synthesize, generate MC. Produces the user-facing answer.
+
+    Returns (Turn, grounded_response_or_None).
+    If grounded_response is not None, phase 2 (save + auto-ingest) is needed.
+    """
     total_tokens = TokenUsage()
     gemini_calls = 0
 
-    # 1. Route to relevant wiki pages
+    # 1. Route to relevant wiki pages (Flash)
     pages, t1 = select_relevant_pages(question)
     total_tokens = total_tokens + t1
     gemini_calls += 1
 
-    # 2. Try wiki-only synthesis
+    # 2. Try wiki-only synthesis (Pro)
     page_contents = _load_pages(pages)
     answer, sufficient, t2 = synthesize_wiki_answer(question, page_contents)
     total_tokens = total_tokens + t2
     gemini_calls += 1
 
     origin = "wiki"
-    saved_search_path: str | None = None
-    stubs_created: list[str] = []
+    grounded_resp = None
 
     if not sufficient:
-        # 3. Internet fallback (grounded search synthesis)
+        # 3. Internet fallback (grounded search synthesis, Pro)
         answer, grounded_resp, t3 = synthesize_internet_answer(question, page_contents)
         total_tokens = total_tokens + t3
         gemini_calls += 1
         origin = "internet" if not page_contents else "mixed"
 
-        # B. Save the grounded response as a clean source file
-        try:
-            saved_path = save_grounded_response_to_raw(question, grounded_resp, MODEL)
-            if saved_path:
-                saved_search_path = str(saved_path)
-        except Exception as exc:  # never let save failure break the answer
-            saved_search_path = None
-            st.warning(f"Grounded response saved failed: {type(exc).__name__}: {exc}")
-
-        # C. Auto-ingest novel entities into stub pages
-        if auto_ingest_enabled and saved_search_path:
-            try:
-                entities, te = extract_novel_entities(question, answer)
-                total_tokens = total_tokens + te
-                gemini_calls += 1
-                created: list[Path] = []
-                for entity in entities:
-                    p = write_entity_stub(entity, saved_search_path)
-                    if p:
-                        created.append(p)
-                if created:
-                    update_index_with_stubs(created)
-                    append_auto_ingest_log(created, Path(saved_search_path), question, user)
-                stubs_created = [str(p) for p in created]
-            except Exception as exc:
-                st.warning(f"Auto-ingest failed: {type(exc).__name__}: {exc}")
-
-    # 4. Generate MC preference probe
+    # 4. Generate MC preference probe (Pro)
     mc, t4 = generate_preference_mc(question, answer)
     total_tokens = total_tokens + t4
     gemini_calls += 1
 
-    return Turn(
+    turn = Turn(
         idx=len(st.session_state.history),
         question=question,
         answer=answer,
@@ -818,9 +798,44 @@ def run_query(question: str, user: str, auto_ingest_enabled: bool) -> Turn:
         gemini_calls=gemini_calls,
         tokens=total_tokens,
         mc=mc,
-        saved_search_path=saved_search_path,
-        stubs_created=stubs_created,
+        saved_search_path=None,
+        stubs_created=[],
     )
+    return turn, grounded_resp
+
+
+def run_query_phase2(turn: Turn, grounded_resp, question: str, user: str, auto_ingest_enabled: bool) -> Turn:
+    """Deferred phase: save grounded response + auto-ingest. Mutates and returns the Turn.
+
+    Runs AFTER the answer has rendered, so the user is reading while this happens.
+    """
+    # B. Save grounded response → raw/searches/{slug}.md
+    try:
+        saved_path = save_grounded_response_to_raw(question, grounded_resp, MODEL_PRO)
+        if saved_path:
+            turn.saved_search_path = str(saved_path)
+    except Exception as exc:
+        st.warning(f"Grounded response save failed: {type(exc).__name__}: {exc}")
+
+    # C. Auto-ingest novel entities (Flash)
+    if auto_ingest_enabled and turn.saved_search_path:
+        try:
+            entities, te = extract_novel_entities(question, turn.answer)
+            turn.tokens = turn.tokens + te
+            turn.gemini_calls += 1
+            created: list[Path] = []
+            for entity in entities:
+                p = write_entity_stub(entity, turn.saved_search_path)
+                if p:
+                    created.append(p)
+            if created:
+                update_index_with_stubs(created)
+                append_auto_ingest_log(created, Path(turn.saved_search_path), question, user)
+            turn.stubs_created = [str(p) for p in created]
+        except Exception as exc:
+            st.warning(f"Auto-ingest failed: {type(exc).__name__}: {exc}")
+
+    return turn
 
 
 # ---------------------------------------------------------------------------
@@ -916,7 +931,11 @@ def main() -> None:
     # Sidebar — user identity, controls, stats
     with st.sidebar:
         st.title("📚 Wiki LM")
-        st.caption(f"Local KB + avatar capture · model: `{MODEL}`")
+        st.caption(
+            f"Local KB + avatar capture\n\n"
+            f"- Pro (synth + MC): `{MODEL_PRO}`\n"
+            f"- Flash (route + extract): `{MODEL_FLASH}`"
+        )
 
         user = st.text_input(
             "Active user",
@@ -990,29 +1009,69 @@ def main() -> None:
         "create stub pages."
     )
 
-    # Render history
+    # Render history (existing turns visible immediately)
     for turn in st.session_state.history:
         render_turn(turn, user)
 
-    # Input
+    # Phase 2: deferred ingest, runs AFTER all existing turns have rendered.
+    # The user has already seen the answer above; this block does B + C with a
+    # status spinner, then reruns to update the just-rendered turn's badges.
+    pending = st.session_state.get("pending_ingest")
+    if pending:
+        turn_idx = pending["turn_idx"]
+        if turn_idx < len(st.session_state.history):
+            turn = st.session_state.history[turn_idx]
+            with st.status(
+                "Saving grounded search + auto-ingesting novel entities…", expanded=False
+            ) as status:
+                try:
+                    run_query_phase2(
+                        turn=turn,
+                        grounded_resp=pending["grounded_resp"],
+                        question=pending["question"],
+                        user=pending["user"],
+                        auto_ingest_enabled=pending["auto_ingest"],
+                    )
+                    # Audit log entries with complete saved-path + stubs fields
+                    append_question_log(turn, user)
+                    # Rewrite session JSONL with the now-updated turn
+                    _rewrite_session(user)
+                    status.update(
+                        label=(
+                            f"✓ Ingest complete · "
+                            f"{'saved + ' if turn.saved_search_path else ''}"
+                            f"{len(turn.stubs_created)} stub(s) created"
+                        ),
+                        state="complete",
+                        expanded=False,
+                    )
+                except Exception as exc:
+                    status.update(
+                        label=f"⚠️ Ingest failed: {type(exc).__name__}: {exc}",
+                        state="error",
+                    )
+                    # Still write the audit log so the query is recorded
+                    try:
+                        append_question_log(turn, user)
+                    except Exception:
+                        pass
+            st.session_state.session_tokens += turn.tokens.total - pending["initial_tokens"]
+        st.session_state.pop("pending_ingest", None)
+        st.rerun()
+
+    # Phase 1: handle new input — synchronous, must complete before answer renders
     question = st.chat_input(
         "Ask a question (e.g., 'How would you weight T-DXd over T-DM1 in residual disease?')"
     )
     if question:
         with st.spinner("Routing through the wiki…"):
             try:
-                turn = run_query(question, user, auto_ingest)
+                turn, grounded_resp = run_query_phase1(question, user)
             except Exception as e:
                 st.error(f"Query failed: {type(e).__name__}: {e}")
                 st.stop()
 
-        # Audit (log.md + avatar/questions.md)
-        try:
-            append_question_log(turn, user)
-        except Exception as e:
-            st.warning(f"Query succeeded but audit log failed: {e}")
-
-        # Persist turn to session JSONL (A)
+        # Persist partial turn to session JSONL (A) — phase 2 will rewrite if needed
         try:
             append_turn_to_session(turn, user)
         except Exception as e:
@@ -1020,6 +1079,24 @@ def main() -> None:
 
         st.session_state.history.append(turn)
         st.session_state.session_tokens += turn.tokens.total
+
+        if grounded_resp is not None:
+            # Defer phase 2 — answer renders this rerun, ingest runs the next rerun
+            st.session_state.pending_ingest = {
+                "turn_idx": turn.idx,
+                "grounded_resp": grounded_resp,
+                "question": question,
+                "user": user,
+                "auto_ingest": auto_ingest,
+                "initial_tokens": turn.tokens.total,
+            }
+        else:
+            # Wiki-only — log immediately; no phase 2 needed
+            try:
+                append_question_log(turn, user)
+            except Exception as e:
+                st.warning(f"Audit log failed: {e}")
+
         st.rerun()
 
 

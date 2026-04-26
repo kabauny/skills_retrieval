@@ -25,7 +25,13 @@ The `knowledge-graph` MCP server provides graph-based retrieval over the wiki's 
 
 ## Streamlit UI (`app.py`)
 
-A Streamlit app for end-user query + avatar capture. Uses `gemini-3.1-pro-preview` as the main decision-making model.
+A Streamlit app for end-user query + avatar capture.
+
+**Two-model split:**
+- **`gemini-3.1-pro-preview`** (Pro) — wiki + internet synthesis, MC preference probe (heavy reasoning + avatar quality)
+- **`gemini-2.5-flash`** (Flash) — page routing, entity extraction (pattern-matching + structured output)
+
+**Render-first deferred ingest:** answer + MC probe render immediately after Phase 1 (route + synth + MC). Phase 2 (save grounded response to `raw/searches/` + auto-ingest novel entities) runs after rendering, with a status spinner. The user reads the answer while save + ingest happen.
 
 Capabilities:
 
