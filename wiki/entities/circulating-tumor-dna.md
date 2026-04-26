@@ -22,6 +22,18 @@ Tumor-derived cell-free DNA fragments detectable in plasma. In the early-disease
 - **[[zest-trial]]:** the major prior attempt at a Phase 3 ctDNA-guided escalation trial closed early due to enrollment challenges. Lesson: design needs higher-risk enrichment (residual disease + MRD+ together).
 - **Q3-relevant nuance:** an MRD+ result on top of residual disease defines a "high-risk-within-high-risk" stratum where clinical equipoise is greatest. See [[residual-disease-vs-mrd-positivity]] and [[mrd-guided-therapy-escalation]].
 
+## ctDNA in HR+/HER2− early breast cancer (added Q4 ingest, 2026-04-25)
+
+Beyond the HER2+ context above, ctDNA-MRD is also being studied prospectively in HR+/HER2− early breast cancer. The clinical-actionability gap is the same — **prognostic but not yet adjuvant-decisional outside of trials** [[premenopausal-intermediate-oncotype-2026]].
+
+- **Ongoing prospective HR+/HER2− trials:**
+  - **DARE** — ctDNA-guided escalation in HR+/HER2− early breast cancer
+  - **TRACKER** — ctDNA monitoring for recurrence detection
+  - **SURVIVE** — ctDNA surveillance for de-escalation/escalation decisions
+  - **[[ofset-trial]]** — incorporates ctDNA-MRD assessment alongside its primary OFS+chemo question, contributing data on premenopausal intermediate-RS patients [[premenopausal-intermediate-oncotype-2026]]
+- **Practical status (early 2026):** ctDNA-MRD remains research-only for HR+/HER2− adjuvant decisions. NCCN, ASCO, and ESMO **do not recommend** routine ctDNA-MRD testing to guide adjuvant chemotherapy or endocrine intensification in this subtype — same conclusion as for HER2+ disease [[premenopausal-intermediate-oncotype-2026]].
+- **The pattern across breast cancer subtypes:** ctDNA-MRD is consistently **prognostic** but not yet **predictive** for any specific intervention. The wiki concept [[mrd-guided-therapy-escalation]] holds across HR+/HER2− and HER2+ disease.
+
 ## Related entities
 
 - [[zest-trial]] — closed-early ctDNA-guided escalation trial
@@ -30,3 +42,4 @@ Tumor-derived cell-free DNA fragments detectable in plasma. In the early-disease
 ## Sources
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]]
+- [[premenopausal-intermediate-oncotype-2026]]
