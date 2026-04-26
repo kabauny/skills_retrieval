@@ -19,8 +19,8 @@ Antibody-drug conjugate (ADC) consisting of trastuzumab linked via a cleavable t
   - sBLA priority review — granted March 2026 [[mrd-her2-breast-cancer-residual-disease-2026]]
   - **PDUFA target action date: July 7, 2026** [[mrd-her2-breast-cancer-residual-disease-2026]]
   - Until approval: investigational/off-label in this setting
-- **Principal toxicity concern: interstitial lung disease (ILD/pneumonitis)** — 9.6% in [[destiny-breast05]] vs 1.6% with T-DM1, including some Grade 5 events [[mrd-her2-breast-cancer-residual-disease-2026]]. Requires baseline pulmonary assessment, vigilance for new respiratory symptoms, and steroid management protocols.
-- **Brain metastasis activity:** clinically meaningful reduction observed in [[destiny-breast05]] — relevant for HER2+ disease with high CNS recurrence risk [[mrd-her2-breast-cancer-residual-disease-2026]].
+- **Principal toxicity concern: interstitial lung disease (ILD/pneumonitis)** — 9.6% in [[destiny-breast05]] vs 1.6% with T-DM1. **Two Grade 5 events on T-DXd; zero on T-DM1** [[destiny-breast05-april-2026-update]]. Trial protocol incorporated **proactive serial low-dose chest CT monitoring** for early ILD detection [[destiny-breast05-april-2026-update]]. **No incremental ILD risk observed with concurrent radiotherapy** [[destiny-breast05-april-2026-update]]. Clinical implication: baseline pulmonary assessment, vigilance for new respiratory symptoms, and steroid management protocols remain essential.
+- **Brain metastasis activity:** brain metastasis-free interval **HR 0.64 (95% CI 0.35–1.17), 36% reduction** vs T-DM1 in [[destiny-breast05]] [[destiny-breast05-april-2026-update]]. CI crosses 1.0 — directional finding consistent with T-DXd CNS penetration but not statistically definitive at conventional threshold. Relevant for HER2+ disease with high CNS recurrence risk.
 - **Anticipated practice change:** widely expected to supersede [[trastuzumab-emtansine]] as preferred adjuvant therapy for high-risk HER2+ residual disease post-approval, with NCCN/ASCO/ESMO updates anticipated mid-to-late 2026 [[mrd-her2-breast-cancer-residual-disease-2026]].
 
 ## Related entities
@@ -33,4 +33,5 @@ Antibody-drug conjugate (ADC) consisting of trastuzumab linked via a cleavable t
 
 ## Sources
 
-- [[mrd-her2-breast-cancer-residual-disease-2026]]
+- [[mrd-her2-breast-cancer-residual-disease-2026]] — original (Q3) ingest: drug profile, mechanism, Q3 regulatory and trial context
+- [[destiny-breast05-april-2026-update]] — supersedes prior CNS and ILD specifics with quantified data + monitoring protocol

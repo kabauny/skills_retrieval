@@ -17,7 +17,7 @@ Phase 3 randomized open-label trial that established [[trastuzumab-emtansine]] (
 - **Design:** randomized to adjuvant [[trastuzumab-emtansine]] vs trastuzumab × 14 cycles [[mrd-her2-breast-cancer-residual-disease-2026]].
 - **Primary endpoint result:** invasive disease-free survival (IDFS) — 50% reduction in IDFS event risk with T-DM1; 3-year IDFS 88.3% vs 77.0% [[mrd-her2-breast-cancer-residual-disease-2026]].
 - **Subgroup consistency:** benefit consistent across subgroups including hormone receptor positive vs negative [[mrd-her2-breast-cancer-residual-disease-2026]] — relevant to HR+/HER2+ patients in the Q3-style scenario.
-- **Long-term (8.4-year) follow-up:** sustained IDFS benefit and improved overall survival with T-DM1 [[mrd-her2-breast-cancer-residual-disease-2026]].
+- **Long-term follow-up (8.4-year median, published January 2025):** sustained IDFS benefit and improved overall survival with T-DM1. **7-year IDFS: 80.8% (T-DM1) vs 67.1% (trastuzumab); 7-year OS: 89.1% vs 84.4%** [[destiny-breast05-april-2026-update]].
 - **Guideline status:** basis for NCCN Category 1 recommendation for T-DM1 in HER2+ residual disease; supported by ASCO and ESMO [[mrd-her2-breast-cancer-residual-disease-2026]].
 - **Successor trial:** [[destiny-breast05]] used T-DM1 (KATHERINE schedule) as the control arm to test [[trastuzumab-deruxtecan]] superiority.
 
@@ -29,4 +29,5 @@ Phase 3 randomized open-label trial that established [[trastuzumab-emtansine]] (
 
 ## Sources
 
-- [[mrd-her2-breast-cancer-residual-disease-2026]]
+- [[mrd-her2-breast-cancer-residual-disease-2026]] — original (Q3) ingest: population, design, primary IDFS, subgroup consistency, guideline status
+- [[destiny-breast05-april-2026-update]] — supersedes prior qualitative long-term follow-up phrasing with 7-year IDFS/OS quantification (Jan 2025 publication)

@@ -25,6 +25,7 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 - [[mrd-her2-breast-cancer-residual-disease-2026]] — Adjuvant management of HR+/HER2+ early breast cancer with residual disease post-TCHP, with focus on ctDNA MRD+ enrichment (Q3 source)
 - [[premenopausal-intermediate-oncotype-2026]] — Premenopausal HR+/HER2− intermediate Oncotype DX RS node-negative: chemotherapy vs OFS+AI; TAILORx, RxPONDER, OFSET, CIOS debate (Q4 source)
 - [[tnbc-keynote-522-irae-rechallenge-2026]] — TNBC pCR after KEYNOTE-522 with severe irAE: adjuvant pembrolizumab continuation vs omission; KEYNOTE-522 5-yr OS, re-challenge data (Q5 source)
+- [[destiny-breast05-april-2026-update]] — DESTINY-Breast05 + KATHERINE April 2026 update; **supersession source** for CNS/ILD specifics on T-DXd and 7-year KATHERINE follow-up quantification
 
 ## Entities
 
