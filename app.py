@@ -996,10 +996,13 @@ def write_page_content(path: Path, content: str) -> bool:
 # ---------------------------------------------------------------------------
 
 
-def _render_review_card(path: Path, user: str, kind: str) -> None:
+def _render_review_card(path: Path, user: str, kind: str, key_prefix: str = "") -> None:
     """Render one review item (stub or search) with view/edit/promote/reject actions.
 
     kind: "stub" or "search"
+    key_prefix: caller-supplied namespace to disambiguate widget keys when the
+        same path is rendered in multiple places (e.g. inline-in-turn and
+        Review tab simultaneously). Default empty for the Review tab.
     """
     try:
         content = path.read_text(encoding="utf-8")
@@ -1016,20 +1019,31 @@ def _render_review_card(path: Path, user: str, kind: str) -> None:
         f"`{rel_path}`  ·  modified {datetime.fromtimestamp(path.stat().st_mtime).strftime('%Y-%m-%d %H:%M')}"
     )
 
-    edit_key = f"edit_{kind}_{path.stem}"
-    edit_open_key = f"edit_open_{kind}_{path.stem}"
+    base = f"{key_prefix}{kind}_{path.stem}"
+    view_key = f"view_{base}"
+    editbtn_key = f"editbtn_{base}"
+    edit_open_key = f"edit_open_{base}"
+    edit_key = f"edit_{base}"
+    save_key = f"save_{base}"
+    promote_key = f"promote_{base}"
+    reject_key = f"reject_{base}"
+    confirm_key = f"confirm_reject_{base}"
+    reason_key = f"reason_{base}"
+    yes_key = f"yes_{base}"
+    no_key = f"no_{base}"
+
     if edit_open_key not in st.session_state:
         st.session_state[edit_open_key] = False
 
     cols = st.columns([1, 1, 1, 1])
     with cols[0]:
-        view_open = st.checkbox("View", key=f"view_{kind}_{path.stem}")
+        view_open = st.checkbox("View", key=view_key)
     with cols[1]:
-        if st.button("Edit", key=f"editbtn_{kind}_{path.stem}"):
+        if st.button("Edit", key=editbtn_key):
             st.session_state[edit_open_key] = not st.session_state[edit_open_key]
     with cols[2]:
         if kind == "stub":
-            if st.button("Promote", key=f"promote_{path.stem}", type="primary"):
+            if st.button("Promote", key=promote_key, type="primary"):
                 if promote_stub(path, user):
                     st.success(f"Promoted: `{rel_path}` (auto-generated flag removed)")
                     st.rerun()
@@ -1039,11 +1053,11 @@ def _render_review_card(path: Path, user: str, kind: str) -> None:
             st.write("")  # placeholder to keep column layout
     with cols[3]:
         reject_label = "Reject" if kind == "stub" else "Delete"
-        if st.button(reject_label, key=f"reject_{kind}_{path.stem}"):
-            st.session_state[f"confirm_reject_{kind}_{path.stem}"] = True
+        if st.button(reject_label, key=reject_key):
+            st.session_state[confirm_key] = True
 
     # Reject/delete confirmation
-    if st.session_state.get(f"confirm_reject_{kind}_{path.stem}"):
+    if st.session_state.get(confirm_key):
         with st.container(border=True):
             st.warning(
                 f"Confirm {'rejection' if kind == 'stub' else 'deletion'} of `{rel_path}`. "
@@ -1051,10 +1065,10 @@ def _render_review_card(path: Path, user: str, kind: str) -> None:
             )
             reason = st.text_input(
                 "Reason (optional, written to log.md)",
-                key=f"reason_{kind}_{path.stem}",
+                key=reason_key,
             )
             confirm_cols = st.columns(2)
-            if confirm_cols[0].button("Yes, proceed", key=f"yes_{kind}_{path.stem}", type="primary"):
+            if confirm_cols[0].button("Yes, proceed", key=yes_key, type="primary"):
                 ok = (
                     reject_stub(path, user, reason)
                     if kind == "stub"
@@ -1062,12 +1076,12 @@ def _render_review_card(path: Path, user: str, kind: str) -> None:
                 )
                 if ok:
                     st.success(f"{'Rejected' if kind == 'stub' else 'Deleted'}: `{rel_path}`")
-                    st.session_state.pop(f"confirm_reject_{kind}_{path.stem}", None)
+                    st.session_state.pop(confirm_key, None)
                     st.rerun()
                 else:
                     st.error("Operation failed.")
-            if confirm_cols[1].button("Cancel", key=f"no_{kind}_{path.stem}"):
-                st.session_state.pop(f"confirm_reject_{kind}_{path.stem}", None)
+            if confirm_cols[1].button("Cancel", key=no_key):
+                st.session_state.pop(confirm_key, None)
                 st.rerun()
 
     # View
@@ -1084,7 +1098,7 @@ def _render_review_card(path: Path, user: str, kind: str) -> None:
             key=edit_key,
         )
         save_cols = st.columns([1, 4])
-        if save_cols[0].button("Save changes", key=f"save_{kind}_{path.stem}", type="primary"):
+        if save_cols[0].button("Save changes", key=save_key, type="primary"):
             if write_page_content(path, edited):
                 st.success(f"Saved: `{rel_path}`")
                 st.session_state[edit_open_key] = False
@@ -1172,7 +1186,9 @@ def render_turn(turn: Turn, user: str) -> None:
                     p = Path(p_str)
                     if p.exists():
                         with st.container(border=True):
-                            _render_review_card(p, user, kind="stub")
+                            _render_review_card(
+                                p, user, kind="stub", key_prefix=f"turn{turn.idx}_"
+                            )
                     else:
                         st.markdown(f"- `{p}` — *(no longer present; reviewed elsewhere)*")
 
