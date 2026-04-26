@@ -8,12 +8,13 @@ High-level synthesis of the wiki, updated after every ingest.
 
 ## Current scope
 
-The wiki covers **two adjuvant breast cancer decision clusters** so far:
+The wiki covers **three adjuvant breast cancer decision clusters**:
 
 1. **HER2+ residual disease post-neoadjuvant TCHP** (Q3 ingest)
 2. **Premenopausal HR+/HER2− intermediate Oncotype DX RS, node-negative** (Q4 ingest)
+3. **TNBC pCR after KEYNOTE-522 with severe irAE — adjuvant pembrolizumab continuation vs omission** (Q5 ingest)
 
-Cross-cluster: [[circulating-tumor-dna]] now spans both subtypes, with a unified concept page [[mrd-guided-therapy-escalation]] capturing the shared (still-investigational) status.
+Cross-cluster: [[circulating-tumor-dna]] now spans **all three** subtypes, with a unified concept page [[mrd-guided-therapy-escalation]] capturing the shared (still-investigational) status. Same prognostic-not-predictive conclusion across HER2+, HR+/HER2−, and TNBC.
 
 ## Synthesis (as of 2026-04-25)
 
@@ -33,16 +34,22 @@ For premenopausal HR+/HER2− node-negative disease with intermediate [[oncotype
 
 The Q4 patient (39yo, RS 22, Grade 3, 2.5 cm, N0) has three defensible options (chemo+endocrine; OFS+AI; OFS+tamoxifen — the last less appropriate given high-risk features). [[soft-text-trials|SOFT/TEXT]] establish OFS+AI as the strongest non-chemo regimen. NCCN 2025–2026 guidance is permissive ("chemotherapy could be offered"), reflecting genuine equipoise. See [[intermediate-rs-premenopausal-hr-positive-management]] for the decision skeleton and [[node-negative-vs-node-positive-genomic-trial-scoping]] for why TAILORx (not RxPONDER) governs.
 
-### What spans both clusters
+### TNBC — pCR with severe irAE during KEYNOTE-522 (Q5 cluster)
 
-- [[circulating-tumor-dna]] — prognostic across HER2+ and HR+/HER2− but not yet adjuvant-decisional in either. Active prospective work: NCT07136493 (HER2+), DARE/TRACKER/SURVIVE/OFSET (HR+/HER2−), [[zest-trial]] (closed early — design lesson).
-- [[mrd-guided-therapy-escalation]] — the universal framing: ctDNA detection is robust prognostic, but no Phase 3 has shown that intervening on MRD+ improves outcomes. Same conclusion across subtypes.
+For high-risk early [[triple-negative-breast-cancer]], the [[keynote-522]] regimen (neoadjuvant + adjuvant [[pembrolizumab]] + chemotherapy) is current standard. 5-year OS gain HR 0.66 (86.6% vs 81.7% overall, ESMO 2024). But the **pCR-subgroup** OS gap is small (95.1% vs 94.4%, ~0.7% absolute) — most of the regimen's benefit is in non-pCR patients. **The trial wasn't designed to isolate adjuvant benefit after pCR.**
+
+The Q5 case: pCR achieved, but Grade 3 immune-mediated colitis required steroids and [[infliximab]]. Re-challenge real-world data show 28.8% irAE recurrence overall (~23% specifically for colitis/pneumonitis). Adjuvant-phase irAE rate is 18.1% in real-world data. For a patient with small marginal OS benefit and meaningful recurrence risk, the calculus tilts toward omission — but no Phase 3 evidence directly supports that decision. NCCN/ASCO/ESMO recommend the full regimen including 1 year adjuvant pembrolizumab regardless of pCR. See [[adjuvant-pembrolizumab-after-pcr-tnbc]] for the decision skeleton, [[pembrolizumab-rechallenge-after-severe-irae]] for the re-challenge calculus, and [[immune-related-adverse-events]] for general irAE management.
+
+### What spans all three clusters
+
+- [[circulating-tumor-dna]] — prognostic across HER2+, HR+/HER2−, and TNBC; not yet adjuvant-decisional in any. Active prospective work: NCT07136493 (HER2+), DARE/TRACKER/SURVIVE/OFSET (HR+/HER2−), NCT07327021 (TNBC), [[zest-trial]] (closed early — design lesson).
+- [[mrd-guided-therapy-escalation]] — the universal framing: ctDNA detection is robustly prognostic, but no Phase 3 has shown that intervening on MRD+ improves outcomes. Same conclusion across all three breast subtypes.
+- [[immune-related-adverse-events]] — IO toxicity framework relevant across all checkpoint-inhibitor uses (currently only TNBC in this wiki, but pattern is general).
 
 ## What's not yet in the wiki
 
-- **TNBC adjuvant management** (Q5 — KEYNOTE-522 + IO toxicity)
 - **GI cancers** (Q1 MSI-H Stage IIB, Q2 borderline resectable pancreas)
 - **Thoracic** (Q6 early-stage EGFR, Q7 PCI in IO-era ES-SCLC)
 - **GU/melanoma** (Q8 favorable-risk ccRCC, Q9 adjuvant melanoma IO vs targeted)
 - **Heme** (Q10 high-risk smoldering myeloma)
-- **Primary literature in `raw/papers/`** — the corpus is still Gemini-synthesized search results only. KATHERINE (NEJM 2019), DESTINY-Breast05 (when published), TAILORx (NEJM 2018/2019, JCO 2022), RxPONDER (NEJM 2021), SOFT/TEXT (NEJM 2014/2018) are the highest-priority primary papers to fetch.
+- **Primary literature in `raw/papers/`** — the corpus is still Gemini-synthesized search results only. KATHERINE (NEJM 2019), DESTINY-Breast05 (when published), TAILORx (NEJM 2018/2019, JCO 2022), RxPONDER (NEJM 2021), SOFT/TEXT (NEJM 2014/2018), KEYNOTE-522 (NEJM 2020 + ESMO 2024 OS update) are the highest-priority primary papers to fetch.

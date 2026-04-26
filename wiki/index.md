@@ -24,6 +24,7 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]] — Adjuvant management of HR+/HER2+ early breast cancer with residual disease post-TCHP, with focus on ctDNA MRD+ enrichment (Q3 source)
 - [[premenopausal-intermediate-oncotype-2026]] — Premenopausal HR+/HER2− intermediate Oncotype DX RS node-negative: chemotherapy vs OFS+AI; TAILORx, RxPONDER, OFSET, CIOS debate (Q4 source)
+- [[tnbc-keynote-522-irae-rechallenge-2026]] — TNBC pCR after KEYNOTE-522 with severe irAE: adjuvant pembrolizumab continuation vs omission; KEYNOTE-522 5-yr OS, re-challenge data (Q5 source)
 
 ## Entities
 
@@ -35,17 +36,21 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 - [[ovarian-function-suppression]] (OFS, GnRH agonists) — premenopausal endocrine intervention
 - [[aromatase-inhibitor]] (anastrozole, letrozole, exemestane) — endocrine therapy class
 - [[tamoxifen]] — SERM, alternative endocrine therapy
+- [[pembrolizumab]] (Keytruda) — anti-PD-1 IO; KEYNOTE-522 backbone in TNBC
+- [[infliximab]] (Remicade) — anti-TNF; second-line for steroid-refractory irAE colitis
 
 ### Cancer types
 
 - [[her2-positive-breast-cancer]] — HER2-amplified breast cancer, including HR+/HER2+ subset
 - [[hr-positive-her2-negative-breast-cancer]] — luminal breast cancer; ~70% of cases
+- [[triple-negative-breast-cancer]] (TNBC) — ER−/PR−/HER2−; ~10–15% of cases; chemo-IO standard
 
 ### Biomarkers & genes
 
 - [[circulating-tumor-dna]] (ctDNA) — molecular MRD biomarker; prognostic across HER2+ and HR+/HER2−, not yet predictive for escalation
 - [[oncotype-dx-recurrence-score]] (Oncotype DX, RS) — 21-gene assay for HR+/HER2− chemo-benefit prediction
 - [[anti-mullerian-hormone]] (AMH) — ovarian reserve marker; emerging predictive biomarker for premenopausal chemo benefit
+- [[tumor-mutational-burden]] (TMB) — IO-response biomarker; prognostic in TNBC but not actionable for de-escalation
 
 ### Clinical trials
 
@@ -57,6 +62,7 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 - [[rxponder-trial]] — node-positive HR+/HER2−; spawned the CIOS debate
 - [[ofset-trial]] (NCT05879926) — pending Phase 3 designed to settle CIOS by giving OFS in both arms
 - [[soft-text-trials]] — pivotal SOFT/TEXT pair establishing OFS+AI superiority over OFS+tamoxifen in high-risk premenopausal HR+ disease
+- [[keynote-522]] — TNBC neoadjuvant + adjuvant pembrolizumab + chemo; pCR 64.8% vs 51.2%; 5-yr OS HR 0.66
 
 ## Concepts
 
@@ -66,6 +72,9 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 - [[intermediate-rs-premenopausal-hr-positive-management]] — Q4 decision skeleton (chemo vs OFS+AI)
 - [[chemotherapy-induced-ovarian-suppression]] — CIOS hypothesis: is premenopausal chemo benefit just ovarian suppression?
 - [[node-negative-vs-node-positive-genomic-trial-scoping]] — TAILORx vs RxPONDER scoping disambiguation
+- [[immune-related-adverse-events]] — irAE management framework (mechanism, severity grading, steroid + biologic protocols)
+- [[pembrolizumab-rechallenge-after-severe-irae]] — re-challenge calculus framework
+- [[adjuvant-pembrolizumab-after-pcr-tnbc]] — Q5 decision skeleton (continuation vs omission)
 
 ## Avatar (per user)
 

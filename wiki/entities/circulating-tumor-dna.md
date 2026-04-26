@@ -34,6 +34,24 @@ Beyond the HER2+ context above, ctDNA-MRD is also being studied prospectively in
 - **Practical status (early 2026):** ctDNA-MRD remains research-only for HR+/HER2− adjuvant decisions. NCCN, ASCO, and ESMO **do not recommend** routine ctDNA-MRD testing to guide adjuvant chemotherapy or endocrine intensification in this subtype — same conclusion as for HER2+ disease [[premenopausal-intermediate-oncotype-2026]].
 - **The pattern across breast cancer subtypes:** ctDNA-MRD is consistently **prognostic** but not yet **predictive** for any specific intervention. The wiki concept [[mrd-guided-therapy-escalation]] holds across HR+/HER2− and HER2+ disease.
 
+## ctDNA in triple-negative breast cancer (added Q5 ingest, 2026-04-26)
+
+The third subtype now in the wiki — and **the same prognostic-not-predictive conclusion holds**.
+
+- **NCT07327021** (started January 2026) — "MRI-Guided Neoadjuvant Treatment De-Escalation in Stage II–III TNBC" — evaluates ctDNA dynamics as a complementary biomarker alongside MRI for early treatment response, MRD, and resistance mechanisms. Aim: guide de-escalation decisions [[tnbc-keynote-522-irae-rechallenge-2026]].
+- **Active TNBC de-escalation context:** the question is whether some patients (e.g., MRI-CR + ctDNA-negative after neoadjuvant) might safely receive less than the full year of adjuvant [[pembrolizumab]] — see [[adjuvant-pembrolizumab-after-pcr-tnbc]] for the Q5-relevant decision.
+- **Status:** ctDNA-MRD is **not yet adjuvant-decisional in TNBC** outside of clinical trials — same conclusion as for the HER2+ and HR+/HER2− subtypes. The unified framing at [[mrd-guided-therapy-escalation]] now spans **all three** breast cancer clusters in the wiki.
+
+## Pattern across all three breast cancer subtypes
+
+| Subtype | Active ctDNA-MRD trial | Adjuvant-decisional? |
+|---|---|---|
+| **HER2+** | NCT07136493; [[zest-trial]] (closed early) | **No** (NCCN/ASCO/ESMO) |
+| **HR+/HER2−** | DARE, TRACKER, SURVIVE, [[ofset-trial]] | **No** |
+| **TNBC** | NCT07327021 | **No** |
+
+Same conclusion across subtypes: prognostic, not predictive, not actionable for adjuvant decisions outside trials.
+
 ## Related entities
 
 - [[zest-trial]] — closed-early ctDNA-guided escalation trial
@@ -43,3 +61,4 @@ Beyond the HER2+ context above, ctDNA-MRD is also being studied prospectively in
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]]
 - [[premenopausal-intermediate-oncotype-2026]]
+- [[tnbc-keynote-522-irae-rechallenge-2026]]

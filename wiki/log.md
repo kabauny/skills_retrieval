@@ -92,3 +92,23 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Filed back:** none (the synthesis is already captured in [[mrd-guided-therapy-escalation]] and the updated [[circulating-tumor-dna]] page)
 - **Decision captured:** none (retrieval test, no clinical judgment by user)
 - **What this validates:** cross-ingest accretion produced a coherent unified answer. The Q4 update to [[circulating-tumor-dna]] (HR+/HER2− section appended without rewriting HER2+ content) created exactly the cross-cluster reference the architecture is designed to support.
+
+## [2026-04-26] ingest | TNBC pCR after KEYNOTE-522 with severe irAE (Q5 source)
+
+- **Source:** [[tnbc-keynote-522-irae-rechallenge-2026]] (Gemini grounded search, 6,319 tokens, 29 web sources; URL resolution applied inline)
+- **Pages created (9):**
+  - sources: [[tnbc-keynote-522-irae-rechallenge-2026]]
+  - entities (cancer): [[triple-negative-breast-cancer]]
+  - entities (drugs): [[pembrolizumab]], [[infliximab]]
+  - entities (trials): [[keynote-522]]
+  - entities (biomarkers): [[tumor-mutational-burden]]
+  - concepts: [[immune-related-adverse-events]], [[pembrolizumab-rechallenge-after-severe-irae]], [[adjuvant-pembrolizumab-after-pcr-tnbc]]
+- **Pages updated (4):**
+  - [[circulating-tumor-dna]] — appended TNBC section (NCT07327021) with cross-subtype summary table. ctDNA-MRD page now spans **all three** breast cancer subtypes (HER2+, HR+/HER2−, TNBC) with consistent prognostic-not-predictive framing.
+  - [[overview]] — added Q5 cluster + cross-cluster synthesis updated to three subtypes
+  - [[index]] — added new pages
+  - [[log]] — this entry
+- **Disambiguation introduced:** [[adjuvant-pembrolizumab-after-pcr-tnbc]] makes explicit a distinction the search lightly conflated — **reactive de-escalation after irAE** (Q5 case) vs. **proactive biomarker-guided de-escalation** in untreated patients. The trial isolates neither, but the data each speaks to is different.
+- **No supersession this ingest.** No prior wiki claims contradicted by Q5. TNBC is a new subtype; existing pages (HER2+, HR+/HER2−) made no TNBC-specific claims. Supersede operation remains untested in practice — will be exercised when a future ingest updates earlier claims (e.g., when the DESTINY-Breast05 primary publication drops and replaces press-release-citation chains in [[trastuzumab-deruxtecan]]).
+- **Provenance:** every claim wikilinked to [[tnbc-keynote-522-irae-rechallenge-2026]]. The [[circulating-tumor-dna]] update cites all three Q3/Q4/Q5 sources.
+- **kg_index:** not yet run (no MCP server configured this session).
