@@ -78,3 +78,17 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Provenance:** every claim wikilinked to [[premenopausal-intermediate-oncotype-2026]]. The [[circulating-tumor-dna]] update cites both Q3 and Q4 sources.
 - **No supersession this ingest** — no claims from Q3 ingest were overwritten. Q4 added an entirely new disease-cluster scope plus cross-reference to ctDNA. The supersede operation will be exercised in a future ingest where claims from earlier sources are updated by newer ones.
 - **kg_index:** not yet run (no MCP server configured this session).
+
+## [2026-04-26] query | ctDNA-MRD across breast cancer subtypes (cross-cluster)
+
+- **User:** jim.chen
+- **Question:** "How does ctDNA-MRD status currently inform adjuvant decisions across breast cancer subtypes?"
+- **Trigger:** post-Q4 cross-cluster wiki-first retrieval test — probes whether the wiki, now spanning two disease clusters, can answer a unified-view question without Gemini.
+- **Wiki pages consulted:** [[circulating-tumor-dna]], [[mrd-guided-therapy-escalation]], [[zest-trial]], [[ofset-trial]], [[residual-disease-vs-mrd-positivity]]
+- **KG tools used:** none (no `knowledge-graph` MCP configured this session)
+- **Gemini calls:** 0 — justified (wiki had unified view across both subtypes after the Q4 update to [[circulating-tumor-dna]]; no genuine gap)
+- **Answer origin:** wiki (cross-cluster)
+- **Tokens (Gemini):** 0
+- **Filed back:** none (the synthesis is already captured in [[mrd-guided-therapy-escalation]] and the updated [[circulating-tumor-dna]] page)
+- **Decision captured:** none (retrieval test, no clinical judgment by user)
+- **What this validates:** cross-ingest accretion produced a coherent unified answer. The Q4 update to [[circulating-tumor-dna]] (HR+/HER2− section appended without rewriting HER2+ content) created exactly the cross-cluster reference the architecture is designed to support.
