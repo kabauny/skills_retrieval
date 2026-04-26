@@ -853,23 +853,62 @@ _DECISION_SKELETON_RE = re.compile(
     r"^##\s+Decision skeleton[^\n]*\n(.*?)(?=\n##\s|\Z)",
     re.DOTALL | re.MULTILINE,
 )
-_OPTION_RE = re.compile(
-    r"\*\*Option\s+(\d+|[A-Z])\s*[—–-]\s*([^\*]+?)\*\*\s*\n(.*?)(?=\n\*\*Option\s+\d|\n##\s|\Z)",
-    re.DOTALL,
+_QUESTIONS_SECTION_RE = re.compile(
+    r"^##\s+Questions\s*\n(.*?)(?=\n##\s|\Z)",
+    re.DOTALL | re.MULTILINE,
+)
+# Each `### question text` followed by bullets of `- A. option text`
+_QUESTION_BLOCK_RE = re.compile(
+    r"^###\s+(.+?)\n(.*?)(?=\n###\s|\Z)",
+    re.DOTALL | re.MULTILINE,
+)
+_OPTION_BULLET_RE = re.compile(
+    r"^\s*-\s+([A-Z])\.\s+(.+?)$",
+    re.MULTILINE,
 )
 
 
+def _slugify(text: str, max_len: int = 60) -> str:
+    s = re.sub(r"[^a-zA-Z0-9]+", "-", text.lower()).strip("-")
+    return s[:max_len]
+
+
+def _parse_questions_section(section_text: str) -> list[dict]:
+    """Parse a `## Questions` section body into a list of question dicts."""
+    questions: list[dict] = []
+    for m in _QUESTION_BLOCK_RE.finditer(section_text):
+        q_text = m.group(1).strip()
+        body = m.group(2)
+        options: list[dict] = []
+        for opt in _OPTION_BULLET_RE.finditer(body):
+            options.append({"key": opt.group(1), "text": opt.group(2).strip()})
+        if not options:
+            continue
+        questions.append({
+            "label": _slugify(q_text),
+            "text": q_text,
+            "options": options,
+        })
+    return questions
+
+
 def find_decision_skeleton_pages() -> list[dict]:
-    """Scan wiki/concepts/ for pages with a `## Decision skeleton` section.
+    """Scan wiki/concepts/ for pages with a Decision skeleton AND/OR a Questions section.
 
     Returns a list of dicts:
         {
-          "stem": "intermediate-rs-premenopausal-hr-positive-management",
-          "title": "Intermediate-RS premenopausal HR+/HER2− adjuvant management",
+          "stem": "...",
+          "title": "...",
           "path": Path,
-          "skeleton": "<extracted skeleton section text>",
-          "options": [{"key": "A", "title": "...", "details": "..."}, ...] (may be empty)
+          "skeleton": "<text or ''>",
+          "questions": [
+            {"label": "...", "text": "...", "options": [{"key":"A","text":"..."}]},
+            ...
+          ]
         }
+
+    Pages without either section are skipped. Questions section is preferred;
+    skeleton is shown as context above the questions.
     """
     out: list[dict] = []
     concepts_dir = WIKI / "concepts"
@@ -880,39 +919,28 @@ def find_decision_skeleton_pages() -> list[dict]:
             content = p.read_text(encoding="utf-8")
         except OSError:
             continue
-        m = _DECISION_SKELETON_RE.search(content)
-        if not m:
+        skeleton_match = _DECISION_SKELETON_RE.search(content)
+        questions_match = _QUESTIONS_SECTION_RE.search(content)
+        if not skeleton_match and not questions_match:
             continue
-        skeleton = m.group(1).strip()
-        # Title from frontmatter
+
+        skeleton = skeleton_match.group(1).strip() if skeleton_match else ""
+        questions = _parse_questions_section(questions_match.group(1)) if questions_match else []
+
         fm, _body = parse_frontmatter(content)
         title = fm.get("title", p.stem).strip().strip('"').strip("'")
-        # Try to parse options — format: **Option N — Name**\n<bullets>
-        options: list[dict] = []
-        for opt_m in _OPTION_RE.finditer(skeleton):
-            key_raw = opt_m.group(1)
-            # Map "1" → "A", "2" → "B", etc., or pass through if already letter
-            if key_raw.isdigit():
-                key = chr(ord("A") + int(key_raw) - 1)
-            else:
-                key = key_raw
-            options.append({
-                "key": key,
-                "title": opt_m.group(2).strip(),
-                "details": opt_m.group(3).strip(),
-            })
         out.append({
             "stem": p.stem,
             "title": title,
             "path": p,
             "skeleton": skeleton,
-            "options": options,
+            "questions": questions,
         })
     return out
 
 
 def case_already_captured(user: str, case_stem: str) -> bool:
-    """Has this case already been captured for this user? Avoid duplicate prompts."""
+    """Has any question for this case been captured for this user?"""
     decisions_file = WIKI / "avatar" / user / "decisions.md"
     if not decisions_file.exists():
         return False
@@ -920,55 +948,71 @@ def case_already_captured(user: str, case_stem: str) -> bool:
         content = decisions_file.read_text(encoding="utf-8")
     except OSError:
         return False
-    # Match the case_stem appearing as a "Linked concept" or label suffix
     return f"linked-concept:{case_stem}" in content or f"case:{case_stem}" in content
 
 
-def append_case_decision(
+def question_already_captured(user: str, case_stem: str, question_label: str) -> bool:
+    """Has THIS specific question been captured (so re-prompt is a 'revisit')?"""
+    decisions_file = WIKI / "avatar" / user / "decisions.md"
+    if not decisions_file.exists():
+        return False
+    try:
+        content = decisions_file.read_text(encoding="utf-8")
+    except OSError:
+        return False
+    return f"linked-question:{case_stem}::{question_label}" in content
+
+
+def append_case_question_answer(
     user: str,
     case: dict,
-    decision_key: str,
-    decision_text: str,
+    question: dict,
+    selected_keys: list[str],
     comment: str,
 ) -> None:
-    """Write a case-decision entry to decisions.md.
+    """Write a single question's answer to decisions.md.
 
-    Schema: one MC question, one free-text comment. No separate confidence /
-    wiki-tension fields — the user can include those in the comment if they
-    want.
+    Each question + answer is its own entry. A case with N questions
+    answered produces N entries, all linked by `linked-concept:<stem>`
+    and individually trackable via `linked-question:<stem>::<q-label>`.
     """
     today = date.today().isoformat()
-    options_block = (
-        "\n".join(f"  - **{o['key']}.** {o['title']}" for o in case.get("options") or [])
-        if case.get("options")
-        else "  - *(free-form decision; see Decision skeleton on linked concept)*"
+    options_block = "\n".join(
+        f"  - {'☑' if o['key'] in selected_keys else '☐'} **{o['key']}.** {o['text']}"
+        for o in question["options"]
+    )
+    selections_str = ", ".join(selected_keys) if selected_keys else "(none selected)"
+    selected_titles = "; ".join(
+        next((o["text"] for o in question["options"] if o["key"] == k), "")
+        for k in selected_keys
     )
 
     entry = f"""
-### [{today}] {case['title']} (case:{case['stem']})
+### [{today}] {case['stem']} > {question['label']} (case:{case['stem']}, q:{question['label']})
 
 - **Source concept:** [[{case['stem']}]]
-- **Question:** What would you do for this case?
+- **Question:** {question['text']}
 - **Options offered:**
 {options_block}
-- **Choice:** {decision_key} — {decision_text}
+- **Selections:** {selections_str}{f' — {selected_titles}' if selected_titles else ''}
 - **Comment:** {comment if comment else "(none)"}
 - **linked-concept:{case['stem']}**
+- **linked-question:{case['stem']}::{question['label']}**
 """
 
     _, decisions = _ensure_avatar_files(user)
     with decisions.open("a", encoding="utf-8") as f:
         f.write(entry)
 
-    # Audit to wiki/log.md
     log = WIKI / "log.md"
     if log.exists():
         with log.open("a", encoding="utf-8") as f:
             f.write(
-                f"\n## [{today}] case-decision | {case['stem']}\n\n"
+                f"\n## [{today}] case-q-answer | {case['stem']} > {question['label']}\n\n"
                 f"- **User:** {user}\n"
                 f"- **Concept:** [[{case['stem']}]]\n"
-                f"- **Choice:** {decision_key} — {decision_text}\n"
+                f"- **Question:** {question['text']}\n"
+                f"- **Selections:** {selections_str}\n"
                 f"- **Comment:** {comment[:120] + ('...' if len(comment) > 120 else '') if comment else '(none)'}\n"
                 f"- **Captured via:** Cases tab (Streamlit UI)\n"
             )
@@ -1244,65 +1288,85 @@ def _render_review_card(path: Path, user: str, kind: str, key_prefix: str = "") 
 
 
 def render_case_capture(case: dict, user: str) -> None:
-    """Render a simple case-capture form: one MC question + one comment box.
+    """Render a case as a sequence of independently-answerable questions.
 
-    Designed to live INSIDE an st.expander, so callers should not wrap it
-    again. The form is intentionally minimal — confidence and wiki-tension
-    fields were removed so each case is one clear question with one
-    free-text comment.
+    Each question is a bordered block inside the case expander with:
+      - The question text (clearly visible — was missing before)
+      - Multi-select checkboxes for the options
+      - A per-question comment text area
+      - A per-question Save button (each answer is its own decision entry)
+
+    Designed to live INSIDE an st.expander; callers should not wrap again.
     """
-    options = case.get("options") or []
-    has_structured = bool(options)
+    questions = case.get("questions") or []
     base_key = f"case_{case['stem']}"
 
-    # Show the source + decision skeleton context first so the question has framing
     st.caption(f"Source: [[{case['stem']}]]")
-    with st.expander("📖 Decision skeleton (from concept page)", expanded=not has_structured):
-        st.markdown(case["skeleton"])
 
-    if case_already_captured(user, case["stem"]):
-        st.info("Already captured for this user. A new submission appends a fresh entry.")
+    if case.get("skeleton"):
+        with st.expander("📖 Decision skeleton (context from the concept page)", expanded=False):
+            st.markdown(case["skeleton"])
 
-    st.markdown("---")
-    st.markdown("**What would you do for this case?**")
-
-    if has_structured:
-        choice = st.radio(
-            "Choose one:",
-            [o["key"] for o in options],
-            format_func=lambda k: f"**{k}.** {next(o['title'] for o in options if o['key'] == k)}",
-            key=f"{base_key}_choice",
-            label_visibility="collapsed",
+    if not questions:
+        st.warning(
+            "No `## Questions` section on this concept page. "
+            "Add structured questions (each `### question text` with `- A. option` bullets) "
+            "to make this case captureable."
         )
-        chosen_text = next(o["title"] for o in options if o["key"] == choice)
-    else:
-        choice = "free"
-        chosen_text = st.text_input(
-            "Your decision (free-form):",
-            placeholder="e.g., 'Proceed with T-DXd; reassess at 3 months for ILD'",
-            key=f"{base_key}_choice_text",
-        )
+        return
 
-    comment = st.text_area(
-        "**Comment** (optional — your reasoning, caveats, anything you want recorded):",
-        placeholder=(
-            "e.g., 'I weight CNS activity strongly here; this is a guideline deviation but "
-            "the data are clear; would reconsider if patient had baseline pulmonary disease.'"
-        ),
-        height=120,
-        key=f"{base_key}_comment",
+    captured_already = sum(
+        1 for q in questions if question_already_captured(user, case["stem"], q["label"])
+    )
+    st.caption(
+        f"**{len(questions)} question(s)** in this case · "
+        f"**{captured_already}** already answered for `{user}`. "
+        "Answer any in any order; each saves independently."
     )
 
-    if st.button("Capture decision", key=f"{base_key}_save", type="primary"):
-        if not chosen_text:
-            st.error("Pick or enter a decision before capturing.")
-        else:
-            append_case_decision(
-                user=user, case=case, decision_key=choice,
-                decision_text=chosen_text, comment=comment,
+    for i, q in enumerate(questions, 1):
+        already_q = question_already_captured(user, case["stem"], q["label"])
+        marker = "✓ " if already_q else ""
+        with st.container(border=True):
+            st.markdown(f"**Q{i}. {marker}{q['text']}**")
+            if already_q:
+                st.caption(
+                    "Already answered. New submission appends a fresh entry "
+                    "(useful when your reasoning evolves)."
+                )
+
+            q_key = f"{base_key}_q_{q['label']}"
+            selected: list[str] = []
+            for opt in q["options"]:
+                checked = st.checkbox(
+                    f"**{opt['key']}.** {opt['text']}",
+                    key=f"{q_key}_opt_{opt['key']}",
+                )
+                if checked:
+                    selected.append(opt["key"])
+
+            comment = st.text_area(
+                "Comment (optional — reasoning, caveats, anything you want recorded):",
+                placeholder="e.g., 'I weight CNS activity strongly here; would reconsider if patient had pulmonary disease.'",
+                height=80,
+                key=f"{q_key}_comment",
             )
-            st.success(f"Captured to `wiki/avatar/{user}/decisions.md`")
-            st.rerun()
+
+            if st.button("Save this answer", key=f"{q_key}_save", type="primary"):
+                if not selected and not comment.strip():
+                    st.error("Pick at least one option or leave a comment before saving.")
+                else:
+                    append_case_question_answer(
+                        user=user,
+                        case=case,
+                        question=q,
+                        selected_keys=selected,
+                        comment=comment,
+                    )
+                    st.success(
+                        f"Saved Q{i} to `wiki/avatar/{user}/decisions.md`"
+                    )
+                    st.rerun()
 
 
 def render_cases_tab(user: str) -> None:

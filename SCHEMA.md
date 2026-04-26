@@ -154,6 +154,28 @@ Body structure:
 3. **Related entities** — wikilinks
 4. **Related concepts** — wikilinks
 5. **Sources** — list of source wikilinks
+6. **Questions** *(optional)* — captureable case questions for the avatar tool (see below)
+
+#### Optional `## Questions` section (for avatar capture)
+
+Concept pages that describe a clinical decision can include a `## Questions` section at the bottom to define the specific questions the avatar tool should surface. Format:
+
+```markdown
+## Questions
+
+### <question text — used as the question heading>
+- A. <option text>
+- B. <option text>
+- C. <option text>
+
+### <next question text>
+- A. ...
+- B. ...
+```
+
+Each `###` is a question; the bullets are checkbox options. The Streamlit Cases tab parses this section, renders each question as a multi-select checkbox group with a per-question comment + save button, and writes each user-submitted answer as its own entry in `wiki/avatar/{user}/decisions.md` with `linked-concept:<stem>` + `linked-question:<question-slug>` markers.
+
+This is purely tooling support — readers of the concept page (in Obsidian or web) see a useful list of decision-axes the agent has surfaced as worth probing.
 
 ### Avatar pages (`wiki/avatar/{user}/`)
 

@@ -72,3 +72,25 @@ Which option is "right" for the Q5 patient. **Avatar territory.** The decision i
 ## Sources
 
 - [[tnbc-keynote-522-irae-rechallenge-2026]]
+
+## Questions
+
+### For the Q5-style patient (TNBC pCR after KEYNOTE-522, prior Grade 3 colitis on infliximab) — what's your adjuvant approach?
+- A. Complete the full 9-cycle adjuvant pembrolizumab year (re-challenge)
+- B. Truncated adjuvant — fewer cycles with structured monitoring
+- C. Omit adjuvant pembrolizumab entirely
+- D. Decide based on additional ctDNA-MRD result
+- E. Discuss extensively with the patient and let their values decide
+
+### What's your threshold for re-challenging IO after a severe irAE in any setting?
+- A. Re-challenge only if prior irAE was Grade 1-2
+- B. Re-challenge OK if irAE was endocrine-only and stable on hormone replacement
+- C. Re-challenge OK only if steroid-responsive within 2-3 days
+- D. Avoid re-challenge after any Grade 3+ irAE
+- E. Avoid re-challenge specifically after colitis or pneumonitis
+
+### How does the small pCR-subgroup OS gap (~0.7%) shape your decision?
+- A. Strongly weighs against completing adjuvant — too small a benefit to justify recurrence risk
+- B. Mildly weighs against — but I'd still complete in low-toxicity-risk patients
+- C. Doesn't change my approach — pCR subgroup analysis is post-hoc, I trust the overall HR
+- D. I focus on the non-pCR subgroup numbers as the relevant signal anyway

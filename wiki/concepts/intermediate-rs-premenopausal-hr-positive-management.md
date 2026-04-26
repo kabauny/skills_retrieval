@@ -66,3 +66,26 @@ Which option is "best" for the specific patient. The trial data leave equipoise.
 ## Sources
 
 - [[premenopausal-intermediate-oncotype-2026]]
+
+## Questions
+
+### For a Q4-style patient (39yo premenopausal, RS 22, Grade 3, 2.5 cm, node-negative) — chemotherapy or OFS+AI?
+- A. Adjuvant chemotherapy followed by endocrine therapy
+- B. OFS + AI without chemotherapy
+- C. OFS + tamoxifen (acceptable but lower-evidence option)
+- D. Wait for OFSET trial results before committing
+- E. Order AMH first to inform the decision
+
+### Which factors would tip you toward chemotherapy in this patient profile?
+- A. RS 21-25 specifically (NCDB retrospective signal)
+- B. Grade 3 histology
+- C. Age <40
+- D. Tumor >2 cm
+- E. Patient strongly prefers shorter-duration toxicity over years of OFS
+
+### Which factors would tip you toward OFS+AI (no chemo)?
+- A. Belief the chemo benefit IS chemotherapy-induced ovarian suppression (CIOS hypothesis)
+- B. Patient prioritizes fertility preservation
+- C. Low AMH (less to gain from chemo per CIOS logic)
+- D. Patient strongly avoids chemo toxicity
+- E. Borderline genomic risk where I'd treat similarly regardless

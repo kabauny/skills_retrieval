@@ -44,3 +44,25 @@ For HR+/HER2+ disease, endocrine therapy runs in parallel with HER2-directed adj
 ## Sources
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]]
+
+## Questions
+
+### After the July 2026 PDUFA, would you switch to T-DXd as your default adjuvant for HER2+ residual disease?
+- A. Yes — adopt T-DXd as default; reserve T-DM1 for ILD-risk patients
+- B. Yes for high-risk residual disease only; T-DM1 for borderline
+- C. No — wait for OS data to mature before switching
+- D. Use T-DXd selectively (CNS recurrence risk, ER-, multiple residual nodes)
+
+### What ILD risk profile would shift your choice from T-DXd to T-DM1?
+- A. Any history of pulmonary disease
+- B. Prior chest radiation (especially left-sided)
+- C. Active autoimmune disease
+- D. Limited steroid tolerance
+- E. Patient strongly prefers lower toxicity over IDFS gain
+
+### How would you handle ctDNA-MRD positivity on top of residual disease?
+- A. Standard adjuvant (T-DM1 or T-DXd) — escalation not yet evidence-based
+- B. Switch to T-DXd specifically because of higher-risk-within-high-risk
+- C. Add tucatinib off-label
+- D. Enroll in MRD-guided clinical trial
+- E. Closer surveillance only; no therapy escalation
