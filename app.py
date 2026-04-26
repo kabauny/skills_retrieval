@@ -1,19 +1,26 @@
 """
 Wiki LM — Streamlit MVP.
 
-Five capabilities (per the build spec):
+Capabilities:
   1. Ask questions of the wiki
-  2. If the wiki is insufficient, fall back to internet (Gemini grounded search)
-  3. Interactions are written back as audit + the user's avatar
-  4. Agent generates multiple-choice questions to elicit user preferences
-  5. Preferences captured to wiki/avatar/{user}/
+  2. Internet fallback when wiki is insufficient (Gemini grounded search)
+  3. Audit-back-to-wiki: every query writes structured entries to log.md +
+     avatar/{user}/questions.md
+  4. Agent generates multiple-choice preference probes for clinical equipoise
+  5. Preferences captured to avatar/{user}/decisions.md
+
+Extensions (this version):
+  A. Persistent chat transcript — turns saved to raw/sessions/{user}-{date}.jsonl,
+     reloaded on startup
+  B. Grounded searches saved to raw/searches/ via shared search.py helpers
+     (URL resolution + token tracking + frontmatter exactly like agent-driven
+     search.py)
+  C. Auto-ingest novel entities from grounded answers as stub pages with
+     `auto_generated: true` frontmatter, indexed in wiki/index.md, logged in
+     wiki/log.md
 
 Run:
     streamlit run app.py
-
-Requires:
-    GOOGLE_API_KEY in .env
-    Wiki populated under wiki/ per SCHEMA.md
 """
 
 from __future__ import annotations
@@ -21,8 +28,7 @@ from __future__ import annotations
 import json
 import os
 import re
-import sys
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -31,6 +37,20 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
+# Reuse search.py helpers for the raw/searches save (URL resolution, citation
+# insertion, frontmatter, token logging — same format as agent-driven searches)
+from search import (
+    OUTPUT_DIR as SEARCH_OUTPUT_DIR,
+    append_token_log,
+    apply_url_map,
+    build_inline_citations,
+    extract_sources,
+    extract_token_usage,
+    format_markdown,
+    kebab,
+    resolve_urls,
+)
+
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
@@ -38,7 +58,10 @@ from google.genai import types
 ROOT = Path(__file__).parent
 WIKI = ROOT / "wiki"
 RAW = ROOT / "raw"
-MODEL = "gemini-2.5-flash"
+SESSIONS_DIR = RAW / "sessions"
+
+# User-specified main model for decision-making (synthesis, MC, entity extract)
+MODEL = "gemini-3.1-pro-preview"
 DEFAULT_USER = "jim.chen"
 
 # ---------------------------------------------------------------------------
@@ -78,7 +101,7 @@ class TokenUsage:
 class MCQuestion:
     label: str
     question: str
-    options: list[dict]  # [{"key": "A", "text": "..."}, ...]
+    options: list[dict]
     rationale: str
     captured: bool = False
 
@@ -88,15 +111,17 @@ class Turn:
     idx: int
     question: str
     answer: str
-    sources: list[str] = field(default_factory=list)  # wiki page filenames consulted
+    sources: list[str] = field(default_factory=list)
     origin: str = "wiki"  # "wiki" | "internet" | "mixed"
     gemini_calls: int = 0
     tokens: TokenUsage = field(default_factory=TokenUsage)
     mc: MCQuestion | None = None
+    saved_search_path: str | None = None  # raw/searches/{slug}.md if grounded
+    stubs_created: list[str] = field(default_factory=list)  # paths to stub pages
 
 
 # ---------------------------------------------------------------------------
-# Token helpers
+# Helpers
 # ---------------------------------------------------------------------------
 
 
@@ -112,21 +137,14 @@ def _tokens(response) -> TokenUsage:
 
 
 def _extract_json(text: str):
-    """Pull the first JSON object/array from a model response. Returns None on failure."""
-    # Try array first
-    m = re.search(r"\[.*\]", text, re.DOTALL)
-    if m:
-        try:
-            return json.loads(m.group())
-        except json.JSONDecodeError:
-            pass
-    # Try object
-    m = re.search(r"\{.*\}", text, re.DOTALL)
-    if m:
-        try:
-            return json.loads(m.group())
-        except json.JSONDecodeError:
-            pass
+    """Pull the first JSON array or object from a model response."""
+    for pattern in (r"\[.*\]", r"\{.*\}"):
+        m = re.search(pattern, text, re.DOTALL)
+        if m:
+            try:
+                return json.loads(m.group())
+            except json.JSONDecodeError:
+                continue
     return None
 
 
@@ -140,22 +158,23 @@ def _read_index() -> str:
 
 
 def _list_wiki_pages() -> list[Path]:
-    """All .md pages under wiki/ excluding hidden directories and avatar (per-user)."""
     pages: list[Path] = []
     for p in WIKI.rglob("*.md"):
         if any(part.startswith(".") for part in p.parts):
             continue
         if "avatar" in p.parts:
-            continue  # avatar pages are per-user, not part of shared knowledge
+            continue
         pages.append(p)
     return pages
 
 
+def _list_wiki_page_filenames() -> list[str]:
+    return sorted({p.stem for p in _list_wiki_pages()})
+
+
 def _load_pages(filenames: list[str]) -> dict[str, str]:
-    """Resolve filenames (without extension) to wiki paths and load content."""
     contents: dict[str, str] = {}
     for f in filenames:
-        # Try every plausible location; first match wins
         for path in WIKI.rglob(f"{f}.md"):
             if "avatar" in path.parts:
                 continue
@@ -168,7 +187,6 @@ def _load_pages(filenames: list[str]) -> dict[str, str]:
 
 
 def select_relevant_pages(query: str) -> tuple[list[str], TokenUsage]:
-    """Use Gemini to pick relevant page filenames from the wiki index."""
     index = _read_index()
     prompt = f"""You are a wiki retrieval router. Given the user's question and the wiki index below, list the page filenames (without paths or .md extension) most relevant to answering the question.
 
@@ -183,12 +201,9 @@ WIKI INDEX:
     resp = _client.models.generate_content(model=MODEL, contents=prompt)
     parsed = _extract_json(resp.text or "")
     pages = parsed if isinstance(parsed, list) else []
-    # Filter to filenames that actually exist
     valid: list[str] = []
     for p in pages:
-        if not isinstance(p, str):
-            continue
-        if list(WIKI.rglob(f"{p}.md")):
+        if isinstance(p, str) and list(WIKI.rglob(f"{p}.md")):
             valid.append(p)
     return valid, _tokens(resp)
 
@@ -202,7 +217,7 @@ _WIKI_ONLY_INSTRUCTIONS = """You are a clinical knowledge assistant answering st
 
 If the wiki does NOT contain enough information to answer the question well, respond with EXACTLY this token on its own line at the start: INSUFFICIENT_WIKI_DATA
 
-After the verdict, you may write a brief explanation of what is missing.
+After the verdict, briefly explain what is missing.
 
 If the wiki IS sufficient:
   - Give a clear, structured answer
@@ -213,10 +228,12 @@ If the wiki IS sufficient:
 
 
 def synthesize_wiki_answer(query: str, page_contents: dict[str, str]) -> tuple[str, bool, TokenUsage]:
-    """Try to answer from wiki only. Returns (answer, sufficient, tokens)."""
     if not page_contents:
-        return "INSUFFICIENT_WIKI_DATA\nNo relevant wiki pages were found for this question.", False, TokenUsage()
-
+        return (
+            "INSUFFICIENT_WIKI_DATA\nNo relevant wiki pages were found for this question.",
+            False,
+            TokenUsage(),
+        )
     pages_text = "\n\n---\n\n".join(
         f"## wiki/{name}\n\n{content}" for name, content in page_contents.items()
     )
@@ -234,8 +251,8 @@ WIKI PAGES:
     return answer, sufficient, _tokens(resp)
 
 
-def synthesize_internet_answer(query: str, page_contents: dict[str, str]) -> tuple[str, TokenUsage]:
-    """Wiki was insufficient — augment with grounded Google search."""
+def synthesize_internet_answer(query: str, page_contents: dict[str, str]):
+    """Returns (answer, raw_response, tokens). Raw response is needed for raw/searches save."""
     pages_text = (
         "\n\n---\n\n".join(f"## wiki/{name}\n\n{content}" for name, content in page_contents.items())
         if page_contents
@@ -249,7 +266,7 @@ Mark every claim with provenance:
 
 Do NOT invent wiki citations. Only cite pages that appear in the wiki context.
 
-End with a short "Sources" line listing the wiki pages cited (if any) and noting that web search was used.
+End with a short "Sources" line listing the wiki pages cited (if any) and noting web search was used.
 
 QUESTION:
 {query}
@@ -264,7 +281,232 @@ WIKI CONTEXT:
             tools=[types.Tool(google_search=types.GoogleSearch())],
         ),
     )
-    return (resp.text or "").strip(), _tokens(resp)
+    return (resp.text or "").strip(), resp, _tokens(resp)
+
+
+# ---------------------------------------------------------------------------
+# (B) Save grounded responses to raw/searches/ — same format as search.py
+# ---------------------------------------------------------------------------
+
+
+def save_grounded_response_to_raw(query: str, response, model: str) -> Path | None:
+    """Use search.py helpers to write a grounded response as a clean source file.
+
+    Same artifact format as agent-driven `python search.py "..."`:
+    YAML frontmatter (including token counts and resolved sources), inline
+    citations, numbered Sources section, append to _token_log.jsonl.
+    """
+    metadata = None
+    if response.candidates and response.candidates[0].grounding_metadata:
+        metadata = response.candidates[0].grounding_metadata
+
+    raw_text = response.text or ""
+    text_with_cites = build_inline_citations(raw_text, metadata)
+    sources = extract_sources(metadata)
+    if not sources:
+        # No grounding chunks returned — likely the model didn't actually search.
+        # Still save with no sources rather than nothing, for audit completeness.
+        pass
+
+    search_queries = (
+        list(metadata.web_search_queries)
+        if metadata and metadata.web_search_queries
+        else []
+    )
+    tokens = extract_token_usage(response)
+
+    # Resolve Google grounding redirect URLs (slow but matches search.py output)
+    if sources:
+        all_urls = [s["url"] for s in sources]
+        url_map = resolve_urls(all_urls)
+        for s in sources:
+            s["url"] = url_map.get(s["url"], s["url"])
+        text_with_cites = apply_url_map(text_with_cites, url_map)
+
+    SEARCH_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    filepath = SEARCH_OUTPUT_DIR / f"{kebab(query)}.md"
+    counter = 1
+    while filepath.exists():
+        counter += 1
+        filepath = SEARCH_OUTPUT_DIR / f"{kebab(query)}-{counter}.md"
+
+    content = format_markdown(query, text_with_cites, sources, search_queries, tokens, model)
+    filepath.write_text(content, encoding="utf-8")
+    append_token_log(query, filepath, tokens, model)
+    return filepath
+
+
+# ---------------------------------------------------------------------------
+# (C) Auto-ingest: extract entities → write stub pages → update index + log
+# ---------------------------------------------------------------------------
+
+
+_ENTITY_EXTRACT_PROMPT = """You analyze a clinical query and its grounded answer. Identify NOVEL named entities mentioned in the answer that are NOT already represented in the wiki page list provided.
+
+Categories:
+  - drug (e.g., trastuzumab, pembrolizumab)
+  - trial (e.g., DESTINY-Breast05, KATHERINE)
+  - cancer (e.g., HER2-positive breast cancer)
+  - biomarker (e.g., HER2, ctDNA, TMB)
+  - concept (mechanisms, paradigms, decision frameworks)
+
+Skip:
+  - Anything already in the wiki page list (provided)
+  - Vague references without enough info to populate a stub
+  - Entities mentioned only in passing without clinical content
+
+Each NOVEL entity, return a JSON object:
+{{
+  "name": "<official name>",
+  "filename": "<kebab-case, no .md, no path>",
+  "type": "drug" | "trial" | "cancer" | "biomarker" | "concept",
+  "brief": "<1-2 sentence summary based on the answer>",
+  "aliases": [<alternative names>],
+  "relevance": "<one short sentence on why this matters in oncology>"
+}}
+
+Return STRICTLY a JSON array, max 5 entities. If nothing novel, return [].
+
+EXISTING WIKI PAGES (do NOT duplicate any of these):
+{existing}
+
+QUERY:
+{query}
+
+ANSWER:
+{answer}
+"""
+
+
+def extract_novel_entities(query: str, answer: str) -> tuple[list[dict], TokenUsage]:
+    existing = ", ".join(_list_wiki_page_filenames())
+    prompt = _ENTITY_EXTRACT_PROMPT.format(existing=existing, query=query, answer=answer)
+    resp = _client.models.generate_content(model=MODEL, contents=prompt)
+    parsed = _extract_json(resp.text or "")
+    if not isinstance(parsed, list):
+        return [], _tokens(resp)
+    valid: list[dict] = []
+    for e in parsed:
+        if not isinstance(e, dict):
+            continue
+        if not e.get("name") or not e.get("filename"):
+            continue
+        valid.append(e)
+    return valid[:5], _tokens(resp)
+
+
+def write_entity_stub(entity: dict, source_filename: str) -> Path | None:
+    """Write a stub entity/concept page with auto_generated frontmatter. Skip on filename collision."""
+    name = entity.get("name", "Untitled").strip()
+    filename = (entity.get("filename") or kebab(name)).strip()
+    if not filename:
+        return None
+    typ = entity.get("type", "concept")
+    brief = entity.get("brief", "(stub — auto-generated, expand when verified)").strip()
+    aliases = entity.get("aliases") or []
+    relevance = entity.get("relevance", "").strip()
+
+    folder = "entities" if typ in ("drug", "trial", "cancer", "biomarker") else "concepts"
+    target_dir = WIKI / folder
+    target_dir.mkdir(parents=True, exist_ok=True)
+    target_path = target_dir / f"{filename}.md"
+
+    if target_path.exists():
+        return None  # never overwrite an existing page from auto-ingest
+
+    aliases_yaml = json.dumps(aliases) if aliases else "[]"
+    entity_type_field = typ if typ != "concept" else "other"
+    source_stem = Path(source_filename).stem
+
+    body = f"""---
+title: "{name}"
+entity_type: {entity_type_field}
+aliases: {aliases_yaml}
+auto_generated: true
+auto_source: "[[{source_stem}]]"
+auto_date: {date.today().isoformat()}
+tags: [auto-generated]
+---
+
+# {name}
+
+> ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
+
+## Brief
+
+{brief}
+
+## Why this matters
+
+{relevance if relevance else "(not specified)"}
+
+## Sources
+
+- [[{source_stem}]] — origin search; see for full grounded citations and search queries
+"""
+    target_path.write_text(body, encoding="utf-8")
+    return target_path
+
+
+_AUTO_INGEST_INDEX_HEADER = "## Auto-generated stubs (UI-driven)"
+
+
+def update_index_with_stubs(stubs: list[Path]) -> None:
+    if not stubs:
+        return
+    index = WIKI / "index.md"
+    if not index.exists():
+        return
+    text = index.read_text(encoding="utf-8")
+
+    new_lines = []
+    for stub in stubs:
+        # Read frontmatter title for display
+        content = stub.read_text(encoding="utf-8")
+        m = re.search(r'^title:\s*"?([^"\n]+)"?', content, re.MULTILINE)
+        title = (m.group(1) if m else stub.stem).strip()
+        kind = stub.parent.name
+        new_lines.append(f"- [[{stub.stem}]] — *(auto stub, {kind})* {title}")
+
+    if _AUTO_INGEST_INDEX_HEADER not in text:
+        block = (
+            f"\n\n{_AUTO_INGEST_INDEX_HEADER}\n\n"
+            + "\n".join(new_lines)
+            + "\n\n*These pages were auto-generated from UI grounded searches. They need agent review and promotion before clinical use.*\n"
+        )
+        text = text.rstrip() + block
+    else:
+        # Insert after the header marker, preserving the rest
+        marker = _AUTO_INGEST_INDEX_HEADER
+        idx = text.index(marker)
+        # Find the first blank-line + bullet block immediately following the header
+        # We just insert a new block right after the header line
+        line_end = text.index("\n", idx)
+        insertion = "\n" + "\n".join(new_lines)
+        text = text[: line_end + 1] + "\n" + insertion + "\n" + text[line_end + 1 :].lstrip("\n")
+
+    index.write_text(text, encoding="utf-8")
+
+
+def append_auto_ingest_log(stubs: list[Path], source_path: Path, query: str, user: str) -> None:
+    if not stubs:
+        return
+    today = date.today().isoformat()
+    pages_list = "\n".join(f"  - [[{s.stem}]] ({s.parent.name})" for s in stubs)
+    entry = f"""
+## [{today}] auto-ingest | UI grounded search → stub pages
+
+- **User:** {user}
+- **Triggering query:** "{query[:100]}{'...' if len(query) > 100 else ''}"
+- **Source saved:** [[{source_path.stem}]]
+- **Stub pages created ({len(stubs)}):**
+{pages_list}
+- **Note:** AUTO-GENERATED stubs from a UI grounded search. Marked `auto_generated: true` in frontmatter. Agent review and promotion to full entity/concept pages is recommended before clinical use.
+"""
+    log = WIKI / "log.md"
+    if log.exists():
+        with log.open("a", encoding="utf-8") as f:
+            f.write(entry)
 
 
 # ---------------------------------------------------------------------------
@@ -277,14 +519,14 @@ _MC_PROMPT = """You design preference probes to elicit a clinician's avatar.
 Given the user's question and the answer just provided, identify the principal CLINICAL JUDGMENT the user would face if they applied this information to a real patient. Generate ONE multiple-choice question with 2–4 distinct, defensible options.
 
 Rules:
-  - Only generate an MC if there is genuine equipoise — i.e., reasonable clinicians could disagree
+  - Only generate an MC if there is genuine equipoise — reasonable clinicians could disagree
   - Do NOT generate an MC for purely factual questions or settled standards of care
   - Each option must be defensible on the available evidence
   - Each option should reflect a different weighting of trade-offs (toxicity vs. efficacy, off-label comfort, guideline conformity, etc.)
 
 Return STRICTLY a single JSON object:
 {{
-  "label": "<short kebab-case label, e.g. 'tnbc-pcr-irae-rechallenge'>",
+  "label": "<short kebab-case label>",
   "question": "<the MC question>",
   "options": [
     {{"key": "A", "text": "<option A>"}},
@@ -349,12 +591,16 @@ def _ensure_avatar_files(user: str) -> tuple[Path, Path]:
 
 
 def append_question_log(turn: Turn, user: str) -> None:
-    """Write to wiki/log.md AND wiki/avatar/{user}/questions.md."""
     today = date.today().isoformat()
-    sources_str = (
-        ", ".join(f"[[{s}]]" for s in turn.sources) if turn.sources else "none"
-    )
+    sources_str = ", ".join(f"[[{s}]]" for s in turn.sources) if turn.sources else "none"
     safe_label = re.sub(r"[^a-z0-9]+", "-", turn.question.lower()).strip("-")[:60]
+
+    extras = ""
+    if turn.saved_search_path:
+        extras += f"\n- **Search saved:** [[{Path(turn.saved_search_path).stem}]]"
+    if turn.stubs_created:
+        stub_links = ", ".join(f"[[{Path(s).stem}]]" for s in turn.stubs_created)
+        extras += f"\n- **Stub pages auto-created:** {stub_links}"
 
     log_entry = f"""
 ## [{today}] query | {turn.question[:70]}{'...' if len(turn.question) > 70 else ''}
@@ -365,9 +611,8 @@ def append_question_log(turn: Turn, user: str) -> None:
 - **Wiki pages consulted:** {sources_str}
 - **Gemini calls:** {turn.gemini_calls}
 - **Answer origin:** {turn.origin}
-- **Tokens (Gemini):** {turn.tokens.total}
+- **Tokens (Gemini):** {turn.tokens.total}{extras}
 """
-
     questions_entry = f"""
 ### [{today}] {safe_label}
 
@@ -377,7 +622,7 @@ def append_question_log(turn: Turn, user: str) -> None:
 - **Gemini calls:** {turn.gemini_calls}
 - **Answer origin:** {turn.origin}
 - **Tokens (Gemini):** {turn.tokens.total}
-- **MC probe generated:** {"yes — " + turn.mc.label if turn.mc else "no"}
+- **MC probe generated:** {"yes — " + turn.mc.label if turn.mc else "no"}{extras}
 """
 
     log = WIKI / "log.md"
@@ -393,7 +638,6 @@ def append_question_log(turn: Turn, user: str) -> None:
 def append_preference_capture(
     user: str, mc: MCQuestion, choice_key: str, reasoning: str, source_question: str
 ) -> None:
-    """Write the user's MC answer to avatar/decisions.md."""
     today = date.today().isoformat()
     chosen = next((o for o in mc.options if o["key"] == choice_key), None)
     chosen_text = chosen["text"] if chosen else "(unknown)"
@@ -415,34 +659,152 @@ def append_preference_capture(
 
 
 # ---------------------------------------------------------------------------
-# UI
+# (A) Session persistence
 # ---------------------------------------------------------------------------
 
 
-def run_query(question: str, user: str) -> Turn:
+def session_file_for(user: str) -> Path:
+    return SESSIONS_DIR / f"{user}-{date.today().isoformat()}.jsonl"
+
+
+def _turn_to_dict(turn: Turn) -> dict:
+    return {
+        "idx": turn.idx,
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "question": turn.question,
+        "answer": turn.answer,
+        "sources": list(turn.sources),
+        "origin": turn.origin,
+        "gemini_calls": turn.gemini_calls,
+        "tokens": asdict(turn.tokens),
+        "mc": (
+            {
+                "label": turn.mc.label,
+                "question": turn.mc.question,
+                "options": turn.mc.options,
+                "rationale": turn.mc.rationale,
+                "captured": turn.mc.captured,
+            }
+            if turn.mc
+            else None
+        ),
+        "saved_search_path": turn.saved_search_path,
+        "stubs_created": list(turn.stubs_created),
+    }
+
+
+def _turn_from_dict(d: dict) -> Turn:
+    mc = None
+    if d.get("mc"):
+        mc = MCQuestion(
+            label=d["mc"]["label"],
+            question=d["mc"]["question"],
+            options=d["mc"]["options"],
+            rationale=d["mc"].get("rationale", ""),
+            captured=d["mc"].get("captured", False),
+        )
+    tk = d.get("tokens") or {}
+    return Turn(
+        idx=d["idx"],
+        question=d["question"],
+        answer=d["answer"],
+        sources=list(d.get("sources") or []),
+        origin=d.get("origin", "wiki"),
+        gemini_calls=d.get("gemini_calls", 0),
+        tokens=TokenUsage(
+            prompt=tk.get("prompt", 0),
+            candidates=tk.get("candidates", 0),
+            total=tk.get("total", 0),
+        ),
+        mc=mc,
+        saved_search_path=d.get("saved_search_path"),
+        stubs_created=list(d.get("stubs_created") or []),
+    )
+
+
+def append_turn_to_session(turn: Turn, user: str) -> None:
+    f = session_file_for(user)
+    f.parent.mkdir(parents=True, exist_ok=True)
+    with f.open("a", encoding="utf-8") as h:
+        h.write(json.dumps(_turn_to_dict(turn)) + "\n")
+
+
+def load_today_session(user: str) -> list[Turn]:
+    f = session_file_for(user)
+    if not f.exists():
+        return []
+    turns: list[Turn] = []
+    with f.open("r", encoding="utf-8") as h:
+        for line in h:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                turns.append(_turn_from_dict(json.loads(line)))
+            except (json.JSONDecodeError, KeyError, TypeError):
+                continue
+    return turns
+
+
+# ---------------------------------------------------------------------------
+# Query orchestration
+# ---------------------------------------------------------------------------
+
+
+def run_query(question: str, user: str, auto_ingest_enabled: bool) -> Turn:
     total_tokens = TokenUsage()
     gemini_calls = 0
 
-    # Step 1: pick relevant pages
+    # 1. Route to relevant wiki pages
     pages, t1 = select_relevant_pages(question)
     total_tokens = total_tokens + t1
     gemini_calls += 1
 
-    # Step 2: load content + try wiki-only synthesis
+    # 2. Try wiki-only synthesis
     page_contents = _load_pages(pages)
     answer, sufficient, t2 = synthesize_wiki_answer(question, page_contents)
     total_tokens = total_tokens + t2
     gemini_calls += 1
 
     origin = "wiki"
+    saved_search_path: str | None = None
+    stubs_created: list[str] = []
+
     if not sufficient:
-        # Step 3: internet fallback
-        answer, t3 = synthesize_internet_answer(question, page_contents)
+        # 3. Internet fallback (grounded search synthesis)
+        answer, grounded_resp, t3 = synthesize_internet_answer(question, page_contents)
         total_tokens = total_tokens + t3
         gemini_calls += 1
         origin = "internet" if not page_contents else "mixed"
 
-    # Step 4: generate preference MC
+        # B. Save the grounded response as a clean source file
+        try:
+            saved_path = save_grounded_response_to_raw(question, grounded_resp, MODEL)
+            if saved_path:
+                saved_search_path = str(saved_path)
+        except Exception as exc:  # never let save failure break the answer
+            saved_search_path = None
+            st.warning(f"Grounded response saved failed: {type(exc).__name__}: {exc}")
+
+        # C. Auto-ingest novel entities into stub pages
+        if auto_ingest_enabled and saved_search_path:
+            try:
+                entities, te = extract_novel_entities(question, answer)
+                total_tokens = total_tokens + te
+                gemini_calls += 1
+                created: list[Path] = []
+                for entity in entities:
+                    p = write_entity_stub(entity, saved_search_path)
+                    if p:
+                        created.append(p)
+                if created:
+                    update_index_with_stubs(created)
+                    append_auto_ingest_log(created, Path(saved_search_path), question, user)
+                stubs_created = [str(p) for p in created]
+            except Exception as exc:
+                st.warning(f"Auto-ingest failed: {type(exc).__name__}: {exc}")
+
+    # 4. Generate MC preference probe
     mc, t4 = generate_preference_mc(question, answer)
     total_tokens = total_tokens + t4
     gemini_calls += 1
@@ -456,7 +818,14 @@ def run_query(question: str, user: str) -> Turn:
         gemini_calls=gemini_calls,
         tokens=total_tokens,
         mc=mc,
+        saved_search_path=saved_search_path,
+        stubs_created=stubs_created,
     )
+
+
+# ---------------------------------------------------------------------------
+# UI
+# ---------------------------------------------------------------------------
 
 
 def render_turn(turn: Turn, user: str) -> None:
@@ -464,7 +833,6 @@ def render_turn(turn: Turn, user: str) -> None:
         st.write(turn.question)
 
     with st.chat_message("assistant"):
-        # Origin badge
         badge = {
             "wiki": "🟢 Wiki only",
             "mixed": "🟡 Wiki + internet",
@@ -482,7 +850,19 @@ def render_turn(turn: Turn, user: str) -> None:
                 for s in turn.sources:
                     st.markdown(f"- `wiki/.../{s}.md`")
 
-        # MC preference probe
+        if turn.saved_search_path:
+            with st.expander("💾 Grounded search saved"):
+                st.code(turn.saved_search_path, language="text")
+                st.caption(
+                    "Saved with the same format as agent-driven search.py — frontmatter, "
+                    "resolved URLs, token tracking, _token_log.jsonl entry."
+                )
+
+        if turn.stubs_created:
+            with st.expander(f"🌱 Auto-ingested ({len(turn.stubs_created)} stub pages)", expanded=True):
+                for p in turn.stubs_created:
+                    st.markdown(f"- `{p}` — marked `auto_generated: true`; needs agent review")
+
         if turn.mc and not turn.mc.captured:
             with st.expander("🧭 Preference probe — help build your avatar", expanded=True):
                 st.markdown(f"**{turn.mc.question}**")
@@ -510,21 +890,60 @@ def render_turn(turn: Turn, user: str) -> None:
                         source_question=turn.question,
                     )
                     turn.mc.captured = True
+                    # Re-write session to persist the captured flag
+                    _rewrite_session(user)
                     st.success(f"Saved to wiki/avatar/{user}/decisions.md")
                     st.rerun()
         elif turn.mc and turn.mc.captured:
             st.success("✓ Preference captured to avatar")
 
 
+def _rewrite_session(user: str) -> None:
+    """Rewrite today's session JSONL from current st.session_state.history.
+
+    Used after MC capture to persist the captured=True flag.
+    """
+    f = session_file_for(user)
+    f.parent.mkdir(parents=True, exist_ok=True)
+    with f.open("w", encoding="utf-8") as h:
+        for turn in st.session_state.history:
+            h.write(json.dumps(_turn_to_dict(turn)) + "\n")
+
+
 def main() -> None:
     st.set_page_config(page_title="Wiki LM", layout="wide", page_icon="📚")
 
-    # Sidebar — user identity + stats
+    # Sidebar — user identity, controls, stats
     with st.sidebar:
         st.title("📚 Wiki LM")
-        st.caption("Local knowledge base + avatar capture")
+        st.caption(f"Local KB + avatar capture · model: `{MODEL}`")
 
-        user = st.text_input("Active user", value=DEFAULT_USER, help="Per SCHEMA.md user identity convention")
+        user = st.text_input(
+            "Active user",
+            value=st.session_state.get("user", DEFAULT_USER),
+            help="Per SCHEMA.md user identity convention",
+        )
+
+        # Persist user across reruns
+        if "user" not in st.session_state or st.session_state.user != user:
+            st.session_state.user = user
+            # Re-load history for this user
+            st.session_state.history = load_today_session(user)
+            st.session_state.session_tokens = sum(
+                t.tokens.total for t in st.session_state.history
+            )
+
+        st.divider()
+        auto_ingest = st.toggle(
+            "Auto-ingest grounded searches",
+            value=True,
+            help=(
+                "When the wiki is insufficient, save the grounded search to "
+                "raw/searches/ AND extract novel entities as auto-generated "
+                "stub pages in wiki/entities|concepts/. Stubs are marked "
+                "`auto_generated: true` and need agent review."
+            ),
+        )
 
         st.divider()
         st.subheader("Wiki state")
@@ -533,31 +952,31 @@ def main() -> None:
 
         avatar_dir = WIKI / "avatar" / user
         if avatar_dir.exists():
-            n_decisions_file = avatar_dir / "decisions.md"
-            n_decisions = (
-                n_decisions_file.read_text(encoding="utf-8").count("###")
-                if n_decisions_file.exists()
-                else 0
-            )
-            n_questions_file = avatar_dir / "questions.md"
-            n_questions = (
-                n_questions_file.read_text(encoding="utf-8").count("###")
-                if n_questions_file.exists()
-                else 0
-            )
-            st.metric(f"Avatar decisions ({user})", n_decisions)
-            st.metric(f"Avatar questions ({user})", n_questions)
+            for label, fname in [
+                ("Avatar decisions", "decisions.md"),
+                ("Avatar questions", "questions.md"),
+            ]:
+                p = avatar_dir / fname
+                count = p.read_text(encoding="utf-8").count("###") if p.exists() else 0
+                st.metric(f"{label} ({user})", count)
 
         st.divider()
         st.subheader("Session")
         if "history" not in st.session_state:
-            st.session_state.history = []
+            st.session_state.history = load_today_session(user)
         if "session_tokens" not in st.session_state:
-            st.session_state.session_tokens = 0
+            st.session_state.session_tokens = sum(
+                t.tokens.total for t in st.session_state.history
+            )
         st.metric("Queries this session", len(st.session_state.history))
         st.metric("Tokens this session", f"{st.session_state.session_tokens:,}")
+        st.caption(
+            f"Persisted to `{session_file_for(user).relative_to(ROOT)}`"
+            if SESSIONS_DIR.exists() or st.session_state.history
+            else "Session writes to raw/sessions/ on first query"
+        )
 
-        if st.button("Clear chat history"):
+        if st.button("Clear in-memory chat (keeps session file)"):
             st.session_state.history = []
             st.session_state.session_tokens = 0
             st.rerun()
@@ -566,28 +985,38 @@ def main() -> None:
     st.title("Ask the wiki")
     st.caption(
         "Wiki-first retrieval — internet fallback only when needed. "
-        "Equipoise becomes a multiple-choice probe to grow your avatar."
+        "Equipoise becomes a multiple-choice probe to grow your avatar. "
+        "Grounded searches save to `raw/searches/` and (with auto-ingest) "
+        "create stub pages."
     )
 
-    # History
+    # Render history
     for turn in st.session_state.history:
         render_turn(turn, user)
 
     # Input
-    question = st.chat_input("Ask a question (e.g., 'How would you weight T-DXd over T-DM1 in residual disease?')")
+    question = st.chat_input(
+        "Ask a question (e.g., 'How would you weight T-DXd over T-DM1 in residual disease?')"
+    )
     if question:
         with st.spinner("Routing through the wiki…"):
             try:
-                turn = run_query(question, user)
+                turn = run_query(question, user, auto_ingest)
             except Exception as e:
                 st.error(f"Query failed: {type(e).__name__}: {e}")
                 st.stop()
 
-        # Audit the query
+        # Audit (log.md + avatar/questions.md)
         try:
             append_question_log(turn, user)
         except Exception as e:
             st.warning(f"Query succeeded but audit log failed: {e}")
+
+        # Persist turn to session JSONL (A)
+        try:
+            append_turn_to_session(turn, user)
+        except Exception as e:
+            st.warning(f"Session persistence failed: {e}")
 
         st.session_state.history.append(turn)
         st.session_state.session_tokens += turn.tokens.total

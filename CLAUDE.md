@@ -25,13 +25,21 @@ The `knowledge-graph` MCP server provides graph-based retrieval over the wiki's 
 
 ## Streamlit UI (`app.py`)
 
-A minimal Streamlit app for end-user query + avatar capture. Five capabilities:
+A Streamlit app for end-user query + avatar capture. Uses `gemini-3.1-pro-preview` as the main decision-making model.
 
-1. Ask questions of the wiki
-2. Internet fallback (Gemini grounded search) when wiki is insufficient
-3. Every interaction is audited back to `wiki/log.md` and `wiki/avatar/{user}/questions.md`
-4. Agent generates a multiple-choice preference probe for any answer that surfaces genuine clinical equipoise
-5. User picks an option → preference captured to `wiki/avatar/{user}/decisions.md`
+Capabilities:
+
+1. **Ask questions of the wiki** — index-based routing + per-page synthesis
+2. **Internet fallback** (Gemini grounded search) when the wiki is insufficient
+3. **Audit-back-to-wiki** — every query writes to `wiki/log.md` and `wiki/avatar/{user}/questions.md`
+4. **MC preference probes** — agent surfaces genuine equipoise as a multiple-choice question
+5. **Avatar capture** — picked option + reasoning written to `wiki/avatar/{user}/decisions.md`
+
+Persistent extensions:
+
+- **Session persistence** — every turn (Q + A + sources + MC + token counts) saved as JSONL to `raw/sessions/{user}-{date}.jsonl`. Reloaded on app start so chat history survives browser reload.
+- **Grounded searches save** — when the internet fallback fires, the grounded response is saved to `raw/searches/{slug}.md` using the same format as agent-driven `python search.py` (frontmatter, resolved URLs, token tracking, `_token_log.jsonl`).
+- **Auto-ingest** (toggle in sidebar, default ON) — for each grounded search, extract novel entities and write `auto_generated: true` stub pages to `wiki/entities/` or `wiki/concepts/`. Stubs are added to a "Auto-generated stubs (UI-driven)" section in `wiki/index.md` and logged in `wiki/log.md` as `## [date] auto-ingest |`. Stubs require agent review before clinical use.
 
 Run:
 
@@ -39,4 +47,4 @@ Run:
 streamlit run app.py
 ```
 
-The app runs locally (default `http://localhost:8501`) and writes to the same wiki layer the agent uses. Defaults to user `jim.chen`; switch via the sidebar.
+The app runs locally (default `http://localhost:8501`). Defaults to user `jim.chen`; switch via the sidebar (history reloads from that user's session file).
