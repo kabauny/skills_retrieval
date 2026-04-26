@@ -839,8 +839,295 @@ def run_query_phase2(turn: Turn, grounded_resp, question: str, user: str, auto_i
 
 
 # ---------------------------------------------------------------------------
+# Review (auto-generated stubs + saved searches)
+# ---------------------------------------------------------------------------
+
+
+def list_auto_generated_pages() -> list[Path]:
+    """Find every wiki page with `auto_generated: true` in frontmatter, mtime-sorted desc."""
+    matches: list[Path] = []
+    for p in WIKI.rglob("*.md"):
+        if any(part.startswith(".") for part in p.parts):
+            continue
+        if "avatar" in p.parts:
+            continue
+        try:
+            head = p.read_text(encoding="utf-8")[:600]
+        except OSError:
+            continue
+        if re.search(r"^auto_generated:\s*true\b", head, re.MULTILINE):
+            matches.append(p)
+    matches.sort(key=lambda x: x.stat().st_mtime, reverse=True)
+    return matches
+
+
+def list_recent_searches(limit: int = 50) -> list[Path]:
+    """Return the most recent files in raw/searches/, mtime-sorted desc."""
+    if not SEARCH_OUTPUT_DIR.exists():
+        return []
+    files = [
+        p for p in SEARCH_OUTPUT_DIR.glob("*.md")
+        if not p.name.startswith("_")
+    ]
+    files.sort(key=lambda x: x.stat().st_mtime, reverse=True)
+    return files[:limit]
+
+
+def parse_frontmatter(text: str) -> tuple[dict, str]:
+    """Crude YAML frontmatter parse — enough for our generated stubs."""
+    if not text.startswith("---\n"):
+        return {}, text
+    end = text.find("\n---\n", 4)
+    if end == -1:
+        return {}, text
+    fm_block = text[4:end]
+    body = text[end + 5 :]
+    fm: dict = {}
+    for line in fm_block.splitlines():
+        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)$", line)
+        if not m:
+            continue
+        key, val = m.group(1), m.group(2).strip()
+        fm[key] = val
+    return fm, body
+
+
+def promote_stub(path: Path, user: str) -> bool:
+    """Strip `auto_generated: true` and `auto-generated` tag. Log promotion."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return False
+
+    new_text = re.sub(r"^auto_generated:\s*true\s*\n", "", text, flags=re.MULTILINE)
+    # Remove the auto-generated tag from `tags: [...]` if present
+    new_text = re.sub(
+        r"^(tags:\s*\[)([^\]]*)(\])",
+        lambda m: m.group(1)
+        + ", ".join(t.strip() for t in m.group(2).split(",") if t.strip() and t.strip() != "auto-generated")
+        + m.group(3),
+        new_text,
+        flags=re.MULTILINE,
+    )
+
+    # Strip the warning callout block if present (top of body)
+    new_text = re.sub(
+        r"\n>\s*⚠️\s*\*\*Auto-generated stub\*\*[^\n]*\n(?:>[^\n]*\n)*",
+        "\n",
+        new_text,
+    )
+
+    path.write_text(new_text, encoding="utf-8")
+
+    today = date.today().isoformat()
+    log = WIKI / "log.md"
+    if log.exists():
+        with log.open("a", encoding="utf-8") as f:
+            f.write(
+                f"\n## [{today}] promote | {path.stem}\n\n"
+                f"- **User:** {user}\n"
+                f"- **Page:** [[{path.stem}]] ({path.parent.name})\n"
+                f"- **Action:** stripped `auto_generated: true` flag and warning callout — page is now treated as reviewed/promoted.\n"
+                f"- **Reminder:** consider running an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).\n"
+            )
+    return True
+
+
+def reject_stub(path: Path, user: str, reason: str = "") -> bool:
+    """Delete the stub page. Append a structured log entry. Recoverable via `git restore`."""
+    if not path.exists():
+        return False
+    stem = path.stem
+    parent_name = path.parent.name
+    today = date.today().isoformat()
+    try:
+        path.unlink()
+    except OSError:
+        return False
+
+    log = WIKI / "log.md"
+    if log.exists():
+        with log.open("a", encoding="utf-8") as f:
+            f.write(
+                f"\n## [{today}] reject | {stem}\n\n"
+                f"- **User:** {user}\n"
+                f"- **Page:** `wiki/{parent_name}/{stem}.md` (deleted)\n"
+                f"- **Reason:** {reason if reason else '(not specified)'}\n"
+                f"- **Recovery:** `git restore wiki/{parent_name}/{stem}.md` if needed.\n"
+            )
+    return True
+
+
+def delete_search_file(path: Path, user: str, reason: str = "") -> bool:
+    """Delete a raw/searches file. Logs the deletion."""
+    if not path.exists():
+        return False
+    name = path.name
+    today = date.today().isoformat()
+    try:
+        path.unlink()
+    except OSError:
+        return False
+
+    log = WIKI / "log.md"
+    if log.exists():
+        with log.open("a", encoding="utf-8") as f:
+            f.write(
+                f"\n## [{today}] delete-search | {name}\n\n"
+                f"- **User:** {user}\n"
+                f"- **File:** `raw/searches/{name}` (deleted)\n"
+                f"- **Reason:** {reason if reason else '(not specified)'}\n"
+                f"- **Recovery:** `git restore raw/searches/{name}` if needed.\n"
+            )
+    return True
+
+
+def write_page_content(path: Path, content: str) -> bool:
+    """Save edited content back to file."""
+    try:
+        path.write_text(content, encoding="utf-8")
+        return True
+    except OSError:
+        return False
+
+
+# ---------------------------------------------------------------------------
 # UI
 # ---------------------------------------------------------------------------
+
+
+def _render_review_card(path: Path, user: str, kind: str) -> None:
+    """Render one review item (stub or search) with view/edit/promote/reject actions.
+
+    kind: "stub" or "search"
+    """
+    try:
+        content = path.read_text(encoding="utf-8")
+    except OSError:
+        st.error(f"Could not read {path}")
+        return
+
+    fm, body = parse_frontmatter(content)
+    title = fm.get("title", path.stem).strip().strip('"').strip("'")
+    rel_path = path.relative_to(ROOT)
+
+    st.markdown(f"#### {title}")
+    st.caption(
+        f"`{rel_path}`  ·  modified {datetime.fromtimestamp(path.stat().st_mtime).strftime('%Y-%m-%d %H:%M')}"
+    )
+
+    edit_key = f"edit_{kind}_{path.stem}"
+    edit_open_key = f"edit_open_{kind}_{path.stem}"
+    if edit_open_key not in st.session_state:
+        st.session_state[edit_open_key] = False
+
+    cols = st.columns([1, 1, 1, 1])
+    with cols[0]:
+        view_open = st.checkbox("View", key=f"view_{kind}_{path.stem}")
+    with cols[1]:
+        if st.button("Edit", key=f"editbtn_{kind}_{path.stem}"):
+            st.session_state[edit_open_key] = not st.session_state[edit_open_key]
+    with cols[2]:
+        if kind == "stub":
+            if st.button("Promote", key=f"promote_{path.stem}", type="primary"):
+                if promote_stub(path, user):
+                    st.success(f"Promoted: `{rel_path}` (auto-generated flag removed)")
+                    st.rerun()
+                else:
+                    st.error("Promote failed.")
+        else:
+            st.write("")  # placeholder to keep column layout
+    with cols[3]:
+        reject_label = "Reject" if kind == "stub" else "Delete"
+        if st.button(reject_label, key=f"reject_{kind}_{path.stem}"):
+            st.session_state[f"confirm_reject_{kind}_{path.stem}"] = True
+
+    # Reject/delete confirmation
+    if st.session_state.get(f"confirm_reject_{kind}_{path.stem}"):
+        with st.container(border=True):
+            st.warning(
+                f"Confirm {'rejection' if kind == 'stub' else 'deletion'} of `{rel_path}`. "
+                "Recoverable via `git restore` since the file is tracked."
+            )
+            reason = st.text_input(
+                "Reason (optional, written to log.md)",
+                key=f"reason_{kind}_{path.stem}",
+            )
+            confirm_cols = st.columns(2)
+            if confirm_cols[0].button("Yes, proceed", key=f"yes_{kind}_{path.stem}", type="primary"):
+                ok = (
+                    reject_stub(path, user, reason)
+                    if kind == "stub"
+                    else delete_search_file(path, user, reason)
+                )
+                if ok:
+                    st.success(f"{'Rejected' if kind == 'stub' else 'Deleted'}: `{rel_path}`")
+                    st.session_state.pop(f"confirm_reject_{kind}_{path.stem}", None)
+                    st.rerun()
+                else:
+                    st.error("Operation failed.")
+            if confirm_cols[1].button("Cancel", key=f"no_{kind}_{path.stem}"):
+                st.session_state.pop(f"confirm_reject_{kind}_{path.stem}", None)
+                st.rerun()
+
+    # View
+    if view_open:
+        with st.expander("Rendered content", expanded=True):
+            st.markdown(body if body else content)
+
+    # Edit
+    if st.session_state[edit_open_key]:
+        edited = st.text_area(
+            "Edit raw markdown:",
+            value=content,
+            height=400,
+            key=edit_key,
+        )
+        save_cols = st.columns([1, 4])
+        if save_cols[0].button("Save changes", key=f"save_{kind}_{path.stem}", type="primary"):
+            if write_page_content(path, edited):
+                st.success(f"Saved: `{rel_path}`")
+                st.session_state[edit_open_key] = False
+                st.rerun()
+            else:
+                st.error("Save failed.")
+
+
+def render_review_tab(user: str) -> None:
+    stubs = list_auto_generated_pages()
+    searches = list_recent_searches()
+
+    st.markdown(
+        f"**{len(stubs)}** auto-generated stub(s) awaiting review · "
+        f"**{len(searches)}** search file(s) in `raw/searches/`"
+    )
+
+    sub = st.tabs([f"🌱 Stubs ({len(stubs)})", f"💾 Searches ({len(searches)})"])
+
+    with sub[0]:
+        if not stubs:
+            st.info(
+                "No auto-generated stubs in the wiki. "
+                "When the UI grounded fallback fires with auto-ingest enabled, novel "
+                "entity stubs land here for review before promotion."
+            )
+        else:
+            st.caption("Recent first. Promote when verified; reject to delete (recoverable via git).")
+            for p in stubs:
+                with st.container(border=True):
+                    _render_review_card(p, user, kind="stub")
+
+    with sub[1]:
+        if not searches:
+            st.info(
+                "No saved searches yet. Files are written to `raw/searches/` whenever the "
+                "wiki is insufficient for a query."
+            )
+        else:
+            st.caption("Recent first. Delete to remove the raw artifact (recoverable via git).")
+            for p in searches:
+                with st.container(border=True):
+                    _render_review_card(p, user, kind="search")
 
 
 def render_turn(turn: Turn, user: str) -> None:
@@ -874,9 +1161,20 @@ def render_turn(turn: Turn, user: str) -> None:
                 )
 
         if turn.stubs_created:
-            with st.expander(f"🌱 Auto-ingested ({len(turn.stubs_created)} stub pages)", expanded=True):
-                for p in turn.stubs_created:
-                    st.markdown(f"- `{p}` — marked `auto_generated: true`; needs agent review")
+            with st.expander(
+                f"🌱 Auto-ingested ({len(turn.stubs_created)} stub pages) — review inline", expanded=False
+            ):
+                st.caption(
+                    "Each stub is marked `auto_generated: true`. Use Promote to mark verified, "
+                    "Reject to delete (recoverable via git)."
+                )
+                for p_str in turn.stubs_created:
+                    p = Path(p_str)
+                    if p.exists():
+                        with st.container(border=True):
+                            _render_review_card(p, user, kind="stub")
+                    else:
+                        st.markdown(f"- `{p}` — *(no longer present; reviewed elsewhere)*")
 
         if turn.mc and not turn.mc.captured:
             with st.expander("🧭 Preference probe — help build your avatar", expanded=True):
@@ -1000,66 +1298,80 @@ def main() -> None:
             st.session_state.session_tokens = 0
             st.rerun()
 
-    # Main pane
-    st.title("Ask the wiki")
-    st.caption(
-        "Wiki-first retrieval — internet fallback only when needed. "
-        "Equipoise becomes a multiple-choice probe to grow your avatar. "
-        "Grounded searches save to `raw/searches/` and (with auto-ingest) "
-        "create stub pages."
-    )
+    # Main pane — tabs: Chat | Review
+    n_stubs = len(list_auto_generated_pages())
+    n_searches = len(list_recent_searches())
 
-    # Render history (existing turns visible immediately)
-    for turn in st.session_state.history:
-        render_turn(turn, user)
+    chat_tab, review_tab = st.tabs(["💬 Chat", f"📋 Review ({n_stubs} stubs · {n_searches} searches)"])
 
-    # Phase 2: deferred ingest, runs AFTER all existing turns have rendered.
-    # The user has already seen the answer above; this block does B + C with a
-    # status spinner, then reruns to update the just-rendered turn's badges.
-    pending = st.session_state.get("pending_ingest")
-    if pending:
-        turn_idx = pending["turn_idx"]
-        if turn_idx < len(st.session_state.history):
-            turn = st.session_state.history[turn_idx]
-            with st.status(
-                "Saving grounded search + auto-ingesting novel entities…", expanded=False
-            ) as status:
-                try:
-                    run_query_phase2(
-                        turn=turn,
-                        grounded_resp=pending["grounded_resp"],
-                        question=pending["question"],
-                        user=pending["user"],
-                        auto_ingest_enabled=pending["auto_ingest"],
-                    )
-                    # Audit log entries with complete saved-path + stubs fields
-                    append_question_log(turn, user)
-                    # Rewrite session JSONL with the now-updated turn
-                    _rewrite_session(user)
-                    status.update(
-                        label=(
-                            f"✓ Ingest complete · "
-                            f"{'saved + ' if turn.saved_search_path else ''}"
-                            f"{len(turn.stubs_created)} stub(s) created"
-                        ),
-                        state="complete",
-                        expanded=False,
-                    )
-                except Exception as exc:
-                    status.update(
-                        label=f"⚠️ Ingest failed: {type(exc).__name__}: {exc}",
-                        state="error",
-                    )
-                    # Still write the audit log so the query is recorded
+    with review_tab:
+        st.subheader("Review queue")
+        st.caption(
+            "Auto-generated stubs awaiting promotion + saved grounded searches. "
+            "Actions log to `wiki/log.md`; deletions are recoverable via `git restore`."
+        )
+        render_review_tab(user)
+
+    with chat_tab:
+        st.subheader("Ask the wiki")
+        st.caption(
+            "Wiki-first retrieval — internet fallback only when needed. "
+            "Equipoise becomes a multiple-choice probe to grow your avatar. "
+            "Grounded searches save to `raw/searches/` and (with auto-ingest) "
+            "create stub pages."
+        )
+
+        # Render history (existing turns visible immediately)
+        for turn in st.session_state.history:
+            render_turn(turn, user)
+
+        # Phase 2: deferred ingest, runs AFTER all existing turns have rendered.
+        # The user has already seen the answer above; this block does B + C with
+        # a status spinner, then reruns to update the just-rendered turn's badges.
+        pending = st.session_state.get("pending_ingest")
+        if pending:
+            turn_idx = pending["turn_idx"]
+            if turn_idx < len(st.session_state.history):
+                turn = st.session_state.history[turn_idx]
+                with st.status(
+                    "Saving grounded search + auto-ingesting novel entities…", expanded=False
+                ) as status:
                     try:
+                        run_query_phase2(
+                            turn=turn,
+                            grounded_resp=pending["grounded_resp"],
+                            question=pending["question"],
+                            user=pending["user"],
+                            auto_ingest_enabled=pending["auto_ingest"],
+                        )
+                        # Audit log entries with complete saved-path + stubs fields
                         append_question_log(turn, user)
-                    except Exception:
-                        pass
-            st.session_state.session_tokens += turn.tokens.total - pending["initial_tokens"]
-        st.session_state.pop("pending_ingest", None)
-        st.rerun()
+                        # Rewrite session JSONL with the now-updated turn
+                        _rewrite_session(user)
+                        status.update(
+                            label=(
+                                f"✓ Ingest complete · "
+                                f"{'saved + ' if turn.saved_search_path else ''}"
+                                f"{len(turn.stubs_created)} stub(s) created"
+                            ),
+                            state="complete",
+                            expanded=False,
+                        )
+                    except Exception as exc:
+                        status.update(
+                            label=f"⚠️ Ingest failed: {type(exc).__name__}: {exc}",
+                            state="error",
+                        )
+                        try:
+                            append_question_log(turn, user)
+                        except Exception:
+                            pass
+                st.session_state.session_tokens += turn.tokens.total - pending["initial_tokens"]
+            st.session_state.pop("pending_ingest", None)
+            st.rerun()
 
     # Phase 1: handle new input — synchronous, must complete before answer renders
+    # (chat_input docks at page bottom regardless of code location)
     question = st.chat_input(
         "Ask a question (e.g., 'How would you weight T-DXd over T-DM1 in residual disease?')"
     )

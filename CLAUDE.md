@@ -33,6 +33,12 @@ A Streamlit app for end-user query + avatar capture.
 
 **Render-first deferred ingest:** answer + MC probe render immediately after Phase 1 (route + synth + MC). Phase 2 (save grounded response to `raw/searches/` + auto-ingest novel entities) runs after rendering, with a status spinner. The user reads the answer while save + ingest happen.
 
+**Review tab** — second tab in the main pane. Two sub-tabs:
+- **🌱 Stubs** — every wiki page with `auto_generated: true` frontmatter. Per item: View, Edit (textarea), Promote (strip `auto_generated: true` flag + remove `auto-generated` tag + log to `wiki/log.md`), Reject (delete file + log; recoverable via `git restore`)
+- **💾 Searches** — files in `raw/searches/`. Per item: View, Edit, Delete (with log entry)
+
+Each turn that created stubs also has an inline expander with the same review affordances, so you can promote/reject right after generation without leaving the chat.
+
 Capabilities:
 
 1. **Ask questions of the wiki** — index-based routing + per-page synthesis
