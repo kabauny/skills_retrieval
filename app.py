@@ -517,28 +517,34 @@ def append_auto_ingest_log(stubs: list[Path], source_path: Path, query: str, use
 # ---------------------------------------------------------------------------
 
 
-_MC_PROMPT = """You design preference probes to elicit a clinician's avatar.
+_MC_PROMPT = """You design preference probes to elicit a clinician's avatar — their decision style across cases.
 
-Given the user's question and the answer just provided, identify the principal CLINICAL JUDGMENT the user would face if they applied this information to a real patient. Generate ONE multiple-choice question with 2–4 distinct, defensible options.
+For ALMOST ANY clinically-relevant question (informational, "how do you", or explicit decision), generate ONE multiple-choice question (2–4 options) that probes how the user would APPLY this knowledge to a patient.
 
-Rules:
-  - Only generate an MC if there is genuine equipoise — reasonable clinicians could disagree
-  - Do NOT generate an MC for purely factual questions or settled standards of care
-  - Each option must be defensible on the available evidence
-  - Each option should reflect a different weighting of trade-offs (toxicity vs. efficacy, off-label comfort, guideline conformity, etc.)
+Reframing rules:
+
+- "Tell me about X" / "What's the data on Y" → "If you had a patient with [a typical scenario from the answer], would you favor X or Y?"
+- "How do you select X vs Y" / "What's the role of Z" → "For [a specific patient profile mentioned in the answer], which would you choose?"
+- "Should I do X for this patient?" → MC directly with the at-hand options
+- Even when the answer describes a settled standard of care, surface a NUANCE (timing, sequencing, escalation thresholds, edge-case patient profiles) where reasonable clinicians could differ.
+
+Each option must be:
+- Defensible on the available evidence
+- Genuinely distinct (different weighting of trade-offs — toxicity vs efficacy, off-label comfort, guideline conformity, fertility/QoL preference, etc.)
+- Realistic (something a clinician might actually do)
 
 Return STRICTLY a single JSON object:
 {{
-  "label": "<short kebab-case label>",
-  "question": "<the MC question>",
+  "label": "<short kebab-case label, ≤40 chars>",
+  "question": "<the MC question — frame as applied to a hypothetical or general patient profile, not as 'what do you want to know'>",
   "options": [
-    {{"key": "A", "text": "<option A>"}},
+    {{"key": "A", "text": "<option A — concrete clinical action>"}},
     {{"key": "B", "text": "<option B>"}}
   ],
-  "rationale": "<one sentence on what this MC reveals about the user's preferences>"
+  "rationale": "<one sentence on what this MC reveals about the user's preferences — e.g., 'tests whether the user weighs CNS activity over ILD risk in adjuvant HER2-directed selection'>"
 }}
 
-If no genuine equipoise exists, return EXACTLY:
+Skip ONLY if the question is so trivial there is no clinical judgment in any direction (e.g., "what does AMH stand for?", "list the breast cancer subtypes"). In that case return EXACTLY:
 {{"label": null}}
 
 QUESTION:
@@ -839,6 +845,136 @@ def run_query_phase2(turn: Turn, grounded_resp, question: str, user: str, auto_i
 
 
 # ---------------------------------------------------------------------------
+# Cases — concept pages with Decision skeletons → captureable case decisions
+# ---------------------------------------------------------------------------
+
+
+_DECISION_SKELETON_RE = re.compile(
+    r"^##\s+Decision skeleton[^\n]*\n(.*?)(?=\n##\s|\Z)",
+    re.DOTALL | re.MULTILINE,
+)
+_OPTION_RE = re.compile(
+    r"\*\*Option\s+(\d+|[A-Z])\s*[—–-]\s*([^\*]+?)\*\*\s*\n(.*?)(?=\n\*\*Option\s+\d|\n##\s|\Z)",
+    re.DOTALL,
+)
+
+
+def find_decision_skeleton_pages() -> list[dict]:
+    """Scan wiki/concepts/ for pages with a `## Decision skeleton` section.
+
+    Returns a list of dicts:
+        {
+          "stem": "intermediate-rs-premenopausal-hr-positive-management",
+          "title": "Intermediate-RS premenopausal HR+/HER2− adjuvant management",
+          "path": Path,
+          "skeleton": "<extracted skeleton section text>",
+          "options": [{"key": "A", "title": "...", "details": "..."}, ...] (may be empty)
+        }
+    """
+    out: list[dict] = []
+    concepts_dir = WIKI / "concepts"
+    if not concepts_dir.exists():
+        return out
+    for p in sorted(concepts_dir.glob("*.md")):
+        try:
+            content = p.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        m = _DECISION_SKELETON_RE.search(content)
+        if not m:
+            continue
+        skeleton = m.group(1).strip()
+        # Title from frontmatter
+        fm, _body = parse_frontmatter(content)
+        title = fm.get("title", p.stem).strip().strip('"').strip("'")
+        # Try to parse options — format: **Option N — Name**\n<bullets>
+        options: list[dict] = []
+        for opt_m in _OPTION_RE.finditer(skeleton):
+            key_raw = opt_m.group(1)
+            # Map "1" → "A", "2" → "B", etc., or pass through if already letter
+            if key_raw.isdigit():
+                key = chr(ord("A") + int(key_raw) - 1)
+            else:
+                key = key_raw
+            options.append({
+                "key": key,
+                "title": opt_m.group(2).strip(),
+                "details": opt_m.group(3).strip(),
+            })
+        out.append({
+            "stem": p.stem,
+            "title": title,
+            "path": p,
+            "skeleton": skeleton,
+            "options": options,
+        })
+    return out
+
+
+def case_already_captured(user: str, case_stem: str) -> bool:
+    """Has this case already been captured for this user? Avoid duplicate prompts."""
+    decisions_file = WIKI / "avatar" / user / "decisions.md"
+    if not decisions_file.exists():
+        return False
+    try:
+        content = decisions_file.read_text(encoding="utf-8")
+    except OSError:
+        return False
+    # Match the case_stem appearing as a "Linked concept" or label suffix
+    return f"linked-concept:{case_stem}" in content or f"case:{case_stem}" in content
+
+
+def append_case_decision(
+    user: str,
+    case: dict,
+    decision_key: str,
+    decision_text: str,
+    reasoning: str,
+    confidence: str,
+    wiki_tension: str,
+) -> None:
+    """Write a rich case-decision entry to decisions.md (matches agent-mediated format)."""
+    today = date.today().isoformat()
+    options_block = (
+        "\n".join(f"  - **{o['key']}.** {o['title']}" for o in case.get("options") or [])
+        if case.get("options")
+        else "  - *(free-form decision; see Decision skeleton on linked concept)*"
+    )
+    safe_label = re.sub(r"[^a-z0-9]+", "-", case["stem"].lower()).strip("-")[:60]
+
+    entry = f"""
+### [{today}] {case['title']} (case mode capture, case:{case['stem']})
+
+- **Source concept:** [[{case['stem']}]]
+- **Scenario:** {case['title']} — captured via the Cases tab in the Streamlit UI.
+- **Options considered:**
+{options_block}
+- **Decision:** {decision_key} — {decision_text}
+- **Reasoning:** {reasoning if reasoning else "(not specified)"}
+- **Confidence:** {confidence}
+- **Wiki tension noted:** {wiki_tension if wiki_tension else "(none flagged by user)"}
+- **linked-concept:{case['stem']}**
+"""
+
+    _, decisions = _ensure_avatar_files(user)
+    with decisions.open("a", encoding="utf-8") as f:
+        f.write(entry)
+
+    # Also log to wiki/log.md for audit
+    log = WIKI / "log.md"
+    if log.exists():
+        with log.open("a", encoding="utf-8") as f:
+            f.write(
+                f"\n## [{today}] case-decision | {case['stem']}\n\n"
+                f"- **User:** {user}\n"
+                f"- **Concept:** [[{case['stem']}]]\n"
+                f"- **Decision:** {decision_key} — {decision_text}\n"
+                f"- **Confidence:** {confidence}\n"
+                f"- **Captured via:** Cases tab (Streamlit UI)\n"
+            )
+
+
+# ---------------------------------------------------------------------------
 # Review (auto-generated stubs + saved searches)
 # ---------------------------------------------------------------------------
 
@@ -1107,6 +1243,125 @@ def _render_review_card(path: Path, user: str, kind: str, key_prefix: str = "") 
                 st.error("Save failed.")
 
 
+def render_case_capture(case: dict, user: str) -> None:
+    """Render the case-capture form for one concept page with a Decision skeleton."""
+    options = case.get("options") or []
+    has_structured = bool(options)
+
+    st.markdown(f"### {case['title']}")
+    st.caption(
+        f"Source: [[{case['stem']}]] · "
+        f"{'structured options parsed' if has_structured else 'free-form (no parsed options)'}"
+    )
+
+    with st.expander("📖 Decision skeleton (from concept page)", expanded=not has_structured):
+        st.markdown(case["skeleton"])
+
+    already = case_already_captured(user, case["stem"])
+    if already:
+        st.info(
+            f"You've already captured a decision for this case (see `wiki/avatar/{user}/decisions.md`). "
+            "Submitting again will append a new entry — useful for revising your reasoning."
+        )
+
+    st.markdown("---")
+    st.markdown("**Your decision:**")
+
+    base_key = f"case_{case['stem']}"
+
+    if has_structured:
+        # Radio + freeform "other" option
+        choice = st.radio(
+            "Pick one:",
+            [o["key"] for o in options],
+            format_func=lambda k: f"**{k}.** {next(o['title'] for o in options if o['key'] == k)}",
+            key=f"{base_key}_choice",
+        )
+        chosen_text = next(o["title"] for o in options if o["key"] == choice)
+    else:
+        choice = "free"
+        chosen_text = st.text_input(
+            "Your decision (free-form):",
+            placeholder="e.g., 'Proceed with T-DXd; reassess at 3 months for ILD'",
+            key=f"{base_key}_choice_text",
+        )
+
+    reasoning = st.text_area(
+        "Reasoning (verbatim — captured to your avatar):",
+        placeholder="e.g., 'I weight CNS activity strongly in HER2+ residual disease; the brain-met reduction in DESTINY-Breast05 changes my baseline.'",
+        height=120,
+        key=f"{base_key}_reasoning",
+    )
+
+    confidence = st.radio(
+        "Confidence:",
+        ["high", "moderate", "low"],
+        index=1,
+        horizontal=True,
+        key=f"{base_key}_conf",
+    )
+
+    wiki_tension = st.text_input(
+        "Wiki tension (optional — does your decision deviate from the wiki / guidelines? note here):",
+        placeholder="e.g., 'Deviates from NCCN; falls in guideline-gap area'",
+        key=f"{base_key}_tension",
+    )
+
+    if st.button("Capture decision to avatar", key=f"{base_key}_save", type="primary"):
+        if not chosen_text:
+            st.error("Pick or enter a decision before capturing.")
+        elif not reasoning.strip():
+            st.warning("Reasoning is empty. Capturing anyway — but the avatar is more useful with reasoning.")
+            append_case_decision(
+                user=user, case=case, decision_key=choice, decision_text=chosen_text,
+                reasoning=reasoning, confidence=confidence, wiki_tension=wiki_tension,
+            )
+            st.success(f"Captured. See `wiki/avatar/{user}/decisions.md`.")
+            st.rerun()
+        else:
+            append_case_decision(
+                user=user, case=case, decision_key=choice, decision_text=chosen_text,
+                reasoning=reasoning, confidence=confidence, wiki_tension=wiki_tension,
+            )
+            st.success(f"Captured. See `wiki/avatar/{user}/decisions.md`.")
+            st.rerun()
+
+
+def render_cases_tab(user: str) -> None:
+    cases = find_decision_skeleton_pages()
+    if not cases:
+        st.info(
+            "No concept pages with a `## Decision skeleton` section found. "
+            "Add a Decision skeleton to any `wiki/concepts/*.md` page (with `**Option 1 — ...**` "
+            "structured headers) and it'll appear here as a captureable case."
+        )
+        return
+
+    captured_stems = {c["stem"] for c in cases if case_already_captured(user, c["stem"])}
+    available = [c for c in cases if c["stem"] not in captured_stems]
+    captured = [c for c in cases if c["stem"] in captured_stems]
+
+    st.caption(
+        f"**{len(available)}** captureable cases · **{len(captured)}** already captured for `{user}`"
+    )
+
+    if available:
+        st.markdown("### Available cases")
+        for case in available:
+            with st.container(border=True):
+                render_case_capture(case, user)
+    else:
+        st.info("All available cases captured for this user. 🎉")
+
+    if captured:
+        st.markdown("---")
+        st.markdown("### Already captured (revisit / revise)")
+        st.caption("Capturing again appends a new entry to `decisions.md` — useful when your reasoning evolves.")
+        for case in captured:
+            with st.expander(f"✓ {case['title']}", expanded=False):
+                render_case_capture(case, user)
+
+
 def render_review_tab(user: str) -> None:
     stubs = list_auto_generated_pages()
     searches = list_recent_searches()
@@ -1314,11 +1569,26 @@ def main() -> None:
             st.session_state.session_tokens = 0
             st.rerun()
 
-    # Main pane — tabs: Chat | Review
+    # Main pane — tabs: Chat | Cases | Review
     n_stubs = len(list_auto_generated_pages())
     n_searches = len(list_recent_searches())
+    case_pages = find_decision_skeleton_pages()
+    n_cases_avail = sum(1 for c in case_pages if not case_already_captured(user, c["stem"]))
 
-    chat_tab, review_tab = st.tabs(["💬 Chat", f"📋 Review ({n_stubs} stubs · {n_searches} searches)"])
+    chat_tab, cases_tab, review_tab = st.tabs([
+        "💬 Chat",
+        f"📚 Cases ({n_cases_avail} available)",
+        f"📋 Review ({n_stubs} stubs · {n_searches} searches)",
+    ])
+
+    with cases_tab:
+        st.subheader("Captureable cases")
+        st.caption(
+            "Concept pages with a `## Decision skeleton` section become captureable cases. "
+            "Pick one, walk through the option set, capture your decision + reasoning + "
+            "confidence — same rich format as agent-mediated capture."
+        )
+        render_cases_tab(user)
 
     with review_tab:
         st.subheader("Review queue")

@@ -33,7 +33,9 @@ A Streamlit app for end-user query + avatar capture.
 
 **Render-first deferred ingest:** answer + MC probe render immediately after Phase 1 (route + synth + MC). Phase 2 (save grounded response to `raw/searches/` + auto-ingest novel entities) runs after rendering, with a status spinner. The user reads the answer while save + ingest happen.
 
-**Review tab** — second tab in the main pane. Two sub-tabs:
+**Cases tab** — captureable cases derived from concept pages with `## Decision skeleton` sections. Pick a case → walk through the option set + reasoning + confidence + wiki-tension fields → captured as a rich entry in `wiki/avatar/{user}/decisions.md` (same format as agent-mediated). Pages whose Decision skeleton uses `**Option N — Name**` headers parse into structured radio options; pages with sequential decision algorithms fall back to free-form text input. Re-capture appends a new entry (useful for revising reasoning over time).
+
+**Review tab** — third tab in the main pane. Two sub-tabs:
 - **🌱 Stubs** — every wiki page with `auto_generated: true` frontmatter. Per item: View, Edit (textarea), Promote (strip `auto_generated: true` flag + remove `auto-generated` tag + log to `wiki/log.md`), Reject (delete file + log; recoverable via `git restore`)
 - **💾 Searches** — files in `raw/searches/`. Per item: View, Edit, Delete (with log entry)
 
@@ -44,7 +46,7 @@ Capabilities:
 1. **Ask questions of the wiki** — index-based routing + per-page synthesis
 2. **Internet fallback** (Gemini grounded search) when the wiki is insufficient
 3. **Audit-back-to-wiki** — every query writes to `wiki/log.md` and `wiki/avatar/{user}/questions.md`
-4. **MC preference probes** — agent surfaces genuine equipoise as a multiple-choice question
+4. **MC preference probes** — agent surfaces clinical judgment as a multiple-choice question. Reframes informational questions ("tell me about X") into applied scenarios ("if you had a patient with [profile], would you favor X or Y?"). Skips only if the question is so trivial there's no judgment in any direction.
 5. **Avatar capture** — picked option + reasoning written to `wiki/avatar/{user}/decisions.md`
 
 Persistent extensions:
