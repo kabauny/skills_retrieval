@@ -30,3 +30,16 @@ A curated, categorized log of queries posed by `jim.chen`. Updated on every non-
 - **Answer origin:** wiki (cross-cluster)
 - **Tokens (Gemini):** 0
 - **Filed back:** none (already captured in [[mrd-guided-therapy-escalation]] + updated [[circulating-tumor-dna]])
+
+## TNBC adjuvant management
+
+### [2026-04-26] Q5 TNBC pCR adjuvant pembrolizumab decision
+
+- **Question:** "TNBC patient achieves pCR after neoadjuvant KEYNOTE-522 but had Grade 3 immune-mediated colitis requiring steroids + infliximab. Re-challenge with adjuvant pembrolizumab to maximize curative intent, or omit knowing pCR portends excellent prognosis?"
+- **Trigger:** First decision-capture exercise per the planned workflow. Q5 case from the test battery.
+- **Wiki pages consulted:** [[adjuvant-pembrolizumab-after-pcr-tnbc]], [[keynote-522]], [[pembrolizumab-rechallenge-after-severe-irae]], [[immune-related-adverse-events]], [[pembrolizumab]], [[infliximab]], [[triple-negative-breast-cancer]]
+- **KG tools used:** none
+- **Gemini calls:** 0 — *justified* (decision-capture mode; wiki had full option set + evidence + decision skeleton)
+- **Answer origin:** wiki (decision-capture mode)
+- **Tokens (Gemini):** 0
+- **Filed back:** [[decisions#2026-04-26-q5-tnbc-pcr-grade-3-colitis-adjuvant-pembrolizumab-omission]] — decision captured: Option A (omit), confidence moderate

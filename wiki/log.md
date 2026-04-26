@@ -162,3 +162,18 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Result:** 4 supersession entries from a single targeted search source. Affected 3 wiki pages ([[trastuzumab-deruxtecan]], [[destiny-breast05]], [[katherine-trial]]). Old sources retained on those pages for unaffected claims; new source added with role-distinguishing comments in the Sources sections.
 - **What was NOT superseded** (correct restraint): FDA status, guideline incorporation, IDFS primary endpoint — all unchanged. The agent correctly distinguished "still pending / unchanged" from "newly quantified" claims.
 - **Audit trail:** structured entries above, plus the git diff captures the byte-level rewrite for each affected file. Both layers of audit (wiki content rewrite + log-level structured diff + git history) work as designed.
+
+## [2026-04-26] query | Q5 TNBC pCR adjuvant pembrolizumab decision (decision capture)
+
+- **User:** jim.chen
+- **Question:** "TNBC patient achieves pCR after neoadjuvant KEYNOTE-522 but had Grade 3 immune-mediated colitis requiring steroids + infliximab. Re-challenge with adjuvant pembrolizumab to maximize curative intent, or omit knowing pCR portends excellent prognosis?"
+- **Trigger:** First decision-capture exercise per the planned avatar workflow.
+- **Wiki pages consulted:** [[adjuvant-pembrolizumab-after-pcr-tnbc]], [[keynote-522]], [[pembrolizumab-rechallenge-after-severe-irae]], [[immune-related-adverse-events]], [[pembrolizumab]], [[infliximab]], [[triple-negative-breast-cancer]]
+- **KG tools used:** none (no `knowledge-graph` MCP configured this session)
+- **Gemini calls:** 0 — justified (wiki had complete option set + evidence + decision skeleton; decision-capture mode, not retrieval)
+- **Answer origin:** wiki (decision-capture mode)
+- **Tokens (Gemini):** 0
+- **Filed back:** [[avatar/jim.chen/decisions#2026-04-26-q5-tnbc-pcr-grade-3-colitis-adjuvant-pembrolizumab-omission]]
+- **Decision captured:** Option A (omit adjuvant pembrolizumab); confidence moderate
+- **Wiki tension noted:** decision deviates from formal NCCN/ASCO/ESMO full-regimen recommendation; deviation falls in a guideline-gap area (irAE-driven discontinuation not specifically addressed by guidelines)
+- **First decision capture in the wiki.** `wiki/avatar/jim.chen/decisions.md` populates with one entry. Future cross-cluster queries can begin to detect patterns in jim.chen's decision style (e.g., toxicity-recurrence-risk-versus-marginal-benefit weighting); preference pages will crystallize once 2–3+ decisions exhibit a coherent pattern.
