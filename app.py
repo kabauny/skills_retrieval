@@ -929,30 +929,30 @@ def append_case_decision(
     case: dict,
     decision_key: str,
     decision_text: str,
-    reasoning: str,
-    confidence: str,
-    wiki_tension: str,
+    comment: str,
 ) -> None:
-    """Write a rich case-decision entry to decisions.md (matches agent-mediated format)."""
+    """Write a case-decision entry to decisions.md.
+
+    Schema: one MC question, one free-text comment. No separate confidence /
+    wiki-tension fields — the user can include those in the comment if they
+    want.
+    """
     today = date.today().isoformat()
     options_block = (
         "\n".join(f"  - **{o['key']}.** {o['title']}" for o in case.get("options") or [])
         if case.get("options")
         else "  - *(free-form decision; see Decision skeleton on linked concept)*"
     )
-    safe_label = re.sub(r"[^a-z0-9]+", "-", case["stem"].lower()).strip("-")[:60]
 
     entry = f"""
-### [{today}] {case['title']} (case mode capture, case:{case['stem']})
+### [{today}] {case['title']} (case:{case['stem']})
 
 - **Source concept:** [[{case['stem']}]]
-- **Scenario:** {case['title']} — captured via the Cases tab in the Streamlit UI.
-- **Options considered:**
+- **Question:** What would you do for this case?
+- **Options offered:**
 {options_block}
-- **Decision:** {decision_key} — {decision_text}
-- **Reasoning:** {reasoning if reasoning else "(not specified)"}
-- **Confidence:** {confidence}
-- **Wiki tension noted:** {wiki_tension if wiki_tension else "(none flagged by user)"}
+- **Choice:** {decision_key} — {decision_text}
+- **Comment:** {comment if comment else "(none)"}
 - **linked-concept:{case['stem']}**
 """
 
@@ -960,7 +960,7 @@ def append_case_decision(
     with decisions.open("a", encoding="utf-8") as f:
         f.write(entry)
 
-    # Also log to wiki/log.md for audit
+    # Audit to wiki/log.md
     log = WIKI / "log.md"
     if log.exists():
         with log.open("a", encoding="utf-8") as f:
@@ -968,8 +968,8 @@ def append_case_decision(
                 f"\n## [{today}] case-decision | {case['stem']}\n\n"
                 f"- **User:** {user}\n"
                 f"- **Concept:** [[{case['stem']}]]\n"
-                f"- **Decision:** {decision_key} — {decision_text}\n"
-                f"- **Confidence:** {confidence}\n"
+                f"- **Choice:** {decision_key} — {decision_text}\n"
+                f"- **Comment:** {comment[:120] + ('...' if len(comment) > 120 else '') if comment else '(none)'}\n"
                 f"- **Captured via:** Cases tab (Streamlit UI)\n"
             )
 
@@ -1244,38 +1244,35 @@ def _render_review_card(path: Path, user: str, kind: str, key_prefix: str = "") 
 
 
 def render_case_capture(case: dict, user: str) -> None:
-    """Render the case-capture form for one concept page with a Decision skeleton."""
+    """Render a simple case-capture form: one MC question + one comment box.
+
+    Designed to live INSIDE an st.expander, so callers should not wrap it
+    again. The form is intentionally minimal — confidence and wiki-tension
+    fields were removed so each case is one clear question with one
+    free-text comment.
+    """
     options = case.get("options") or []
     has_structured = bool(options)
+    base_key = f"case_{case['stem']}"
 
-    st.markdown(f"### {case['title']}")
-    st.caption(
-        f"Source: [[{case['stem']}]] · "
-        f"{'structured options parsed' if has_structured else 'free-form (no parsed options)'}"
-    )
-
+    # Show the source + decision skeleton context first so the question has framing
+    st.caption(f"Source: [[{case['stem']}]]")
     with st.expander("📖 Decision skeleton (from concept page)", expanded=not has_structured):
         st.markdown(case["skeleton"])
 
-    already = case_already_captured(user, case["stem"])
-    if already:
-        st.info(
-            f"You've already captured a decision for this case (see `wiki/avatar/{user}/decisions.md`). "
-            "Submitting again will append a new entry — useful for revising your reasoning."
-        )
+    if case_already_captured(user, case["stem"]):
+        st.info("Already captured for this user. A new submission appends a fresh entry.")
 
     st.markdown("---")
-    st.markdown("**Your decision:**")
-
-    base_key = f"case_{case['stem']}"
+    st.markdown("**What would you do for this case?**")
 
     if has_structured:
-        # Radio + freeform "other" option
         choice = st.radio(
-            "Pick one:",
+            "Choose one:",
             [o["key"] for o in options],
             format_func=lambda k: f"**{k}.** {next(o['title'] for o in options if o['key'] == k)}",
             key=f"{base_key}_choice",
+            label_visibility="collapsed",
         )
         chosen_text = next(o["title"] for o in options if o["key"] == choice)
     else:
@@ -1286,44 +1283,25 @@ def render_case_capture(case: dict, user: str) -> None:
             key=f"{base_key}_choice_text",
         )
 
-    reasoning = st.text_area(
-        "Reasoning (verbatim — captured to your avatar):",
-        placeholder="e.g., 'I weight CNS activity strongly in HER2+ residual disease; the brain-met reduction in DESTINY-Breast05 changes my baseline.'",
+    comment = st.text_area(
+        "**Comment** (optional — your reasoning, caveats, anything you want recorded):",
+        placeholder=(
+            "e.g., 'I weight CNS activity strongly here; this is a guideline deviation but "
+            "the data are clear; would reconsider if patient had baseline pulmonary disease.'"
+        ),
         height=120,
-        key=f"{base_key}_reasoning",
+        key=f"{base_key}_comment",
     )
 
-    confidence = st.radio(
-        "Confidence:",
-        ["high", "moderate", "low"],
-        index=1,
-        horizontal=True,
-        key=f"{base_key}_conf",
-    )
-
-    wiki_tension = st.text_input(
-        "Wiki tension (optional — does your decision deviate from the wiki / guidelines? note here):",
-        placeholder="e.g., 'Deviates from NCCN; falls in guideline-gap area'",
-        key=f"{base_key}_tension",
-    )
-
-    if st.button("Capture decision to avatar", key=f"{base_key}_save", type="primary"):
+    if st.button("Capture decision", key=f"{base_key}_save", type="primary"):
         if not chosen_text:
             st.error("Pick or enter a decision before capturing.")
-        elif not reasoning.strip():
-            st.warning("Reasoning is empty. Capturing anyway — but the avatar is more useful with reasoning.")
-            append_case_decision(
-                user=user, case=case, decision_key=choice, decision_text=chosen_text,
-                reasoning=reasoning, confidence=confidence, wiki_tension=wiki_tension,
-            )
-            st.success(f"Captured. See `wiki/avatar/{user}/decisions.md`.")
-            st.rerun()
         else:
             append_case_decision(
-                user=user, case=case, decision_key=choice, decision_text=chosen_text,
-                reasoning=reasoning, confidence=confidence, wiki_tension=wiki_tension,
+                user=user, case=case, decision_key=choice,
+                decision_text=chosen_text, comment=comment,
             )
-            st.success(f"Captured. See `wiki/avatar/{user}/decisions.md`.")
+            st.success(f"Captured to `wiki/avatar/{user}/decisions.md`")
             st.rerun()
 
 
@@ -1342,21 +1320,23 @@ def render_cases_tab(user: str) -> None:
     captured = [c for c in cases if c["stem"] in captured_stems]
 
     st.caption(
-        f"**{len(available)}** captureable cases · **{len(captured)}** already captured for `{user}`"
+        f"**{len(available)}** to capture · **{len(captured)}** already captured for `{user}`. "
+        "Click a case to expand. Each is a separate block — opens collapsed by default."
     )
 
     if available:
-        st.markdown("### Available cases")
+        st.markdown("### To capture")
         for case in available:
-            with st.container(border=True):
+            with st.expander(f"📋 {case['title']}", expanded=False):
                 render_case_capture(case, user)
-    else:
-        st.info("All available cases captured for this user. 🎉")
 
     if captured:
         st.markdown("---")
         st.markdown("### Already captured (revisit / revise)")
-        st.caption("Capturing again appends a new entry to `decisions.md` — useful when your reasoning evolves.")
+        st.caption(
+            "Capturing again appends a new entry to `decisions.md` — useful when your "
+            "reasoning evolves."
+        )
         for case in captured:
             with st.expander(f"✓ {case['title']}", expanded=False):
                 render_case_capture(case, user)
