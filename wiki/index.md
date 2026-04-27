@@ -86,3 +86,29 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 ## Overview
 
 - [[overview]] — high-level synthesis of the entire wiki
+
+## Auto-generated stubs (UI-driven)
+
+
+- [[paraganglioma]] — *(auto stub, entities)* Paraganglioma
+- [[i-131-iobenguane]] — *(auto stub, entities)* I-131 iobenguane
+- [[peptide-receptor-radionuclide-therapy]] — *(auto stub, concepts)* Peptide Receptor Radionuclide Therapy
+- [[belzutifan]] — *(auto stub, entities)* Belzutifan
+- [[cvd-regimen]] — *(auto stub, concepts)* CVD Regimen
+- [[ciltacabtagene-autoleucel]] — *(auto stub, entities)* Ciltacabtagene autoleucel
+- [[majestec-3-trial]] — *(auto stub, entities)* MajesTEC-3 trial
+- [[belantamab-mafodotin]] — *(auto stub, entities)* Belantamab mafodotin
+- [[dreamm-7-trial]] — *(auto stub, entities)* DREAMM-7 trial
+- [[b-cell-maturation-antigen]] — *(auto stub, entities)* B-cell maturation antigen
+- [[destiny-breast11]] — *(auto stub, entities)* DESTINY-Breast11
+- [[neoadjuvant-treatment]] — *(auto stub, concepts)* Neoadjuvant Treatment
+- [[pathologic-complete-response]] — *(auto stub, concepts)* Pathologic Complete Response
+- [[trastuzumab]] — *(auto stub, entities)* Trastuzumab
+- [[pertuzumab]] — *(auto stub, entities)* Pertuzumab
+- [[cobra-trial]] — *(auto stub, entities)* COBRA Trial
+- [[altair-trial]] — *(auto stub, entities)* ALTAIR Trial
+- [[dynamic-trial]] — *(auto stub, entities)* DYNAMIC Trial
+- [[trifluridine-tipiracil]] — *(auto stub, entities)* Trifluridine/tipiracil
+- [[colon-cancer]] — *(auto stub, entities)* Colon Cancer
+
+*These pages were auto-generated from UI grounded searches. They need agent review and promotion before clinical use.*

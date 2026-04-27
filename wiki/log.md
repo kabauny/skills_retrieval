@@ -177,3 +177,162 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Decision captured:** Option A (omit adjuvant pembrolizumab); confidence moderate
 - **Wiki tension noted:** decision deviates from formal NCCN/ASCO/ESMO full-regimen recommendation; deviation falls in a guideline-gap area (irAE-driven discontinuation not specifically addressed by guidelines)
 - **First decision capture in the wiki.** `wiki/avatar/jim.chen/decisions.md` populates with one entry. Future cross-cluster queries can begin to detect patterns in jim.chen's decision style (e.g., toxicity-recurrence-risk-versus-marginal-benefit weighting); preference pages will crystallize once 2–3+ decisions exhibit a coherent pattern.
+
+## [2026-04-26] query | How do you select Tdxd based regimen (Destinybreast-11) vs TCHP for ne...
+
+- **User:** jim.chen
+- **Question:** "How do you select Tdxd based regimen (Destinybreast-11) vs TCHP for neoadjuvant her2+ breast cancer? "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** [[her2-positive-breast-cancer]], [[trastuzumab-deruxtecan]], [[destiny-breast05]]
+- **Gemini calls:** 4
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 13818
+
+## [2026-04-26] query | NO destiny breast breast 11 is a new publish data. Can you take a look...
+
+- **User:** jim.chen
+- **Question:** "NO destiny breast breast 11 is a new publish data. Can you take a look? "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** [[destiny-breast05-april-2026-update]], [[destiny-breast05]], [[trastuzumab-deruxtecan]], [[katherine-trial]], [[trastuzumab-emtansine]], [[her2-positive-breast-cancer]], [[adjuvant-her2-positive-breast-cancer]]
+- **Gemini calls:** 4
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 22399
+
+## [2026-04-26] query | Tell me about Destiny Breast 11 and how it changes the management of n...
+
+- **User:** jim.chen
+- **Question:** "Tell me about Destiny Breast 11 and how it changes the management of neoadjuvant breast cancer? "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** [[destiny-breast05-april-2026-update]], [[destiny-breast05]], [[katherine-trial]], [[trastuzumab-deruxtecan]], [[trastuzumab-emtansine]], [[adjuvant-her2-positive-breast-cancer]], [[her2-positive-breast-cancer]], [[residual-disease-vs-mrd-positivity]]
+- **Gemini calls:** 4
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 39012
+
+## [2026-04-26] auto-ingest | UI grounded search → stub pages
+
+- **User:** jim.chen
+- **Triggering query:** "MRD testing for colon  cancer. If MRD is positive, but no evidence of disease, what's the current ev..."
+- **Source saved:** [[mrd-testing-for-colon-cancer-if-mrd-is-positive-but-no-evidence-of-disease-whats]]
+- **Stub pages created (5):**
+  - [[cobra-trial]] (entities)
+  - [[altair-trial]] (entities)
+  - [[dynamic-trial]] (entities)
+  - [[trifluridine-tipiracil]] (entities)
+  - [[colon-cancer]] (entities)
+- **Note:** AUTO-GENERATED stubs from a UI grounded search. Marked `auto_generated: true` in frontmatter. Agent review and promotion to full entity/concept pages is recommended before clinical use.
+
+## [2026-04-26] query | MRD testing for colon  cancer. If MRD is positive, but no evidence of ...
+
+- **User:** jim.chen
+- **Question:** "MRD testing for colon  cancer. If MRD is positive, but no evidence of disease, what's the current evidence for starting chemotherapy vs just observe until measurable disease can be detected "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 5
+- **Answer origin:** internet
+- **Tokens (Gemini):** 12043
+- **Search saved:** [[mrd-testing-for-colon-cancer-if-mrd-is-positive-but-no-evidence-of-disease-whats]]
+- **Stub pages auto-created:** [[cobra-trial]], [[altair-trial]], [[dynamic-trial]], [[trifluridine-tipiracil]], [[colon-cancer]]
+
+## [2026-04-26] query | Tell me about RxPONDER trial and results  
+
+- **User:** jim.chen
+- **Question:** "Tell me about RxPONDER trial and results  "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** [[rxponder-trial]], [[premenopausal-intermediate-oncotype-2026]], [[chemotherapy-induced-ovarian-suppression]], [[intermediate-rs-premenopausal-hr-positive-management]], [[node-negative-vs-node-positive-genomic-trial-scoping]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 13133
+
+## [2026-04-26] auto-ingest | UI grounded search → stub pages
+
+- **User:** jim.chen
+- **Triggering query:** "Tell me about Destiny breast 011 "
+- **Source saved:** [[tell-me-about-destiny-breast-011]]
+- **Stub pages created (5):**
+  - [[destiny-breast11]] (entities)
+  - [[neoadjuvant-treatment]] (concepts)
+  - [[pathologic-complete-response]] (concepts)
+  - [[trastuzumab]] (entities)
+  - [[pertuzumab]] (entities)
+- **Note:** AUTO-GENERATED stubs from a UI grounded search. Marked `auto_generated: true` in frontmatter. Agent review and promotion to full entity/concept pages is recommended before clinical use.
+
+## [2026-04-26] query | Tell me about Destiny breast 011 
+
+- **User:** jim.chen
+- **Question:** "Tell me about Destiny breast 011 "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** [[destiny-breast05]], [[destiny-breast05-april-2026-update]], [[trastuzumab-deruxtecan]], [[trastuzumab-emtansine]], [[katherine-trial]], [[her2-positive-breast-cancer]], [[adjuvant-her2-positive-breast-cancer]], [[residual-disease-vs-mrd-positivity]]
+- **Gemini calls:** 5
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 33037
+- **Search saved:** [[tell-me-about-destiny-breast-011]]
+- **Stub pages auto-created:** [[destiny-breast11]], [[neoadjuvant-treatment]], [[pathologic-complete-response]], [[trastuzumab]], [[pertuzumab]]
+
+## [2026-04-26] auto-ingest | UI grounded search → stub pages
+
+- **User:** jim.chen
+- **Triggering query:** "What are treatment options for second line multiple myeloma treatment after progressing on dara VRD?"
+- **Source saved:** [[what-are-treatment-options-for-second-line-multiple-myeloma-treatment-after-prog]]
+- **Stub pages created (5):**
+  - [[ciltacabtagene-autoleucel]] (entities)
+  - [[majestec-3-trial]] (entities)
+  - [[belantamab-mafodotin]] (entities)
+  - [[dreamm-7-trial]] (entities)
+  - [[b-cell-maturation-antigen]] (entities)
+- **Note:** AUTO-GENERATED stubs from a UI grounded search. Marked `auto_generated: true` in frontmatter. Agent review and promotion to full entity/concept pages is recommended before clinical use.
+
+## [2026-04-26] query | What are treatment options for second line multiple myeloma treatment ...
+
+- **User:** jim.chen
+- **Question:** "What are treatment options for second line multiple myeloma treatment after progressing on dara VRD?"
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 5
+- **Answer origin:** internet
+- **Tokens (Gemini):** 15610
+- **Search saved:** [[what-are-treatment-options-for-second-line-multiple-myeloma-treatment-after-prog]]
+- **Stub pages auto-created:** [[ciltacabtagene-autoleucel]], [[majestec-3-trial]], [[belantamab-mafodotin]], [[dreamm-7-trial]], [[b-cell-maturation-antigen]]
+
+## [2026-04-26] auto-ingest | UI grounded search → stub pages
+
+- **User:** jim.chen
+- **Triggering query:** "What are some treatment options for paraganglioma that is not resectable? "
+- **Source saved:** [[what-are-some-treatment-options-for-paraganglioma-that-is-not-resectable]]
+- **Stub pages created (5):**
+  - [[paraganglioma]] (entities)
+  - [[i-131-iobenguane]] (entities)
+  - [[peptide-receptor-radionuclide-therapy]] (concepts)
+  - [[belzutifan]] (entities)
+  - [[cvd-regimen]] (concepts)
+- **Note:** AUTO-GENERATED stubs from a UI grounded search. Marked `auto_generated: true` in frontmatter. Agent review and promotion to full entity/concept pages is recommended before clinical use.
+
+## [2026-04-26] query | What are some treatment options for paraganglioma that is not resectab...
+
+- **User:** jim.chen
+- **Question:** "What are some treatment options for paraganglioma that is not resectable? "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 5
+- **Answer origin:** internet
+- **Tokens (Gemini):** 15121
+- **Search saved:** [[what-are-some-treatment-options-for-paraganglioma-that-is-not-resectable]]
+- **Stub pages auto-created:** [[paraganglioma]], [[i-131-iobenguane]], [[peptide-receptor-radionuclide-therapy]], [[belzutifan]], [[cvd-regimen]]
+
+## [2026-04-26] case-q-answer | adjuvant-her2-positive-breast-cancer > after-the-july-2026-pdufa-would-you-switch-to-t-dxd-as-your-
+
+- **User:** jim.chen
+- **Concept:** [[adjuvant-her2-positive-breast-cancer]]
+- **Question:** After the July 2026 PDUFA, would you switch to T-DXd as your default adjuvant for HER2+ residual disease?
+- **Selections:** B
+- **Comment:** TDXD have proven itself to be a superior regimen in all cases, I would offer it as front line. Although a consideration ...
+- **Captured via:** Cases tab (Streamlit UI)
+
+## [2026-04-26] query | Is there a significant difference in ILD for patient recieving TDXD vs...
+
+- **User:** jim.chen
+- **Question:** "Is there a significant difference in ILD for patient recieving TDXD vs TDM1?"
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** [[destiny-breast05-april-2026-update]], [[destiny-breast05]], [[katherine-trial]], [[trastuzumab-deruxtecan]], [[trastuzumab-emtansine]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 12647
