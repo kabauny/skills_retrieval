@@ -406,6 +406,24 @@ Report findings and fix them (or propose fixes for the user to approve).
 
 The wiki has a knowledge graph MCP server that parses wikilinks into a graph and provides graph algorithms for retrieval. These tools are available as MCP calls during any Claude Code session.
 
+The server is implemented in `kg_server.py` (stdio MCP server, built on the `mcp` SDK + `networkx`) and registered via `.mcp.json` at the repo root. Nodes are wiki pages keyed by filename stem; edges are wikilinks. `index.md` and `log.md` are excluded from the graph (they link to nearly everything and would swamp centrality/community detection). Search is BM25 lexical scoring over title/aliases/tags/body with field boosts — not embedding-based.
+
+### Setup
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+```
+
+`.mcp.json` points Claude Code at `.venv/bin/python kg_server.py`. Verify the graph builds without a client:
+
+```bash
+.venv/bin/python kg_server.py --stats      # build + print summary
+.venv/bin/python kg_server.py --selftest   # exercise every read tool
+```
+
+The graph is cached in `.kg_cache.json` (gitignored) and refreshed incrementally — only changed files are re-parsed. Mutation tools (`kg_create_node`, `kg_annotate_node`, `kg_add_link`) write append-only and never overwrite an existing page.
+
 ### Available tools
 
 | Tool | Purpose | When to use |

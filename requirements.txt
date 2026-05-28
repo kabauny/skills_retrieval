@@ -2,3 +2,8 @@ google-genai
 python-dotenv
 requests
 streamlit
+
+# knowledge-graph MCP server (kg_server.py)
+mcp>=1.0
+networkx>=3.0
+scipy

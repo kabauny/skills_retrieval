@@ -5,6 +5,9 @@ __pycache__/
 .venv/
 venv/
 
+# knowledge-graph server cache (rebuilt from the wiki on demand)
+.kg_cache.json
+
 # Env / secrets
 .env
 .env.local

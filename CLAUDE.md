@@ -21,7 +21,7 @@ Requires `GOOGLE_API_KEY` in `.env` or environment. Install deps: `pip install -
 
 ## Graph tools
 
-The `knowledge-graph` MCP server provides graph-based retrieval over the wiki's wikilink structure. Tools like `kg_search`, `kg_node`, `kg_neighbors`, `kg_paths`, and `kg_communities` are available in every Claude Code session. Run `kg_index` after every ingest to keep the graph current. See the "Graph tools" section in `SCHEMA.md` for full documentation.
+The `knowledge-graph` MCP server (`kg_server.py`, registered via `.mcp.json`) provides graph-based retrieval over the wiki's wikilink structure. Tools like `kg_search`, `kg_node`, `kg_neighbors`, `kg_paths`, and `kg_communities` are available in every Claude Code session once dependencies are installed (`python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`). Run `kg_index` after every ingest to keep the graph current. See the "Graph tools" section in `SCHEMA.md` for full documentation and standalone diagnostics (`--stats`, `--selftest`).
 
 ## Streamlit UI (`app.py`)
 

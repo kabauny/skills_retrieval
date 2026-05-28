@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "knowledge-graph": {
+      "type": "stdio",
+      "command": "${CLAUDE_PROJECT_DIR:-.}/.venv/bin/python",
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/kg_server.py"]
+    }
+  }
+}
