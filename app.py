@@ -59,6 +59,13 @@ ROOT = Path(__file__).parent
 WIKI = ROOT / "wiki"
 RAW = ROOT / "raw"
 SESSIONS_DIR = RAW / "sessions"
+# Auto-generated stubs are quarantined here, NOT mixed into the curated
+# entities/concepts namespace. They are excluded from query synthesis until an
+# agent promotes them (promotion moves the file into entities/ or concepts/).
+STUBS_DIR = WIKI / "stubs"
+
+# Directories under wiki/ that must never feed end-user query synthesis.
+_SYNTHESIS_EXCLUDED_DIRS = {"avatar", "stubs"}
 
 # Two-model split: Pro for heavy reasoning, Flash for light structured tasks.
 # - Pro: wiki + internet synthesis, MC preference probe (clinical reasoning + avatar quality)
@@ -161,31 +168,55 @@ def _read_index() -> str:
 
 
 def _list_wiki_pages() -> list[Path]:
+    """Curated, synthesis-eligible pages (excludes avatar and quarantined stubs)."""
     pages: list[Path] = []
     for p in WIKI.rglob("*.md"):
         if any(part.startswith(".") for part in p.parts):
             continue
-        if "avatar" in p.parts:
+        if any(d in p.parts for d in _SYNTHESIS_EXCLUDED_DIRS):
             continue
         pages.append(p)
     return pages
 
 
-def _list_wiki_page_filenames() -> list[str]:
-    return sorted({p.stem for p in _list_wiki_pages()})
+def _synthesis_page_path(stem: str) -> Path | None:
+    """Resolve a stem to a synthesis-eligible page path, or None.
+
+    Skips dotfiles, avatar pages, and quarantined stubs — so unreviewed
+    auto-generated content can never be routed into or loaded for an answer.
+    """
+    for path in WIKI.rglob(f"{stem}.md"):
+        if any(part.startswith(".") for part in path.parts):
+            continue
+        if any(d in path.parts for d in _SYNTHESIS_EXCLUDED_DIRS):
+            continue
+        return path
+    return None
+
+
+def _all_known_stems() -> list[str]:
+    """Every stem the auto-extractor should treat as already existing — curated
+    pages plus quarantined stubs (but not avatar) — so it does not re-stub."""
+    stems: set[str] = set()
+    for p in WIKI.rglob("*.md"):
+        if any(part.startswith(".") for part in p.parts):
+            continue
+        if "avatar" in p.parts:
+            continue
+        stems.add(p.stem)
+    return sorted(stems)
 
 
 def _load_pages(filenames: list[str]) -> dict[str, str]:
     contents: dict[str, str] = {}
     for f in filenames:
-        for path in WIKI.rglob(f"{f}.md"):
-            if "avatar" in path.parts:
-                continue
-            try:
-                contents[f] = path.read_text(encoding="utf-8")
-                break
-            except OSError:
-                continue
+        path = _synthesis_page_path(f)
+        if path is None:
+            continue
+        try:
+            contents[f] = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
     return contents
 
 
@@ -206,7 +237,7 @@ WIKI INDEX:
     pages = parsed if isinstance(parsed, list) else []
     valid: list[str] = []
     for p in pages:
-        if isinstance(p, str) and list(WIKI.rglob(f"{p}.md")):
+        if isinstance(p, str) and _synthesis_page_path(p) is not None:
             valid.append(p)
     return valid, _tokens(resp)
 
@@ -382,7 +413,7 @@ ANSWER:
 
 
 def extract_novel_entities(query: str, answer: str) -> tuple[list[dict], TokenUsage]:
-    existing = ", ".join(_list_wiki_page_filenames())
+    existing = ", ".join(_all_known_stems())
     prompt = _ENTITY_EXTRACT_PROMPT.format(existing=existing, query=query, answer=answer)
     resp = _client.models.generate_content(model=MODEL_FLASH, contents=prompt)
     parsed = _extract_json(resp.text or "")
@@ -409,13 +440,15 @@ def write_entity_stub(entity: dict, source_filename: str) -> Path | None:
     aliases = entity.get("aliases") or []
     relevance = entity.get("relevance", "").strip()
 
-    folder = "entities" if typ in ("drug", "trial", "cancer", "biomarker") else "concepts"
-    target_dir = WIKI / folder
-    target_dir.mkdir(parents=True, exist_ok=True)
-    target_path = target_dir / f"{filename}.md"
+    # Quarantine: stubs land in wiki/stubs/, never in the curated namespace.
+    # `stub_target` records where promotion should move the page.
+    stub_target = "entities" if typ in ("drug", "trial", "cancer", "biomarker") else "concepts"
+    STUBS_DIR.mkdir(parents=True, exist_ok=True)
+    target_path = STUBS_DIR / f"{filename}.md"
 
-    if target_path.exists():
-        return None  # never overwrite an existing page from auto-ingest
+    # Skip if already quarantined, or if a curated page already owns this stem.
+    if target_path.exists() or _synthesis_page_path(filename) is not None:
+        return None  # never overwrite, never shadow a curated page
 
     aliases_yaml = json.dumps(aliases) if aliases else "[]"
     entity_type_field = typ if typ != "concept" else "other"
@@ -426,6 +459,7 @@ title: "{name}"
 entity_type: {entity_type_field}
 aliases: {aliases_yaml}
 auto_generated: true
+stub_target: {stub_target}
 auto_source: "[[{source_stem}]]"
 auto_date: {date.today().isoformat()}
 tags: [auto-generated]
@@ -433,7 +467,7 @@ tags: [auto-generated]
 
 # {name}
 
-> ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
+> ⚠️ **Auto-generated stub** (quarantined in `wiki/stubs/`, excluded from query synthesis). Verify and expand before relying on this for clinical decisions. Promoting it moves the page into `wiki/{stub_target}/`.
 
 ## Brief
 
@@ -449,46 +483,6 @@ tags: [auto-generated]
 """
     target_path.write_text(body, encoding="utf-8")
     return target_path
-
-
-_AUTO_INGEST_INDEX_HEADER = "## Auto-generated stubs (UI-driven)"
-
-
-def update_index_with_stubs(stubs: list[Path]) -> None:
-    if not stubs:
-        return
-    index = WIKI / "index.md"
-    if not index.exists():
-        return
-    text = index.read_text(encoding="utf-8")
-
-    new_lines = []
-    for stub in stubs:
-        # Read frontmatter title for display
-        content = stub.read_text(encoding="utf-8")
-        m = re.search(r'^title:\s*"?([^"\n]+)"?', content, re.MULTILINE)
-        title = (m.group(1) if m else stub.stem).strip()
-        kind = stub.parent.name
-        new_lines.append(f"- [[{stub.stem}]] — *(auto stub, {kind})* {title}")
-
-    if _AUTO_INGEST_INDEX_HEADER not in text:
-        block = (
-            f"\n\n{_AUTO_INGEST_INDEX_HEADER}\n\n"
-            + "\n".join(new_lines)
-            + "\n\n*These pages were auto-generated from UI grounded searches. They need agent review and promotion before clinical use.*\n"
-        )
-        text = text.rstrip() + block
-    else:
-        # Insert after the header marker, preserving the rest
-        marker = _AUTO_INGEST_INDEX_HEADER
-        idx = text.index(marker)
-        # Find the first blank-line + bullet block immediately following the header
-        # We just insert a new block right after the header line
-        line_end = text.index("\n", idx)
-        insertion = "\n" + "\n".join(new_lines)
-        text = text[: line_end + 1] + "\n" + insertion + "\n" + text[line_end + 1 :].lstrip("\n")
-
-    index.write_text(text, encoding="utf-8")
 
 
 def append_auto_ingest_log(stubs: list[Path], source_path: Path, query: str, user: str) -> None:
@@ -835,7 +829,6 @@ def run_query_phase2(turn: Turn, grounded_resp, question: str, user: str, auto_i
                 if p:
                     created.append(p)
             if created:
-                update_index_with_stubs(created)
                 append_auto_ingest_log(created, Path(turn.saved_search_path), question, user)
             turn.stubs_created = [str(p) for p in created]
         except Exception as exc:
@@ -892,23 +885,13 @@ def _parse_questions_section(section_text: str) -> list[dict]:
     return questions
 
 
-def find_decision_skeleton_pages() -> list[dict]:
-    """Scan wiki/concepts/ for pages with a Decision skeleton AND/OR a Questions section.
+def find_case_pages() -> list[dict]:
+    """Scan wiki/concepts/ for pages with a `## Questions` section — these are the
+    captureable cases (per SCHEMA.md). A `## Decision skeleton` section, if
+    present, is captured as optional context shown above the questions.
 
-    Returns a list of dicts:
-        {
-          "stem": "...",
-          "title": "...",
-          "path": Path,
-          "skeleton": "<text or ''>",
-          "questions": [
-            {"label": "...", "text": "...", "options": [{"key":"A","text":"..."}]},
-            ...
-          ]
-        }
-
-    Pages without either section are skipped. Questions section is preferred;
-    skeleton is shown as context above the questions.
+    Returns dicts: {stem, title, path, skeleton, questions:[{label,text,options}]}.
+    Pages without a parseable `## Questions` section are skipped.
     """
     out: list[dict] = []
     concepts_dir = WIKI / "concepts"
@@ -919,13 +902,15 @@ def find_decision_skeleton_pages() -> list[dict]:
             content = p.read_text(encoding="utf-8")
         except OSError:
             continue
-        skeleton_match = _DECISION_SKELETON_RE.search(content)
         questions_match = _QUESTIONS_SECTION_RE.search(content)
-        if not skeleton_match and not questions_match:
+        if not questions_match:
+            continue
+        questions = _parse_questions_section(questions_match.group(1))
+        if not questions:
             continue
 
+        skeleton_match = _DECISION_SKELETON_RE.search(content)
         skeleton = skeleton_match.group(1).strip() if skeleton_match else ""
-        questions = _parse_questions_section(questions_match.group(1)) if questions_match else []
 
         fm, _body = parse_frontmatter(content)
         title = fm.get("title", p.stem).strip().strip('"').strip("'")
@@ -1073,13 +1058,21 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
 
 
 def promote_stub(path: Path, user: str) -> bool:
-    """Strip `auto_generated: true` and `auto-generated` tag. Log promotion."""
+    """Promote a quarantined stub: strip the auto-generated markers and MOVE the
+    page out of `wiki/stubs/` into its target folder (`wiki/entities|concepts/`,
+    per the `stub_target` frontmatter). Returns True on success."""
     try:
         text = path.read_text(encoding="utf-8")
     except OSError:
         return False
 
+    fm, _body = parse_frontmatter(text)
+    target = (fm.get("stub_target") or "").strip()
+    if target not in ("entities", "concepts"):
+        target = "concepts"
+
     new_text = re.sub(r"^auto_generated:\s*true\s*\n", "", text, flags=re.MULTILINE)
+    new_text = re.sub(r"^stub_target:\s*\S+\s*\n", "", new_text, flags=re.MULTILINE)
     # Remove the auto-generated tag from `tags: [...]` if present
     new_text = re.sub(
         r"^(tags:\s*\[)([^\]]*)(\])",
@@ -1097,7 +1090,19 @@ def promote_stub(path: Path, user: str) -> bool:
         new_text,
     )
 
-    path.write_text(new_text, encoding="utf-8")
+    dest_dir = WIKI / target
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    dest_path = dest_dir / path.name
+    if dest_path.exists() and dest_path.resolve() != path.resolve():
+        return False  # refuse to clobber an existing curated page
+
+    dest_path.write_text(new_text, encoding="utf-8")
+    moved = dest_path.resolve() != path.resolve()
+    if moved:
+        try:
+            path.unlink()
+        except OSError:
+            pass
 
     today = date.today().isoformat()
     log = WIKI / "log.md"
@@ -1106,9 +1111,10 @@ def promote_stub(path: Path, user: str) -> bool:
             f.write(
                 f"\n## [{today}] promote | {path.stem}\n\n"
                 f"- **User:** {user}\n"
-                f"- **Page:** [[{path.stem}]] ({path.parent.name})\n"
-                f"- **Action:** stripped `auto_generated: true` flag and warning callout — page is now treated as reviewed/promoted.\n"
-                f"- **Reminder:** consider running an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).\n"
+                f"- **Page:** [[{path.stem}]] → `wiki/{target}/{path.name}`"
+                f"{' (moved out of wiki/stubs/)' if moved else ''}\n"
+                f"- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.\n"
+                f"- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).\n"
             )
     return True
 
@@ -1370,12 +1376,13 @@ def render_case_capture(case: dict, user: str) -> None:
 
 
 def render_cases_tab(user: str) -> None:
-    cases = find_decision_skeleton_pages()
+    cases = find_case_pages()
     if not cases:
         st.info(
-            "No concept pages with a `## Decision skeleton` section found. "
-            "Add a Decision skeleton to any `wiki/concepts/*.md` page (with `**Option 1 — ...**` "
-            "structured headers) and it'll appear here as a captureable case."
+            "No concept pages with a `## Questions` section found. "
+            "Add a `## Questions` section to any `wiki/concepts/*.md` page "
+            "(each `### question text` followed by `- A. option` bullets, per SCHEMA.md) "
+            "and it'll appear here as a captureable case."
         )
         return
 
@@ -1568,12 +1575,14 @@ def main() -> None:
         st.divider()
         auto_ingest = st.toggle(
             "Auto-ingest grounded searches",
-            value=True,
+            value=False,
             help=(
-                "When the wiki is insufficient, save the grounded search to "
-                "raw/searches/ AND extract novel entities as auto-generated "
-                "stub pages in wiki/entities|concepts/. Stubs are marked "
-                "`auto_generated: true` and need agent review."
+                "Off by default. When ON: after an internet fallback, extract novel "
+                "entities and write `auto_generated: true` stub pages to the "
+                "quarantine dir `wiki/stubs/`. Stubs are excluded from query "
+                "synthesis until an agent reviews them; Promote (Review tab) moves "
+                "the page into wiki/entities|concepts/. The grounded search is saved "
+                "to raw/searches/ regardless of this toggle."
             ),
         )
 
@@ -1616,7 +1625,7 @@ def main() -> None:
     # Main pane — tabs: Chat | Cases | Review
     n_stubs = len(list_auto_generated_pages())
     n_searches = len(list_recent_searches())
-    case_pages = find_decision_skeleton_pages()
+    case_pages = find_case_pages()
     n_cases_avail = sum(1 for c in case_pages if not case_already_captured(user, c["stem"]))
 
     chat_tab, cases_tab, review_tab = st.tabs([
@@ -1628,9 +1637,10 @@ def main() -> None:
     with cases_tab:
         st.subheader("Captureable cases")
         st.caption(
-            "Concept pages with a `## Decision skeleton` section become captureable cases. "
-            "Pick one, walk through the option set, capture your decision + reasoning + "
-            "confidence — same rich format as agent-mediated capture."
+            "Concept pages with a `## Questions` section become captureable cases. "
+            "Each `### question` becomes a multi-select block; capture your selections "
+            "and reasoning per question. A `## Decision skeleton` section, if present, "
+            "is shown as context."
         )
         render_cases_tab(user)
 

@@ -1,24 +1,25 @@
 ---
-title: "Ciltacabtagene autoleucel"
-entity_type: drug
-aliases: ["Carvykti", "cilta-cel"]
+title: "MajesTEC-3 trial"
+entity_type: trial
+aliases: []
 auto_generated: true
+stub_target: entities
 auto_source: "[[what-are-treatment-options-for-second-line-multiple-myeloma-treatment-after-prog]]"
 auto_date: 2026-04-26
 tags: [auto-generated]
 ---
 
-# Ciltacabtagene autoleucel
+# MajesTEC-3 trial
 
 > ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
 
 ## Brief
 
-Ciltacabtagene autoleucel (Carvykti) is a personalized BCMA-targeted CAR T-cell therapy recently FDA-approved for second-line treatment of relapsed or refractory multiple myeloma, specifically for patients refractory to lenalidomide and prior PI/IMiD.
+The MajesTEC-3 trial is a Phase 3 clinical trial that demonstrated substantial progression-free and overall survival benefits for teclistamab, a BCMA-targeted bispecific antibody, when used as early as the second-line setting in multiple myeloma.
 
 ## Why this matters
 
-It represents a highly effective, novel immunotherapeutic approach for early relapsed multiple myeloma.
+This trial's data supports the earlier use of teclistamab in patients who have failed prior anti-CD38 therapies and lenalidomide.
 
 ## Sources
 

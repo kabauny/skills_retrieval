@@ -1,24 +1,25 @@
 ---
-title: "Colon Cancer"
-entity_type: cancer
-aliases: ["Colorectal Cancer", "CRC", "Stage II Colon Cancer"]
+title: "Trifluridine/tipiracil"
+entity_type: drug
+aliases: ["TAS-102", "Lonsurf"]
 auto_generated: true
+stub_target: entities
 auto_source: "[[mrd-testing-for-colon-cancer-if-mrd-is-positive-but-no-evidence-of-disease-whats]]"
 auto_date: 2026-04-26
 tags: [auto-generated]
 ---
 
-# Colon Cancer
+# Trifluridine/tipiracil
 
 > ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
 
 ## Brief
 
-A cancer of the large intestine where MRD testing via ctDNA is heavily researched for its prognostic value and potential to guide adjuvant treatment and surveillance.
+An oral combination chemotherapy agent used to treat colorectal cancer, and investigated in the ALTAIR trial for early intervention in MRD-positive patients.
 
 ## Why this matters
 
-A major solid tumor type at the forefront of clinical research regarding liquid biopsies and ctDNA-directed therapy decision-making.
+An established systemic therapy in colorectal cancer that is actively being researched for its efficacy in earlier, minimal residual disease states.
 
 ## Sources
 

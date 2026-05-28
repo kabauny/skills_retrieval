@@ -3,6 +3,7 @@ title: "B-cell maturation antigen"
 entity_type: biomarker
 aliases: ["BCMA"]
 auto_generated: true
+stub_target: entities
 auto_source: "[[what-are-treatment-options-for-second-line-multiple-myeloma-treatment-after-prog]]"
 auto_date: 2026-04-26
 tags: [auto-generated]

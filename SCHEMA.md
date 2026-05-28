@@ -22,6 +22,8 @@ wiki/                   # LLM-generated pages — you own this
   sources/              # One summary page per ingested source
   entities/             # Entity pages — drugs, cancers, biomarkers, trials, genes
   concepts/             # Concept pages — mechanisms, treatment paradigms, staging
+  stubs/                # Quarantined auto-generated stubs (UI auto-ingest). Excluded
+                        #   from query synthesis until promoted into entities/ or concepts/
   avatar/               # Per-user portrait — questions, decisions, preferences
     {user}/             # One subdirectory per user (e.g. jim.chen/)
       questions.md      # Curated, categorized log of queries posed
@@ -174,6 +176,8 @@ Concept pages that describe a clinical decision can include a `## Questions` sec
 ```
 
 Each `###` is a question; the bullets are checkbox options. The Streamlit Cases tab parses this section, renders each question as a multi-select checkbox group with a per-question comment + save button, and writes each user-submitted answer as its own entry in `wiki/avatar/{user}/decisions.md` with `linked-concept:<stem>` + `linked-question:<question-slug>` markers.
+
+A `## Questions` section is what makes a concept page a **captureable case** in the Cases tab. A `## Decision skeleton` section, if present, is shown as optional read-only context above the questions — it does not by itself make a page captureable.
 
 This is purely tooling support — readers of the concept page (in Obsidian or web) see a useful list of decision-axes the agent has surfaced as worth probing.
 

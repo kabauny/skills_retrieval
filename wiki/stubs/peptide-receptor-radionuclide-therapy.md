@@ -3,6 +3,7 @@ title: "Peptide Receptor Radionuclide Therapy"
 entity_type: other
 aliases: ["PRRT"]
 auto_generated: true
+stub_target: concepts
 auto_source: "[[what-are-some-treatment-options-for-paraganglioma-that-is-not-resectable]]"
 auto_date: 2026-04-26
 tags: [auto-generated]

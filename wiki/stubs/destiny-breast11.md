@@ -3,6 +3,7 @@ title: "DESTINY-Breast11"
 entity_type: trial
 aliases: ["DESTINY-Breast011"]
 auto_generated: true
+stub_target: entities
 auto_source: "[[tell-me-about-destiny-breast-011]]"
 auto_date: 2026-04-26
 tags: [auto-generated]

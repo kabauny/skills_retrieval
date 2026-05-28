@@ -3,6 +3,7 @@ title: "Neoadjuvant Treatment"
 entity_type: other
 aliases: ["Pre-surgical treatment", "Neoadjuvant therapy"]
 auto_generated: true
+stub_target: concepts
 auto_source: "[[tell-me-about-destiny-breast-011]]"
 auto_date: 2026-04-26
 tags: [auto-generated]

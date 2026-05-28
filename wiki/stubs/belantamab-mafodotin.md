@@ -1,24 +1,25 @@
 ---
-title: "MajesTEC-3 trial"
-entity_type: trial
-aliases: []
+title: "Belantamab mafodotin"
+entity_type: drug
+aliases: ["Blenrep"]
 auto_generated: true
+stub_target: entities
 auto_source: "[[what-are-treatment-options-for-second-line-multiple-myeloma-treatment-after-prog]]"
 auto_date: 2026-04-26
 tags: [auto-generated]
 ---
 
-# MajesTEC-3 trial
+# Belantamab mafodotin
 
 > ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
 
 ## Brief
 
-The MajesTEC-3 trial is a Phase 3 clinical trial that demonstrated substantial progression-free and overall survival benefits for teclistamab, a BCMA-targeted bispecific antibody, when used as early as the second-line setting in multiple myeloma.
+Belantamab mafodotin (Blenrep) is an 'off-the-shelf' BCMA-targeted antibody-drug conjugate (ADC) approved for multiple myeloma treatment, shown to improve overall and progression-free survival in combination regimens.
 
 ## Why this matters
 
-This trial's data supports the earlier use of teclistamab in patients who have failed prior anti-CD38 therapies and lenalidomide.
+It provides a crucial non-CAR T-cell, BCMA-targeted option for second-line multiple myeloma, especially in combination with other agents.
 
 ## Sources
 

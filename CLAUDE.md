@@ -36,7 +36,7 @@ A Streamlit app for end-user query + avatar capture.
 **Cases tab** — captureable cases derived from concept pages that have a `## Questions` section (per SCHEMA.md). Each case is a collapsible block (default closed). Inside, every `### question` becomes its own bordered block with **multi-select checkboxes** for the options + a per-question comment + a per-question Save button. Each saved answer is its own entry in `wiki/avatar/{user}/decisions.md` with `linked-concept:<stem>` and `linked-question:<stem>::<q-slug>` markers. Re-saving appends a new entry (useful for revising reasoning over time).
 
 **Review tab** — third tab in the main pane. Two sub-tabs:
-- **🌱 Stubs** — every wiki page with `auto_generated: true` frontmatter. Per item: View, Edit (textarea), Promote (strip `auto_generated: true` flag + remove `auto-generated` tag + log to `wiki/log.md`), Reject (delete file + log; recoverable via `git restore`)
+- **🌱 Stubs** — every wiki page with `auto_generated: true` frontmatter (these live in the `wiki/stubs/` quarantine dir). Per item: View, Edit (textarea), Promote (strip `auto_generated`/`stub_target` markers + remove `auto-generated` tag + **move the page out of `wiki/stubs/` into `wiki/entities|concepts/`** per its `stub_target` + log to `wiki/log.md`), Reject (delete file + log; recoverable via `git restore`)
 - **💾 Searches** — files in `raw/searches/`. Per item: View, Edit, Delete (with log entry)
 
 Each turn that created stubs also has an inline expander with the same review affordances, so you can promote/reject right after generation without leaving the chat.
@@ -53,7 +53,7 @@ Persistent extensions:
 
 - **Session persistence** — every turn (Q + A + sources + MC + token counts) saved as JSONL to `raw/sessions/{user}-{date}.jsonl`. Reloaded on app start so chat history survives browser reload.
 - **Grounded searches save** — when the internet fallback fires, the grounded response is saved to `raw/searches/{slug}.md` using the same format as agent-driven `python search.py` (frontmatter, resolved URLs, token tracking, `_token_log.jsonl`).
-- **Auto-ingest** (toggle in sidebar, default ON) — for each grounded search, extract novel entities and write `auto_generated: true` stub pages to `wiki/entities/` or `wiki/concepts/`. Stubs are added to a "Auto-generated stubs (UI-driven)" section in `wiki/index.md` and logged in `wiki/log.md` as `## [date] auto-ingest |`. Stubs require agent review before clinical use.
+- **Auto-ingest** (toggle in sidebar, **default OFF**) — when ON, for each grounded search extract novel entities and write `auto_generated: true` stub pages to the **quarantine dir `wiki/stubs/`** (carrying a `stub_target:` field recording where promotion should move them). Stubs are **excluded from query synthesis** — they never feed an answer until reviewed — and are **not** added to `wiki/index.md`. Auto-ingest is logged in `wiki/log.md` as `## [date] auto-ingest |`. Promote (Review tab) moves a stub into `wiki/entities|concepts/`; until then it requires agent review before clinical use.
 
 Run:
 
