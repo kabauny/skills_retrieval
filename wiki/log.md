@@ -336,3 +336,30 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Gemini calls:** 3
 - **Answer origin:** wiki
 - **Tokens (Gemini):** 12647
+
+## [2026-05-29] promote (batch) | 20 stubs promoted from wiki/stubs/
+
+- **User:** jim.chen
+- **Action:** stripped `auto_generated`/`stub_target` markers, `auto-generated` tag, and warning callout; moved each page into the curated namespace per its `stub_target`.
+- **Pages:**
+  - altair-trial -> wiki/entities/altair-trial.md
+  - b-cell-maturation-antigen -> wiki/entities/b-cell-maturation-antigen.md
+  - belantamab-mafodotin -> wiki/entities/belantamab-mafodotin.md
+  - belzutifan -> wiki/entities/belzutifan.md
+  - ciltacabtagene-autoleucel -> wiki/entities/ciltacabtagene-autoleucel.md
+  - cobra-trial -> wiki/entities/cobra-trial.md
+  - colon-cancer -> wiki/entities/colon-cancer.md
+  - cvd-regimen -> wiki/concepts/cvd-regimen.md
+  - destiny-breast11 -> wiki/entities/destiny-breast11.md
+  - dreamm-7-trial -> wiki/entities/dreamm-7-trial.md
+  - dynamic-trial -> wiki/entities/dynamic-trial.md
+  - i-131-iobenguane -> wiki/entities/i-131-iobenguane.md
+  - majestec-3-trial -> wiki/entities/majestec-3-trial.md
+  - neoadjuvant-treatment -> wiki/concepts/neoadjuvant-treatment.md
+  - paraganglioma -> wiki/entities/paraganglioma.md
+  - pathologic-complete-response -> wiki/concepts/pathologic-complete-response.md
+  - peptide-receptor-radionuclide-therapy -> wiki/concepts/peptide-receptor-radionuclide-therapy.md
+  - pertuzumab -> wiki/entities/pertuzumab.md
+  - trastuzumab -> wiki/entities/trastuzumab.md
+  - trifluridine-tipiracil -> wiki/entities/trifluridine-tipiracil.md
+- **Reminder:** consider an agent ingest to expand each to full SCHEMA structure (Overview, Key facts, Related entities, Sources).

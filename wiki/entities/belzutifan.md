@@ -2,20 +2,17 @@
 title: "Belzutifan"
 entity_type: drug
 aliases: []
-auto_generated: true
-stub_target: entities
 auto_source: "[[what-are-some-treatment-options-for-paraganglioma-that-is-not-resectable]]"
 auto_date: 2026-04-26
-tags: [auto-generated]
+tags: []
 ---
 
 # Belzutifan
 
-> ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
 
 ## Brief
 
-A recently approved HIF-2α inhibitor, representing a targeted therapy option particularly useful for genetically driven paragangliomas.
+A HIF-2α inhibitor (FDA-approved for VHL-associated tumors and advanced renal cell carcinoma). Its use in paraganglioma is investigational/off-label, of interest for genetically driven (e.g. pseudohypoxic/VHL-pathway) disease.
 
 ## Why this matters
 

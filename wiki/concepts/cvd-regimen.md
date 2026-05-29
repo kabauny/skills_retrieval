@@ -2,16 +2,13 @@
 title: "CVD Regimen"
 entity_type: other
 aliases: []
-auto_generated: true
-stub_target: concepts
 auto_source: "[[what-are-some-treatment-options-for-paraganglioma-that-is-not-resectable]]"
 auto_date: 2026-04-26
-tags: [auto-generated]
+tags: []
 ---
 
 # CVD Regimen
 
-> ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
 
 ## Brief
 

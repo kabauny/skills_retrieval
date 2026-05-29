@@ -2,16 +2,13 @@
 title: "MajesTEC-3 trial"
 entity_type: trial
 aliases: []
-auto_generated: true
-stub_target: entities
 auto_source: "[[what-are-treatment-options-for-second-line-multiple-myeloma-treatment-after-prog]]"
 auto_date: 2026-04-26
-tags: [auto-generated]
+tags: []
 ---
 
 # MajesTEC-3 trial
 
-> ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
 
 ## Brief
 

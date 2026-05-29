@@ -2,16 +2,13 @@
 title: "DESTINY-Breast11"
 entity_type: trial
 aliases: ["DESTINY-Breast011"]
-auto_generated: true
-stub_target: entities
 auto_source: "[[tell-me-about-destiny-breast-011]]"
 auto_date: 2026-04-26
-tags: [auto-generated]
+tags: []
 ---
 
 # DESTINY-Breast11
 
-> ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
 
 ## Brief
 

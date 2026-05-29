@@ -2,16 +2,13 @@
 title: "COBRA Trial"
 entity_type: trial
 aliases: ["NRG-GI005"]
-auto_generated: true
-stub_target: entities
 auto_source: "[[mrd-testing-for-colon-cancer-if-mrd-is-positive-but-no-evidence-of-disease-whats]]"
 auto_date: 2026-04-26
-tags: [auto-generated]
+tags: []
 ---
 
 # COBRA Trial
 
-> ⚠️ **Auto-generated stub** from a UI-driven grounded search. Verify and expand before relying on this for clinical decisions. The agent ingest workflow can promote this stub to a full entity/concept page.
 
 ## Brief
 
