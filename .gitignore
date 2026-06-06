@@ -7,6 +7,10 @@ venv/
 
 # knowledge-graph server cache (rebuilt from the wiki on demand)
 .kg_cache.json
+.knowledge-graph/
+
+# Claude Code personal/local settings (keep launch.json, drop local overrides)
+.claude/settings.local.json
 
 # Env / secrets
 .env

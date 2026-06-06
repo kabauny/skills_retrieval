@@ -1,0 +1,189 @@
+// Typed client for the Wiki LM FastAPI backend. All requests go to same-origin
+// /api/* and are proxied to the Python server by next.config.js rewrites.
+
+export interface TokenUsage {
+  prompt: number;
+  candidates: number;
+  total: number;
+}
+
+export interface MCOption {
+  key: string;
+  text: string;
+}
+
+export interface MCQuestion {
+  label: string;
+  question: string;
+  options: MCOption[];
+  rationale: string;
+  captured: boolean;
+}
+
+export interface Turn {
+  idx: number;
+  ts: string;
+  question: string;
+  answer: string;
+  sources: string[];
+  origin: "wiki" | "internet" | "mixed";
+  gemini_calls: number;
+  tokens: TokenUsage;
+  mc: MCQuestion | null;
+  saved_search_path: string | null;
+  stubs_created: string[];
+  note_created: string | null;
+}
+
+export interface Stats {
+  wiki_pages: number;
+  decisions: number;
+  questions: number;
+  session_queries: number;
+  session_tokens: number;
+  stubs: number;
+  searches: number;
+  notes: number;
+  cases_available: number;
+}
+
+export interface StateResp {
+  user: string;
+  history: Turn[];
+  stats: Stats;
+  session_file: string;
+}
+
+export interface CaseQuestion {
+  label: string;
+  text: string;
+  options: MCOption[];
+  captured: boolean;
+}
+
+export interface CaseItem {
+  stem: string;
+  title: string;
+  skeleton: string;
+  questions: CaseQuestion[];
+  captured: boolean;
+}
+
+export interface ReviewItem {
+  id: string;
+  stem: string;
+  title: string;
+  kind: "stub" | "search" | "note";
+  mtime: string | null;
+  verified?: boolean;
+  verified_by?: string;
+  verified_date?: string;
+  auto_date?: string;
+}
+
+export interface PageDetail {
+  id: string;
+  title: string;
+  content: string;
+  body: string;
+  frontmatter: Record<string, string>;
+  mtime: string;
+}
+
+async function req<T>(path: string, opts?: RequestInit): Promise<T> {
+  const res = await fetch(path, {
+    ...opts,
+    headers: { "Content-Type": "application/json", ...(opts?.headers || {}) },
+  });
+  if (!res.ok) {
+    let detail = res.statusText;
+    try {
+      const body = await res.json();
+      detail = body.detail || detail;
+    } catch {
+      /* ignore */
+    }
+    throw new Error(detail);
+  }
+  return res.json();
+}
+
+export const api = {
+  health: () => req<{ api_key_present: boolean; model_pro: string; model_flash: string }>("/api/health"),
+
+  state: (user: string) => req<StateResp>(`/api/state?user=${encodeURIComponent(user)}`),
+
+  query: (question: string, user: string, auto_ingest: boolean) =>
+    req<{ turn: Turn; needs_ingest: boolean; token: string | null }>("/api/query", {
+      method: "POST",
+      body: JSON.stringify({ question, user, auto_ingest }),
+    }),
+
+  finalize: (token: string, user: string) =>
+    req<{ turn: Turn; warnings: string[] }>("/api/query/finalize", {
+      method: "POST",
+      body: JSON.stringify({ token, user }),
+    }),
+
+  preference: (user: string, turn_idx: number, choice_key: string, reasoning: string) =>
+    req<{ ok: boolean; turn: Turn }>("/api/preference", {
+      method: "POST",
+      body: JSON.stringify({ user, turn_idx, choice_key, reasoning }),
+    }),
+
+  cases: (user: string) => req<{ cases: CaseItem[] }>(`/api/cases?user=${encodeURIComponent(user)}`),
+
+  caseAnswer: (
+    user: string,
+    case_stem: string,
+    question_label: string,
+    selected_keys: string[],
+    comment: string,
+  ) =>
+    req<{ ok: boolean }>("/api/cases/answer", {
+      method: "POST",
+      body: JSON.stringify({ user, case_stem, question_label, selected_keys, comment }),
+    }),
+
+  stubs: () => req<{ items: ReviewItem[] }>("/api/review/stubs"),
+  searches: () => req<{ items: ReviewItem[] }>("/api/review/searches"),
+  notes: () => req<{ items: ReviewItem[] }>("/api/review/notes"),
+
+  verify: (id: string, user: string) =>
+    req<{ ok: boolean }>("/api/review/verify", {
+      method: "POST",
+      body: JSON.stringify({ id, user }),
+    }),
+
+  deleteNote: (id: string, user: string, reason: string) =>
+    req<{ ok: boolean }>("/api/review/delete-note", {
+      method: "POST",
+      body: JSON.stringify({ id, user, reason }),
+    }),
+
+  page: (id: string) => req<PageDetail>(`/api/page?id=${encodeURIComponent(id)}`),
+
+  savePage: (id: string, content: string) =>
+    req<{ ok: boolean }>("/api/page", {
+      method: "POST",
+      body: JSON.stringify({ id, content }),
+    }),
+
+  promote: (id: string, user: string) =>
+    req<{ ok: boolean }>("/api/review/promote", {
+      method: "POST",
+      body: JSON.stringify({ id, user }),
+    }),
+
+  reject: (id: string, user: string, reason: string) =>
+    req<{ ok: boolean }>("/api/review/reject", {
+      method: "POST",
+      body: JSON.stringify({ id, user, reason }),
+    }),
+
+  deleteSearch: (id: string, user: string, reason: string) =>
+    req<{ ok: boolean }>("/api/review/delete-search", {
+      method: "POST",
+      body: JSON.stringify({ id, user, reason }),
+    }),
+};
