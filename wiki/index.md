@@ -18,7 +18,7 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ### Notes
 
-*(none yet)*
+- [[what-is-the-mechanism-of-action-of-amivantamab]] — What is the mechanism of action of amivantamab?
 
 ### Searches
 

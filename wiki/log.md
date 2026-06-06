@@ -363,3 +363,168 @@ Session active user: `jim.chen` (default per CLAUDE.md).
   - trastuzumab -> wiki/entities/trastuzumab.md
   - trifluridine-tipiracil -> wiki/entities/trifluridine-tipiracil.md
 - **Reminder:** consider an agent ingest to expand each to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-05] log-reconstructed | rebuilt from session JSONL after accidental `git checkout` of log.md
+
+- **Note:** the entries below were regenerated faithfully from `raw/sessions/jim.chen-2026-06-05.jsonl` (source of truth). Wording matches the original app output; ordering is by session index.
+
+
+## [2026-06-05] query | What is the new indication for durvalumab in non muscle invasive bladd...
+
+- **User:** jim.chen
+- **Question:** "What is the new indication for durvalumab in non muscle invasive bladder cancer? "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 5170
+- **Search saved:** [[what-is-the-new-indication-for-durvalumab-in-non-muscle-invasive-bladder-cancer]]
+
+## [2026-06-05] query | Waht is the The 3-year IDFS rate was for T-DXd compared to T-DM1 for b...
+
+- **User:** jim.chen
+- **Question:** "Waht is the The 3-year IDFS rate was for T-DXd compared to T-DM1 for breast cancer in the adjuvant setting "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** [[destiny-breast05]], [[destiny-breast05-april-2026-update]], [[katherine-trial]], [[trastuzumab-deruxtecan]], [[trastuzumab-emtansine]], [[adjuvant-her2-positive-breast-cancer]], [[her2-positive-breast-cancer]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 13532
+
+## [2026-06-05] query | What are some highlights from ASCO 2026 regarding pancreatic cancer? 
+
+- **User:** jim.chen
+- **Question:** "What are some highlights from ASCO 2026 regarding pancreatic cancer? "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 8432
+- **Search saved:** [[what-are-some-highlights-from-asco-2026-regarding-pancreatic-cancer]]
+
+## [2026-06-05] query | What is the mechanism for atebimetinib? 
+
+- **User:** jim.chen
+- **Question:** "What is the mechanism for atebimetinib? "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 5594
+- **Search saved:** [[what-is-the-mechanism-for-atebimetinib]]
+
+## [2026-06-05] query | What is the work up for glioblastoma? What biomakers do I need. How do...
+
+- **User:** jim.chen
+- **Question:** "What is the work up for glioblastoma? What biomakers do I need. How do I stage it, what is the initial therapy? "
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 8075
+- **Search saved:** [[what-is-the-work-up-for-glioblastoma-what-biomakers-do-i-need-how-do-i-stage-it-]]
+
+## [2026-06-05] query | What is the regimen for adjuvant and maintantence TMZ?
+
+- **User:** jim.chen
+- **Question:** "What is the regimen for adjuvant and maintantence TMZ?"
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 5
+- **Answer origin:** internet
+- **Tokens (Gemini):** 11341
+- **Search saved:** [[what-is-the-regimen-for-adjuvant-and-maintantence-tmz]]
+- **Stub pages auto-created:** [[stupp-protocol]], [[glioblastoma]], [[temozolomide]], [[absolute-neutrophil-count]], [[ondansetron]]
+
+## [2026-06-05] query | What is the new indication for durvalumab in non muscle invasive bladd...
+
+- **User:** jim.chen
+- **Question:** "What is the new indication for durvalumab in non muscle invasive bladder cancer?"
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 5
+- **Answer origin:** internet
+- **Tokens (Gemini):** 9082
+- **Search saved:** [[what-is-the-new-indication-for-durvalumab-in-non-muscle-invasive-bladder-cancer-2]]
+- **Stub pages auto-created:** [[durvalumab]], [[non-muscle-invasive-bladder-cancer]], [[bacillus-calmette-guerin]], [[potomac-trial]], [[high-risk-non-muscle-invasive-bladder-cancer]]
+
+## [2026-06-05] query | Waht is the The 3-year IDFS rate was for T-DXd compared to T-DM1 for b...
+
+- **User:** jim.chen
+- **Question:** "Waht is the The 3-year IDFS rate was for T-DXd compared to T-DM1 for breast cancer in the adjuvant setting"
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** [[destiny-breast05]], [[destiny-breast05-april-2026-update]], [[katherine-trial]], [[trastuzumab-deruxtecan]], [[trastuzumab-emtansine]], [[adjuvant-her2-positive-breast-cancer]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 12884
+
+## [2026-06-05] query | What is the new indication for durvalumab in non muscle invasive bladd...
+
+- **User:** jim.chen
+- **Question:** "What is the new indication for durvalumab in non muscle invasive bladder cancer?"
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 5
+- **Answer origin:** internet
+- **Tokens (Gemini):** 8563
+- **Search saved:** [[what-is-the-new-indication-for-durvalumab-in-non-muscle-invasive-bladder-cancer-3]]
+- **Stub pages auto-created:** [[bcg-naive-high-risk-non-muscle-invasive-bladder-cancer]], [[disease-free-survival]]
+
+## [2026-06-05] query | What is the new indication for durvalumab in non muscle invasive bladd...
+
+- **User:** jim.chen
+- **Question:** "What is the new indication for durvalumab in non muscle invasive bladder cancer?"
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 5014
+- **Search saved:** [[what-is-the-new-indication-for-durvalumab-in-non-muscle-invasive-bladder-cancer-4]]
+
+## [2026-06-05] query | What is the new indication for durvalumab in non muscle invasive bladd...
+
+- **User:** jim.chen
+- **Question:** "What is the new indication for durvalumab in non muscle invasive bladder cancer?"
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 5913
+
+## [2026-06-05] query | Waht is the The 3-year IDFS rate was for T-DXd compared to T-DM1 for b...
+
+- **User:** jim.chen
+- **Question:** "Waht is the The 3-year IDFS rate was for T-DXd compared to T-DM1 for breast cancer in the adjuvant setting"
+- **Trigger:** Streamlit UI query
+- **Wiki pages consulted:** [[destiny-breast05]], [[destiny-breast05-april-2026-update]], [[trastuzumab-deruxtecan]], [[trastuzumab-emtansine]], [[katherine-trial]], [[adjuvant-her2-positive-breast-cancer]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 12830
+
+## [2026-06-05] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the mechanism of action of amivantamab?"
+- **Note page:** [[what-is-the-mechanism-of-action-of-amivantamab]] (`wiki/notes/what-is-the-mechanism-of-action-of-amivantamab.md`) — created
+- **Raw source:** [[what-is-the-mechanism-of-action-of-amivantamab]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-05] query | What is the mechanism of action of amivantamab?
+
+- **User:** jim.chen
+- **Question:** "What is the mechanism of action of amivantamab?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 7716
+- **Search saved:** [[what-is-the-mechanism-of-action-of-amivantamab]]
+
+## [2026-06-05] query | What is the mechanism of action of amivantamab?
+
+- **User:** jim.chen
+- **Question:** "What is the mechanism of action of amivantamab?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-mechanism-of-action-of-amivantamab]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 6699
