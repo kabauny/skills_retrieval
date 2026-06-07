@@ -133,6 +133,7 @@ class Turn:
     saved_search_path: str | None = None  # raw/searches/{slug}.md if grounded
     stubs_created: list[str] = field(default_factory=list)  # legacy: entity stub paths
     note_created: str | None = None  # wiki/notes/{slug}.md if auto-ingested
+    ts: str = ""  # stable creation timestamp; unique per turn (UI key + identity)
 
 
 # ---------------------------------------------------------------------------
@@ -890,7 +891,7 @@ def session_file_for(user: str) -> Path:
 def turn_to_dict(turn: Turn) -> dict:
     return {
         "idx": turn.idx,
-        "ts": datetime.now(timezone.utc).isoformat(),
+        "ts": turn.ts or datetime.now(timezone.utc).isoformat(),
         "question": turn.question,
         "answer": turn.answer,
         "sources": list(turn.sources),
@@ -941,6 +942,7 @@ def turn_from_dict(d: dict) -> Turn:
         saved_search_path=d.get("saved_search_path"),
         stubs_created=list(d.get("stubs_created") or []),
         note_created=d.get("note_created"),
+        ts=d.get("ts", ""),
     )
 
 
@@ -1020,6 +1022,7 @@ def run_query_phase1(question: str, user: str, idx: int):
         mc=mc,
         saved_search_path=None,
         stubs_created=[],
+        ts=datetime.now(timezone.utc).isoformat(),
     )
     return turn, grounded_resp
 

@@ -28,7 +28,7 @@ export default function ChatTab({
   }, [history.length, busy]);
 
   const replaceTurn = (t: Turn) =>
-    setHistory((prev) => prev.map((x) => (x.idx === t.idx ? t : x)));
+    setHistory((prev) => prev.map((x) => (x.ts === t.ts ? t : x)));
 
   const submit = async () => {
     const q = input.trim();
@@ -81,9 +81,9 @@ export default function ChatTab({
             </div>
           )}
 
-          {history.map((t) => (
+          {history.map((t, i) => (
             <TurnCard
-              key={t.idx}
+              key={t.ts || `idx-${t.idx}-${i}`}
               turn={t}
               user={user}
               onCaptured={replaceTurn}

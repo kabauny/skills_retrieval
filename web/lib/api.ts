@@ -1,5 +1,13 @@
-// Typed client for the Wiki LM FastAPI backend. All requests go to same-origin
-// /api/* and are proxied to the Python server by next.config.js rewrites.
+// Typed client for the Wiki LM FastAPI backend.
+//
+// We call the backend DIRECTLY (CORS is open server-side) rather than via the
+// Next.js dev rewrite proxy — that proxy drops long POSTs with ECONNRESET on
+// some Node versions. Override the target with NEXT_PUBLIC_API_BASE; default is
+// the local backend. Set it to "" to fall back to the same-origin rewrite.
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE !== undefined
+    ? process.env.NEXT_PUBLIC_API_BASE
+    : "http://localhost:8000";
 
 export interface TokenUsage {
   prompt: number;
@@ -91,7 +99,7 @@ export interface PageDetail {
 }
 
 async function req<T>(path: string, opts?: RequestInit): Promise<T> {
-  const res = await fetch(path, {
+  const res = await fetch(`${API_BASE}${path}`, {
     ...opts,
     headers: { "Content-Type": "application/json", ...(opts?.headers || {}) },
   });
