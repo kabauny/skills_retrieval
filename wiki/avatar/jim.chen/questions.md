@@ -607,3 +607,397 @@ A curated, categorized log of queries posed by `jim.chen`. Updated on every non-
 - **Tokens (Gemini):** 10499
 - **MC probe generated:** no
 - **Search saved:** [[what-is-the-second-line-treatment-after-progression-for-metastatic-pancreatic-ca]]
+
+### [2026-06-08] what-is-the-managing-acquired-resistance-for-multiple-myelom
+
+- **Question:** "What is the managing acquired resistance for multiple myeloma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[ciltacabtagene-autoleucel]], [[b-cell-maturation-antigen]], [[belantamab-mafodotin]], [[majestec-3-trial]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 7233
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-managing-acquired-resistance-for-multiple-myeloma]]
+
+### [2026-06-08] what-are-the-common-car-t-related-toxicities-e-g-crs-icans-i
+
+- **Question:** "What are the common CAR-T related toxicities (e.g., CRS, ICANS) in DLBCL patients, and what are the recommended management strategies?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3770
+- **MC probe generated:** no
+- **Search saved:** [[what-are-the-common-car-t-related-toxicities-eg-crs-icans-in-dlbcl-patients-and-]]
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-mult
+
+- **Question:** "What is the second-line treatment after progression for multiple myeloma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[ciltacabtagene-autoleucel]], [[majestec-3-trial]], [[b-cell-maturation-antigen]], [[belantamab-mafodotin]], [[multiple-myeloma]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 4577
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-efficacy-profile-of-sunvozertinib-including-obje
+
+- **Question:** "What is the efficacy profile of sunvozertinib, including objective response rate, progression-free survival, and overall survival?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 2734
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-efficacy-profile-of-sunvozertinib-including-objective-response-rate-]]
+
+### [2026-06-08] what-is-parp-inhibitors-summarize-its-design-and-key-results
+
+- **Question:** "What is parp-inhibitors? Summarize its design and key results."
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-role-of-parp-inhibitors-in-metastatic-prostate-cancer-with-hrr-mutat]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 5616
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-hodgkin-l
+
+- **Question:** "What is the biomarker testing to guide therapy for Hodgkin lymphoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3016
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-biomarker-testing-to-guide-therapy-for-hodgkin-lymphoma]]
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-hr-p
+
+- **Question:** "What is the second-line treatment after progression for HR-positive breast cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-recommended-sequencing-of-vepdegestrant-relative-to-other-non-endocr]], [[what-are-the-specific-toxicity-profiles-and-recommended-management-strategies-fo]], [[tell-me-about-akt-pathway-drugs-available-for-nsclc]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 23075
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-second-line-treatment-after-progression-for-hr-positive-breast-cance]]
+
+### [2026-06-08] what-is-the-managing-acquired-resistance-for-small-cell-lung
+
+- **Question:** "What is the managing acquired resistance for small cell lung cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 4934
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-managing-acquired-resistance-for-small-cell-lung-cancer]]
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-adva
+
+- **Question:** "What is the second-line treatment after progression for advanced renal cell carcinoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[cabozantinib]], [[belzutifan]], [[pembrolizumab]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 9003
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-second-line-treatment-after-progression-for-advanced-renal-cell-carc]]
+
+### [2026-06-08] at-what-stage-of-relapsed-refractory-disease-or-after-how-ma
+
+- **Question:** "At what stage of relapsed/refractory disease, or after how many prior lines of therapy, should BCMA-targeted immunotherapies be considered?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[ciltacabtagene-autoleucel]], [[majestec-3-trial]], [[b-cell-maturation-antigen]], [[belantamab-mafodotin]], [[multiple-myeloma]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 4011
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-smal
+
+- **Question:** "What is the second-line treatment after progression for small cell lung cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-managing-acquired-resistance-for-small-cell-lung-cancer]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 6417
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-hepa
+
+- **Question:** "What is the second-line treatment after progression for hepatocellular carcinoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3011
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-second-line-treatment-after-progression-for-hepatocellular-carcinoma]]
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-hepatocel
+
+- **Question:** "What is the biomarker testing to guide therapy for hepatocellular carcinoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3411
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-biomarker-testing-to-guide-therapy-for-hepatocellular-carcinoma]]
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-acut
+
+- **Question:** "What is the second-line treatment after progression for acute myeloid leukemia?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[how-do-you-treat-acute-myeloid-leukemia-with-flt3-mutations]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 10126
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-second-line-treatment-after-progression-for-acute-myeloid-leukemia]]
+
+### [2026-06-08] what-is-the-managing-acquired-resistance-for-metastatic-urot
+
+- **Question:** "What is the managing acquired resistance for metastatic urothelial carcinoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 8515
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-managing-acquired-resistance-for-metastatic-urothelial-carcinoma]]
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-meta
+
+- **Question:** "What is the second-line treatment after progression for metastatic urothelial carcinoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 6346
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-second-line-treatment-after-progression-for-metastatic-urothelial-ca]]
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-metastati
+
+- **Question:** "What is the biomarker testing to guide therapy for metastatic urothelial carcinoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3831
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-biomarker-testing-to-guide-therapy-for-metastatic-urothelial-carcino]]
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-small-cel
+
+- **Question:** "What is the biomarker testing to guide therapy for small cell lung cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3198
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-biomarker-testing-to-guide-therapy-for-small-cell-lung-cancer]]
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-diffuse-l
+
+- **Question:** "What is the biomarker testing to guide therapy for diffuse large B-cell lymphoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 5362
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-biomarker-testing-to-guide-therapy-for-diffuse-large-b-cell-lymphoma]]
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-mult
+
+- **Question:** "What is the second-line treatment after progression for multiple myeloma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[ciltacabtagene-autoleucel]], [[majestec-3-trial]], [[b-cell-maturation-antigen]], [[belantamab-mafodotin]], [[multiple-myeloma]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 4476
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-first-line-treatment-for-triple-negative-breast-
+
+- **Question:** "What is the first-line treatment for triple-negative breast cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[keynote-522]], [[pembrolizumab]], [[triple-negative-breast-cancer]], [[tnbc-keynote-522-irae-rechallenge-2026]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 7969
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-chronic-l
+
+- **Question:** "What is the biomarker testing to guide therapy for chronic lymphocytic leukemia?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3209
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-biomarker-testing-to-guide-therapy-for-chronic-lymphocytic-leukemia]]
+
+### [2026-06-08] what-are-the-recommended-management-strategies-for-grade-2-3
+
+- **Question:** "What are the recommended management strategies for Grade 2, 3, and 4 Cytokine Release Syndrome (CRS)?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-are-the-common-car-t-related-toxicities-eg-crs-icans-in-dlbcl-patients-and-]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 5340
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-managing-acquired-resistance-for-metastatic-nscl
+
+- **Question:** "What is the managing acquired resistance for metastatic NSCLC?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]], [[what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-]], [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]], [[are-there-specific-patient-selection-criteria-or-biomarkers-beyond-general-ras-m]], [[with-pmids-what-are-some-updates-with-nsclc-that-was-recently-published-at-asco]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 15128
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-advanced-
+
+- **Question:** "What is the biomarker testing to guide therapy for advanced renal cell carcinoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3194
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-biomarker-testing-to-guide-therapy-for-advanced-renal-cell-carcinoma]]
+
+### [2026-06-08] what-are-the-recommended-management-strategies-for-immune-ef
+
+- **Question:** "What are the recommended management strategies for Immune Effector Cell-Associated Neurotoxicity Syndrome (ICANS)?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-are-the-common-car-t-related-toxicities-eg-crs-icans-in-dlbcl-patients-and-]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 5662
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-triple-ne
+
+- **Question:** "What is the biomarker testing to guide therapy for triple-negative breast cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[keynote-522]], [[triple-negative-breast-cancer]], [[pembrolizumab]], [[tnbc-keynote-522-irae-rechallenge-2026]], [[adjuvant-pembrolizumab-after-pcr-tnbc]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 11898
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-foll
+
+- **Question:** "What is the second-line treatment after progression for follicular lymphoma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3254
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-second-line-treatment-after-progression-for-follicular-lymphoma]]
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-trip
+
+- **Question:** "What is the second-line treatment after progression for triple-negative breast cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-managing-acquired-resistance-for-triple-negative-breast-cancer]], [[how-do-you-treat-her2-positive-metastatic-gastric-or-gastroesophageal-cancer]], [[what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 9052
+- **MC probe generated:** no
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-metastati
+
+- **Question:** "What is the biomarker testing to guide therapy for metastatic pancreatic cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-second-line-treatment-after-progression-for-metastatic-pancreatic-ca]], [[what-is-the-folfirinox-regimen-and-its-role-in-pancreatic-cancer]], [[with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis]], [[what-is-the-managing-acquired-resistance-for-advanced-gastric-cancer]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 9811
+- **MC probe generated:** no
+
+### [2026-06-08] what-are-parp-inhibitors
+
+- **Question:** "What are parp inhibitors"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-role-of-parp-inhibitors-in-metastatic-prostate-cancer-with-hrr-mutat]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 5717
+- **MC probe generated:** no
+
+### [2026-06-08] a-68-year-old-patient-with-high-risk-cll-del-17p-currently-o
+
+- **Question:** "A 68-year-old patient with high-risk CLL (del(17p)), currently on acalabrutinib for two years, develops recurrent Grade 3 arthralgia significantly impacting her daily activities. Should she have her acalabrutinib dose reduced, temporarily interrupt treatment and restart at a lower dose, or switch to a BCL-2 inhibitor?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[for-sonrotoclaxs-accelerated-approval-in-relapsedrefractory-mcl-what-are-the-det]], [[zanubrutinib]], [[please-provide-any-fda-indication-for-cancer-treatment-in-may-and-june-2026]], [[what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll]], [[sonrotoclax]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 19664
+- **MC probe generated:** no
+- **Search saved:** [[a-68-year-old-patient-with-high-risk-cll-del17p-currently-on-acalabrutinib-for-t]]
+
+### [2026-06-08] a-72-year-old-male-with-extensive-stage-sclc-ecog-ps-2-due-t
+
+- **Question:** "A 72-year-old male with extensive-stage SCLC, ECOG PS 2 due to fatigue and dyspnea, has progressed on first-line carboplatin/etoposide + durvalumab. Would you initiate single-agent topotecan given his PS and prior treatment history, or recommend tarlatamab despite his current ECOG PS?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-managing-acquired-resistance-for-small-cell-lung-cancer]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 14443
+- **MC probe generated:** no
+- **Search saved:** [[a-72-year-old-male-with-extensive-stage-sclc-ecog-ps-2-due-to-fatigue-and-dyspne]]
+
+### [2026-06-08] an-82-year-old-frail-patient-with-metastatic-clear-cell-rcc-
+
+- **Question:** "An 82-year-old frail patient with metastatic clear cell RCC and an ECOG PS of 2 develops grade 3 fatigue and significant transaminitis after 2 cycles of first-line nivolumab plus ipilimumab. His disease is stable. Should both agents be held and restarted at lower doses once toxicities resolve, or should ipilimumab be discontinued with nivolumab monotherapy continued?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[pembrolizumab-rechallenge-after-severe-irae]], [[immune-related-adverse-events]], [[pembrolizumab]], [[triple-negative-breast-cancer]], [[tnbc-keynote-522-irae-rechallenge-2026]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 22174
+- **MC probe generated:** no
+- **Search saved:** [[an-82-year-old-frail-patient-with-metastatic-clear-cell-rcc-and-an-ecog-ps-of-2-]]
+
+### [2026-06-08] a-72-year-old-patient-with-del-17p-cll-and-good-performance-
+
+- **Question:** "A 72-year-old patient with del(17p) CLL and good performance status has progressed after two years on a BTK inhibitor. Should she initiate a BCL-2 inhibitor, switch to a different BTK inhibitor, or consider clinical trial enrollment?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[a-68-year-old-patient-with-high-risk-cll-del17p-currently-on-acalabrutinib-for-t]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 8736
+- **MC probe generated:** no
+- **Search saved:** [[a-72-year-old-patient-with-del17p-cll-and-good-performance-status-has-progressed]]
+
+### [2026-06-08] a-78-year-old-male-with-relapsed-refractory-aml-an-idh1-muta
+
+- **Question:** "A 78-year-old male with relapsed/refractory AML, an IDH1 mutation, and poor performance status (ECOG 3) due to significant cardiac comorbidities has progressed. Should we initiate single-agent ivosidenib, or a venetoclax + azacitidine regimen?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-second-line-treatment-after-progression-for-acute-myeloid-leukemia]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 12727
+- **MC probe generated:** no
+- **Search saved:** [[a-78-year-old-male-with-relapsedrefractory-aml-an-idh1-mutation-and-poor-perform]]
+
+### [2026-06-08] a-68-year-old-female-with-extensive-stage-sclc-ecog-ps-1-dev
+
+- **Question:** "A 68-year-old female with extensive-stage SCLC, ECOG PS 1, developed grade 3 immune-related pneumonitis requiring high-dose corticosteroids after 2 cycles of first-line cisplatin/etoposide + atezolizumab. Her disease remains stable. Should she permanently discontinue atezolizumab and complete chemotherapy alone, or attempt re-challenge with atezolizumab at a lower dose after steroid taper and resolution of pneumonitis to grade 1 or less?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[pembrolizumab-rechallenge-after-severe-irae]], [[an-82-year-old-frail-patient-with-metastatic-clear-cell-rcc-and-an-ecog-ps-of-2-]], [[pembrolizumab]], [[triple-negative-breast-cancer]], [[tnbc-keynote-522-irae-rechallenge-2026]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 22285
+- **MC probe generated:** no
+- **Search saved:** [[a-68-year-old-female-with-extensive-stage-sclc-ecog-ps-1-developed-grade-3-immun]]

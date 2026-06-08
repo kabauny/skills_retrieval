@@ -18,6 +18,30 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ### Notes
 
+- [[a-68-year-old-female-with-extensive-stage-sclc-ecog-ps-1-developed-grade-3-immun]] — A 68-year-old female with extensive-stage SCLC, ECOG PS 1, developed grade 3 immune-related pneumonitis requiring high-dose corticosteroids 
+- [[a-78-year-old-male-with-relapsedrefractory-aml-an-idh1-mutation-and-poor-perform]] — A 78-year-old male with relapsed/refractory AML, an IDH1 mutation, and poor performance status (ECOG 3) due to significant cardiac comorbidi
+- [[a-72-year-old-patient-with-del17p-cll-and-good-performance-status-has-progressed]] — A 72-year-old patient with del(17p) CLL and good performance status has progressed after two years on a BTK inhibitor. Should she initiate a
+- [[an-82-year-old-frail-patient-with-metastatic-clear-cell-rcc-and-an-ecog-ps-of-2-]] — An 82-year-old frail patient with metastatic clear cell RCC and an ECOG PS of 2 develops grade 3 fatigue and significant transaminitis after
+- [[a-72-year-old-male-with-extensive-stage-sclc-ecog-ps-2-due-to-fatigue-and-dyspne]] — A 72-year-old male with extensive-stage SCLC, ECOG PS 2 due to fatigue and dyspnea, has progressed on first-line carboplatin/etoposide + dur
+- [[a-68-year-old-patient-with-high-risk-cll-del17p-currently-on-acalabrutinib-for-t]] — A 68-year-old patient with high-risk CLL (del(17p)), currently on acalabrutinib for two years, develops recurrent Grade 3 arthralgia signifi
+- [[what-is-the-second-line-treatment-after-progression-for-follicular-lymphoma]] — What is the second-line treatment after progression for follicular lymphoma?
+- [[what-is-the-biomarker-testing-to-guide-therapy-for-advanced-renal-cell-carcinoma]] — What is the biomarker testing to guide therapy for advanced renal cell carcinoma?
+- [[what-is-the-biomarker-testing-to-guide-therapy-for-chronic-lymphocytic-leukemia]] — What is the biomarker testing to guide therapy for chronic lymphocytic leukemia?
+- [[what-is-the-biomarker-testing-to-guide-therapy-for-diffuse-large-b-cell-lymphoma]] — What is the biomarker testing to guide therapy for diffuse large B-cell lymphoma?
+- [[what-is-the-biomarker-testing-to-guide-therapy-for-small-cell-lung-cancer]] — What is the biomarker testing to guide therapy for small cell lung cancer?
+- [[what-is-the-biomarker-testing-to-guide-therapy-for-metastatic-urothelial-carcino]] — What is the biomarker testing to guide therapy for metastatic urothelial carcinoma?
+- [[what-is-the-second-line-treatment-after-progression-for-metastatic-urothelial-ca]] — What is the second-line treatment after progression for metastatic urothelial carcinoma?
+- [[what-is-the-managing-acquired-resistance-for-metastatic-urothelial-carcinoma]] — What is the managing acquired resistance for metastatic urothelial carcinoma?
+- [[what-is-the-second-line-treatment-after-progression-for-acute-myeloid-leukemia]] — What is the second-line treatment after progression for acute myeloid leukemia?
+- [[what-is-the-biomarker-testing-to-guide-therapy-for-hepatocellular-carcinoma]] — What is the biomarker testing to guide therapy for hepatocellular carcinoma?
+- [[what-is-the-second-line-treatment-after-progression-for-hepatocellular-carcinoma]] — What is the second-line treatment after progression for hepatocellular carcinoma?
+- [[what-is-the-second-line-treatment-after-progression-for-advanced-renal-cell-carc]] — What is the second-line treatment after progression for advanced renal cell carcinoma?
+- [[what-is-the-managing-acquired-resistance-for-small-cell-lung-cancer]] — What is the managing acquired resistance for small cell lung cancer?
+- [[what-is-the-second-line-treatment-after-progression-for-hr-positive-breast-cance]] — What is the second-line treatment after progression for HR-positive breast cancer?
+- [[what-is-the-biomarker-testing-to-guide-therapy-for-hodgkin-lymphoma]] — What is the biomarker testing to guide therapy for Hodgkin lymphoma?
+- [[what-is-the-efficacy-profile-of-sunvozertinib-including-objective-response-rate-]] — What is the efficacy profile of sunvozertinib, including objective response rate, progression-free survival, and overall survival?
+- [[what-are-the-common-car-t-related-toxicities-eg-crs-icans-in-dlbcl-patients-and-]] — What are the common CAR-T related toxicities (e.g., CRS, ICANS) in DLBCL patients, and what are the recommended management strategies?
+- [[what-is-the-managing-acquired-resistance-for-multiple-myeloma]] — What is the managing acquired resistance for multiple myeloma?
 - [[what-is-the-second-line-treatment-after-progression-for-metastatic-pancreatic-ca]] — What is the second-line treatment after progression for metastatic pancreatic cancer?
 - [[what-is-the-managing-acquired-resistance-for-advanced-gastric-cancer]] — What is the managing acquired resistance for advanced gastric cancer?
 - [[what-is-the-managing-acquired-resistance-for-triple-negative-breast-cancer]] — What is the managing acquired resistance for triple-negative breast cancer?
