@@ -178,20 +178,49 @@ def dedup_and_rank(cands: list[dict], top: int, covered: float = COVERED) -> tup
 _REF_COUNT_RE = re.compile(r"referenced in (\d+) note")
 
 
-def _connectivity(question: str, reason: str, graph_deg: dict[str, int]) -> int:
-    """How much answering this question would strengthen the graph.
-    Referential: the entity's note-degree (parsed from the reason — exact).
-    Else: the degree of the biggest graph hub the question text touches."""
-    m = _REF_COUNT_RE.search(reason)
+def _cohesion(node: str, adj: dict[str, set]) -> float:
+    """How tightly a node's neighbor-pages cluster: fraction of neighbor pairs
+    that share at least one OTHER hub. ~1.0 for a focused hub (osimertinib — all
+    EGFR notes), low for a diffuse bridge whose neighbors share nothing else."""
+    nbrs = list(adj.get(node, ()))
+    if len(nbrs) < 2:
+        return 1.0
+    others = {n: (adj.get(n, set()) - {node}) for n in nbrs}
+    pairs = shared = 0
+    for i in range(len(nbrs)):
+        for j in range(i + 1, len(nbrs)):
+            pairs += 1
+            if others[nbrs[i]] & others[nbrs[j]]:
+                shared += 1
+    return shared / pairs if pairs else 1.0
+
+
+def _payoff(node: str, adj: dict[str, set]) -> int:
+    """Graph-growth payoff = reach x focus = degree x cohesion^2. The squared
+    cohesion strongly down-weights diffuse generic hubs (pembrolizumab spanning
+    cancers) vs focused ones (osimertinib), per the retrieval A/B lesson."""
+    deg = len(adj.get(node, ()))
+    return round(deg * _cohesion(node, adj) ** 2)
+
+
+def _connectivity(question: str, reason: str, adj: dict[str, set]) -> int:
+    """How much answering this question would strengthen the graph — reach x
+    focus of the entity it documents. Falls back to the referential note-count
+    if the entity isn't a graph node yet."""
+    cands: set[str] = set()
+    m = re.search(r"'([^']+)'", reason)  # referential names its entity in quotes
     if m:
-        return int(m.group(1))
+        cands.add(core.kebab(m.group(1)))
     text = f"{question} {reason}".lower()
-    best = 0
-    for node, d in graph_deg.items():
+    for node in adj:
         name = node.replace("-", " ")
         if len(name) >= 5 and name in text:
-            best = max(best, d)
-    return best
+            cands.add(node)
+    in_graph = [c for c in cands if c in adj]
+    if in_graph:
+        return max(_payoff(c, adj) for c in in_graph)
+    rm = _REF_COUNT_RE.search(reason)  # entity not a node yet — best available
+    return int(rm.group(1)) if rm else 0
 
 
 def propose(depth_sample: int = DEPTH_SAMPLE, top: int = TOP, covered: float = COVERED) -> list[dict]:
@@ -201,9 +230,9 @@ def propose(depth_sample: int = DEPTH_SAMPLE, top: int = TOP, covered: float = C
     existing = _existing_keys()
     cands = harvest_referential(existing) + harvest_depth(depth_sample) + harvest_coverage()
     ranked, _ = dedup_and_rank(cands, top, covered)
-    graph_deg = {n: len(v) for n, v in core.build_link_graph().items()}
+    adj = core.build_link_graph()
     for item in ranked:
-        item["connectivity"] = _connectivity(item["q"], item.get("reason", ""), graph_deg)
+        item["connectivity"] = _connectivity(item["q"], item.get("reason", ""), adj)
     return ranked
 
 
