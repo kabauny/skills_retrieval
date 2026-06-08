@@ -90,6 +90,14 @@ export interface ReviewItem {
   auto_date?: string;
 }
 
+export interface GrowItem {
+  q: string;
+  strategy: "referential" | "depth" | "coverage";
+  reason: string;
+  coverage: number;
+  nearest: string;
+}
+
 export interface PageDetail {
   id: string;
   title: string;
@@ -163,6 +171,12 @@ export const api = {
   stubs: () => req<{ items: ReviewItem[] }>("/api/review/stubs"),
   searches: () => req<{ items: ReviewItem[] }>("/api/review/searches"),
   notes: () => req<{ items: ReviewItem[] }>("/api/review/notes"),
+
+  growPropose: (depth_sample = 6, top = 30, covered = 0.82) =>
+    req<{ items: GrowItem[] }>("/api/grow/propose", {
+      method: "POST",
+      body: JSON.stringify({ depth_sample, top, covered }),
+    }),
 
   indexGaps: () => req<{ gaps: string[] }>("/api/review/index-gaps"),
 

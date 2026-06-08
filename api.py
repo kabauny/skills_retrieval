@@ -21,6 +21,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 import core
+import question_agent
 
 app = FastAPI(title="Wiki LM API")
 
@@ -259,6 +260,28 @@ def finalize(req: FinalizeRequest) -> dict:
 class ProbeRequest(BaseModel):
     user: str
     turn_idx: int
+
+
+class GrowProposeRequest(BaseModel):
+    depth_sample: int = 6
+    top: int = 30
+    covered: float = 0.82
+
+
+@app.post("/api/grow/propose")
+def grow_propose(req: GrowProposeRequest) -> dict:
+    """Run the question agent: propose ranked gap-questions to grow the wiki.
+    Slow (LLM harvest + embedding dedup); the client shows a spinner. Approved
+    questions are then run via the normal /api/query + /finalize pipeline."""
+    if not core.api_key_present():
+        raise HTTPException(503, "GOOGLE_API_KEY not configured.")
+    try:
+        items = question_agent.propose(
+            depth_sample=req.depth_sample, top=req.top, covered=req.covered
+        )
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(500, f"{type(exc).__name__}: {exc}")
+    return {"items": items}
 
 
 @app.post("/api/preference/probe")

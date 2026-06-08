@@ -6,8 +6,9 @@ import Sidebar from "./Sidebar";
 import ChatTab from "./ChatTab";
 import CasesTab from "./CasesTab";
 import ReviewTab from "./ReviewTab";
+import GrowTab from "./GrowTab";
 
-type Tab = "chat" | "cases" | "review";
+type Tab = "chat" | "cases" | "review" | "grow";
 
 const DEFAULT_USER = "jim.chen";
 
@@ -43,6 +44,7 @@ export default function App() {
       id: "review",
       label: `📋 Review${state ? ` (${state.stats.notes} notes)` : ""}`,
     },
+    { id: "grow", label: "🌱 Grow" },
   ];
 
   return (
@@ -95,6 +97,9 @@ export default function App() {
           )}
           {tab === "review" && (
             <ReviewTab user={user} onAfterChange={() => refreshState(user)} />
+          )}
+          {tab === "grow" && (
+            <GrowTab user={user} onAfterChange={() => refreshState(user)} />
           )}
         </div>
       </main>
