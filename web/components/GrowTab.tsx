@@ -93,6 +93,11 @@ export default function GrowTab({
       state.done++;
       setRun({ ...state });
     }
+    // Drop the just-run questions from the list (they're now notes/covered) and
+    // clear selection, so the list reflects reality and you can re-scan for more.
+    const ranQs = new Set(queue.map((i) => i.q));
+    setItems((prev) => (prev || []).filter((i) => !ranQs.has(i.q)));
+    setSelected(new Set());
     onAfterChange();
   };
 
@@ -108,7 +113,11 @@ export default function GrowTab({
       </p>
 
       <div className="flex items-center gap-3 mb-5">
-        <button onClick={propose} disabled={proposing || !!run} className="btn-primary">
+        <button
+          onClick={propose}
+          disabled={proposing || (!!run && run.done < run.total)}
+          className="btn-primary"
+        >
           {proposing ? "Finding gaps… (~30s)" : items ? "Re-scan for gaps" : "Find gaps"}
         </button>
         {items && (
