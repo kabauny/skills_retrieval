@@ -36,5 +36,5 @@ Sources:
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[how-is-non-clear-cell-renal-cell-carcinoma-treated]] — full citations + search queries

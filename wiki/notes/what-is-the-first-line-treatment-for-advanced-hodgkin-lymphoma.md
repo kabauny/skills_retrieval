@@ -31,5 +31,5 @@ The primary first-line treatment options currently include:
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[what-is-the-first-line-treatment-for-advanced-hodgkin-lymphoma]] — full citations + search queries

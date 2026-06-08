@@ -40,5 +40,5 @@ Sources:
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll]] — full citations + search queries

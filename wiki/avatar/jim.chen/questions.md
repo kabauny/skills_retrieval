@@ -378,3 +378,36 @@ A curated, categorized log of queries posed by `jim.chen`. Updated on every non-
 - **Answer origin:** wiki
 - **Tokens (Gemini):** 10462
 - **MC probe generated:** no
+
+### [2026-06-07] with-pmid-s-what-are-some-updates-with-nsclc-that-was-recent
+
+- **Question:** "With PMID's what are some updates with NSCLC that was recently published at ASCO?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]], [[what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr]], [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]], [[what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 17287
+- **MC probe generated:** no
+- **Search saved:** [[with-pmids-what-are-some-updates-with-nsclc-that-was-recently-published-at-asco]]
+
+### [2026-06-07] with-pmid-s-what-are-some-updates-with-pancreatic-cancer-tha
+
+- **Question:** "With PMID's what are some updates with pancreatic cancer that was recently published at ASCO?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 7222
+- **MC probe generated:** no
+- **Search saved:** [[with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis]]
+
+### [2026-06-07] tell-me-about-the-publication-associated-with-the-rasolute-3
+
+- **Question:** "Tell me about the publication associated with the RASolute 302 trial"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3048
+- **MC probe generated:** no
+- **Search saved:** [[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]]

@@ -37,5 +37,5 @@ Finally, much like the standard of care for other oncogenic drivers (such as ALK
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[how-do-you-treat-ros1-rearranged-metastatic-nsclc]] — full citations + search queries

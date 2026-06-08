@@ -35,5 +35,5 @@ Adjuvant osimertinib is now established as the standard of care targeted treatme
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr]] — full citations + search queries

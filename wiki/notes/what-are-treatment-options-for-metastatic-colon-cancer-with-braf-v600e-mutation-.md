@@ -45,5 +45,5 @@ Sources:
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]] — full citations + search queries

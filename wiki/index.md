@@ -18,6 +18,9 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ### Notes
 
+- [[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]] — Tell me about the publication associated with the RASolute 302 trial
+- [[with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis]] — With PMID's what are some updates with pancreatic cancer that was recently published at ASCO?
+- [[with-pmids-what-are-some-updates-with-nsclc-that-was-recently-published-at-asco]] — With PMID's what are some updates with NSCLC that was recently published at ASCO?
 - [[what-is-the-first-line-treatment-for-braf-v600e-mutated-metastatic-melanoma]] — What is the first-line treatment for BRAF V600E-mutated metastatic melanoma?
 - [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]] — What are treatment options for metastatic colon cancer with BRAF V600E mutation who have progressed on FOLFOX + dabrafenib and trametinib?
 - [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]] — What are some options for second line treatment for EGFR mutated NSCLC after progression on osimertinib

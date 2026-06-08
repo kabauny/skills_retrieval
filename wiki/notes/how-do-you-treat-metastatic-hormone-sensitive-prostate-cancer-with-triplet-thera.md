@@ -38,5 +38,5 @@ In addition to traditional chemotherapy-based triplets, novel targeted non-chemo
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[how-do-you-treat-metastatic-hormone-sensitive-prostate-cancer-with-triplet-thera]] — full citations + search queries

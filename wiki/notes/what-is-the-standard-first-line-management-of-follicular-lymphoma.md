@@ -41,5 +41,5 @@ Web search was used to answer this query.
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[what-is-the-standard-first-line-management-of-follicular-lymphoma]] — full citations + search queries

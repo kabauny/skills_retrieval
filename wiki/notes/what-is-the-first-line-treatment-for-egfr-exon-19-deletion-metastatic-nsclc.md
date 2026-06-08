@@ -33,5 +33,5 @@ Amivantamab is a fully human, low-fucose IgG1 bispecific monoclonal antibody [[w
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]] — full citations + search queries

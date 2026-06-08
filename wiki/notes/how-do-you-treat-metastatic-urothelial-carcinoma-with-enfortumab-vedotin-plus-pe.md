@@ -35,5 +35,5 @@ No internal wiki pages were relevant or cited. Web search was used to answer thi
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe]] — full citations + search queries

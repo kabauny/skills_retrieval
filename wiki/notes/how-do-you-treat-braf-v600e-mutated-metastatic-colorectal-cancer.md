@@ -36,5 +36,5 @@ Sources:
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]] — full citations + search queries

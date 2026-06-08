@@ -51,5 +51,5 @@ Key second-line and subsequent treatment options include:
 
 ## Provenance
 
-- **Ingested:** 2026-06-07 (auto, unverified)
+- **Ingested:** 2026-06-07
 - **Raw grounded search:** [[how-do-you-treat-newly-diagnosed-multiple-myeloma-in-transplant-eligible-patient]] — full citations + search queries

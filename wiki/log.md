@@ -1109,3 +1109,60 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Note page:** [[what-is-the-first-line-treatment-for-braf-v600e-mutated-metastatic-melanoma]] (`wiki/notes/what-is-the-first-line-treatment-for-braf-v600e-mutated-metastatic-melanoma.md`) — created
 - **Raw source:** [[what-is-the-first-line-treatment-for-braf-v600e-mutated-metastatic-melanoma]]
 - **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "With PMID's what are some updates with NSCLC that was recently published at ASCO?"
+- **Note page:** [[with-pmids-what-are-some-updates-with-nsclc-that-was-recently-published-at-asco]] (`wiki/notes/with-pmids-what-are-some-updates-with-nsclc-that-was-recently-published-at-asco.md`) — created
+- **Raw source:** [[with-pmids-what-are-some-updates-with-nsclc-that-was-recently-published-at-asco]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] query | With PMID's what are some updates with NSCLC that was recently publish...
+
+- **User:** jim.chen
+- **Question:** "With PMID's what are some updates with NSCLC that was recently published at ASCO?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]], [[what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr]], [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]], [[what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 17287
+- **Search saved:** [[with-pmids-what-are-some-updates-with-nsclc-that-was-recently-published-at-asco]]
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "With PMID's what are some updates with pancreatic cancer that was recently published at ASCO?"
+- **Note page:** [[with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis]] (`wiki/notes/with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis.md`) — created
+- **Raw source:** [[with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] query | With PMID's what are some updates with pancreatic cancer that was rece...
+
+- **User:** jim.chen
+- **Question:** "With PMID's what are some updates with pancreatic cancer that was recently published at ASCO?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 7222
+- **Search saved:** [[with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis]]
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "Tell me about the publication associated with the RASolute 302 trial"
+- **Note page:** [[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]] (`wiki/notes/tell-me-about-the-publication-associated-with-the-rasolute-302-trial.md`) — created
+- **Raw source:** [[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] query | Tell me about the publication associated with the RASolute 302 trial
+
+- **User:** jim.chen
+- **Question:** "Tell me about the publication associated with the RASolute 302 trial"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3048
+- **Search saved:** [[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]]
