@@ -15,18 +15,41 @@ export default function ReviewTab({
   const [notes, setNotes] = useState<ReviewItem[]>([]);
   const [stubs, setStubs] = useState<ReviewItem[]>([]);
   const [searches, setSearches] = useState<ReviewItem[]>([]);
+  const [gaps, setGaps] = useState<string[]>([]);
+  const [reconciling, setReconciling] = useState(false);
+  const [reconcileMsg, setReconcileMsg] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(() => {
     setLoading(true);
-    Promise.all([api.notes(), api.stubs(), api.searches()])
-      .then(([n, s, q]) => {
+    Promise.all([api.notes(), api.stubs(), api.searches(), api.indexGaps()])
+      .then(([n, s, q, g]) => {
         setNotes(n.items);
         setStubs(s.items);
         setSearches(q.items);
+        setGaps(g.gaps);
       })
       .finally(() => setLoading(false));
   }, []);
+
+  const runReconcile = async () => {
+    setReconciling(true);
+    setReconcileMsg(null);
+    try {
+      const r = await api.reconcile(user);
+      setReconcileMsg(
+        r.added.length
+          ? `Indexed ${r.added.length} previously-unreachable page(s).`
+          : "Index already complete — nothing to add.",
+      );
+      load();
+      onAfterChange();
+    } catch (e: any) {
+      setReconcileMsg(`Reconcile failed: ${e.message}`);
+    } finally {
+      setReconciling(false);
+    }
+  };
 
   useEffect(() => {
     load();
@@ -47,6 +70,37 @@ export default function ReviewTab({
         Actions log to <code>wiki/log.md</code>; deletions recover via{" "}
         <code>git restore</code>.
       </p>
+
+      <div
+        className={`mb-4 rounded-lg border px-4 py-3 flex items-center justify-between gap-3 ${
+          gaps.length
+            ? "border-amber-300 bg-amber-50"
+            : "border-slate-200 bg-slate-50"
+        }`}
+      >
+        <div className="text-sm">
+          {gaps.length ? (
+            <span className="text-amber-800">
+              ⚠️ <strong>{gaps.length}</strong> page(s) exist on disk but aren't in{" "}
+              <code>index.md</code> — the router can't reach them.
+            </span>
+          ) : (
+            <span className="text-slate-600">
+              ✓ Index is complete — every page is reachable by the router.
+            </span>
+          )}
+          {reconcileMsg && (
+            <span className="block text-xs text-slate-500 mt-1">{reconcileMsg}</span>
+          )}
+        </div>
+        <button
+          onClick={runReconcile}
+          disabled={reconciling}
+          className={gaps.length ? "btn-primary" : "btn-ghost"}
+        >
+          {reconciling ? "Reconciling…" : "Reconcile index"}
+        </button>
+      </div>
 
       <div className="flex gap-2 mb-4">
         <button

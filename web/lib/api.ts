@@ -52,6 +52,7 @@ export interface Stats {
   stubs: number;
   searches: number;
   notes: number;
+  index_gaps: number;
   cases_available: number;
 }
 
@@ -156,6 +157,14 @@ export const api = {
   stubs: () => req<{ items: ReviewItem[] }>("/api/review/stubs"),
   searches: () => req<{ items: ReviewItem[] }>("/api/review/searches"),
   notes: () => req<{ items: ReviewItem[] }>("/api/review/notes"),
+
+  indexGaps: () => req<{ gaps: string[] }>("/api/review/index-gaps"),
+
+  reconcile: (user: string) =>
+    req<{ ok: boolean; added: string[] }>("/api/review/reconcile", {
+      method: "POST",
+      body: JSON.stringify({ id: "", user }),
+    }),
 
   verify: (id: string, user: string) =>
     req<{ ok: boolean }>("/api/review/verify", {

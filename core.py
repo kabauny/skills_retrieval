@@ -724,6 +724,78 @@ def mark_note_verified(path: Path, user: str) -> bool:
     return True
 
 
+def _page_summary(path: Path) -> str:
+    """Build a one-line catalog summary for a page: its lead sentence (from the
+    first prose paragraph, e.g. ## Brief) plus any aliases for keyword recall."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return path.stem
+    fm, body = parse_frontmatter(text)
+
+    sentence = ""
+    for line in body.splitlines():
+        s = line.strip()
+        if not s or s.startswith("#") or s.startswith(">") or s.startswith("---"):
+            continue
+        sentence = s
+        break
+    # keep just the first sentence
+    sentence = re.split(r"(?<=[.!?])\s", sentence)[0].strip() if sentence else ""
+
+    aliases = re.findall(r'"([^"]+)"', fm.get("aliases", "") or "")
+    title = (fm.get("title", path.stem) or path.stem).strip().strip('"').strip("'")
+
+    summary = sentence or title
+    if aliases:
+        summary = f"{summary} (aka {', '.join(aliases)})"
+    return summary
+
+
+def index_gaps() -> list[Path]:
+    """Synthesis-eligible pages that exist on disk but are NOT referenced in
+    index.md — i.e. invisible to the router. (The active recall hole.)"""
+    idx = _read_index()
+    linked = set(re.findall(r"\[\[([^\]|#]+)", idx))
+    out: list[Path] = []
+    for p in list_wiki_pages():
+        if p.stem in ("index", "log", "overview"):
+            continue
+        if p.stem in linked:
+            continue
+        if p.parent.name in ("entities", "concepts", "notes"):
+            out.append(p)
+    return out
+
+
+def reconcile_index(user: str = DEFAULT_USER) -> list[str]:
+    """Add an index.md entry for every synthesis-eligible page missing from it,
+    so the router can reach it. Idempotent. Returns the stems added."""
+    section_for = {"entities": "Entities", "concepts": "Concepts", "notes": "Notes"}
+    added: list[str] = []
+    for p in index_gaps():
+        section = section_for.get(p.parent.name)
+        if not section:
+            continue
+        upsert_index_entry(p.stem, _page_summary(p), section=section)
+        added.append(p.stem)
+
+    if added:
+        today = date.today().isoformat()
+        listing = "\n".join(f"  - [[{s}]]" for s in added)
+        log = WIKI / "log.md"
+        if log.exists():
+            with log.open("a", encoding="utf-8") as f:
+                f.write(
+                    f"\n## [{today}] reconcile-index | added {len(added)} missing page(s)\n\n"
+                    f"- **User:** {user}\n"
+                    f"- **Why:** these pages existed on disk but were absent from index.md, so the "
+                    f"router could not reach them (silent recall hole).\n"
+                    f"- **Pages indexed ({len(added)}):**\n{listing}\n"
+                )
+    return added
+
+
 # ---------------------------------------------------------------------------
 # Preference elicitation
 # ---------------------------------------------------------------------------

@@ -167,6 +167,7 @@ def state(user: str = core.DEFAULT_USER) -> dict:
             "stubs": len(core.list_auto_generated_pages()),
             "searches": len(core.list_recent_searches()),
             "notes": len(core.list_note_pages()),
+            "index_gaps": len(core.index_gaps()),
             "cases_available": cases_available,
         },
         "session_file": str(core.session_file_for(user).relative_to(core.ROOT)),
@@ -340,6 +341,17 @@ def review_searches() -> dict:
 @app.get("/api/review/notes")
 def review_notes() -> dict:
     return {"items": [_review_item(p, "note") for p in core.list_note_pages()]}
+
+
+@app.get("/api/review/index-gaps")
+def review_index_gaps() -> dict:
+    return {"gaps": [p.stem for p in core.index_gaps()]}
+
+
+@app.post("/api/review/reconcile")
+def reconcile(req: StubActionRequest) -> dict:
+    added = core.reconcile_index(req.user)
+    return {"ok": True, "added": added}
 
 
 @app.post("/api/review/verify")
