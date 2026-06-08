@@ -336,3 +336,45 @@ A curated, categorized log of queries posed by `jim.chen`. Updated on every non-
 - **Answer origin:** wiki
 - **Tokens (Gemini):** 10539
 - **MC probe generated:** no
+
+### [2026-06-07] first-line-treatment-for-egfr-mutated-nsclc-metastatic
+
+- **Question:** "First line treatment for EGFR mutated NSCLC metastatic"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 4482
+- **MC probe generated:** no
+
+### [2026-06-07] what-are-some-options-for-second-line-treatment-for-egfr-mut
+
+- **Question:** "What are some options for second line treatment for EGFR mutated NSCLC after progression on osimertinib"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 6075
+- **MC probe generated:** no
+- **Search saved:** [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]]
+
+### [2026-06-07] what-are-treatment-options-for-metastatic-colon-cancer-with-
+
+- **Question:** "What are treatment options for metastatic colon cancer with BRAF V600E mutation who have progressed on FOLFOX + dabrafenib and trametinib?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]], [[trifluridine-tipiracil]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 11773
+- **MC probe generated:** no
+- **Search saved:** [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]]
+
+### [2026-06-07] is-there-a-role-for-immunothearpy-for-metastatic-colon-cance
+
+- **Question:** "IS there a role for immunothearpy for metastatic colon cancer with BRAF V600E mutation after progressing on Encorafenib plus Cetuximab + FOLFOX?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]], [[what-is-the-first-line-treatment-for-metastatic-msi-high-colorectal-cancer]], [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]], [[which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 10462
+- **MC probe generated:** no

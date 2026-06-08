@@ -37,3 +37,15 @@ Specific clinical choices `jim.chen` has made, with reasoning. Updated when the 
 - **Comment:** TDXD have proven itself to be a superior regimen in all cases, I would offer it as front line. Although a consideration is what to do if the patient progresses. But in all cases, I would prefer to give most efficacious regimen upfront
 - **linked-concept:adjuvant-her2-positive-breast-cancer**
 - **linked-question:adjuvant-her2-positive-breast-cancer::after-the-july-2026-pdufa-would-you-switch-to-t-dxd-as-your-**
+
+### [2026-06-07] post-osi-2l-regimen (UI preference capture)
+
+- **Surfaced from question:** "What are some options for second line treatment for EGFR mutated NSCLC after progression on osimertinib"
+- **Probe:** For a patient with advanced EGFR-mutated NSCLC who experiences non-CNS progression on frontline osimertinib monotherapy (with no targetable resistance mechanism identified on biopsy), which second-line approach do you generally favor?
+- **Options offered:**
+  - A. Switch to amivantamab plus platinum-based chemotherapy
+  - B. Continue osimertinib and add platinum-based chemotherapy
+  - C. Switch to platinum-doublet chemotherapy alone
+- **Choice:** A — Switch to amivantamab plus platinum-based chemotherapy
+- **Reasoning:** (not specified)
+- **What this reveals:** Captures whether the clinician prefers aggressively integrating bispecific antibodies (MARIPOSA-2), continuing TKI suppression with chemo (COMPEL), or deferring to the traditional, less toxic chemotherapy-alone standard.

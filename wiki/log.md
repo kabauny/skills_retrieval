@@ -1037,3 +1037,75 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Gemini calls:** 3
 - **Answer origin:** wiki
 - **Tokens (Gemini):** 10539
+
+## [2026-06-07] query | First line treatment for EGFR mutated NSCLC metastatic
+
+- **User:** jim.chen
+- **Question:** "First line treatment for EGFR mutated NSCLC metastatic"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 4482
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What are some options for second line treatment for EGFR mutated NSCLC after progression on osimerti..."
+- **Note page:** [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]] (`wiki/notes/what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro.md`) — created
+- **Raw source:** [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] query | What are some options for second line treatment for EGFR mutated NSCLC...
+
+- **User:** jim.chen
+- **Question:** "What are some options for second line treatment for EGFR mutated NSCLC after progression on osimertinib"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 6075
+- **Search saved:** [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]]
+
+## [2026-06-07] verify-note | what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro
+
+- **User:** jim.chen
+- **Page:** [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]] (`wiki/notes/what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What are treatment options for metastatic colon cancer with BRAF V600E mutation who have progressed ..."
+- **Note page:** [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]] (`wiki/notes/what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-.md`) — created
+- **Raw source:** [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] query | What are treatment options for metastatic colon cancer with BRAF V600E...
+
+- **User:** jim.chen
+- **Question:** "What are treatment options for metastatic colon cancer with BRAF V600E mutation who have progressed on FOLFOX + dabrafenib and trametinib?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]], [[trifluridine-tipiracil]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 11773
+- **Search saved:** [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]]
+
+## [2026-06-07] query | IS there a role for immunothearpy for metastatic colon cancer with BRA...
+
+- **User:** jim.chen
+- **Question:** "IS there a role for immunothearpy for metastatic colon cancer with BRAF V600E mutation after progressing on Encorafenib plus Cetuximab + FOLFOX?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]], [[what-is-the-first-line-treatment-for-metastatic-msi-high-colorectal-cancer]], [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]], [[which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 10462
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the first-line treatment for BRAF V600E-mutated metastatic melanoma?"
+- **Note page:** [[what-is-the-first-line-treatment-for-braf-v600e-mutated-metastatic-melanoma]] (`wiki/notes/what-is-the-first-line-treatment-for-braf-v600e-mutated-metastatic-melanoma.md`) — created
+- **Raw source:** [[what-is-the-first-line-treatment-for-braf-v600e-mutated-metastatic-melanoma]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
