@@ -42,9 +42,9 @@ Currently, there are three CD19-directed CAR-T cell therapies FDA-approved for t
 3. [healthbooktimes.org](https://onco-hema.healthbooktimes.org/article/158216-bridge-the-gap-to-car-bridging-therapy-in-car-t-cell-therapy-for-relapsed-or-refractory-diffuse-large-b-cell-lymphoma)
 4. [cms.gov](https://www.cms.gov/medicare-coverage-database/view/ncacal-decision-memo.aspx?proposed=Y&NCAId=291)
 
+
 ## Related
 
-- [[diffuse-large-b-cell-lymphoma]]
 - [[r-chop]]
 - [[pola-r-chp]]
 - [[ciltacabtagene-autoleucel]]

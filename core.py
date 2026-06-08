@@ -16,6 +16,7 @@ import json
 import math
 import os
 import re
+from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass, field
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -390,7 +391,149 @@ CANDIDATE PAGES:
     parsed = _extract_json(resp.text or "")
     allow = set(candidates)
     picked = [p for p in parsed if isinstance(p, str) and p in allow] if isinstance(parsed, list) else []
+    # Hybrid: expand the semantic picks with graph neighbors (note -> hub ->
+    # related notes), so relationally-connected context the embedding missed
+    # comes along. Conservative cap to bound synthesis cost.
+    extra = graph_expand(picked, max_add=3)
+    picked = picked + [e for e in extra if e not in picked]
     return picked, _tokens(resp)
+
+
+# ---------------------------------------------------------------------------
+# Wikilink graph (in-core, always fresh) — used to expand retrieval with
+# relationally-connected pages. Self-contained; the kg_server MCP is the
+# interactive twin over the same wikilinks.
+# ---------------------------------------------------------------------------
+
+_LINK_GRAPH: dict | None = None
+_LINK_GRAPH_SIG = None
+
+
+def _graph_pages() -> list[Path]:
+    out = []
+    for p in WIKI.rglob("*.md"):
+        if any(part.startswith(".") for part in p.parts):
+            continue
+        if "avatar" in p.parts or p.stem in ("index", "log", "overview"):
+            continue
+        out.append(p)  # includes stubs — they're the connecting hubs
+    return out
+
+
+def build_link_graph() -> dict:
+    """Undirected adjacency from [[wikilinks]] across all knowledge pages.
+    Cached; rebuilt when the page set or any mtime changes."""
+    global _LINK_GRAPH, _LINK_GRAPH_SIG
+    pages = _graph_pages()
+    sig = (len(pages), max((p.stat().st_mtime for p in pages), default=0.0))
+    if _LINK_GRAPH is not None and _LINK_GRAPH_SIG == sig:
+        return _LINK_GRAPH
+    adj: dict[str, set] = defaultdict(set)
+    for p in pages:
+        try:
+            text = p.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        for link in re.findall(r"\[\[([^\]|#]+)", text):
+            t = link.strip()
+            if t and t != p.stem:
+                adj[p.stem].add(t)
+                adj[t].add(p.stem)
+    _LINK_GRAPH, _LINK_GRAPH_SIG = adj, sig
+    return adj
+
+
+def graph_expand(picked: list[str], max_add: int = 3, min_score: int = 2) -> list[str]:
+    """Synthesis-eligible pages STRONGLY connected to the picked set: a direct
+    link scores 2; each shared-hub 2-hop path scores 1. Only pages reaching
+    min_score are added (so loosely-related pages don't inflate cost), capped at
+    max_add. Adaptive: hub-rich topics expand, isolated ones barely do."""
+    if not picked:
+        return []
+    adj = build_link_graph()
+    pick = set(picked)
+    score: Counter = Counter()
+    for p in picked:
+        for n1 in adj.get(p, ()):
+            if _synthesis_page_path(n1) is not None and n1 not in pick:
+                score[n1] += 2
+            for n2 in adj.get(n1, ()):  # 2-hop, e.g. through a shared hub stub
+                if n2 not in pick and _synthesis_page_path(n2) is not None:
+                    score[n2] += 1
+    return [s for s, sc in score.most_common(max_add) if sc >= min_score]
+
+
+# ---------------------------------------------------------------------------
+# Per-note entity-linking (auto-link on ingest) — connect a note to EXISTING
+# entities/concepts/sources/hubs. Batch hub-creation lives in link_notes.py.
+# ---------------------------------------------------------------------------
+
+
+def _entity_link_keymap() -> dict[str, str]:
+    m: dict[str, str] = {}
+    for p in WIKI.rglob("*.md"):
+        if any(part.startswith(".") for part in p.parts) or "avatar" in p.parts:
+            continue
+        if p.parent.name not in ("entities", "concepts", "sources", "stubs"):
+            continue
+        stem = p.stem
+        keys = {stem.lower(), stem.replace("-", " ").lower()}
+        try:
+            fm, _ = parse_frontmatter(p.read_text(encoding="utf-8"))
+        except OSError:
+            fm = {}
+        title = (fm.get("title", "") or "").strip().strip('"').strip("'").lower()
+        if title:
+            keys.add(title)
+        for a in re.findall(r'"([^"]+)"', fm.get("aliases", "") or ""):
+            keys.add(a.lower())
+        for k in keys:
+            if len(k) >= 3:
+                m.setdefault(k, stem)
+    return m
+
+
+def extract_note_entities(title: str, body: str) -> list[str]:
+    prompt = (
+        "List the specific named entities this clinical note discusses that each merit "
+        "their own wiki page — drugs, clinical trials, biomarkers/genes, cancer types, "
+        "key concepts. Return STRICTLY a JSON array of short canonical names. Max 15.\n\n"
+        f"NOTE: {title}\n\n{body[:1800]}"
+    )
+    resp = get_client().models.generate_content(model=MODEL_FLASH, contents=prompt)
+    parsed = _extract_json(resp.text or "")
+    return [x for x in parsed if isinstance(x, str)] if isinstance(parsed, list) else []
+
+
+def _set_related_section(text: str, stems: list[str]) -> str:
+    text = re.sub(r"\n## Related\n.*?(?=\n## |\Z)", "\n", text, flags=re.DOTALL)
+    block = "## Related\n\n" + "\n".join(f"- [[{s}]]" for s in stems) + "\n"
+    if "## Provenance" in text:
+        return text.replace("## Provenance", block + "\n## Provenance", 1)
+    return text.rstrip() + "\n\n" + block
+
+
+def link_note_to_graph(note_path: Path) -> list[str]:
+    """Extract entities from a note and link it to EXISTING pages/hubs via a
+    `## Related` section. One Flash call. Returns the linked stems."""
+    try:
+        text = note_path.read_text(encoding="utf-8")
+    except OSError:
+        return []
+    fm, body = parse_frontmatter(text)
+    title = (fm.get("title", note_path.stem) or note_path.stem).strip().strip('"')
+    keymap = _entity_link_keymap()
+    stems: list[str] = []
+    for name in extract_note_entities(title, body):
+        for cand in (name.lower(), kebab(name), kebab(name).replace("-", " ")):
+            if cand in keymap:
+                s = keymap[cand]
+                if s != note_path.stem and s not in stems:
+                    stems.append(s)
+                break
+    if stems:
+        note_path.write_text(_set_related_section(text, stems), encoding="utf-8")
+    return stems
 
 
 # ---------------------------------------------------------------------------
@@ -1302,6 +1445,13 @@ def run_query_phase2(
             append_note_ingest_log(
                 note_path, Path(turn.saved_search_path), question, user, created=note is not None
             )
+            # Auto-link the new note into the graph (link to existing entities/
+            # hubs) so it isn't an orphan. Only for freshly-created notes.
+            if note is not None:
+                try:
+                    link_note_to_graph(note_path)
+                except Exception as exc:  # noqa: BLE001
+                    warnings.append(f"Note linking failed: {type(exc).__name__}: {exc}")
             turn.note_created = str(note_path)
         except Exception as exc:
             warnings.append(f"Auto-ingest failed: {type(exc).__name__}: {exc}")
