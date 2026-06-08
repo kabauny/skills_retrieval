@@ -2,9 +2,9 @@
 title: "With PMID's what are some updates with NSCLC that was recently published at ASCO?"
 auto_generated: true
 auto_date: 2026-06-07
-verified: false
-verified_by: ""
-verified_date: ""
+verified: true
+verified_by: jim.chen
+verified_date: 2026-06-07
 source_question: "With PMID's what are some updates with NSCLC that was recently published at ASCO?"
 raw_source: "[[with-pmids-what-are-some-updates-with-nsclc-that-was-recently-published-at-asco]]"
 tags: [auto-ingested]
@@ -12,7 +12,7 @@ tags: [auto-ingested]
 
 # With PMID's what are some updates with NSCLC that was recently published at ASCO?
 
-> 🌱 **Auto-ingested from an internet search on 2026-06-07.** This page is searchable and editable. It has **not** been verified — correct any fact by editing this page, then mark it verified.
+> ✅ **Verified by jim.chen on 2026-06-07.** Auto-ingested from an internet search; reviewed and confirmed.
 
 Based on recent presentations at the 2026 American Society of Clinical Oncology (ASCO) Annual Meeting and the broader clinical context, here are the major updates for non-small cell lung cancer (NSCLC) along with their associated PMIDs where recently published:
 
@@ -56,6 +56,15 @@ Based on recent presentations at the 2026 American Society of Clinical Oncology 
 8. [targetedonc.com](https://www.targetedonc.com/view/2026-asco-plenary-delivers-practice-changing-progress)
 9. [fiercepharma.com](https://www.fiercepharma.com/pharma/asco-lilly-ties-retevmo-dramatic-outcomes-early-stage-lung-cancer-rare-ret-biomarker)
 10. [nih.gov](https://pubmed.ncbi.nlm.nih.gov/41632926/)
+
+## Related
+
+- [[non-small-cell-lung-cancer]]
+- [[sunvozertinib]]
+- [[egfr]]
+- [[amivantamab]]
+- [[lazertinib]]
+- [[osimertinib]]
 
 ## Provenance
 

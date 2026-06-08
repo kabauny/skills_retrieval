@@ -2,9 +2,9 @@
 title: "What are treatment options for metastatic colon cancer with BRAF V600E mutation who have progressed on FOLFOX + dabrafen"
 auto_generated: true
 auto_date: 2026-06-07
-verified: false
-verified_by: ""
-verified_date: ""
+verified: true
+verified_by: jim.chen
+verified_date: 2026-06-07
 source_question: "What are treatment options for metastatic colon cancer with BRAF V600E mutation who have progressed on FOLFOX + dabrafen"
 raw_source: "[[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]]"
 tags: [auto-ingested]
@@ -12,7 +12,7 @@ tags: [auto-ingested]
 
 # What are treatment options for metastatic colon cancer with BRAF V600E mutation who have progressed on FOLFOX + dabrafen
 
-> 🌱 **Auto-ingested from an internet search on 2026-06-07.** This page is searchable and editable. It has **not** been verified — correct any fact by editing this page, then mark it verified.
+> ✅ **Verified by jim.chen on 2026-06-07.** Auto-ingested from an internet search; reviewed and confirmed.
 
 For a patient with BRAF V600E-mutated metastatic colorectal cancer (mCRC) who has progressed on FOLFOX (an oxaliplatin-based chemotherapy) combined with dabrafenib (a BRAF inhibitor) and trametinib (a MEK inhibitor), treatment options depend on their complete molecular profile (such as mismatch repair status) and sequential therapy guidelines. 
 
@@ -42,6 +42,17 @@ Sources:
 - [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]]
 - [[trifluridine-tipiracil]]
 - Web search was used.
+
+## Related
+
+- [[metastatic-colorectal-cancer]]
+- [[folfox]]
+- [[folfiri]]
+- [[bevacizumab]]
+- [[pembrolizumab]]
+- [[nivolumab]]
+- [[ipilimumab]]
+- [[encorafenib]]
 
 ## Provenance
 

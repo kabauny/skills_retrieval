@@ -33,6 +33,14 @@ Adjuvant osimertinib is now established as the standard of care targeted treatme
 * [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]]
 * Web search was used to source specific details, efficacy outcomes, and survival data from the phase 3 ADAURA trial.
 
+## Related
+
+- [[osimertinib]]
+- [[egfr]]
+- [[non-small-cell-lung-cancer]]
+- [[egfr-exon-19-deletion]]
+- [[disease-free-survival]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

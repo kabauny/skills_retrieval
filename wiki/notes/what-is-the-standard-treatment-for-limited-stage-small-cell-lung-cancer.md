@@ -48,6 +48,11 @@ Surgery is rarely used in the management of small cell lung cancer because the d
 8. [tri-kobe.org](https://www2.tri-kobe.org/nccn/guideline/lung/english/small.pdf)
 9. [cancer.gov](https://www.cancer.gov/types/lung/hp/small-cell-lung-treatment-pdq)
 
+## Related
+
+- [[cisplatin]]
+- [[carboplatin]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

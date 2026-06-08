@@ -38,6 +38,12 @@ Sources:
 *   Wiki pages cited: (none)
 *   Web search was used to retrieve current NCCN guidelines and recent trial updates for frontline CLL treatment.
 
+## Related
+
+- [[chronic-lymphocytic-leukemia]]
+- [[zanubrutinib]]
+- [[venetoclax]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

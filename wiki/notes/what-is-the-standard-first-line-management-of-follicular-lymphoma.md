@@ -39,6 +39,11 @@ When patients have advanced disease accompanied by symptoms, bulky disease, or a
 Sources:
 Web search was used to answer this query.
 
+## Related
+
+- [[rituximab]]
+- [[cd20]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

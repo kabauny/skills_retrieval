@@ -37,6 +37,14 @@ Web search was used. No wiki pages were cited.
 6. [facingourrisk.org](https://www.facingourrisk.org/XRAY/treating-unresectable-and-metastatic-CRC)
 7. [asco.org](https://www.asco.org/about-asco/press-center/news-releases/triple-punch-combo-therapy-slows-progression-some-metastatic-colorectal-cancers)
 
+## Related
+
+- [[colon-cancer]]
+- [[msi-high]]
+- [[dmmr]]
+- [[pembrolizumab]]
+- [[pd-1]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

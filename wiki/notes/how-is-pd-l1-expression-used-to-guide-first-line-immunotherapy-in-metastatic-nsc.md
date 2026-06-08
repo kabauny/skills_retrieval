@@ -45,6 +45,14 @@ When combination chemoimmunotherapy is used (for any PD-L1 expression level), th
 4. [ascopubs.org](https://ascopubs.org/doi/10.1200/JCO-24-02786)
 5. [cancerbiomed.org](https://www.cancerbiomed.org/content/21/2/117)
 
+## Related
+
+- [[non-small-cell-lung-cancer]]
+- [[egfr]]
+- [[immune-checkpoint-inhibitor]]
+- [[pembrolizumab]]
+- [[atezolizumab]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

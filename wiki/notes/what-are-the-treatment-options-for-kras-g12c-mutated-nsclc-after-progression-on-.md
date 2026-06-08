@@ -45,6 +45,12 @@ Web search was used to answer this query. (No internal wiki pages were cited as 
 6. [ascopost.com](https://ascopost.com/news/april-2026/elisrasib-demonstrates-high-dcr-in-kras-g12c-nsclc/)
 7. [aacr.org](https://www.aacr.org/about-the-aacr/newsroom/news-releases/next-generation-kras-g12c-inhibitor-elisrasib-elicited-promising-response-rates-in-patients-with-advanced-lung-cancer/)
 
+## Related
+
+- [[kras-g12c]]
+- [[kras]]
+- [[docetaxel]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

@@ -53,6 +53,15 @@ To balance the therapeutic benefit with the treatment burden, oncologists often 
 8. [swagcanceralliance.nhs.uk](https://www.swagcanceralliance.nhs.uk/wp-content/uploads/2022/01/Modified-FOLFIRINOX-v1.pdf)
 9. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC13021859/)
 
+## Related
+
+- [[pancreatic-cancer]]
+- [[colon-cancer]]
+- [[leucovorin]]
+- [[fluorouracil]]
+- [[irinotecan]]
+- [[oxaliplatin]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

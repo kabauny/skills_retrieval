@@ -2,9 +2,9 @@
 title: "Tell me about the publication associated with the RASolute 302 trial"
 auto_generated: true
 auto_date: 2026-06-07
-verified: false
-verified_by: ""
-verified_date: ""
+verified: true
+verified_by: jim.chen
+verified_date: 2026-06-07
 source_question: "Tell me about the publication associated with the RASolute 302 trial"
 raw_source: "[[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]]"
 tags: [auto-ingested]
@@ -12,7 +12,7 @@ tags: [auto-ingested]
 
 # Tell me about the publication associated with the RASolute 302 trial
 
-> 🌱 **Auto-ingested from an internet search on 2026-06-07.** This page is searchable and editable. It has **not** been verified — correct any fact by editing this page, then mark it verified.
+> ✅ **Verified by jim.chen on 2026-06-07.** Auto-ingested from an internet search; reviewed and confirmed.
 
 The **RASolute 302** trial (ClinicalTrials.gov identifier NCT06625320) is a global, Phase 3, multicenter, open-label randomized study [clinicaltrials.gov](https://clinicaltrials.gov/study/NCT06625320) [ascopubs.org](https://ascopubs.org/doi/10.1200/JCO.2025.43.16_suppl.TPS4230). 
 
@@ -41,6 +41,12 @@ Sources:
 6. [ajmc.com](https://www.ajmc.com/view/rasolute-302-brings-a-transformative-moment-on-pancreatic-cancer-a-60-improvement-in-overall-survival)
 7. [ascopubs.org](https://dailynews.ascopubs.org/do/rasolute-302-new-treatment-paradigm-metastatic-pdac-oncogenic-ras-targeting)
 8. [asco.org](https://www.asco.org/practice-patients/patient-resources/research-summaries/RASolute-302-pancreatic-cancer)
+
+## Related
+
+- [[rasolute-302]]
+- [[daraxonrasib]]
+- [[ras]]
 
 ## Provenance
 

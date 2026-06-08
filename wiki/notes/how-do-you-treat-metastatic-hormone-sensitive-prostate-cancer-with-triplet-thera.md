@@ -36,6 +36,10 @@ In addition to traditional chemotherapy-based triplets, novel targeted non-chemo
 - Wiki: None
 - Web search was used to answer this query.
 
+## Related
+
+- [[docetaxel]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

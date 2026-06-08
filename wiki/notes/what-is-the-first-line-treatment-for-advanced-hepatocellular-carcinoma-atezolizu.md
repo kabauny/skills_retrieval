@@ -45,6 +45,11 @@ The combination of **atezolizumab plus bevacizumab** is a standard-of-care, firs
 5. [nih.gov](https://pubmed.ncbi.nlm.nih.gov/37767068/)
 6. [ascopubs.org](https://ascopubs.org/doi/10.1200/OP.24.00189)
 
+## Related
+
+- [[atezolizumab]]
+- [[bevacizumab]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

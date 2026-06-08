@@ -44,6 +44,15 @@ Other HER2-targeted therapies like **tucatinib** [[tucatinib]] are strictly esta
 5. [arkansasbluecross.com](https://secure.arkansasbluecross.com/members/report.aspx?policyNumber=2014014)
 6. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC10772679/)
 
+## Related
+
+- [[her2]]
+- [[gastric-cancer]]
+- [[folfox]]
+- [[trastuzumab]]
+- [[her2-receptor]]
+- [[pembrolizumab]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

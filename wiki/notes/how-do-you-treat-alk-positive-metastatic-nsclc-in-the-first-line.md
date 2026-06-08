@@ -42,6 +42,10 @@ Guidelines also emphasize that comprehensive molecular testing for ALK fusions s
 4. [harborsidestudio.com](https://sponsored.harborsidestudio.com/first-line-treatment-of-alk-positive-metastatic-nsclc/?utm_source=TAP&utm_medium=Website&utm_campaign=TAP_HP)
 5. [cancernetwork.com](https://www.cancernetwork.com/view/exploring-first-line-alk-inhibitors-tki-sequencing-in-alk-positive-nsclc)
 
+## Related
+
+- [[non-small-cell-lung-cancer]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

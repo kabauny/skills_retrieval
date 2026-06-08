@@ -49,6 +49,10 @@ Key second-line and subsequent treatment options include:
 *   [[dreamm-7-trial]]
 *   Web search was used to determine the current NCCN standard of care guidelines for newly diagnosed, transplant-eligible multiple myeloma patients.
 
+## Related
+
+- [[multiple-myeloma]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

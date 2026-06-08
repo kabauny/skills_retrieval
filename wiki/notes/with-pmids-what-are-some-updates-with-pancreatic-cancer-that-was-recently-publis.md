@@ -2,9 +2,9 @@
 title: "With PMID's what are some updates with pancreatic cancer that was recently published at ASCO?"
 auto_generated: true
 auto_date: 2026-06-07
-verified: false
-verified_by: ""
-verified_date: ""
+verified: true
+verified_by: jim.chen
+verified_date: 2026-06-07
 source_question: "With PMID's what are some updates with pancreatic cancer that was recently published at ASCO?"
 raw_source: "[[with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis]]"
 tags: [auto-ingested]
@@ -12,7 +12,7 @@ tags: [auto-ingested]
 
 # With PMID's what are some updates with pancreatic cancer that was recently published at ASCO?
 
-> 🌱 **Auto-ingested from an internet search on 2026-06-07.** This page is searchable and editable. It has **not** been verified — correct any fact by editing this page, then mark it verified.
+> ✅ **Verified by jim.chen on 2026-06-07.** Auto-ingested from an internet search; reviewed and confirmed.
 
 Based on recent American Society of Clinical Oncology (ASCO) meetings and related publications, here are some of the key updates and clinical guidelines concerning pancreatic cancer, including their associated PubMed IDs (PMIDs):
 
@@ -31,6 +31,17 @@ Based on recent American Society of Clinical Oncology (ASCO) meetings and relate
 ***
 **Sources:**
 *   Web search was used to answer this query (no relevant internal wiki pages were found).
+
+## Related
+
+- [[kras]]
+- [[mek-inhibitor]]
+- [[pancreatic-ductal-adenocarcinoma]]
+- [[rasolute-302]]
+- [[daraxonrasib]]
+- [[gemcitabine]]
+- [[nab-paclitaxel]]
+- [[pancreatic-cancer]]
 
 ## Provenance
 

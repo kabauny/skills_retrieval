@@ -58,6 +58,10 @@ Sources:
 10. [ascopubs.org](https://dailynews.ascopubs.org/do/asco-treatment-guidance-mcrpc-updated-include-177-lutetium-psma-617)
 11. [urotoday.com](https://www.urotoday.com/library-resources/mcrpc-treatment.html)
 
+## Related
+
+- [[prednisone]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

@@ -34,6 +34,18 @@ Sources:
 - [[which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera]]
 - Web search was used.
 
+## Related
+
+- [[metastatic-colorectal-cancer]]
+- [[braf-v600e]]
+- [[microsatellite-instability]]
+- [[msi-high]]
+- [[dmmr]]
+- [[pembrolizumab]]
+- [[nivolumab]]
+- [[ipilimumab]]
+- [[encorafenib]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

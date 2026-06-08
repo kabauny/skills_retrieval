@@ -411,3 +411,199 @@ A curated, categorized log of queries posed by `jim.chen`. Updated on every non-
 - **Tokens (Gemini):** 3048
 - **MC probe generated:** no
 - **Search saved:** [[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]]
+
+### [2026-06-07] tell-me-about-the-publication-associated-with-the-rasolute-3
+
+- **Question:** "Tell me about the publication associated with the RASolute 302 trial. What is the pubmed ID ?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 5168
+- **MC probe generated:** no
+
+### [2026-06-08] please-provide-any-fda-indication-for-cancer-treatment-in-ma
+
+- **Question:** "Please provide any FDA indication for cancer treatment in May and June 2026"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[premenopausal-intermediate-oncotype-2026]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 10185
+- **MC probe generated:** no
+- **Search saved:** [[please-provide-any-fda-indication-for-cancer-treatment-in-may-and-june-2026]]
+
+### [2026-06-08] what-is-car-t-summarize-its-design-and-key-results
+
+- **Question:** "What is CAR-T? Summarize its design and key results."
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[ciltacabtagene-autoleucel]], [[how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy]], [[b-cell-maturation-antigen]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 7258
+- **MC probe generated:** no
+
+### [2026-06-08] for-sonrotoclax-s-accelerated-approval-in-relapsed-refractor
+
+- **Question:** "For Sonrotoclax's accelerated approval in relapsed/refractory MCL, what are the details regarding the planned confirmatory trials, and are there specific considerations for managing tumor lysis syndrome given its BCL-2 inhibitor mechanism?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 4743
+- **MC probe generated:** no
+- **Search saved:** [[for-sonrotoclaxs-accelerated-approval-in-relapsedrefractory-mcl-what-are-the-det]]
+
+### [2026-06-08] what-are-the-common-or-dose-limiting-toxicities-observed-wit
+
+- **Question:** "What are the common or dose-limiting toxicities observed with daraxonrasib and the MEK inhibitor-based combinatorial therapies, and what are the recommended management strategies?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 10681
+- **MC probe generated:** no
+- **Search saved:** [[what-are-the-common-or-dose-limiting-toxicities-observed-with-daraxonrasib-and-t]]
+
+### [2026-06-08] what-are-the-specific-toxicity-profiles-and-recommended-mana
+
+- **Question:** "What are the specific toxicity profiles and recommended management strategies for Vepdegestrant, particularly considering its novel PROTAC mechanism of action?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 3802
+- **MC probe generated:** no
+- **Search saved:** [[what-are-the-specific-toxicity-profiles-and-recommended-management-strategies-fo]]
+
+### [2026-06-08] what-is-the-detailed-safety-and-tolerability-profile-of-sunv
+
+- **Question:** "What is the detailed safety and tolerability profile of sunvozertinib, and how does it compare to platinum-based chemotherapy or other EGFR exon 20 insertion inhibitors?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 5915
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-detailed-safety-and-tolerability-profile-of-sunvozertinib-and-how-do]]
+
+### [2026-06-08] what-is-the-recommended-sequencing-of-vepdegestrant-relative
+
+- **Question:** "What is the recommended sequencing of Vepdegestrant relative to other non-endocrine targeted therapies (e.g., PI3K inhibitors, mTOR inhibitors) for ER+, HER2-, ESR1-mutated breast cancer patients who have progressed on prior endocrine therapy?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-are-the-specific-toxicity-profiles-and-recommended-management-strategies-fo]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 12133
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-recommended-sequencing-of-vepdegestrant-relative-to-other-non-endocr]]
+
+### [2026-06-08] were-any-mechanisms-of-resistance-to-daraxonrasib-or-the-mek
+
+- **Question:** "Were any mechanisms of resistance to daraxonrasib or the MEK inhibitor-based therapies identified in the trials, and what are the implications for long-term efficacy or subsequent treatment choices?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]], [[what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 15129
+- **MC probe generated:** no
+- **Search saved:** [[were-any-mechanisms-of-resistance-to-daraxonrasib-or-the-mek-inhibitor-based-the]]
+
+### [2026-06-08] what-were-the-specific-median-overall-survival-values-hazard
+
+- **Question:** "What were the specific median overall survival values, hazard ratios, progression-free survival, and overall response rates observed in the daraxonrasib and standard-of-care arms?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 10651
+- **MC probe generated:** no
+- **Search saved:** [[what-were-the-specific-median-overall-survival-values-hazard-ratios-progression-]]
+
+### [2026-06-08] what-factors-e-g-prior-toxicities-comorbidities-specific-dis
+
+- **Question:** "What factors (e.g., prior toxicities, comorbidities, specific disease characteristics) should guide the choice between bevacizumab, ramucirumab, or aflibercept when combined with FOLFIRI?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 7028
+- **MC probe generated:** no
+- **Search saved:** [[what-factors-eg-prior-toxicities-comorbidities-specific-disease-characteristics-]]
+
+### [2026-06-08] what-is-car-t-summarize-its-design-and-key-results
+
+- **Question:** "What is CAR-T? Summarize its design and key results."
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[ciltacabtagene-autoleucel]], [[how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy]], [[b-cell-maturation-antigen]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 12420
+- **MC probe generated:** no
+- **Search saved:** [[what-is-car-t-summarize-its-design-and-key-results]]
+
+### [2026-06-08] are-there-specific-patient-selection-criteria-or-biomarkers-
+
+- **Question:** "Are there specific patient selection criteria or biomarkers beyond general RAS mutation that predict response to daraxonrasib, and what are the known resistance mechanisms or recommended subsequent therapies?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[were-any-mechanisms-of-resistance-to-daraxonrasib-or-the-mek-inhibitor-based-the]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 12702
+- **MC probe generated:** no
+- **Search saved:** [[are-there-specific-patient-selection-criteria-or-biomarkers-beyond-general-ras-m]]
+
+### [2026-06-08] what-is-the-biomarker-testing-to-guide-therapy-for-multiple-
+
+- **Question:** "What is the biomarker testing to guide therapy for multiple myeloma?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[mrd-guided-therapy-escalation]], [[b-cell-maturation-antigen]], [[circulating-tumor-dna]], [[ciltacabtagene-autoleucel]], [[belantamab-mafodotin]], [[majestec-3-trial]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 13867
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-biomarker-testing-to-guide-therapy-for-multiple-myeloma]]
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-adva
+
+- **Question:** "What is the second-line treatment after progression for advanced gastric cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 3
+- **Answer origin:** internet
+- **Tokens (Gemini):** 5336
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-second-line-treatment-after-progression-for-advanced-gastric-cancer]]
+
+### [2026-06-08] what-is-the-managing-acquired-resistance-for-triple-negative
+
+- **Question:** "What is the managing acquired resistance for triple-negative breast cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[triple-negative-breast-cancer]], [[were-any-mechanisms-of-resistance-to-daraxonrasib-or-the-mek-inhibitor-based-the]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 16627
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-managing-acquired-resistance-for-triple-negative-breast-cancer]]
+
+### [2026-06-08] what-is-the-managing-acquired-resistance-for-advanced-gastri
+
+- **Question:** "What is the managing acquired resistance for advanced gastric cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-second-line-treatment-after-progression-for-advanced-gastric-cancer]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 12175
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-managing-acquired-resistance-for-advanced-gastric-cancer]]
+
+### [2026-06-08] what-is-the-second-line-treatment-after-progression-for-meta
+
+- **Question:** "What is the second-line treatment after progression for metastatic pancreatic cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 10499
+- **MC probe generated:** no
+- **Search saved:** [[what-is-the-second-line-treatment-after-progression-for-metastatic-pancreatic-ca]]

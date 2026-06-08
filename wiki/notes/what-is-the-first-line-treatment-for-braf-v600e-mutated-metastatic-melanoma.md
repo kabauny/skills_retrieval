@@ -2,9 +2,9 @@
 title: "What is the first-line treatment for BRAF V600E-mutated metastatic melanoma?"
 auto_generated: true
 auto_date: 2026-06-07
-verified: false
-verified_by: ""
-verified_date: ""
+verified: true
+verified_by: jim.chen
+verified_date: 2026-06-07
 source_question: "What is the first-line treatment for BRAF V600E-mutated metastatic melanoma?"
 raw_source: "[[what-is-the-first-line-treatment-for-braf-v600e-mutated-metastatic-melanoma]]"
 tags: [auto-ingested]
@@ -12,7 +12,7 @@ tags: [auto-ingested]
 
 # What is the first-line treatment for BRAF V600E-mutated metastatic melanoma?
 
-> 🌱 **Auto-ingested from an internet search on 2026-06-07.** This page is searchable and editable. It has **not** been verified — correct any fact by editing this page, then mark it verified.
+> ✅ **Verified by jim.chen on 2026-06-07.** Auto-ingested from an internet search; reviewed and confirmed.
 
 According to current oncology guidelines (such as those from ASCO and NCCN), there are two primary classes of systemic treatments for patients with BRAF V600E-mutated unresectable or metastatic melanoma [ascopubs.org](https://ascopubs.org/doi/10.1200/JCO.23.01136) [ascopubs.org](https://ascopubs.org/doi/10.1200/EDBK_174934):
 
@@ -49,6 +49,13 @@ Approved targeted combinations include:
 7. [ascopubs.org](https://ascopubs.org/doi/10.1200/JCO.23.01136)
 8. [lifewisewa.com](https://www.lifewisewa.com/medicalpolicies-group/5.01.589.pdf)
 9. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC10177463/)
+
+## Related
+
+- [[braf-v600e]]
+- [[nivolumab]]
+- [[ipilimumab]]
+- [[pd-1]]
 
 ## Provenance
 

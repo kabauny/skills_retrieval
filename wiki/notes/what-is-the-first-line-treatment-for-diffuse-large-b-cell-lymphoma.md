@@ -41,6 +41,17 @@ Sources:
 6. [strive-nhl.com](https://strive-nhl.com/clinician-portal/guideline-recommendations/)
 7. [nccn.org](https://www.nccn.org/patients/guidelines/content/PDF/nhl-diffuse-patient.pdf)
 
+## Related
+
+- [[diffuse-large-b-cell-lymphoma]]
+- [[cd20]]
+- [[r-chop]]
+- [[rituximab]]
+- [[cyclophosphamide]]
+- [[doxorubicin]]
+- [[prednisone]]
+- [[pola-r-chp]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07
