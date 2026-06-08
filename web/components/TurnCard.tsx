@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { memo, useState } from "react";
 import { api, Turn } from "@/lib/api";
 import Markdown from "./Markdown";
 import ReviewCard from "./ReviewCard";
@@ -35,7 +35,7 @@ function Collapsible({
   );
 }
 
-export default function TurnCard({
+function TurnCard({
   turn,
   user,
   onCaptured,
@@ -226,3 +226,8 @@ export default function TurnCard({
     </div>
   );
 }
+
+// Memoized: with stable callbacks from the parent, a card only re-renders when
+// its own `turn` changes — so adding a turn or finalizing one no longer re-runs
+// Markdown for every prior card.
+export default memo(TurnCard);

@@ -92,7 +92,8 @@ export interface ReviewItem {
 
 export interface GrowItem {
   q: string;
-  strategy: "referential" | "depth" | "coverage";
+  strategy: "referential" | "depth" | "coverage" | "contract";
+  kind: "judgment" | "breadth" | "structure";
   reason: string;
   coverage: number;
   nearest: string;
@@ -114,6 +115,22 @@ export interface PageDetail {
   body: string;
   frontmatter: Record<string, string>;
   mtime: string;
+}
+
+export interface PrincipleStatus {
+  stem: string;
+  title: string;
+  principle_kind: string;
+  forked: boolean;
+}
+
+export interface PrincipleDetail {
+  stem: string;
+  title: string;
+  principle_kind: string;
+  content: string;
+  forked: boolean;
+  id: string;
 }
 
 async function req<T>(path: string, opts?: RequestInit): Promise<T> {
@@ -233,5 +250,19 @@ export const api = {
     req<{ ok: boolean }>("/api/review/delete-search", {
       method: "POST",
       body: JSON.stringify({ id, user, reason }),
+    }),
+
+  principles: (user: string) =>
+    req<{ items: PrincipleStatus[] }>(`/api/principles?user=${encodeURIComponent(user)}`),
+
+  principle: (stem: string, user: string) =>
+    req<PrincipleDetail>(
+      `/api/principle?stem=${encodeURIComponent(stem)}&user=${encodeURIComponent(user)}`,
+    ),
+
+  savePrinciple: (stem: string, user: string, content: string) =>
+    req<{ ok: boolean; id: string }>("/api/principle", {
+      method: "POST",
+      body: JSON.stringify({ stem, user, content }),
     }),
 };

@@ -7,12 +7,14 @@ const STRATEGY_LABEL: Record<GrowItem["strategy"], string> = {
   referential: "🔗 Referential (mentioned but undocumented)",
   depth: "🔍 Depth (follow-ups from existing notes)",
   coverage: "🗺️ Coverage (cancer × line/biomarker gaps)",
+  contract: "🧩 Contract (missing required graph links)",
 };
 
 // State (items/selected/run/log) is lifted to App so it survives tab switches.
 export default function GrowTab({
   user,
   onAfterChange,
+  chatBusy,
   items,
   setItems,
   selected,
@@ -24,6 +26,9 @@ export default function GrowTab({
 }: {
   user: string;
   onAfterChange: () => void;
+  // True while a Chat query is in flight — block starting a Grow run so the two
+  // don't race on the shared session file (no backend lock).
+  chatBusy: boolean;
   items: GrowItem[] | null;
   setItems: Dispatch<SetStateAction<GrowItem[] | null>>;
   selected: Set<string>;
@@ -36,6 +41,9 @@ export default function GrowTab({
   const [proposing, setProposing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<"gap" | "connectivity">("gap");
+  const [kindFilter, setKindFilter] = useState<"all" | "judgment" | "breadth" | "structure">(
+    "all",
+  );
 
   const propose = async () => {
     setProposing(true);
@@ -66,7 +74,7 @@ export default function GrowTab({
     });
 
   const runSelected = async () => {
-    if (!items) return;
+    if (!items || chatBusy) return;
     const queue = items.filter((i) => selected.has(i.q));
     if (!queue.length) return;
     const state: GrowRunState = { done: 0, total: queue.length, created: 0, covered: 0, failed: 0 };
@@ -103,7 +111,9 @@ export default function GrowTab({
   };
 
   const grouped = (s: GrowItem["strategy"]) => {
-    const list = (items || []).filter((i) => i.strategy === s);
+    const list = (items || []).filter(
+      (i) => i.strategy === s && (kindFilter === "all" || i.kind === kindFilter),
+    );
     return [...list].sort((a, b) =>
       sortBy === "connectivity"
         ? (b.connectivity ?? 0) - (a.connectivity ?? 0) // most graph-impactful first
@@ -123,7 +133,7 @@ export default function GrowTab({
       <div className="flex items-center gap-3 mb-5">
         <button
           onClick={propose}
-          disabled={proposing || (!!run && run.done < run.total)}
+          disabled={proposing || chatBusy || (!!run && run.done < run.total)}
           className="btn-primary"
         >
           {proposing ? "Finding gaps… (~30s)" : items ? "Re-scan for gaps" : "Find gaps"}
@@ -135,6 +145,23 @@ export default function GrowTab({
         )}
         {items && items.length > 0 && (
           <span className="ml-auto text-xs text-slate-500 flex items-center gap-1">
+            show:
+            {(["all", "judgment", "breadth", "structure"] as const).map((k) => (
+              <button
+                key={k}
+                onClick={() => setKindFilter(k)}
+                className={kindFilter === k ? "btn-primary" : "btn-ghost"}
+              >
+                {k === "judgment"
+                  ? "🧠 judgment"
+                  : k === "breadth"
+                    ? "📚 breadth"
+                    : k === "structure"
+                      ? "🧩 structure"
+                      : "all"}
+              </button>
+            ))}
+            <span className="mx-1 text-slate-300">|</span>
             sort:
             <button
               onClick={() => setSortBy("gap")}
@@ -151,6 +178,13 @@ export default function GrowTab({
           </span>
         )}
       </div>
+
+      {chatBusy && (
+        <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-3 py-1.5 mb-3">
+          💬 A chat query is in progress — Grow is paused until it finishes (they
+          share your session).
+        </div>
+      )}
 
       {error && (
         <div className="text-sm text-red-600 bg-red-50 rounded-md px-3 py-2 mb-3">{error}</div>
@@ -182,7 +216,7 @@ export default function GrowTab({
 
       {items &&
         items.length > 0 &&
-        (["referential", "depth", "coverage"] as const).map((strat) => {
+        (["referential", "depth", "coverage", "contract"] as const).map((strat) => {
           const list = grouped(strat);
           if (!list.length) return null;
           return (
@@ -205,8 +239,24 @@ export default function GrowTab({
                     />
                     <span>
                       <span className="font-medium">{it.q}</span>
+                      <span
+                        className={`ml-2 align-middle text-[10px] px-1.5 py-0.5 rounded-full ${
+                          it.kind === "judgment"
+                            ? "bg-emerald-100 text-emerald-700"
+                            : it.kind === "structure"
+                              ? "bg-violet-100 text-violet-700"
+                              : "bg-slate-100 text-slate-500"
+                        }`}
+                      >
+                        {it.kind === "judgment"
+                          ? "🧠 judgment"
+                          : it.kind === "structure"
+                            ? "🧩 structure"
+                            : "📚 breadth"}
+                      </span>
                       <span className="block text-[11px] text-slate-400 mt-0.5">
-                        gap {it.coverage.toFixed(2)} · 🔗 connectivity {it.connectivity ?? 0} · {it.reason}
+                        {it.kind !== "structure" && `gap ${it.coverage.toFixed(2)} · `}
+                        🔗 connectivity {it.connectivity ?? 0} · {it.reason}
                       </span>
                     </span>
                   </label>
@@ -220,7 +270,7 @@ export default function GrowTab({
         <div className="sticky bottom-0 bg-paper py-3 border-t border-slate-200">
           <button
             onClick={runSelected}
-            disabled={!selected.size || (!!run && run.done < run.total)}
+            disabled={!selected.size || chatBusy || (!!run && run.done < run.total)}
             className="btn-primary"
           >
             {run && run.done < run.total

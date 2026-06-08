@@ -22,6 +22,9 @@ wiki/                   # LLM-generated pages — you own this
   sources/              # One summary page per ingested source
   entities/             # Entity pages — drugs, cancers, biomarkers, trials, genes
   concepts/             # Concept pages — mechanisms, treatment paradigms, staging
+  principles/           # Principle nodes — reasoning lenses & disease frameworks
+                        #   ("how to think about X"). The stems the graph grows from;
+                        #   pinned into synthesis when a linked entity is retrieved.
   stubs/                # Quarantined auto-generated stubs (UI auto-ingest). Excluded
                         #   from query synthesis until promoted into entities/ or concepts/
   avatar/               # Per-user portrait — questions, decisions, preferences
@@ -180,6 +183,59 @@ Each `###` is a question; the bullets are checkbox options. The Streamlit Cases 
 A `## Questions` section is what makes a concept page a **captureable case** in the Cases tab. A `## Decision skeleton` section, if present, is shown as optional read-only context above the questions — it does not by itself make a page captureable.
 
 This is purely tooling support — readers of the concept page (in Obsidian or web) see a useful list of decision-axes the agent has surfaced as worth probing.
+
+### Principle pages (`wiki/principles/`)
+
+**Reasoning lenses and disease frameworks** — the meta-knowledge layer that tells
+the LLM *how to think*, not what is true. A principle page does not document a
+fact about a specific drug or tumor; it encodes the reasoning rubric to apply
+whenever a linked entity is in play. They are the **stems the knowledge graph
+grows from**: real entities link *into* them, and they are pinned into synthesis
+context when a linked entity is retrieved.
+
+```yaml
+---
+title: "Efficacy — how to evaluate it"
+page_type: principle
+principle_kind: lens | disease-framework
+applies_to: [drug, trial, cancer]   # entity types that should link here
+tags: [principle, lens]
+---
+```
+
+- **`lens`** — cross-cutting, disease-agnostic reasoning frame (efficacy,
+  adverse-events, biomarker-testing, tolerability-and-comorbidity,
+  staging-and-resectability).
+- **`disease-framework`** — per-disease "how to approach this cancer" scaffold
+  (e.g. nsclc-approach). Points to the lenses in the right order of operations.
+
+Body structure:
+1. **How to think about X** — the reasoning rubric (numbered steps).
+2. **When an entity links here, ask** — the checklist the LLM should run.
+3. **Related** — wikilinks to other principle nodes.
+
+**Provenance carve-out.** Like avatar pages, principle pages encode judgment and
+are **exempt** from the "every claim wikilinks to a source" rule — they are
+reasoning frameworks, not sourceable assertions. They participate in synthesis
+(not excluded like stubs), and are *pinned* on retrieval rather than scored, so
+the most-linked lenses are never suppressed by anti-hub weighting.
+
+#### Link contract (the ontology)
+
+Principle nodes only work if real entities reliably link into them. The contract
+defines the **required edges** per entity type; the Grow "contract gaps" strategy
+surfaces violations for propose-and-approve fixing (it never auto-writes links).
+The canonical machine-readable contract lives in `core.py` (`LINK_CONTRACT`):
+
+| Entity type | Required principle links | Required entity links |
+|-------------|--------------------------|------------------------|
+| `drug`      | `[[efficacy]]`, `[[adverse-events]]` | ≥1 `cancer` (disease/histology) |
+| `trial`     | `[[efficacy]]`           | ≥1 `drug`, ≥1 `cancer` |
+| `cancer`    | `[[staging-and-resectability]]`, `[[biomarker-testing]]` | — |
+
+A drug, in other words, should *always* connect to at least one cancer type plus
+the efficacy and adverse-events lenses — so that asking about the drug pulls "how
+to weigh its benefit and harm" into context automatically.
 
 ### Avatar pages (`wiki/avatar/{user}/`)
 

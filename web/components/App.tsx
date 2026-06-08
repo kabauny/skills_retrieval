@@ -7,8 +7,9 @@ import ChatTab from "./ChatTab";
 import CasesTab from "./CasesTab";
 import ReviewTab from "./ReviewTab";
 import GrowTab from "./GrowTab";
+import PrinciplesTab from "./PrinciplesTab";
 
-type Tab = "chat" | "cases" | "review" | "grow";
+type Tab = "chat" | "cases" | "review" | "grow" | "principles";
 
 const DEFAULT_USER = "jim.chen";
 
@@ -26,11 +27,21 @@ export default function App() {
   const [growRun, setGrowRun] = useState<GrowRunState | null>(null);
   const [growLog, setGrowLog] = useState<string[]>([]);
 
+  // Shared activity flags so Chat and Grow can guard against running at the same
+  // time — they share the same session file (same user) and have no backend lock,
+  // so concurrent queries would race on turn-index assignment / session rewrite.
+  const [chatBusy, setChatBusy] = useState(false);
+  const growActive = !!growRun && growRun.done < growRun.total;
+
   const refreshState = useCallback(async (u: string) => {
     const s = await api.state(u);
     setState(s);
     setHistory(s.history);
   }, []);
+
+  // Stable across renders (only changes when `user` does) so memoized children
+  // like TurnCard don't re-render on every parent render.
+  const onAfterChange = useCallback(() => refreshState(user), [user, refreshState]);
 
   useEffect(() => {
     api.health().then((h) => setApiKeyMissing(!h.api_key_present)).catch(() => {});
@@ -64,6 +75,7 @@ export default function App() {
       label: `📋 Review${state ? ` (${state.stats.notes} notes)` : ""}`,
     },
     { id: "grow", label: "🌱 Grow" },
+    { id: "principles", label: "🧭 Lenses" },
   ];
 
   return (
@@ -108,19 +120,23 @@ export default function App() {
               autoIngest={autoIngest}
               history={history}
               setHistory={setHistory}
-              onAfterChange={() => refreshState(user)}
+              onAfterChange={onAfterChange}
+              busy={chatBusy}
+              setBusy={setChatBusy}
+              blocked={growActive}
             />
           )}
           {tab === "cases" && (
-            <CasesTab user={user} onAfterChange={() => refreshState(user)} />
+            <CasesTab user={user} onAfterChange={onAfterChange} />
           )}
           {tab === "review" && (
-            <ReviewTab user={user} onAfterChange={() => refreshState(user)} />
+            <ReviewTab user={user} onAfterChange={onAfterChange} />
           )}
           {tab === "grow" && (
             <GrowTab
               user={user}
-              onAfterChange={() => refreshState(user)}
+              onAfterChange={onAfterChange}
+              chatBusy={chatBusy}
               items={growItems}
               setItems={setGrowItems}
               selected={growSelected}
@@ -131,6 +147,7 @@ export default function App() {
               setLog={setGrowLog}
             />
           )}
+          {tab === "principles" && <PrinciplesTab user={user} />}
         </div>
       </main>
     </div>

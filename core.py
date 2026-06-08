@@ -55,11 +55,26 @@ STUBS_DIR = WIKI / "stubs"
 # (not quarantined). They carry `auto_generated: true` as a badge — not an
 # exclusion signal — plus an ingest timestamp and a verified-by field.
 NOTES_DIR = WIKI / "notes"
+# Principle nodes — reasoning lenses & disease frameworks ("how to think about
+# X"). They are synthesis-eligible and are PINNED into context when a retrieved
+# entity links to them (see _pin_linked_principles), rather than scored by the
+# graph — anti-hub weighting would otherwise suppress the most-linked lenses.
+PRINCIPLES_DIR = WIKI / "principles"
 
 # Directories under wiki/ that must never feed end-user query synthesis.
 # Note: wiki/notes/ is deliberately NOT here — auto-ingested notes are
 # searchable so a repeat question is answered locally instead of re-searching.
 _SYNTHESIS_EXCLUDED_DIRS = {"avatar", "stubs"}
+
+# Link contract (the ontology): required edges per entity_type. Principle links
+# guarantee the reasoning lenses are reachable from real entities; entity links
+# keep drugs/trials anchored to a disease. The Grow "contract gaps" strategy
+# surfaces violations for propose-and-approve — nothing here auto-writes links.
+LINK_CONTRACT: dict[str, dict] = {
+    "drug":  {"principles": ["efficacy", "adverse-events"], "entity_types": ["cancer"]},
+    "trial": {"principles": ["efficacy"], "entity_types": ["drug", "cancer"]},
+    "cancer": {"principles": ["staging-and-resectability", "biomarker-testing"], "entity_types": []},
+}
 
 # Two-model split: Pro for heavy reasoning, Flash for light structured tasks.
 MODEL_PRO = "gemini-3.1-pro-preview"
@@ -228,10 +243,13 @@ def _all_known_stems() -> list[str]:
     return sorted(stems)
 
 
-def _load_pages(filenames: list[str]) -> dict[str, str]:
+def _load_pages(filenames: list[str], user: str = DEFAULT_USER) -> dict[str, str]:
     contents: dict[str, str] = {}
+    princ = _principle_stems()
     for f in filenames:
-        path = _synthesis_page_path(f)
+        # Principle stems resolve per-provider (their fork wins over the shared
+        # skeleton); everything else resolves to the one shared page.
+        path = resolve_principle_path(f, user) if f in princ else _synthesis_page_path(f)
         if path is None:
             continue
         try:
@@ -403,7 +421,99 @@ CANDIDATE PAGES:
     if graph:
         extra = graph_expand(picked, max_add=graph_max_add)
         picked = picked + [e for e in extra if e not in picked]
+    # Pin the reasoning lenses any picked page links to. Pinned (not scored): a
+    # lens like [[efficacy]] is linked from many drugs, so graph_expand's
+    # inverse-hub weighting would suppress exactly the lenses we most want.
+    pinned = _pin_linked_principles(picked)
+    picked = picked + [p for p in pinned if p not in picked]
     return picked, _tokens(resp)
+
+
+_PRINCIPLE_STEMS: set[str] | None = None
+_PRINCIPLE_SIG = None
+
+
+def _principle_stems() -> set[str]:
+    """Stems of all principle pages (wiki/principles/*.md), cached by dir state."""
+    global _PRINCIPLE_STEMS, _PRINCIPLE_SIG
+    if not PRINCIPLES_DIR.exists():
+        return set()
+    pages = list(PRINCIPLES_DIR.glob("*.md"))
+    sig = (len(pages), max((p.stat().st_mtime for p in pages), default=0.0))
+    if _PRINCIPLE_STEMS is not None and _PRINCIPLE_SIG == sig:
+        return _PRINCIPLE_STEMS
+    _PRINCIPLE_STEMS, _PRINCIPLE_SIG = {p.stem for p in pages}, sig
+    return _PRINCIPLE_STEMS
+
+
+def user_principles_dir(user: str) -> Path:
+    """Per-provider lens overrides: wiki/avatar/{user}/principles/. A fork here
+    wins over the shared skeleton in wiki/principles/ at both pin- and grow-time."""
+    return WIKI / "avatar" / user / "principles"
+
+
+def resolve_principle_path(stem: str, user: str) -> Path | None:
+    """Resolve a principle stem to the page to actually USE for this provider:
+    their personal fork if it exists, else the shared skeleton, else None. This is
+    where a provider's standing reasoning style ('how *I* weigh toxicity') takes
+    precedence — the wikilink/edge is shared, the resolved content is personal."""
+    override = user_principles_dir(user) / f"{stem}.md"
+    if override.exists():
+        return override
+    shared = PRINCIPLES_DIR / f"{stem}.md"
+    return shared if shared.exists() else None
+
+
+def fork_principle(stem: str, user: str) -> Path:
+    """Copy the shared lens into the provider's avatar so they can flavor it.
+    Idempotent: returns the existing fork if already present. Stamps `user:` and a
+    `forked_from:` marker; the shared skeleton is never modified."""
+    dest = user_principles_dir(user) / f"{stem}.md"
+    if dest.exists():
+        return dest
+    src = PRINCIPLES_DIR / f"{stem}.md"
+    if not src.exists():
+        raise FileNotFoundError(f"No shared principle '{stem}' to fork.")
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    text = src.read_text(encoding="utf-8")
+    # Insert ownership markers into the frontmatter at string level — preserves the
+    # original YAML (e.g. `applies_to: [drug, trial]`) that a flatten/redump loses.
+    marker = f"user: {user}\nforked_from: principles/{stem}\n"
+    if text.startswith("---\n") and (end := text.find("\n---\n", 4)) != -1:
+        text = text[: end + 1] + marker + text[end + 1 :]
+    else:
+        text = f"---\n{marker}---\n\n{text}"
+    dest.write_text(text, encoding="utf-8")
+    return dest
+
+
+def list_principle_status(user: str) -> list[dict]:
+    """Every shared lens + whether this provider has forked (personalized) it."""
+    out: list[dict] = []
+    for p in sorted(PRINCIPLES_DIR.glob("*.md")):
+        fm, _ = parse_frontmatter(p.read_text(encoding="utf-8"))
+        out.append({
+            "stem": p.stem,
+            "title": (fm.get("title", p.stem) or p.stem).strip().strip('"'),
+            "principle_kind": (fm.get("principle_kind", "") or "").strip().strip('"'),
+            "forked": (user_principles_dir(user) / f"{p.stem}.md").exists(),
+        })
+    return out
+
+
+def _pin_linked_principles(picked: list[str]) -> list[str]:
+    """Principle nodes directly linked (1 hop) from any picked page — always
+    included so the reasoning lens travels with the entity into synthesis."""
+    princ = _principle_stems()
+    if not picked or not princ:
+        return []
+    adj = build_link_graph()
+    out: list[str] = []
+    for p in picked:
+        for nb in adj.get(p, ()):
+            if nb in princ and nb not in out and _synthesis_page_path(nb) is not None:
+                out.append(nb)
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -461,14 +571,23 @@ def graph_expand(picked: list[str], max_add: int = 3, min_score: float = 0.5) ->
     if not picked:
         return []
     adj = build_link_graph()
+    # Principle-blind: lenses (efficacy, adverse-events, …) are linked from nearly
+    # every entity, so traversing THROUGH them — or surfacing them as neighbors —
+    # would bridge unrelated topics (RCC↔myeloma "share efficacy"). They reach the
+    # answer only via deterministic pinning (_pin_linked_principles), never via
+    # graph expansion. So we exclude them as both hubs and candidates.
+    princ = _principle_stems()
     pick = set(picked)
     deg = {n: len(neigh) for n, neigh in adj.items()}
     score: dict[str, float] = defaultdict(float)
     for p in picked:
         for hub in adj.get(p, ()):  # each hub the picked page links to
+            if hub in princ:  # never traverse through a lens hub
+                continue
             w = 1.0 / deg.get(hub, 1)  # inverse hub degree = specificity
             for cand in adj.get(hub, ()):  # other pages sharing that hub
-                if cand not in pick and cand != p and _synthesis_page_path(cand) is not None:
+                if (cand not in pick and cand != p and cand not in princ
+                        and _synthesis_page_path(cand) is not None):
                     score[cand] += w
     ranked = sorted(score.items(), key=lambda x: -x[1])
     return [s for s, sc in ranked[:max_add] if sc >= min_score]
@@ -1393,7 +1512,7 @@ def run_query_phase1(question: str, user: str, idx: int):
     total_tokens = total_tokens + t1
     gemini_calls += 1
 
-    page_contents = _load_pages(pages)
+    page_contents = _load_pages(pages, user)
     answer, sufficient, t2 = synthesize_wiki_answer(question, page_contents)
     total_tokens = total_tokens + t2
     gemini_calls += 1

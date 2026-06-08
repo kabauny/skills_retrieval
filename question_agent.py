@@ -104,6 +104,7 @@ def harvest_referential(existing: set[str]) -> list[dict]:
         out.append({
             "q": f"What is {name}? Summarize its design and key results.",
             "strategy": "referential",
+            "kind": "breadth",
             "reason": f"'{name}' is referenced in {freq.get(name, 1)} note(s) but has no page",
         })
     return out
@@ -116,9 +117,18 @@ def harvest_depth(sample: int) -> list[dict]:
         fm, body = core.parse_frontmatter(p.read_text(encoding="utf-8"))
         title = (fm.get("title", p.stem) or p.stem).strip().strip('"')
         prompt = (
-            "Given this clinical note, list up to 3 SPECIFIC follow-up questions a "
-            "clinician would ask that the note does NOT already answer (e.g. next-line "
-            "therapy, resistance, toxicity management, sequencing, special populations). "
+            "Given this clinical note, write up to 3 PATIENT-SCENARIO questions that "
+            "force a real clinical DECISION the note does NOT already settle. Each "
+            "question MUST:\n"
+            "  (a) embed a brief patient profile — age, key biomarker/stage, and a "
+            "performance-status or comorbidity detail;\n"
+            "  (b) pose an explicit choice between >=2 defensible options (e.g. "
+            "'drug A alone vs A+chemo', 'switch vs continue + local therapy');\n"
+            "  (c) be answerable from current evidence, in the note's disease area.\n"
+            "Cover decisions the note leaves open: next-line therapy, acquired "
+            "resistance, toxicity-driven changes, sequencing, special populations.\n"
+            "Do NOT use 'What is...' or 'Summarize...' phrasing — these must read like "
+            "a clinician deciding on a specific patient.\n"
             'Return STRICTLY a JSON array of question strings.\n\nNOTE: ' + title + "\n\n" + body[:1500]
         )
         resp = core.get_client().models.generate_content(model=core.MODEL_FLASH, contents=prompt)
@@ -126,7 +136,83 @@ def harvest_depth(sample: int) -> list[dict]:
         if isinstance(qs, list):
             for q in qs[:3]:
                 if isinstance(q, str) and len(q) > 12:
-                    out.append({"q": q.strip(), "strategy": "depth", "reason": f"follow-up from [[{p.stem}]]"})
+                    out.append({"q": q.strip(), "strategy": "depth", "kind": "judgment",
+                                "reason": f"follow-up from [[{p.stem}]]"})
+    return out
+
+
+_LINK_RE = re.compile(r"\[\[([^\]|#]+)")
+CONTRACT_CAP = 25  # most graph-impactful contract gaps to surface per scan
+
+# Phrasing for each kind of missing contract edge. {t} = entity title.
+_PRINCIPLE_Q = {
+    "efficacy":
+        "Summarize the efficacy of {t}: the pivotal endpoint(s), the effect size, "
+        "and which patient subsets derive the most benefit.",
+    "adverse-events":
+        "What is the adverse-event profile of {t}, and how does its toxicity "
+        "interact with common comorbidities when selecting treatment?",
+    "biomarker-testing":
+        "What biomarker testing guides systemic therapy selection in {t}?",
+    "staging-and-resectability":
+        "How is {t} staged, and what determines resectability and curative-intent "
+        "eligibility?",
+}
+
+
+def _entity_pages() -> list:
+    d = core.WIKI / "entities"
+    return list(d.glob("*.md")) if d.exists() else []
+
+
+def _contract_item(stem: str, title: str, etype: str, *, principle: str = "", need_type: str = "") -> dict:
+    if principle:
+        q = _PRINCIPLE_Q.get(principle, f"Describe {principle.replace('-', ' ')} for {{t}}.").format(t=title)
+        reason = f"{etype} [[{stem}]] missing required link [[{principle}]]"
+    else:
+        q = (f"In which cancer type(s) and histology was {title} studied or indicated?"
+             if need_type == "cancer" else
+             f"Which {need_type}(s) does {title} involve?")
+        reason = f"{etype} [[{stem}]] missing a required link to a {need_type} entity"
+    return {
+        "q": q, "strategy": "contract", "kind": "structure", "reason": reason,
+        "coverage": 0.0, "nearest": stem,
+    }
+
+
+def harvest_contract() -> list[dict]:
+    """Scan entity pages against core.LINK_CONTRACT and propose a fix-question for
+    each missing required edge (principle lens or anchoring entity link). These
+    are STRUCTURAL gaps, so they skip the semantic-coverage dedup — a missing
+    [[efficacy]] link is a gap even if an efficacy note exists elsewhere."""
+    contract = core.LINK_CONTRACT
+    pages = _entity_pages()
+    type_of: dict[str, str] = {}
+    for p in pages:
+        try:
+            fm, _ = core.parse_frontmatter(p.read_text(encoding="utf-8"))
+        except OSError:
+            continue
+        type_of[p.stem] = (fm.get("entity_type", "") or "").strip().strip('"').strip("'").lower()
+    out: list[dict] = []
+    for p in pages:
+        try:
+            text = p.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        fm, _ = core.parse_frontmatter(text)
+        etype = (fm.get("entity_type", "") or "").strip().strip('"').strip("'").lower()
+        rule = contract.get(etype)
+        if not rule:
+            continue
+        title = (fm.get("title", p.stem) or p.stem).strip().strip('"')
+        links = {l.strip() for l in _LINK_RE.findall(text)}
+        for pr in rule.get("principles", []):
+            if pr not in links:
+                out.append(_contract_item(p.stem, title, etype, principle=pr))
+        for need_type in rule.get("entity_types", []):
+            if not any(type_of.get(l) == need_type for l in links):
+                out.append(_contract_item(p.stem, title, etype, need_type=need_type))
     return out
 
 
@@ -137,6 +223,7 @@ def harvest_coverage() -> list[dict]:
             out.append({
                 "q": f"What is the {ax} for {c}?",
                 "strategy": "coverage",
+                "kind": "breadth",
                 "reason": f"grid cell: {c} × {ax}",
             })
     return out
@@ -233,7 +320,13 @@ def propose(depth_sample: int = DEPTH_SAMPLE, top: int = TOP, covered: float = C
     adj = core.build_link_graph()
     for item in ranked:
         item["connectivity"] = _connectivity(item["q"], item.get("reason", ""), adj)
-    return ranked
+    # Contract gaps bypass semantic dedup (structural, not topical). Rank by graph
+    # payoff so the most-connected entities' missing edges surface first, then cap.
+    contract = harvest_contract()
+    for item in contract:
+        item["connectivity"] = _connectivity(item["q"], item.get("reason", ""), adj)
+    contract.sort(key=lambda c: -c["connectivity"])
+    return ranked + contract[:CONTRACT_CAP]
 
 
 def main() -> None:

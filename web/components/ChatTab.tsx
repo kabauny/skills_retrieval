@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { api, Turn } from "@/lib/api";
 import TurnCard from "./TurnCard";
+import ChatInput from "./ChatInput";
 
 export default function ChatTab({
   user,
@@ -10,15 +11,19 @@ export default function ChatTab({
   history,
   setHistory,
   onAfterChange,
+  busy,
+  setBusy,
+  blocked,
 }: {
   user: string;
   autoIngest: boolean;
   history: Turn[];
   setHistory: (updater: (prev: Turn[]) => Turn[]) => void;
   onAfterChange: () => void;
+  busy: boolean;
+  setBusy: (b: boolean) => void;
+  blocked: boolean;
 }) {
-  const [input, setInput] = useState("");
-  const [busy, setBusy] = useState(false);
   const [ingestStatus, setIngestStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -27,13 +32,14 @@ export default function ChatTab({
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history.length, busy]);
 
-  const replaceTurn = (t: Turn) =>
-    setHistory((prev) => prev.map((x) => (x.ts === t.ts ? t : x)));
+  // Stable identity so memoized TurnCards don't re-render on every parent render.
+  const replaceTurn = useCallback(
+    (t: Turn) => setHistory((prev) => prev.map((x) => (x.ts === t.ts ? t : x))),
+    [setHistory],
+  );
 
-  const submit = async () => {
-    const q = input.trim();
-    if (!q || busy) return;
-    setInput("");
+  const submit = async (q: string) => {
+    if (!q || busy || blocked) return;
     setError(null);
     setBusy(true);
     try {
@@ -114,30 +120,7 @@ export default function ChatTab({
         </div>
       </div>
 
-      <div className="border-t border-slate-200 bg-white px-6 py-3">
-        <div className="max-w-3xl mx-auto flex gap-2 items-end">
-          <textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                submit();
-              }
-            }}
-            rows={1}
-            placeholder="Ask a question (e.g., 'How would you weight T-DXd over T-DM1 in residual disease?')"
-            className="flex-1 resize-none border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 max-h-40"
-          />
-          <button
-            onClick={submit}
-            disabled={busy || !input.trim()}
-            className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg disabled:opacity-40 hover:bg-blue-700 transition"
-          >
-            Send
-          </button>
-        </div>
-      </div>
+      <ChatInput busy={busy} blocked={blocked} onSubmit={submit} />
     </div>
   );
 }

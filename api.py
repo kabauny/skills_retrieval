@@ -466,6 +466,67 @@ def save_page(req: PageSaveRequest) -> dict:
     return {"ok": True}
 
 
+class PrincipleForkRequest(BaseModel):
+    stem: str
+    user: str = core.DEFAULT_USER
+
+
+class PrincipleSaveRequest(BaseModel):
+    stem: str
+    user: str = core.DEFAULT_USER
+    content: str
+
+
+@app.get("/api/principles")
+def principles(user: str = core.DEFAULT_USER) -> dict:
+    """All shared reasoning lenses + whether this provider has forked each one."""
+    return {"items": core.list_principle_status(user)}
+
+
+@app.get("/api/principle")
+def get_principle(stem: str, user: str = core.DEFAULT_USER) -> dict:
+    """Resolve a lens for this provider: their fork if present, else the shared
+    skeleton. `forked` tells the UI whether edits will fork-on-save."""
+    path = core.resolve_principle_path(stem, user)
+    if path is None:
+        raise HTTPException(404, f"No principle '{stem}'.")
+    content = path.read_text(encoding="utf-8")
+    fm, _ = core.parse_frontmatter(content)
+    return {
+        "stem": stem,
+        "title": (fm.get("title", stem) or stem).strip().strip('"').strip("'"),
+        "principle_kind": (fm.get("principle_kind", "") or "").strip().strip('"'),
+        "content": content,
+        "forked": (core.user_principles_dir(user) / f"{stem}.md").exists(),
+        "id": _rel(path),
+    }
+
+
+@app.post("/api/principle/fork")
+def fork_principle(req: PrincipleForkRequest) -> dict:
+    """Create the provider's personal fork of a shared lens (idempotent)."""
+    try:
+        path = core.fork_principle(req.stem, req.user)
+    except FileNotFoundError as exc:
+        raise HTTPException(404, str(exc))
+    return {"ok": True, "id": _rel(path)}
+
+
+@app.post("/api/principle")
+def save_principle(req: PrincipleSaveRequest) -> dict:
+    """Save edits to a provider's lens. Fork-on-save: writes to the user's avatar
+    override, never to the shared skeleton — a provider's flavor stays personal."""
+    dest = core.user_principles_dir(req.user) / f"{req.stem}.md"
+    if not dest.exists():  # first edit forks from the shared skeleton
+        try:
+            core.fork_principle(req.stem, req.user)
+        except FileNotFoundError as exc:
+            raise HTTPException(404, str(exc))
+    if not core.write_page_content(dest, req.content):
+        raise HTTPException(500, "Save failed.")
+    return {"ok": True, "id": _rel(dest)}
+
+
 @app.post("/api/review/promote")
 def promote(req: StubActionRequest) -> dict:
     path = core._safe_resolve(req.id)
