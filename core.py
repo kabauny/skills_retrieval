@@ -474,8 +474,11 @@ WIKI CONTEXT:
 # ---------------------------------------------------------------------------
 
 
-def save_grounded_response_to_raw(query: str, response, model: str) -> Path | None:
-    """Use search.py helpers to write a grounded response as a clean source file."""
+def save_grounded_response_to_raw(query: str, response, model: str):
+    """Write a grounded response as a clean source file. Returns
+    (path, cited_text, sources): the cited_text (inline [domain](url) citations,
+    redirect URLs resolved) and resolved sources are reused to bake the SAME
+    grounded citations into the wiki note — without resolving URLs twice."""
     metadata = None
     if response.candidates and response.candidates[0].grounding_metadata:
         metadata = response.candidates[0].grounding_metadata
@@ -509,7 +512,7 @@ def save_grounded_response_to_raw(query: str, response, model: str) -> Path | No
     content = format_markdown(query, text_with_cites, sources, search_queries, tokens, model)
     filepath.write_text(content, encoding="utf-8")
     append_token_log(query, filepath, tokens, model)
-    return filepath
+    return filepath, text_with_cites, sources
 
 
 # ---------------------------------------------------------------------------
@@ -716,11 +719,17 @@ def _yaml_str(value: str) -> str:
     return '"' + flat.replace('"', "'") + '"'
 
 
-def write_answer_note(question: str, answer: str, source_filename: str) -> Path | None:
+def write_answer_note(
+    question: str, answer: str, source_filename: str, sources: list[dict] | None = None
+) -> Path | None:
     """Write the synthesized internet answer as a SEARCHABLE, editable note page
-    in wiki/notes/. Idempotent by question slug: if the note already exists it is
-    preserved (so user edits / verification survive a re-ask) and None is
-    returned to signal "no new file" while the caller still refreshes the index.
+    in wiki/notes/. `answer` should be the citation-annotated text (inline
+    [domain](url) links from grounding); `sources` (resolved) is rendered as a
+    numbered web-sources section, so the note carries full provenance on its own.
+
+    Idempotent by question slug: if the note already exists it is preserved (so
+    user edits / verification survive a re-ask) and None is returned while the
+    caller still refreshes the index.
     """
     NOTES_DIR.mkdir(parents=True, exist_ok=True)
     slug = kebab(question)
@@ -731,6 +740,15 @@ def write_answer_note(question: str, answer: str, source_filename: str) -> Path 
     today = date.today().isoformat()
     source_stem = Path(source_filename).stem
     title = " ".join(question.split())[:120]
+
+    sources_block = ""
+    if sources:
+        lines = []
+        for i, s in enumerate(sources, 1):
+            t = (s.get("title") or "source").strip()
+            u = (s.get("url") or "").strip()
+            lines.append(f"{i}. [{t}]({u})" if u else f"{i}. {t}")
+        sources_block = "## Web sources (grounded)\n\n" + "\n".join(lines) + "\n\n"
 
     body = f"""---
 title: {_yaml_str(title)}
@@ -750,7 +768,7 @@ tags: [auto-ingested]
 
 {answer}
 
-## Provenance
+{sources_block}## Provenance
 
 - **Ingested:** {today} (auto, unverified)
 - **Raw grounded search:** [[{source_stem}]] — full citations + search queries
@@ -1258,9 +1276,13 @@ def run_query_phase2(
 ) -> tuple[Turn, list[str]]:
     """Deferred: save grounded response + auto-ingest. Returns (turn, warnings)."""
     warnings: list[str] = []
+    cited_body: str | None = None
+    sources: list[dict] = []
 
     try:
-        saved_path = save_grounded_response_to_raw(question, grounded_resp, MODEL_PRO)
+        saved_path, cited_body, sources = save_grounded_response_to_raw(
+            question, grounded_resp, MODEL_PRO
+        )
         if saved_path:
             turn.saved_search_path = str(saved_path)
     except Exception as exc:
@@ -1268,10 +1290,12 @@ def run_query_phase2(
 
     if auto_ingest_enabled and turn.saved_search_path:
         try:
-            # Ingest the full synthesized answer as a SEARCHABLE, editable note,
-            # then re-index it so the next identical question is answered from
-            # the wiki instead of re-hitting the internet.
-            note = write_answer_note(question, turn.answer, turn.saved_search_path)
+            # Ingest the citation-annotated answer (inline grounded URLs + a web
+            # sources section) as a SEARCHABLE, editable note, then re-index it so
+            # the next identical question is answered from the wiki, not the web.
+            note = write_answer_note(
+                question, cited_body or turn.answer, turn.saved_search_path, sources
+            )
             slug = kebab(question)
             note_path = note if note is not None else (NOTES_DIR / f"{slug}.md")
             upsert_index_entry(note_path.stem, question, section="Notes")

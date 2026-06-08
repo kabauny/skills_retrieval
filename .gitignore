@@ -29,3 +29,9 @@ venv/
 
 # Embedding cache (rebuilt from pages on demand)
 .embeddings_cache.json
+
+# Nested Obsidian vault config (created when opening wiki/ or raw/ as vaults)
+wiki/.obsidian/
+raw/.obsidian/
+# Obsidian's default empty new-note
+**/Untitled.md
