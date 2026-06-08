@@ -1616,3 +1616,472 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **User:** jim.chen
 - **Page:** [[are-there-specific-patient-selection-criteria-or-biomarkers-beyond-general-ras-m]] (`wiki/notes/are-there-specific-patient-selection-criteria-or-biomarkers-beyond-general-ras-m.md`)
 - **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-08).
+
+## [2026-06-08] promote | nab-paclitaxel
+
+- **User:** jim.chen
+- **Page:** [[nab-paclitaxel]] → `wiki/entities/nab-paclitaxel.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | paclitaxel
+
+- **User:** jim.chen
+- **Page:** [[paclitaxel]] → `wiki/entities/paclitaxel.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | msi-hdmmr
+
+- **User:** jim.chen
+- **Page:** [[msi-hdmmr]] → `wiki/entities/msi-hdmmr.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | oxaliplatin
+
+- **User:** jim.chen
+- **Page:** [[oxaliplatin]] → `wiki/entities/oxaliplatin.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | irinotecan
+
+- **User:** jim.chen
+- **Page:** [[irinotecan]] → `wiki/entities/irinotecan.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | fluorouracil
+
+- **User:** jim.chen
+- **Page:** [[fluorouracil]] → `wiki/entities/fluorouracil.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | leucovorin
+
+- **User:** jim.chen
+- **Page:** [[leucovorin]] → `wiki/entities/leucovorin.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | pancreatic-cancer
+
+- **User:** jim.chen
+- **Page:** [[pancreatic-cancer]] → `wiki/entities/pancreatic-cancer.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | lazertinib
+
+- **User:** jim.chen
+- **Page:** [[lazertinib]] → `wiki/entities/lazertinib.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | egfr-exon-19-deletion
+
+- **User:** jim.chen
+- **Page:** [[egfr-exon-19-deletion]] → `wiki/entities/egfr-exon-19-deletion.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | prednisone
+
+- **User:** jim.chen
+- **Page:** [[prednisone]] → `wiki/entities/prednisone.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | cyclophosphamide
+
+- **User:** jim.chen
+- **Page:** [[cyclophosphamide]] → `wiki/entities/cyclophosphamide.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | rituximab
+
+- **User:** jim.chen
+- **Page:** [[rituximab]] → `wiki/entities/rituximab.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | cd20
+
+- **User:** jim.chen
+- **Page:** [[cd20]] → `wiki/entities/cd20.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | pd-1
+
+- **User:** jim.chen
+- **Page:** [[pd-1]] → `wiki/entities/pd-1.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | doxorubicin
+
+- **User:** jim.chen
+- **Page:** [[doxorubicin]] → `wiki/entities/doxorubicin.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | cisplatin
+
+- **User:** jim.chen
+- **Page:** [[cisplatin]] → `wiki/entities/cisplatin.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | gemcitabine
+
+- **User:** jim.chen
+- **Page:** [[gemcitabine]] → `wiki/entities/gemcitabine.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | epidermal-growth-factor-receptor-egfr
+
+- **User:** jim.chen
+- **Page:** [[epidermal-growth-factor-receptor-egfr]] → `wiki/entities/epidermal-growth-factor-receptor-egfr.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | sunvozertinib
+
+- **User:** jim.chen
+- **Page:** [[sunvozertinib]] → `wiki/entities/sunvozertinib.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | chronic-lymphocytic-leukemia
+
+- **User:** jim.chen
+- **Page:** [[chronic-lymphocytic-leukemia]] → `wiki/entities/chronic-lymphocytic-leukemia.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | ramucirumab
+
+- **User:** jim.chen
+- **Page:** [[ramucirumab]] → `wiki/entities/ramucirumab.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | bevacizumab
+
+- **User:** jim.chen
+- **Page:** [[bevacizumab]] → `wiki/entities/bevacizumab.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | folfiri
+
+- **User:** jim.chen
+- **Page:** [[folfiri]] → `wiki/entities/folfiri.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | estrogen-receptor
+
+- **User:** jim.chen
+- **Page:** [[estrogen-receptor]] → `wiki/entities/estrogen-receptor.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | pemetrexed
+
+- **User:** jim.chen
+- **Page:** [[pemetrexed]] → `wiki/entities/pemetrexed.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | carboplatin
+
+- **User:** jim.chen
+- **Page:** [[carboplatin]] → `wiki/entities/carboplatin.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | amivantamab
+
+- **User:** jim.chen
+- **Page:** [[amivantamab]] → `wiki/entities/amivantamab.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | ras
+
+- **User:** jim.chen
+- **Page:** [[ras]] → `wiki/entities/ras.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | rasolute-302
+
+- **User:** jim.chen
+- **Page:** [[rasolute-302]] → `wiki/entities/rasolute-302.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | osimertinib
+
+- **User:** jim.chen
+- **Page:** [[osimertinib]] → `wiki/entities/osimertinib.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | erlotinib
+
+- **User:** jim.chen
+- **Page:** [[erlotinib]] → `wiki/entities/erlotinib.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | capivasertib
+
+- **User:** jim.chen
+- **Page:** [[capivasertib]] → `wiki/entities/capivasertib.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | venetoclax
+
+- **User:** jim.chen
+- **Page:** [[venetoclax]] → `wiki/entities/venetoclax.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | cholangiocarcinoma
+
+- **User:** jim.chen
+- **Page:** [[cholangiocarcinoma]] → `wiki/entities/cholangiocarcinoma.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | vepdegestrant
+
+- **User:** jim.chen
+- **Page:** [[vepdegestrant]] → `wiki/entities/vepdegestrant.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | atezolizumab
+
+- **User:** jim.chen
+- **Page:** [[atezolizumab]] → `wiki/entities/atezolizumab.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | immune-checkpoint-inhibitor
+
+- **User:** jim.chen
+- **Page:** [[immune-checkpoint-inhibitor]] → `wiki/entities/immune-checkpoint-inhibitor.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | egfr
+
+- **User:** jim.chen
+- **Page:** [[egfr]] → `wiki/entities/egfr.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | cabozantinib
+
+- **User:** jim.chen
+- **Page:** [[cabozantinib]] → `wiki/entities/cabozantinib.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | pola-r-chp
+
+- **User:** jim.chen
+- **Page:** [[pola-r-chp]] → `wiki/entities/pola-r-chp.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | r-chop
+
+- **User:** jim.chen
+- **Page:** [[r-chop]] → `wiki/entities/r-chop.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | diffuse-large-b-cell-lymphoma
+
+- **User:** jim.chen
+- **Page:** [[diffuse-large-b-cell-lymphoma]] → `wiki/entities/diffuse-large-b-cell-lymphoma.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | multiple-myeloma
+
+- **User:** jim.chen
+- **Page:** [[multiple-myeloma]] → `wiki/entities/multiple-myeloma.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | docetaxel
+
+- **User:** jim.chen
+- **Page:** [[docetaxel]] → `wiki/entities/docetaxel.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | her2-receptor
+
+- **User:** jim.chen
+- **Page:** [[her2-receptor]] → `wiki/entities/her2-receptor.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | folfox
+
+- **User:** jim.chen
+- **Page:** [[folfox]] → `wiki/entities/folfox.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | gastric-cancer
+
+- **User:** jim.chen
+- **Page:** [[gastric-cancer]] → `wiki/entities/gastric-cancer.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | her2
+
+- **User:** jim.chen
+- **Page:** [[her2]] → `wiki/entities/her2.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | encorafenib
+
+- **User:** jim.chen
+- **Page:** [[encorafenib]] → `wiki/entities/encorafenib.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | ipilimumab
+
+- **User:** jim.chen
+- **Page:** [[ipilimumab]] → `wiki/entities/ipilimumab.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | nivolumab
+
+- **User:** jim.chen
+- **Page:** [[nivolumab]] → `wiki/entities/nivolumab.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | dmmr
+
+- **User:** jim.chen
+- **Page:** [[dmmr]] → `wiki/entities/dmmr.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | msi-high
+
+- **User:** jim.chen
+- **Page:** [[msi-high]] → `wiki/entities/msi-high.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | microsatellite-instability
+
+- **User:** jim.chen
+- **Page:** [[microsatellite-instability]] → `wiki/entities/microsatellite-instability.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | braf-v600e
+
+- **User:** jim.chen
+- **Page:** [[braf-v600e]] → `wiki/entities/braf-v600e.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | metastatic-colorectal-cancer
+
+- **User:** jim.chen
+- **Page:** [[metastatic-colorectal-cancer]] → `wiki/entities/metastatic-colorectal-cancer.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | non-small-cell-lung-cancer
+
+- **User:** jim.chen
+- **Page:** [[non-small-cell-lung-cancer]] → `wiki/entities/non-small-cell-lung-cancer.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | zanubrutinib
+
+- **User:** jim.chen
+- **Page:** [[zanubrutinib]] → `wiki/entities/zanubrutinib.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | sonrotoclax
+
+- **User:** jim.chen
+- **Page:** [[sonrotoclax]] → `wiki/entities/sonrotoclax.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | mek-inhibitor
+
+- **User:** jim.chen
+- **Page:** [[mek-inhibitor]] → `wiki/entities/mek-inhibitor.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | cyclophilin-a
+
+- **User:** jim.chen
+- **Page:** [[cyclophilin-a]] → `wiki/entities/cyclophilin-a.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | pancreatic-ductal-adenocarcinoma
+
+- **User:** jim.chen
+- **Page:** [[pancreatic-ductal-adenocarcinoma]] → `wiki/entities/pancreatic-ductal-adenocarcinoma.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | rasolute-302-trial
+
+- **User:** jim.chen
+- **Page:** [[rasolute-302-trial]] → `wiki/entities/rasolute-302-trial.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | kras-g12c
+
+- **User:** jim.chen
+- **Page:** [[kras-g12c]] → `wiki/entities/kras-g12c.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | kras
+
+- **User:** jim.chen
+- **Page:** [[kras]] → `wiki/entities/kras.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-08] promote | daraxonrasib
+
+- **User:** jim.chen
+- **Page:** [[daraxonrasib]] → `wiki/entities/daraxonrasib.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).

@@ -1,0 +1,23 @@
+---
+title: "Cholangiocarcinoma"
+entity_type: cancer
+aliases: []
+auto_source: "[[please-provide-any-fda-indication-for-cancer-treatment-in-may-and-june-2026]]"
+auto_date: 2026-06-08
+tags: []
+---
+
+# Cholangiocarcinoma
+
+
+## Brief
+
+(graph hub — auto-created node referenced by 2 notes; expand via the Grow tab)
+
+## Why this matters
+
+Auto-created as a graph hub to connect related notes.
+
+## Sources
+
+- [[please-provide-any-fda-indication-for-cancer-treatment-in-may-and-june-2026]] — origin search; see for full grounded citations and search queries

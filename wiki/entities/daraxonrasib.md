@@ -1,0 +1,23 @@
+---
+title: "daraxonrasib"
+entity_type: drug
+aliases: []
+auto_source: "[[are-there-specific-patient-selection-criteria-or-biomarkers-beyond-general-ras-m]]"
+auto_date: 2026-06-08
+tags: []
+---
+
+# daraxonrasib
+
+
+## Brief
+
+(graph hub — auto-created node referenced by 6 notes; expand via the Grow tab)
+
+## Why this matters
+
+Auto-created as a graph hub to connect related notes.
+
+## Sources
+
+- [[are-there-specific-patient-selection-criteria-or-biomarkers-beyond-general-ras-m]] — origin search; see for full grounded citations and search queries
