@@ -169,6 +169,19 @@ def _extract_json(text: str):
     return None
 
 
+def _extract_json_object(text: str):
+    """Pull a JSON OBJECT specifically. Needed when the object itself contains
+    an array (e.g. the MC probe's "options") — _extract_json would match the
+    inner array first and return a list instead of the object."""
+    m = re.search(r"\{.*\}", text, re.DOTALL)
+    if m:
+        try:
+            return json.loads(m.group())
+        except json.JSONDecodeError:
+            return None
+    return None
+
+
 # ---------------------------------------------------------------------------
 # Wiki retrieval
 # ---------------------------------------------------------------------------
@@ -937,35 +950,38 @@ def reconcile_index(user: str = DEFAULT_USER) -> list[str]:
 # ---------------------------------------------------------------------------
 
 
-_MC_PROMPT = """You design preference probes to elicit a clinician's avatar — their decision style across cases.
+_MC_PROMPT = """You design preference probes that capture a clinician's judgment — their avatar — from how they would APPLY an answer to a real patient.
 
-For ALMOST ANY clinically-relevant question (informational, "how do you", or explicit decision), generate ONE multiple-choice question (2–4 options) that probes how the user would APPLY this knowledge to a patient.
+Generate ONE multiple-choice question (2–4 options) for essentially every clinically-relevant question. Bias STRONGLY toward generating a probe; skipping is rare. When in doubt, generate one.
 
-Reframing rules:
+PRIMARY RULE — if the answer presents more than one option, ALWAYS make a selection probe:
+When the answer names more than one treatment, regimen, sequence, or strategy, there is ALWAYS a real preference to capture — even if every option is guideline-endorsed standard of care. Do NOT skip these as "settled." Which option a clinician favors, and why, is exactly the judgment worth capturing. Default probe:
+  "For [a typical patient matching the question], which would you choose?"
+with those options (drawn verbatim from the answer) as the choices.
 
-- "Tell me about X" / "What's the data on Y" → "If you had a patient with [a typical scenario from the answer], would you favor X or Y?"
-- "How do you select X vs Y" / "What's the role of Z" → "For [a specific patient profile mentioned in the answer], which would you choose?"
-- "Should I do X for this patient?" → MC directly with the at-hand options
-- Even when the answer describes a settled standard of care, surface a NUANCE (timing, sequencing, escalation thresholds, edge-case patient profiles) where reasonable clinicians could differ.
+Reframing by question type:
+- "Tell me about X" / "What's the data on Y" → "For a patient with [typical scenario], would you favor X or [the alternative]?"
+- "First-line / how do you select for X" → "For [specific profile], which of [the options in the answer] would you choose?"
+- "Should I do X for this patient?" → MC directly with the options at hand.
+- Genuinely single-option settled care → probe a real axis of variation instead: timing, sequencing, escalation threshold, treatment duration, monitoring intensity, or an edge-case patient profile where reasonable clinicians differ.
 
 Each option must be:
-- Defensible on the available evidence
-- Genuinely distinct (different weighting of trade-offs — toxicity vs efficacy, off-label comfort, guideline conformity, fertility/QoL preference, etc.)
-- Realistic (something a clinician might actually do)
+- Defensible on the evidence in the answer
+- Genuinely distinct (different trade-off weighting — efficacy vs toxicity, CNS vs ILD risk, off-label comfort, guideline conformity, QoL/fertility, cost/access)
+- A concrete clinical action a real clinician might take
 
 Return STRICTLY a single JSON object:
 {{
   "label": "<short kebab-case label, ≤40 chars>",
-  "question": "<the MC question — frame as applied to a hypothetical or general patient profile, not as 'what do you want to know'>",
+  "question": "<the MC question — framed as applied to a hypothetical or general patient profile, not 'what do you want to know'>",
   "options": [
     {{"key": "A", "text": "<option A — concrete clinical action>"}},
     {{"key": "B", "text": "<option B>"}}
   ],
-  "rationale": "<one sentence on what this MC reveals about the user's preferences — e.g., 'tests whether the user weighs CNS activity over ILD risk in adjuvant HER2-directed selection'>"
+  "rationale": "<one sentence on what this probe reveals about the user's preferences>"
 }}
 
-Skip ONLY if the question is so trivial there is no clinical judgment in any direction (e.g., "what does AMH stand for?", "list the breast cancer subtypes"). In that case return EXACTLY:
-{{"label": null}}
+Skip — return EXACTLY {{"label": null}} — ONLY for a purely factual or definitional question with no management choice in any direction (e.g., "what does AMH stand for?", "list the breast cancer subtypes", "what is the half-life of drug X?"). If the answer contains ANY treatment options or management decision, do NOT skip.
 
 QUESTION:
 {question}
@@ -982,7 +998,7 @@ def generate_preference_mc(query: str, answer: str) -> tuple[MCQuestion | None, 
     resp = get_client().models.generate_content(
         model=MODEL_PRO, contents=_MC_PROMPT.format(question=query, answer=answer)
     )
-    parsed = _extract_json(resp.text or "")
+    parsed = _extract_json_object(resp.text or "")
     if not isinstance(parsed, dict) or not parsed.get("label"):
         return None, _tokens(resp)
     try:
