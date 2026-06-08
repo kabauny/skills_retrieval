@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { api, StateResp, Turn } from "@/lib/api";
+import { api, StateResp, Turn, GrowItem, GrowRunState } from "@/lib/api";
 import Sidebar from "./Sidebar";
 import ChatTab from "./ChatTab";
 import CasesTab from "./CasesTab";
@@ -20,6 +20,12 @@ export default function App() {
   const [apiKeyMissing, setApiKeyMissing] = useState(false);
   const [history, setHistory] = useState<Turn[]>([]);
 
+  // Grow-tab state lives here so it survives tab switches (was lost on unmount).
+  const [growItems, setGrowItems] = useState<GrowItem[] | null>(null);
+  const [growSelected, setGrowSelected] = useState<Set<string>>(new Set());
+  const [growRun, setGrowRun] = useState<GrowRunState | null>(null);
+  const [growLog, setGrowLog] = useState<string[]>([]);
+
   const refreshState = useCallback(async (u: string) => {
     const s = await api.state(u);
     setState(s);
@@ -28,6 +34,19 @@ export default function App() {
 
   useEffect(() => {
     api.health().then((h) => setApiKeyMissing(!h.api_key_present)).catch(() => {});
+    // Load the last saved proposal so the Grow tab is populated without
+    // regenerating (survives reloads); drops questions already run into notes.
+    api
+      .growProposal()
+      .then((r) => {
+        if (r.items.length) {
+          setGrowItems(r.items);
+          setGrowSelected(
+            new Set(r.items.filter((i) => i.strategy !== "coverage").map((i) => i.q)),
+          );
+        }
+      })
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -99,7 +118,18 @@ export default function App() {
             <ReviewTab user={user} onAfterChange={() => refreshState(user)} />
           )}
           {tab === "grow" && (
-            <GrowTab user={user} onAfterChange={() => refreshState(user)} />
+            <GrowTab
+              user={user}
+              onAfterChange={() => refreshState(user)}
+              items={growItems}
+              setItems={setGrowItems}
+              selected={growSelected}
+              setSelected={setGrowSelected}
+              run={growRun}
+              setRun={setGrowRun}
+              log={growLog}
+              setLog={setGrowLog}
+            />
           )}
         </div>
       </main>

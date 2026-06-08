@@ -13,6 +13,7 @@ Run:
 
 from __future__ import annotations
 
+import json
 from datetime import datetime
 from pathlib import Path
 
@@ -268,11 +269,37 @@ class GrowProposeRequest(BaseModel):
     covered: float = 0.82
 
 
+_GROW_FILE = core.RAW / "grow_proposal.json"
+
+
+def _grow_fresh(items: list[dict]) -> list[dict]:
+    """Drop candidates already turned into notes (so a reloaded proposal doesn't
+    re-show questions you've since run)."""
+    return [
+        it for it in items
+        if not (core.NOTES_DIR / f"{core.kebab(it['q'])}.md").exists()
+    ]
+
+
+@app.get("/api/grow/proposal")
+def grow_proposal() -> dict:
+    """Return the last saved proposal (no LLM call) — so the Grow tab survives
+    tab switches and reloads without regenerating."""
+    if not _GROW_FILE.exists():
+        return {"items": [], "saved": False}
+    try:
+        items = json.loads(_GROW_FILE.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {"items": [], "saved": False}
+    return {"items": _grow_fresh(items), "saved": True}
+
+
 @app.post("/api/grow/propose")
 def grow_propose(req: GrowProposeRequest) -> dict:
     """Run the question agent: propose ranked gap-questions to grow the wiki.
-    Slow (LLM harvest + embedding dedup); the client shows a spinner. Approved
-    questions are then run via the normal /api/query + /finalize pipeline."""
+    Slow (LLM harvest + embedding dedup); the client shows a spinner. The result
+    is persisted so it survives navigation. Approved questions are then run via
+    the normal /api/query + /finalize pipeline."""
     if not core.api_key_present():
         raise HTTPException(503, "GOOGLE_API_KEY not configured.")
     try:
@@ -281,6 +308,10 @@ def grow_propose(req: GrowProposeRequest) -> dict:
         )
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(500, f"{type(exc).__name__}: {exc}")
+    try:
+        _GROW_FILE.write_text(json.dumps(items), encoding="utf-8")
+    except OSError:
+        pass
     return {"items": items}
 
 

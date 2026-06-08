@@ -98,6 +98,14 @@ export interface GrowItem {
   nearest: string;
 }
 
+export interface GrowRunState {
+  done: number;
+  total: number;
+  created: number;
+  covered: number;
+  failed: number;
+}
+
 export interface PageDetail {
   id: string;
   title: string;
@@ -171,6 +179,8 @@ export const api = {
   stubs: () => req<{ items: ReviewItem[] }>("/api/review/stubs"),
   searches: () => req<{ items: ReviewItem[] }>("/api/review/searches"),
   notes: () => req<{ items: ReviewItem[] }>("/api/review/notes"),
+
+  growProposal: () => req<{ items: GrowItem[]; saved: boolean }>("/api/grow/proposal"),
 
   growPropose: (depth_sample = 6, top = 30, covered = 0.82) =>
     req<{ items: GrowItem[] }>("/api/grow/propose", {

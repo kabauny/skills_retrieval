@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { api, GrowItem } from "@/lib/api";
+import { Dispatch, SetStateAction, useState } from "react";
+import { api, GrowItem, GrowRunState } from "@/lib/api";
 
 const STRATEGY_LABEL: Record<GrowItem["strategy"], string> = {
   referential: "🔗 Referential (mentioned but undocumented)",
@@ -9,21 +9,32 @@ const STRATEGY_LABEL: Record<GrowItem["strategy"], string> = {
   coverage: "🗺️ Coverage (cancer × line/biomarker gaps)",
 };
 
-type RunState = { done: number; total: number; created: number; covered: number; failed: number };
-
+// State (items/selected/run/log) is lifted to App so it survives tab switches.
 export default function GrowTab({
   user,
   onAfterChange,
+  items,
+  setItems,
+  selected,
+  setSelected,
+  run,
+  setRun,
+  log,
+  setLog,
 }: {
   user: string;
   onAfterChange: () => void;
+  items: GrowItem[] | null;
+  setItems: Dispatch<SetStateAction<GrowItem[] | null>>;
+  selected: Set<string>;
+  setSelected: Dispatch<SetStateAction<Set<string>>>;
+  run: GrowRunState | null;
+  setRun: Dispatch<SetStateAction<GrowRunState | null>>;
+  log: string[];
+  setLog: Dispatch<SetStateAction<string[]>>;
 }) {
-  const [items, setItems] = useState<GrowItem[] | null>(null);
   const [proposing, setProposing] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [selected, setSelected] = useState<Set<string>>(new Set());
-  const [run, setRun] = useState<RunState | null>(null);
-  const [log, setLog] = useState<string[]>([]);
 
   const propose = async () => {
     setProposing(true);
@@ -57,7 +68,7 @@ export default function GrowTab({
     if (!items) return;
     const queue = items.filter((i) => selected.has(i.q));
     if (!queue.length) return;
-    const state: RunState = { done: 0, total: queue.length, created: 0, covered: 0, failed: 0 };
+    const state: GrowRunState = { done: 0, total: queue.length, created: 0, covered: 0, failed: 0 };
     setRun({ ...state });
     setLog([]);
     for (const item of queue) {

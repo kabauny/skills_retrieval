@@ -35,3 +35,6 @@ wiki/.obsidian/
 raw/.obsidian/
 # Obsidian's default empty new-note
 **/Untitled.md
+
+# Grow tab's last proposal (regenerable session state)
+raw/grow_proposal.json
