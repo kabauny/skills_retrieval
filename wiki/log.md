@@ -528,3 +528,91 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Gemini calls:** 3
 - **Answer origin:** wiki
 - **Tokens (Gemini):** 6699
+
+## [2026-06-07] query | Tell me about AKT pathway drugs available for NSCLC
+
+- **User:** jim.chen
+- **Question:** "Tell me about AKT pathway drugs available for NSCLC"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 8018
+- **Search saved:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc]]
+
+## [2026-06-07] query | Tell me about AKT pathway drugs available for NSCLC
+
+- **User:** jim.chen
+- **Question:** "Tell me about AKT pathway drugs available for NSCLC"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 6394
+- **Search saved:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc-2]]
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "Tell me about AKT pathway drugs available for NSCLC"
+- **Note page:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc]] (`wiki/notes/tell-me-about-akt-pathway-drugs-available-for-nsclc.md`) — created
+- **Raw source:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc-3]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] query | Tell me about AKT pathway drugs available for NSCLC
+
+- **User:** jim.chen
+- **Question:** "Tell me about AKT pathway drugs available for NSCLC"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 8513
+- **Search saved:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc-3]]
+
+## [2026-06-07] query | Tell me about AKT pathway drugs available for NSCLC
+
+- **User:** jim.chen
+- **Question:** "Tell me about AKT pathway drugs available for NSCLC"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 8346
+
+## [2026-06-07] reconcile-index | added 31 missing page(s)
+
+- **User:** jim.chen
+- **Why:** these pages existed on disk but were absent from index.md, so the router could not reach them (silent recall hole).
+- **Pages indexed (31):**
+  - [[peptide-receptor-radionuclide-therapy]]
+  - [[disease-free-survival]]
+  - [[cvd-regimen]]
+  - [[neoadjuvant-treatment]]
+  - [[pathologic-complete-response]]
+  - [[dreamm-7-trial]]
+  - [[altair-trial]]
+  - [[glioblastoma]]
+  - [[cobra-trial]]
+  - [[belzutifan]]
+  - [[b-cell-maturation-antigen]]
+  - [[ciltacabtagene-autoleucel]]
+  - [[destiny-breast11]]
+  - [[colon-cancer]]
+  - [[temozolomide]]
+  - [[durvalumab]]
+  - [[ondansetron]]
+  - [[belantamab-mafodotin]]
+  - [[trastuzumab]]
+  - [[non-muscle-invasive-bladder-cancer]]
+  - [[trifluridine-tipiracil]]
+  - [[absolute-neutrophil-count]]
+  - [[dynamic-trial]]
+  - [[bcg-naive-high-risk-non-muscle-invasive-bladder-cancer]]
+  - [[high-risk-non-muscle-invasive-bladder-cancer]]
+  - [[bacillus-calmette-guerin]]
+  - [[majestec-3-trial]]
+  - [[i-131-iobenguane]]
+  - [[paraganglioma]]
+  - [[potomac-trial]]
+  - [[pertuzumab]]

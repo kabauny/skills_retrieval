@@ -18,6 +18,7 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ### Notes
 
+- [[tell-me-about-akt-pathway-drugs-available-for-nsclc]] — Tell me about AKT pathway drugs available for NSCLC
 - [[what-is-the-mechanism-of-action-of-amivantamab]] — What is the mechanism of action of amivantamab?
 
 ### Searches
@@ -29,6 +30,32 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ## Entities
 
+- [[pertuzumab]] — A monoclonal antibody that targets a different epitope of the HER2 receptor than trastuzumab, used in combination with trastuzumab and chemo
+- [[potomac-trial]] — A Phase III clinical trial that investigated the efficacy and safety of durvalumab in combination with BCG induction and maintenance therapy
+- [[paraganglioma]] — A rare neuroendocrine tumor that can arise in various parts of the body, often outside the adrenal glands.
+- [[i-131-iobenguane]] — A high-specific-activity radiopharmaceutical agent (marketed as Azedra) approved for patients with unresectable, locally advanced, or metast
+- [[majestec-3-trial]] — The MajesTEC-3 trial is a Phase 3 clinical trial that demonstrated substantial progression-free and overall survival benefits for teclistama
+- [[bacillus-calmette-guerin]] — An attenuated strain of Mycobacterium bovis used as an immunotherapy delivered intravesically (into the bladder) for the treatment of early-
+- [[high-risk-non-muscle-invasive-bladder-cancer]] — A subtype of NMIBC characterized by features such as T1 tumors, high-grade/grade 3 tumors, carcinoma in situ (CIS), or large/recurrent/multi
+- [[bcg-naive-high-risk-non-muscle-invasive-bladder-cancer]] — A specific subgroup of non-muscle invasive bladder cancer characterized by high risk features and no prior exposure to Bacillus Calmette-Gué
+- [[dynamic-trial]] — A landmark trial in Stage II colon cancer demonstrating that treating ctDNA-positive patients with adjuvant chemotherapy resulted in highly 
+- [[absolute-neutrophil-count]] — A measure of the total number of neutrophils in the blood, which are a type of white blood cell essential for fighting infection. (aka ANC)
+- [[trifluridine-tipiracil]] — An oral combination chemotherapy agent used to treat colorectal cancer, and investigated in the ALTAIR trial for early intervention in MRD-p
+- [[non-muscle-invasive-bladder-cancer]] — A type of bladder cancer where the tumor has not grown into the muscle layer of the bladder wall, often treated with surgery and intravesica
+- [[trastuzumab]] — A monoclonal antibody that targets the HER2 receptor, forming the backbone of HER2-targeted therapy for HER2-positive breast cancer, often u
+- [[belantamab-mafodotin]] — Belantamab mafodotin (Blenrep) is an 'off-the-shelf' BCMA-targeted antibody-drug conjugate (ADC) approved for multiple myeloma treatment, sh
+- [[ondansetron]] — An antiemetic medication used to prevent nausea and vomiting, commonly prescribed as premedication for patients undergoing chemotherapy or r
+- [[durvalumab]] — An immunotherapy drug (PD-L1 inhibitor) that has recently been approved in combination with BCG for the treatment of adult patients with BCG
+- [[temozolomide]] — An oral alkylating chemotherapy drug primarily used in the treatment of certain brain cancers, such as glioblastoma, typically administered 
+- [[colon-cancer]] — A cancer of the large intestine where MRD testing via ctDNA is heavily researched for its prognostic value and potential to guide adjuvant t
+- [[destiny-breast11]] — An open-label, multicenter Phase 3 randomized trial evaluating trastuzumab deruxtecan as a neoadjuvant (pre-surgical) treatment for high-ris
+- [[ciltacabtagene-autoleucel]] — Ciltacabtagene autoleucel (Carvykti) is a personalized BCMA-targeted CAR T-cell therapy recently FDA-approved for second-line treatment of r
+- [[b-cell-maturation-antigen]] — B-cell maturation antigen (BCMA) is a cell surface protein highly expressed on multiple myeloma cells, making it a key therapeutic target fo
+- [[belzutifan]] — A HIF-2α inhibitor (FDA-approved for VHL-associated tumors and advanced renal cell carcinoma).
+- [[cobra-trial]] — A Phase II/III randomized trial (NRG-GI005) testing whether ctDNA-directed adjuvant chemotherapy improves outcomes in low-risk stage II colo
+- [[glioblastoma]] — An aggressive type of cancer that can occur in the brain or spinal cord.
+- [[altair-trial]] — A trial investigating whether starting systemic therapy with trifluridine/tipiracil versus placebo improves outcomes in resected colorectal 
+- [[dreamm-7-trial]] — The DREAMM-7 trial is a Phase 3 study reported in 2024, which showed that belantamab mafodotin combined with bortezomib and dexamethasone (B
 ### Drugs / treatments
 
 - [[trastuzumab-emtansine]] (T-DM1, Kadcyla) — adjuvant ADC standard for HER2+ residual disease
@@ -67,6 +94,11 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ## Concepts
 
+- [[pathologic-complete-response]] — A clinical endpoint where no residual invasive cancer is detected in the breast and lymph nodes at the time of surgery after neoadjuvant the
+- [[neoadjuvant-treatment]] — A pre-surgical therapy administered to patients to shrink tumors, eliminate microscopic disease, and assess treatment response before defini
+- [[cvd-regimen]] — A combination chemotherapy regimen comprising cyclophosphamide, vincristine, and dacarbazine, widely used as cytotoxic chemotherapy for adva
+- [[disease-free-survival]] — A common clinical endpoint in cancer trials, measuring the length of time after treatment during which a patient stays free of disease, incl
+- [[peptide-receptor-radionuclide-therapy]] — A targeted radiation therapy approach that uses radiolabeled somatostatin analogs (e.g., Lutetium Lu 177 dotatate) to deliver radiation dire
 - [[adjuvant-her2-positive-breast-cancer]] — decision skeleton for HER2+ adjuvant therapy by pathologic response
 - [[mrd-guided-therapy-escalation]] — current investigational status of ctDNA-guided adjuvant escalation (HER2+ and HR+/HER2−)
 - [[residual-disease-vs-mrd-positivity]] — key disambiguation: nested risk strata, not synonyms

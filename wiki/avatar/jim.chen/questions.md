@@ -283,3 +283,46 @@ A curated, categorized log of queries posed by `jim.chen`. Updated on every non-
 - **Answer origin:** wiki
 - **Tokens (Gemini):** 6699
 - **MC probe generated:** no
+
+### [2026-06-07] tell-me-about-akt-pathway-drugs-available-for-nsclc
+
+- **Question:** "Tell me about AKT pathway drugs available for NSCLC"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 8018
+- **MC probe generated:** no
+- **Search saved:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc]]
+
+### [2026-06-07] tell-me-about-akt-pathway-drugs-available-for-nsclc
+
+- **Question:** "Tell me about AKT pathway drugs available for NSCLC"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 6394
+- **MC probe generated:** no
+- **Search saved:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc-2]]
+
+### [2026-06-07] tell-me-about-akt-pathway-drugs-available-for-nsclc
+
+- **Question:** "Tell me about AKT pathway drugs available for NSCLC"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** none
+- **Gemini calls:** 4
+- **Answer origin:** internet
+- **Tokens (Gemini):** 8513
+- **MC probe generated:** no
+- **Search saved:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc-3]]
+
+### [2026-06-07] tell-me-about-akt-pathway-drugs-available-for-nsclc
+
+- **Question:** "Tell me about AKT pathway drugs available for NSCLC"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 8346
+- **MC probe generated:** no
