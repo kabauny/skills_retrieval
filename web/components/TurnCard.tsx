@@ -49,7 +49,21 @@ export default function TurnCard({
   const [choice, setChoice] = useState<string>("");
   const [reasoning, setReasoning] = useState("");
   const [saving, setSaving] = useState(false);
+  const [probing, setProbing] = useState(false);
+  const [noProbe, setNoProbe] = useState(false);
   const badge = ORIGIN_BADGE[turn.origin];
+
+  const probe = async () => {
+    setProbing(true);
+    setNoProbe(false);
+    try {
+      const res = await api.probe(user, turn.idx);
+      if (res.turn.mc) onCaptured(res.turn); // turn now carries .mc → form renders
+      else setNoProbe(true); // model judged there's no meaningful preference here
+    } finally {
+      setProbing(false);
+    }
+  };
 
   const captureMc = async () => {
     if (!choice || !turn.mc) return;
@@ -146,7 +160,17 @@ export default function TurnCard({
           </div>
         )}
 
-        {/* MC preference probe */}
+        {/* MC preference probe — generated on demand (lazy) */}
+        {!turn.mc && !noProbe && (
+          <button onClick={probe} disabled={probing} className="btn-ghost mt-3">
+            {probing ? "Generating probe…" : "🧭 Probe my preference"}
+          </button>
+        )}
+        {noProbe && (
+          <p className="text-xs text-slate-400 mt-3">
+            No meaningful preference question for this answer.
+          </p>
+        )}
         {turn.mc && !turn.mc.captured && (
           <div className="mt-3 border border-indigo-200 bg-indigo-50/50 rounded-lg p-4">
             <p className="text-sm font-semibold text-indigo-900 mb-1">

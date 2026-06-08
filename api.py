@@ -256,6 +256,26 @@ def finalize(req: FinalizeRequest) -> dict:
     return {"turn": _turn_payload(turn), "warnings": warnings}
 
 
+class ProbeRequest(BaseModel):
+    user: str
+    turn_idx: int
+
+
+@app.post("/api/preference/probe")
+def preference_probe(req: ProbeRequest) -> dict:
+    """Generate the MC preference probe for a turn ON DEMAND (it's no longer made
+    on every query). Persists it onto the turn so it survives reload."""
+    turns = core.load_today_session(req.user)
+    turn = next((t for t in turns if t.idx == req.turn_idx), None)
+    if turn is None:
+        raise HTTPException(404, "Turn not found.")
+    if turn.mc is None:
+        mc, _ = core.generate_preference_mc(turn.question, turn.answer)
+        turn.mc = mc
+        core.rewrite_session(req.user, turns)
+    return {"turn": _turn_payload(turn)}
+
+
 @app.post("/api/preference")
 def preference(req: PreferenceRequest) -> dict:
     turns = core.load_today_session(req.user)

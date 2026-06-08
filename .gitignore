@@ -26,3 +26,6 @@ venv/
 # Obsidian workspace state (keep plugin config, drop per-user layout)
 **/.obsidian/workspace.json
 **/.obsidian/workspace-mobile.json
+
+# Embedding cache (rebuilt from pages on demand)
+.embeddings_cache.json

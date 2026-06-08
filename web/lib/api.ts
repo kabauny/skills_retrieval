@@ -134,6 +134,12 @@ export const api = {
       body: JSON.stringify({ token, user }),
     }),
 
+  probe: (user: string, turn_idx: number) =>
+    req<{ turn: Turn }>("/api/preference/probe", {
+      method: "POST",
+      body: JSON.stringify({ user, turn_idx }),
+    }),
+
   preference: (user: string, turn_idx: number, choice_key: string, reasoning: string) =>
     req<{ ok: boolean; turn: Turn }>("/api/preference", {
       method: "POST",

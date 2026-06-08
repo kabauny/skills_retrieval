@@ -11,7 +11,9 @@ Extracted from the original Streamlit `app.py`; behavior is preserved.
 
 from __future__ import annotations
 
+import hashlib
 import json
+import math
 import os
 import re
 from dataclasses import asdict, dataclass, field
@@ -61,6 +63,9 @@ _SYNTHESIS_EXCLUDED_DIRS = {"avatar", "stubs"}
 # Two-model split: Pro for heavy reasoning, Flash for light structured tasks.
 MODEL_PRO = "gemini-3.1-pro-preview"
 MODEL_FLASH = "gemini-2.5-flash"
+EMBED_MODEL = "gemini-embedding-001"
+EMBED_DIM = 768
+EMBED_CACHE = ROOT / ".embeddings_cache.json"
 DEFAULT_USER = "jim.chen"
 
 # ---------------------------------------------------------------------------
@@ -242,6 +247,137 @@ WIKI INDEX:
         if isinstance(p, str) and _synthesis_page_path(p) is not None:
             valid.append(p)
     return valid, _tokens(resp)
+
+
+# ---------------------------------------------------------------------------
+# Embedding-based routing (cheap, scales — no LLM call, no whole-index prompt)
+# ---------------------------------------------------------------------------
+#
+# Replaces "send all of index.md to an LLM and ask it to pick pages" with
+# "embed the question, cosine-match against per-page embeddings, take the top
+# few." Routing cost drops from ~5k LLM tokens to one tiny embedding call, and
+# it stops growing with corpus size. Provenance is unaffected: this only selects
+# which WHOLE pages to load — synthesis still reads full pages and cites them.
+
+# Hybrid routing: embeddings shortlist a handful of candidates cheaply, then a
+# small Flash call picks among THEM (over one-line summaries, not the whole
+# index). Same-domain pages embed close together, so cosine alone can't tell
+# "EGFR" from "ALK" — the Flash rerank restores that precision at ~1/7th the
+# routing tokens (12 summaries vs the full index).
+_EMBED_SHORTLIST = 12
+
+
+def _embed(texts: list[str], task_type: str) -> list[list[float]]:
+    from google.genai import types
+    resp = get_client().models.embed_content(
+        model=EMBED_MODEL,
+        contents=texts,
+        config=types.EmbedContentConfig(task_type=task_type, output_dimensionality=EMBED_DIM),
+    )
+    return [list(e.values) for e in resp.embeddings]
+
+
+def _page_embed_text(path: Path) -> str:
+    """Representative text for a page: title + lead prose (enough to capture the
+    topic, cheap to embed)."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return path.stem
+    fm, body = parse_frontmatter(text)
+    title = (fm.get("title", path.stem) or path.stem).strip().strip('"').strip("'")
+    # drop headings/blockquotes from the lead so we embed actual content
+    prose = "\n".join(
+        ln for ln in body.splitlines()
+        if ln.strip() and not ln.lstrip().startswith(("#", ">", "---"))
+    )
+    return f"{title}\n{prose[:800]}"
+
+
+def _embed_cache_load() -> dict:
+    if EMBED_CACHE.exists():
+        try:
+            return json.loads(EMBED_CACHE.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            return {}
+    return {}
+
+
+def _embed_cache_save(cache: dict) -> None:
+    EMBED_CACHE.write_text(json.dumps(cache), encoding="utf-8")
+
+
+def build_page_embeddings(force: bool = False) -> int:
+    """Embed every synthesis-eligible page whose content changed (hash-keyed).
+    Incremental: a no-op when nothing changed. Returns the count re-embedded."""
+    cache = _embed_cache_load()
+    pages = [p for p in list_wiki_pages() if p.stem not in ("index", "log", "overview")]
+
+    todo_text: list[str] = []
+    todo_meta: list[tuple[str, str]] = []
+    for p in pages:
+        txt = _page_embed_text(p)
+        h = hashlib.md5(txt.encode("utf-8")).hexdigest()
+        if not force and cache.get(p.stem, {}).get("hash") == h:
+            continue
+        todo_text.append(txt)
+        todo_meta.append((p.stem, h))
+
+    for i in range(0, len(todo_text), 100):
+        vecs = _embed(todo_text[i:i + 100], "RETRIEVAL_DOCUMENT")
+        for (stem, h), v in zip(todo_meta[i:i + 100], vecs):
+            cache[stem] = {"hash": h, "vec": v}
+
+    valid = {p.stem for p in pages}
+    cache = {k: v for k, v in cache.items() if k in valid}
+    _embed_cache_save(cache)
+    return len(todo_text)
+
+
+def _cosine(a: list[float], b: list[float]) -> float:
+    dot = sum(x * y for x, y in zip(a, b))
+    na = math.sqrt(sum(x * x for x in a))
+    nb = math.sqrt(sum(y * y for y in b))
+    return dot / (na * nb) if na and nb else 0.0
+
+
+def _embed_shortlist(query: str, n: int = _EMBED_SHORTLIST) -> list[str]:
+    build_page_embeddings()  # lazy/incremental keep-in-sync
+    cache = _embed_cache_load()
+    if not cache:
+        return []
+    qv = _embed([query], "RETRIEVAL_QUERY")[0]
+    scored = sorted(
+        ((stem, _cosine(qv, d["vec"])) for stem, d in cache.items()),
+        key=lambda x: -x[1],
+    )
+    return [s for s, _ in scored[:n] if _synthesis_page_path(s) is not None]
+
+
+def select_relevant_pages_embed(query: str) -> tuple[list[str], TokenUsage]:
+    """Hybrid router: embedding shortlist -> Flash rerank over candidate
+    summaries (NOT the whole index). Returns chosen stems + the Flash token
+    cost (the query embedding is negligible and not billed like generation)."""
+    candidates = _embed_shortlist(query)
+    if not candidates:
+        return [], TokenUsage()
+
+    catalog = "\n".join(f"- {s}: {_page_summary(_synthesis_page_path(s))}" for s in candidates)
+    prompt = f"""You are a retrieval router. From the candidate pages below (already pre-filtered for similarity), return the filenames most relevant to answering the question.
+
+Return STRICTLY a JSON array of filenames (a subset of the candidates), most-relevant first. Max 6. If none fit, return [].
+
+QUESTION:
+{query}
+
+CANDIDATE PAGES:
+{catalog}
+"""
+    resp = get_client().models.generate_content(model=MODEL_FLASH, contents=prompt)
+    parsed = _extract_json(resp.text or "")
+    allow = set(candidates)
+    picked = [p for p in parsed if isinstance(p, str) and p in allow] if isinstance(parsed, list) else []
+    return picked, _tokens(resp)
 
 
 # ---------------------------------------------------------------------------
@@ -840,6 +976,9 @@ ANSWER:
 
 
 def generate_preference_mc(query: str, answer: str) -> tuple[MCQuestion | None, TokenUsage]:
+    # Stays on Pro: the cost win is from making this LAZY (on-demand, not every
+    # query), so quality matters more than per-call cost here. Flash skips too
+    # readily ("label: null") for borderline-but-useful probes.
     resp = get_client().models.generate_content(
         model=MODEL_PRO, contents=_MC_PROMPT.format(question=query, answer=answer)
     )
@@ -1061,7 +1200,8 @@ def run_query_phase1(question: str, user: str, idx: int):
     total_tokens = TokenUsage()
     gemini_calls = 0
 
-    pages, t1 = select_relevant_pages(question)
+    # Cheap embedding-shortlist + Flash rerank instead of sending the whole index.
+    pages, t1 = select_relevant_pages_embed(question)
     total_tokens = total_tokens + t1
     gemini_calls += 1
 
@@ -1079,10 +1219,8 @@ def run_query_phase1(question: str, user: str, idx: int):
         gemini_calls += 1
         origin = "internet" if not page_contents else "mixed"
 
-    mc, t4 = generate_preference_mc(question, answer)
-    total_tokens = total_tokens + t4
-    gemini_calls += 1
-
+    # MC preference probe is now LAZY (generated on demand via /api/preference/probe),
+    # not on every query — it's avatar-capture overhead unrelated to answering.
     turn = Turn(
         idx=idx,
         question=question,
@@ -1091,7 +1229,7 @@ def run_query_phase1(question: str, user: str, idx: int):
         origin=origin,
         gemini_calls=gemini_calls,
         tokens=total_tokens,
-        mc=mc,
+        mc=None,
         saved_search_path=None,
         stubs_created=[],
         ts=datetime.now(timezone.utc).isoformat(),
