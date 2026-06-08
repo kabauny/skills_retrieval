@@ -616,3 +616,424 @@ Session active user: `jim.chen` (default per CLAUDE.md).
   - [[paraganglioma]]
   - [[potomac-trial]]
   - [[pertuzumab]]
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the first-line treatment for EGFR exon 19 deletion metastatic NSCLC?"
+- **Note page:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]] (`wiki/notes/what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc.md`) — created
+- **Raw source:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How do you treat ALK-positive metastatic NSCLC in the first line?"
+- **Note page:** [[how-do-you-treat-alk-positive-metastatic-nsclc-in-the-first-line]] (`wiki/notes/how-do-you-treat-alk-positive-metastatic-nsclc-in-the-first-line.md`) — created
+- **Raw source:** [[how-do-you-treat-alk-positive-metastatic-nsclc-in-the-first-line]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the role of adjuvant osimertinib in resected EGFR-mutant NSCLC (ADAURA trial)?"
+- **Note page:** [[what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr]] (`wiki/notes/what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr.md`) — created
+- **Raw source:** [[what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What are the treatment options for KRAS G12C-mutated NSCLC after progression on first-line therapy?"
+- **Note page:** [[what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-]] (`wiki/notes/what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-.md`) — created
+- **Raw source:** [[what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How is PD-L1 expression used to guide first-line immunotherapy in metastatic NSCLC?"
+- **Note page:** [[how-is-pd-l1-expression-used-to-guide-first-line-immunotherapy-in-metastatic-nsc]] (`wiki/notes/how-is-pd-l1-expression-used-to-guide-first-line-immunotherapy-in-metastatic-nsc.md`) — created
+- **Raw source:** [[how-is-pd-l1-expression-used-to-guide-first-line-immunotherapy-in-metastatic-nsc]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the standard treatment for limited-stage small cell lung cancer?"
+- **Note page:** [[what-is-the-standard-treatment-for-limited-stage-small-cell-lung-cancer]] (`wiki/notes/what-is-the-standard-treatment-for-limited-stage-small-cell-lung-cancer.md`) — created
+- **Raw source:** [[what-is-the-standard-treatment-for-limited-stage-small-cell-lung-cancer]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the role of consolidation durvalumab after chemoradiation in unresectable stage III NSCLC (P..."
+- **Note page:** [[what-is-the-role-of-consolidation-durvalumab-after-chemoradiation-in-unresectabl]] (`wiki/notes/what-is-the-role-of-consolidation-durvalumab-after-chemoradiation-in-unresectabl.md`) — created
+- **Raw source:** [[what-is-the-role-of-consolidation-durvalumab-after-chemoradiation-in-unresectabl]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How do you treat ROS1-rearranged metastatic NSCLC?"
+- **Note page:** [[how-do-you-treat-ros1-rearranged-metastatic-nsclc]] (`wiki/notes/how-do-you-treat-ros1-rearranged-metastatic-nsclc.md`) — created
+- **Raw source:** [[how-do-you-treat-ros1-rearranged-metastatic-nsclc]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the first-line treatment for metastatic MSI-high colorectal cancer?"
+- **Note page:** [[what-is-the-first-line-treatment-for-metastatic-msi-high-colorectal-cancer]] (`wiki/notes/what-is-the-first-line-treatment-for-metastatic-msi-high-colorectal-cancer.md`) — created
+- **Raw source:** [[what-is-the-first-line-treatment-for-metastatic-msi-high-colorectal-cancer]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How do you treat HER2-positive metastatic gastric or gastroesophageal cancer?"
+- **Note page:** [[how-do-you-treat-her2-positive-metastatic-gastric-or-gastroesophageal-cancer]] (`wiki/notes/how-do-you-treat-her2-positive-metastatic-gastric-or-gastroesophageal-cancer.md`) — created
+- **Raw source:** [[how-do-you-treat-her2-positive-metastatic-gastric-or-gastroesophageal-cancer]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the FOLFIRINOX regimen and its role in pancreatic cancer?"
+- **Note page:** [[what-is-the-folfirinox-regimen-and-its-role-in-pancreatic-cancer]] (`wiki/notes/what-is-the-folfirinox-regimen-and-its-role-in-pancreatic-cancer.md`) — created
+- **Raw source:** [[what-is-the-folfirinox-regimen-and-its-role-in-pancreatic-cancer]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the first-line treatment for advanced hepatocellular carcinoma (atezolizumab plus bevacizuma..."
+- **Note page:** [[what-is-the-first-line-treatment-for-advanced-hepatocellular-carcinoma-atezolizu]] (`wiki/notes/what-is-the-first-line-treatment-for-advanced-hepatocellular-carcinoma-atezolizu.md`) — created
+- **Raw source:** [[what-is-the-first-line-treatment-for-advanced-hepatocellular-carcinoma-atezolizu]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "Which biomarkers should be tested in metastatic colorectal cancer to guide therapy?"
+- **Note page:** [[which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera]] (`wiki/notes/which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera.md`) — created
+- **Raw source:** [[which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the first-line treatment for advanced biliary tract cancer / cholangiocarcinoma?"
+- **Note page:** [[what-is-the-first-line-treatment-for-advanced-biliary-tract-cancer-cholangiocarc]] (`wiki/notes/what-is-the-first-line-treatment-for-advanced-biliary-tract-cancer-cholangiocarc.md`) — created
+- **Raw source:** [[what-is-the-first-line-treatment-for-advanced-biliary-tract-cancer-cholangiocarc]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How do you treat BRAF V600E-mutated metastatic colorectal cancer?"
+- **Note page:** [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]] (`wiki/notes/how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer.md`) — created
+- **Raw source:** [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the first-line treatment for metastatic castration-resistant prostate cancer?"
+- **Note page:** [[what-is-the-first-line-treatment-for-metastatic-castration-resistant-prostate-ca]] (`wiki/notes/what-is-the-first-line-treatment-for-metastatic-castration-resistant-prostate-ca.md`) — created
+- **Raw source:** [[what-is-the-first-line-treatment-for-metastatic-castration-resistant-prostate-ca]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How do you treat metastatic hormone-sensitive prostate cancer with triplet therapy?"
+- **Note page:** [[how-do-you-treat-metastatic-hormone-sensitive-prostate-cancer-with-triplet-thera]] (`wiki/notes/how-do-you-treat-metastatic-hormone-sensitive-prostate-cancer-with-triplet-thera.md`) — created
+- **Raw source:** [[how-do-you-treat-metastatic-hormone-sensitive-prostate-cancer-with-triplet-thera]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the role of PARP inhibitors in metastatic prostate cancer with HRR mutations?"
+- **Note page:** [[what-is-the-role-of-parp-inhibitors-in-metastatic-prostate-cancer-with-hrr-mutat]] (`wiki/notes/what-is-the-role-of-parp-inhibitors-in-metastatic-prostate-cancer-with-hrr-mutat.md`) — created
+- **Raw source:** [[what-is-the-role-of-parp-inhibitors-in-metastatic-prostate-cancer-with-hrr-mutat]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the first-line treatment for metastatic clear cell renal cell carcinoma?"
+- **Note page:** [[what-is-the-first-line-treatment-for-metastatic-clear-cell-renal-cell-carcinoma]] (`wiki/notes/what-is-the-first-line-treatment-for-metastatic-clear-cell-renal-cell-carcinoma.md`) — created
+- **Raw source:** [[what-is-the-first-line-treatment-for-metastatic-clear-cell-renal-cell-carcinoma]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How do you treat metastatic urothelial carcinoma with enfortumab vedotin plus pembrolizumab?"
+- **Note page:** [[how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe]] (`wiki/notes/how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe.md`) — created
+- **Raw source:** [[how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How is non-clear-cell renal cell carcinoma treated?"
+- **Note page:** [[how-is-non-clear-cell-renal-cell-carcinoma-treated]] (`wiki/notes/how-is-non-clear-cell-renal-cell-carcinoma-treated.md`) — created
+- **Raw source:** [[how-is-non-clear-cell-renal-cell-carcinoma-treated]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the first-line treatment for diffuse large B-cell lymphoma?"
+- **Note page:** [[what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma]] (`wiki/notes/what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma.md`) — created
+- **Raw source:** [[what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How do you treat relapsed or refractory DLBCL with CAR-T cell therapy?"
+- **Note page:** [[how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy]] (`wiki/notes/how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy.md`) — created
+- **Raw source:** [[how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the frontline treatment for chronic lymphocytic leukemia (CLL)?"
+- **Note page:** [[what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll]] (`wiki/notes/what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll.md`) — created
+- **Raw source:** [[what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How do you treat newly diagnosed multiple myeloma in transplant-eligible patients?"
+- **Note page:** [[how-do-you-treat-newly-diagnosed-multiple-myeloma-in-transplant-eligible-patient]] (`wiki/notes/how-do-you-treat-newly-diagnosed-multiple-myeloma-in-transplant-eligible-patient.md`) — created
+- **Raw source:** [[how-do-you-treat-newly-diagnosed-multiple-myeloma-in-transplant-eligible-patient]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the first-line treatment for advanced Hodgkin lymphoma?"
+- **Note page:** [[what-is-the-first-line-treatment-for-advanced-hodgkin-lymphoma]] (`wiki/notes/what-is-the-first-line-treatment-for-advanced-hodgkin-lymphoma.md`) — created
+- **Raw source:** [[what-is-the-first-line-treatment-for-advanced-hodgkin-lymphoma]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "How do you treat acute myeloid leukemia with FLT3 mutations?"
+- **Note page:** [[how-do-you-treat-acute-myeloid-leukemia-with-flt3-mutations]] (`wiki/notes/how-do-you-treat-acute-myeloid-leukemia-with-flt3-mutations.md`) — created
+- **Raw source:** [[how-do-you-treat-acute-myeloid-leukemia-with-flt3-mutations]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "What is the standard first-line management of follicular lymphoma?"
+- **Note page:** [[what-is-the-standard-first-line-management-of-follicular-lymphoma]] (`wiki/notes/what-is-the-standard-first-line-management-of-follicular-lymphoma.md`) — created
+- **Raw source:** [[what-is-the-standard-first-line-management-of-follicular-lymphoma]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-07] verify-note | what-is-the-standard-first-line-management-of-follicular-lymphoma
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-standard-first-line-management-of-follicular-lymphoma]] (`wiki/notes/what-is-the-standard-first-line-management-of-follicular-lymphoma.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-first-line-treatment-for-advanced-hodgkin-lymphoma
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-first-line-treatment-for-advanced-hodgkin-lymphoma]] (`wiki/notes/what-is-the-first-line-treatment-for-advanced-hodgkin-lymphoma.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-do-you-treat-acute-myeloid-leukemia-with-flt3-mutations
+
+- **User:** jim.chen
+- **Page:** [[how-do-you-treat-acute-myeloid-leukemia-with-flt3-mutations]] (`wiki/notes/how-do-you-treat-acute-myeloid-leukemia-with-flt3-mutations.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-do-you-treat-newly-diagnosed-multiple-myeloma-in-transplant-eligible-patient
+
+- **User:** jim.chen
+- **Page:** [[how-do-you-treat-newly-diagnosed-multiple-myeloma-in-transplant-eligible-patient]] (`wiki/notes/how-do-you-treat-newly-diagnosed-multiple-myeloma-in-transplant-eligible-patient.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll]] (`wiki/notes/what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy
+
+- **User:** jim.chen
+- **Page:** [[how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy]] (`wiki/notes/how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma]] (`wiki/notes/what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-is-non-clear-cell-renal-cell-carcinoma-treated
+
+- **User:** jim.chen
+- **Page:** [[how-is-non-clear-cell-renal-cell-carcinoma-treated]] (`wiki/notes/how-is-non-clear-cell-renal-cell-carcinoma-treated.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe
+
+- **User:** jim.chen
+- **Page:** [[how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe]] (`wiki/notes/how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-first-line-treatment-for-metastatic-clear-cell-renal-cell-carcinoma
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-first-line-treatment-for-metastatic-clear-cell-renal-cell-carcinoma]] (`wiki/notes/what-is-the-first-line-treatment-for-metastatic-clear-cell-renal-cell-carcinoma.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-role-of-parp-inhibitors-in-metastatic-prostate-cancer-with-hrr-mutat
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-role-of-parp-inhibitors-in-metastatic-prostate-cancer-with-hrr-mutat]] (`wiki/notes/what-is-the-role-of-parp-inhibitors-in-metastatic-prostate-cancer-with-hrr-mutat.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-do-you-treat-metastatic-hormone-sensitive-prostate-cancer-with-triplet-thera
+
+- **User:** jim.chen
+- **Page:** [[how-do-you-treat-metastatic-hormone-sensitive-prostate-cancer-with-triplet-thera]] (`wiki/notes/how-do-you-treat-metastatic-hormone-sensitive-prostate-cancer-with-triplet-thera.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-first-line-treatment-for-metastatic-castration-resistant-prostate-ca
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-first-line-treatment-for-metastatic-castration-resistant-prostate-ca]] (`wiki/notes/what-is-the-first-line-treatment-for-metastatic-castration-resistant-prostate-ca.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer
+
+- **User:** jim.chen
+- **Page:** [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]] (`wiki/notes/how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-first-line-treatment-for-advanced-biliary-tract-cancer-cholangiocarc
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-first-line-treatment-for-advanced-biliary-tract-cancer-cholangiocarc]] (`wiki/notes/what-is-the-first-line-treatment-for-advanced-biliary-tract-cancer-cholangiocarc.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera
+
+- **User:** jim.chen
+- **Page:** [[which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera]] (`wiki/notes/which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-first-line-treatment-for-advanced-hepatocellular-carcinoma-atezolizu
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-first-line-treatment-for-advanced-hepatocellular-carcinoma-atezolizu]] (`wiki/notes/what-is-the-first-line-treatment-for-advanced-hepatocellular-carcinoma-atezolizu.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-folfirinox-regimen-and-its-role-in-pancreatic-cancer
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-folfirinox-regimen-and-its-role-in-pancreatic-cancer]] (`wiki/notes/what-is-the-folfirinox-regimen-and-its-role-in-pancreatic-cancer.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-do-you-treat-her2-positive-metastatic-gastric-or-gastroesophageal-cancer
+
+- **User:** jim.chen
+- **Page:** [[how-do-you-treat-her2-positive-metastatic-gastric-or-gastroesophageal-cancer]] (`wiki/notes/how-do-you-treat-her2-positive-metastatic-gastric-or-gastroesophageal-cancer.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-first-line-treatment-for-metastatic-msi-high-colorectal-cancer
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-first-line-treatment-for-metastatic-msi-high-colorectal-cancer]] (`wiki/notes/what-is-the-first-line-treatment-for-metastatic-msi-high-colorectal-cancer.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-do-you-treat-ros1-rearranged-metastatic-nsclc
+
+- **User:** jim.chen
+- **Page:** [[how-do-you-treat-ros1-rearranged-metastatic-nsclc]] (`wiki/notes/how-do-you-treat-ros1-rearranged-metastatic-nsclc.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-role-of-consolidation-durvalumab-after-chemoradiation-in-unresectabl
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-role-of-consolidation-durvalumab-after-chemoradiation-in-unresectabl]] (`wiki/notes/what-is-the-role-of-consolidation-durvalumab-after-chemoradiation-in-unresectabl.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-mechanism-of-action-of-amivantamab
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-mechanism-of-action-of-amivantamab]] (`wiki/notes/what-is-the-mechanism-of-action-of-amivantamab.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | tell-me-about-akt-pathway-drugs-available-for-nsclc
+
+- **User:** jim.chen
+- **Page:** [[tell-me-about-akt-pathway-drugs-available-for-nsclc]] (`wiki/notes/tell-me-about-akt-pathway-drugs-available-for-nsclc.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]] (`wiki/notes/what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-do-you-treat-alk-positive-metastatic-nsclc-in-the-first-line
+
+- **User:** jim.chen
+- **Page:** [[how-do-you-treat-alk-positive-metastatic-nsclc-in-the-first-line]] (`wiki/notes/how-do-you-treat-alk-positive-metastatic-nsclc-in-the-first-line.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr]] (`wiki/notes/what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | how-is-pd-l1-expression-used-to-guide-first-line-immunotherapy-in-metastatic-nsc
+
+- **User:** jim.chen
+- **Page:** [[how-is-pd-l1-expression-used-to-guide-first-line-immunotherapy-in-metastatic-nsc]] (`wiki/notes/how-is-pd-l1-expression-used-to-guide-first-line-immunotherapy-in-metastatic-nsc.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-is-the-standard-treatment-for-limited-stage-small-cell-lung-cancer
+
+- **User:** jim.chen
+- **Page:** [[what-is-the-standard-treatment-for-limited-stage-small-cell-lung-cancer]] (`wiki/notes/what-is-the-standard-treatment-for-limited-stage-small-cell-lung-cancer.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] verify-note | what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-
+
+- **User:** jim.chen
+- **Page:** [[what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-]] (`wiki/notes/what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-07).
+
+## [2026-06-07] promote | stupp-protocol
+
+- **User:** jim.chen
+- **Page:** [[stupp-protocol]] → `wiki/concepts/stupp-protocol.md` (moved out of wiki/stubs/)
+- **Action:** stripped `auto_generated`/`stub_target` markers and warning callout; promoted to the curated namespace.
+- **Reminder:** consider an agent ingest to expand to full SCHEMA structure (Overview, Key facts, Related entities, Sources).
+
+## [2026-06-07] query | First line treatment for EGFR mutated NSCLC metastatic
+
+- **User:** jim.chen
+- **Question:** "First line treatment for EGFR mutated NSCLC metastatic"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 10539

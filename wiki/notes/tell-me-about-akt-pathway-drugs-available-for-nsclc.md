@@ -2,9 +2,9 @@
 title: "Tell me about AKT pathway drugs available for NSCLC"
 auto_generated: true
 auto_date: 2026-06-07
-verified: false
-verified_by: ""
-verified_date: ""
+verified: true
+verified_by: jim.chen
+verified_date: 2026-06-07
 source_question: "Tell me about AKT pathway drugs available for NSCLC"
 raw_source: "[[tell-me-about-akt-pathway-drugs-available-for-nsclc-3]]"
 tags: [auto-ingested]
@@ -12,7 +12,7 @@ tags: [auto-ingested]
 
 # Tell me about AKT pathway drugs available for NSCLC
 
-> 🌱 **Auto-ingested from an internet search on 2026-06-07.** This page is searchable and editable. It has **not** been verified — correct any fact by editing this page, then mark it verified.
+> ✅ **Verified by jim.chen on 2026-06-07.** Auto-ingested from an internet search; reviewed and confirmed.
 
 Currently, there are no AKT inhibitors that are FDA-approved specifically for the treatment of non-small cell lung cancer (NSCLC) [search-sourced]. The first and only FDA-approved AKT inhibitor in oncology is capivasertib (Truqap), which was approved in November 2023 for specific types of locally advanced or metastatic breast cancer [search-sourced].
 

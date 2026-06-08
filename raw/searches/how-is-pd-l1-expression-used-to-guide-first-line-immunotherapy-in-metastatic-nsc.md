@@ -1,0 +1,59 @@
+---
+title: "Search: How is PD-L1 expression used to guide first-line immunotherapy in metastatic NSCLC?"
+source_type: search
+search_query: "How is PD-L1 expression used to guide first-line immunotherapy in metastatic NSCLC?"
+search_queries_used:
+  - ""PD-L1 expression" first-line immunotherapy metastatic NSCLC guidelines"
+date_retrieved: 2026-06-07
+model: gemini-3.1-pro-preview
+tokens:
+  prompt: 151
+  candidates: 735
+  total: 2469
+sources:
+  - title: "oncpracticemanagement.com"
+    url: "https://www.oncpracticemanagement.com/nccn-guidelines/immunotherapy-strategies-in-the-updated-nccn-guideline-for-nsclc-hinge-on-pd-l1-testing"
+  - title: "cancernetwork.com"
+    url: "https://www.cancernetwork.com/view/nccn-updated-nsclc-guidelines-hone-pd-l1-testing"
+  - title: "nih.gov"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12345754/"
+  - title: "ascopubs.org"
+    url: "https://ascopubs.org/doi/10.1200/JCO-24-02786"
+  - title: "cancerbiomed.org"
+    url: "https://www.cancerbiomed.org/content/21/2/117"
+tags: []
+---
+
+# How is PD-L1 expression used to guide first-line immunotherapy in metastatic NSCLC?
+
+In metastatic non-small cell lung cancer (NSCLC), PD-L1 expression—measured by the Tumor Proportion Score (TPS)—is the primary biomarker used to guide first-line immunotherapy selection. Be [oncpracticemanagement.com](https://www.oncpracticemanagement.com/nccn-guidelines/immunotherapy-strategies-in-the-updated-nccn-guideline-for-nsclc-hinge-on-pd-l1-testing)fore initiating immunotherapy, it is critical to confirm the absence of actionable driver mutations (such as EGFR or ALK), as patients with these mutations should generally receive targeted therapies rather than primary immunotherapy.
+
+O [oncpracticemanagement.com](https://www.oncpracticemanagement.com/nccn-guidelines/immunotherapy-strategies-in-the-updated-nccn-guideline-for-nsclc-hinge-on-pd-l1-testing) [cancernetwork.com](https://www.cancernetwork.com/view/nccn-updated-nsclc-guidelines-hone-pd-l1-testing)nce driver mutations are ruled out, treatment recommendations are stratified by PD-L1 TPS:
+
+**1. High PD-L1 Expression (TPS ≥ 50%)**
+*   **ICI Monotherapy:** Immune checkpoint inhibitor (ICI) monotherapy is a preferred, Category 1 guideline recommendation for these patients. Sing [oncpracticemanagement.com](https://www.oncpracticemanagement.com/nccn-guidelines/immunotherapy-strategies-in-the-updated-nccn-guideline-for-nsclc-hinge-on-pd-l1-testing)le-agent therapy offers a highly favorable benefit-to-risk profile, featuring significant survival benefits and lower toxicity compared to chemotherapy. Stan [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12345754/)dard options include single-agent pembrolizumab, atezolizumab, or cemiplimab. 
+*   [ascopubs.org](https://ascopubs.org/doi/10.1200/JCO-24-02786) **Chemoimmunotherapy:** Adding chemotherapy to immunotherapy (e.g., pembrolizumab plus platinum-doublet chemotherapy) is also an approved Category 1 option. This [cancernetwork.com](https://www.cancernetwork.com/view/nccn-updated-nsclc-guidelines-hone-pd-l1-testing) combined approach is frequently considered for patients with a high tumor burden, highly symptomatic disease, or rapidly progressing cancer where an immediate objective response is clinically necessary.
+
+**2 [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12345754/) [cancernetwork.com](https://www.cancernetwork.com/view/nccn-updated-nsclc-guidelines-hone-pd-l1-testing). Low (TPS 1–49%) or Negative (TPS < 1%) PD-L1 Expression**
+*   **Chemoimmunotherapy:** For patients with PD-L1 expression below 50%, the current standard of care is a combination of immunotherapy and platinum-based chemotherapy. Becaus [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12345754/)e ICI monotherapy does not consistently provide significant clinical benefit over chemotherapy alone in this population, the combination approach yields the most reliable overall survival improvements. 
+*   * [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12345754/) [oncpracticemanagement.com](https://www.oncpracticemanagement.com/nccn-guidelines/immunotherapy-strategies-in-the-updated-nccn-guideline-for-nsclc-hinge-on-pd-l1-testing) [cancerbiomed.org](https://www.cancerbiomed.org/content/21/2/117)*Dual Immunotherapy + Chemotherapy:** Regimens combining a PD-1/PD-L1 inhibitor with a CTLA-4 inhibitor plus chemotherapy (such as durvalumab plus tremelimumab and chemotherapy) are also efficacious. These  [cancerbiomed.org](https://www.cancerbiomed.org/content/21/2/117)regimens have demonstrated progression-free and overall survival benefits across subgroups, including patients with PD-L1-negative tumors.
+
+**His [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12345754/) [cancerbiomed.org](https://www.cancerbiomed.org/content/21/2/117)tology Considerations**
+When combination chemoimmunotherapy is used (for any PD-L1 expression level), the specific chemotherapy backbone depends on the tumor's histology:
+*   ** [cancernetwork.com](https://www.cancernetwork.com/view/nccn-updated-nsclc-guidelines-hone-pd-l1-testing)Non-Squamous NSCLC:** Preferred combinations include pembrolizumab plus carboplatin (or cisplatin) and pemetrexed. Anothe [oncpracticemanagement.com](https://www.oncpracticemanagement.com/nccn-guidelines/immunotherapy-strategies-in-the-updated-nccn-guideline-for-nsclc-hinge-on-pd-l1-testing) [cancernetwork.com](https://www.cancernetwork.com/view/nccn-updated-nsclc-guidelines-hone-pd-l1-testing)r recommended option is an atezolizumab-based combination, such as atezolizumab + carboplatin + paclitaxel + bevacizumab.
+*   ** [oncpracticemanagement.com](https://www.oncpracticemanagement.com/nccn-guidelines/immunotherapy-strategies-in-the-updated-nccn-guideline-for-nsclc-hinge-on-pd-l1-testing) [cancernetwork.com](https://www.cancernetwork.com/view/nccn-updated-nsclc-guidelines-hone-pd-l1-testing)Squamous NSCLC:** Preferred combinations typically pair pembrolizumab with carboplatin and either paclitaxel or nab-paclitaxel. 
+
+***
+ [cancernetwork.com](https://www.cancernetwork.com/view/nccn-updated-nsclc-guidelines-hone-pd-l1-testing)
+**Sources:**
+- No internal wiki pages were cited (no relevant pages found).
+- Web search was used to compile current clinical guideline updates and trial data.
+
+
+## Sources
+
+1. [oncpracticemanagement.com](https://www.oncpracticemanagement.com/nccn-guidelines/immunotherapy-strategies-in-the-updated-nccn-guideline-for-nsclc-hinge-on-pd-l1-testing)
+2. [cancernetwork.com](https://www.cancernetwork.com/view/nccn-updated-nsclc-guidelines-hone-pd-l1-testing)
+3. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12345754/)
+4. [ascopubs.org](https://ascopubs.org/doi/10.1200/JCO-24-02786)
+5. [cancerbiomed.org](https://www.cancerbiomed.org/content/21/2/117)

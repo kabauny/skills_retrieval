@@ -2,9 +2,9 @@
 title: "What is the mechanism of action of amivantamab?"
 auto_generated: true
 auto_date: 2026-06-05
-verified: false
-verified_by: ""
-verified_date: ""
+verified: true
+verified_by: jim.chen
+verified_date: 2026-06-07
 source_question: "What is the mechanism of action of amivantamab?"
 raw_source: "[[what-is-the-mechanism-of-action-of-amivantamab]]"
 tags: [auto-ingested]
@@ -12,7 +12,7 @@ tags: [auto-ingested]
 
 # What is the mechanism of action of amivantamab?
 
-> 🌱 **Auto-ingested from an internet search on 2026-06-05.** This page is searchable and editable. It has **not** been verified — correct any fact by editing this page, then mark it verified.
+> ✅ **Verified by jim.chen on 2026-06-07.** Auto-ingested from an internet search; reviewed and confirmed.
 
 Amivantamab is a fully human, low-fucose IgG1 bispecific monoclonal antibody [search-sourced]. It is engineered to target and bind to the extracellular domains of two key receptors on tumor cells: the Epidermal Growth Factor Receptor (EGFR) and the Mesenchymal-epithelial Transition Factor (MET) [search-sourced]. 
 

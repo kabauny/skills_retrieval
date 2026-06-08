@@ -18,6 +18,34 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ### Notes
 
+- [[what-is-the-standard-first-line-management-of-follicular-lymphoma]] — What is the standard first-line management of follicular lymphoma?
+- [[how-do-you-treat-acute-myeloid-leukemia-with-flt3-mutations]] — How do you treat acute myeloid leukemia with FLT3 mutations?
+- [[what-is-the-first-line-treatment-for-advanced-hodgkin-lymphoma]] — What is the first-line treatment for advanced Hodgkin lymphoma?
+- [[how-do-you-treat-newly-diagnosed-multiple-myeloma-in-transplant-eligible-patient]] — How do you treat newly diagnosed multiple myeloma in transplant-eligible patients?
+- [[what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll]] — What is the frontline treatment for chronic lymphocytic leukemia (CLL)?
+- [[how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy]] — How do you treat relapsed or refractory DLBCL with CAR-T cell therapy?
+- [[what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma]] — What is the first-line treatment for diffuse large B-cell lymphoma?
+- [[how-is-non-clear-cell-renal-cell-carcinoma-treated]] — How is non-clear-cell renal cell carcinoma treated?
+- [[how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe]] — How do you treat metastatic urothelial carcinoma with enfortumab vedotin plus pembrolizumab?
+- [[what-is-the-first-line-treatment-for-metastatic-clear-cell-renal-cell-carcinoma]] — What is the first-line treatment for metastatic clear cell renal cell carcinoma?
+- [[what-is-the-role-of-parp-inhibitors-in-metastatic-prostate-cancer-with-hrr-mutat]] — What is the role of PARP inhibitors in metastatic prostate cancer with HRR mutations?
+- [[how-do-you-treat-metastatic-hormone-sensitive-prostate-cancer-with-triplet-thera]] — How do you treat metastatic hormone-sensitive prostate cancer with triplet therapy?
+- [[what-is-the-first-line-treatment-for-metastatic-castration-resistant-prostate-ca]] — What is the first-line treatment for metastatic castration-resistant prostate cancer?
+- [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]] — How do you treat BRAF V600E-mutated metastatic colorectal cancer?
+- [[what-is-the-first-line-treatment-for-advanced-biliary-tract-cancer-cholangiocarc]] — What is the first-line treatment for advanced biliary tract cancer / cholangiocarcinoma?
+- [[which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera]] — Which biomarkers should be tested in metastatic colorectal cancer to guide therapy?
+- [[what-is-the-first-line-treatment-for-advanced-hepatocellular-carcinoma-atezolizu]] — What is the first-line treatment for advanced hepatocellular carcinoma (atezolizumab plus bevacizumab)?
+- [[what-is-the-folfirinox-regimen-and-its-role-in-pancreatic-cancer]] — What is the FOLFIRINOX regimen and its role in pancreatic cancer?
+- [[how-do-you-treat-her2-positive-metastatic-gastric-or-gastroesophageal-cancer]] — How do you treat HER2-positive metastatic gastric or gastroesophageal cancer?
+- [[what-is-the-first-line-treatment-for-metastatic-msi-high-colorectal-cancer]] — What is the first-line treatment for metastatic MSI-high colorectal cancer?
+- [[how-do-you-treat-ros1-rearranged-metastatic-nsclc]] — How do you treat ROS1-rearranged metastatic NSCLC?
+- [[what-is-the-role-of-consolidation-durvalumab-after-chemoradiation-in-unresectabl]] — What is the role of consolidation durvalumab after chemoradiation in unresectable stage III NSCLC (PACIFIC)?
+- [[what-is-the-standard-treatment-for-limited-stage-small-cell-lung-cancer]] — What is the standard treatment for limited-stage small cell lung cancer?
+- [[how-is-pd-l1-expression-used-to-guide-first-line-immunotherapy-in-metastatic-nsc]] — How is PD-L1 expression used to guide first-line immunotherapy in metastatic NSCLC?
+- [[what-are-the-treatment-options-for-kras-g12c-mutated-nsclc-after-progression-on-]] — What are the treatment options for KRAS G12C-mutated NSCLC after progression on first-line therapy?
+- [[what-is-the-role-of-adjuvant-osimertinib-in-resected-egfr-mutant-nsclc-adaura-tr]] — What is the role of adjuvant osimertinib in resected EGFR-mutant NSCLC (ADAURA trial)?
+- [[how-do-you-treat-alk-positive-metastatic-nsclc-in-the-first-line]] — How do you treat ALK-positive metastatic NSCLC in the first line?
+- [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]] — What is the first-line treatment for EGFR exon 19 deletion metastatic NSCLC?
 - [[tell-me-about-akt-pathway-drugs-available-for-nsclc]] — Tell me about AKT pathway drugs available for NSCLC
 - [[what-is-the-mechanism-of-action-of-amivantamab]] — What is the mechanism of action of amivantamab?
 
@@ -94,6 +122,7 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ## Concepts
 
+- [[stupp-protocol]] — Stupp protocol
 - [[pathologic-complete-response]] — A clinical endpoint where no residual invasive cancer is detected in the breast and lymph nodes at the time of surgery after neoadjuvant the
 - [[neoadjuvant-treatment]] — A pre-surgical therapy administered to patients to shrink tumors, eliminate microscopic disease, and assess treatment response before defini
 - [[cvd-regimen]] — A combination chemotherapy regimen comprising cyclophosphamide, vincristine, and dacarbazine, widely used as cytotoxic chemotherapy for adva

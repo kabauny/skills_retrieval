@@ -326,3 +326,13 @@ A curated, categorized log of queries posed by `jim.chen`. Updated on every non-
 - **Answer origin:** wiki
 - **Tokens (Gemini):** 8346
 - **MC probe generated:** no
+
+### [2026-06-07] first-line-treatment-for-egfr-mutated-nsclc-metastatic
+
+- **Question:** "First line treatment for EGFR mutated NSCLC metastatic"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]]
+- **Gemini calls:** 3
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 10539
+- **MC probe generated:** no

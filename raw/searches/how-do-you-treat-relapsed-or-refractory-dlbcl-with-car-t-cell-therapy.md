@@ -1,0 +1,55 @@
+---
+title: "Search: How do you treat relapsed or refractory DLBCL with CAR-T cell therapy?"
+source_type: search
+search_query: "How do you treat relapsed or refractory DLBCL with CAR-T cell therapy?"
+search_queries_used:
+  - "CAR-T cell therapy for relapsed or refractory diffuse large B-cell lymphoma"
+  - ""relapsed or refractory DLBCL" CAR-T cell therapy FDA approved options guidelines"
+date_retrieved: 2026-06-07
+model: gemini-3.1-pro-preview
+tokens:
+  prompt: 1124
+  candidates: 743
+  total: 4526
+sources:
+  - title: "shebaonline.org"
+    url: "https://www.shebaonline.org/kn-base/cancers-treated-with-car-t/"
+  - title: "nih.gov"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11171011/"
+  - title: "healthbooktimes.org"
+    url: "https://onco-hema.healthbooktimes.org/article/158216-bridge-the-gap-to-car-bridging-therapy-in-car-t-cell-therapy-for-relapsed-or-refractory-diffuse-large-b-cell-lymphoma"
+  - title: "cms.gov"
+    url: "https://www.cms.gov/medicare-coverage-database/view/ncacal-decision-memo.aspx?proposed=Y&NCAId=291"
+tags: []
+---
+
+# How do you treat relapsed or refractory DLBCL with CAR-T cell therapy?
+
+While the first-line treatment for fit patients with diffuse large B-cell lymphoma (DLBCL) typically involves chemoimmunotherapy regimens like R-CHOP or Pola-R-CHP [[what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma]], patients whose disease becomes relapsed or refractory are often treated with CAR-T cell therapy [[what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma]]. 
+
+Currently, there are three CD19-directed CAR-T cell therapies FDA-approved for the treatment of relapsed or refractory DLBCL [search-sourced] [shebaonline.org](https://www.shebaonline.org/kn-base/cancers-treated-with-car-t/):
+1. **Axicabtagene ciloleucel** (Yescarta) [search-sourced] [shebaonline.org](https://www.shebaonline.org/kn-base/cancers-treated-with-car-t/)
+2. **Tisagenlecleucel** (Kymriah) [search-sourced] [shebaonline.org](https://www.shebaonline.org/kn-base/cancers-treated-with-car-t/)
+3. **Lisocabtagene maraleucel** (Breyanzi) [search-sourced] [shebaonline.org](https://www.shebaonline.org/kn-base/cancers-treated-with-car-t/)
+
+*(Note: While ciltacabtagene autoleucel (Carvykti) is another widely known CAR-T cell therapy, it targets BCMA and is approved for relapsed/refractory multiple myeloma, not DLBCL [[ciltacabtagene-autoleucel]]).*
+
+**How CAR-T cell therapy is utilized for DLBCL:**
+* **Lines of Therapy:** Originally, these CAR-T products were FDA-approved for patients who had already progressed on two or more prior lines of systemic therapy [search-sourced] [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC11171011/). However, following landmark phase 3 trials (such as ZUMA-7 for Yescarta and TRANSFORM for Breyanzi), they are now heavily utilized as a second-line therapy for patients with primary refractory disease or those who relapse within 12 months of frontline treatment [search-sourced] [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC11171011/). In these high-risk scenarios, CAR-T cell therapy has demonstrated a survival benefit over the historical standard of salvage chemotherapy followed by autologous stem cell transplantation [search-sourced] [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC11171011/). 
+* **Bridging Therapy:** Because CAR-T therapies require extracting the patient's T-cells and custom-engineering them in a lab (which takes time), patients are often given "bridging therapy" [search-sourced] [healthbooktimes.org](https://onco-hema.healthbooktimes.org/article/158216-bridge-the-gap-to-car-bridging-therapy-in-car-t-cell-therapy-for-relapsed-or-refractory-diffuse-large-b-cell-lymphoma). The goal of bridging therapy is not necessarily to induce a deep remission, but rather to control disease symptoms, halt rapid clinical deterioration, and keep the patient fit enough to eventually undergo lymphodepleting chemotherapy and the CAR-T infusion [search-sourced] [healthbooktimes.org](https://onco-hema.healthbooktimes.org/article/158216-bridge-the-gap-to-car-bridging-therapy-in-car-t-cell-therapy-for-relapsed-or-refractory-diffuse-large-b-cell-lymphoma).
+* **Safety and Toxicity Management:** Treating relapsed/refractory DLBCL with CAR-T requires specialized centers to manage significant adverse events, primarily cytokine release syndrome (CRS) and neurotoxicity [search-sourced] [cms.gov](https://www.cms.gov/medicare-coverage-database/view/ncacal-decision-memo.aspx?proposed=Y&NCAId=291). These therapies are administered under strict FDA Risk Evaluation and Mitigation Strategy (REMS) programs, which ensure that life-saving interventions (such as the administration of tocilizumab for CRS) are readily available [search-sourced] [cms.gov](https://www.cms.gov/medicare-coverage-database/view/ncacal-decision-memo.aspx?proposed=Y&NCAId=291).
+
+***
+
+**Sources:**
+- [[what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma]]
+- [[ciltacabtagene-autoleucel]]
+- Web search
+
+
+## Sources
+
+1. [shebaonline.org](https://www.shebaonline.org/kn-base/cancers-treated-with-car-t/)
+2. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC11171011/)
+3. [healthbooktimes.org](https://onco-hema.healthbooktimes.org/article/158216-bridge-the-gap-to-car-bridging-therapy-in-car-t-cell-therapy-for-relapsed-or-refractory-diffuse-large-b-cell-lymphoma)
+4. [cms.gov](https://www.cms.gov/medicare-coverage-database/view/ncacal-decision-memo.aspx?proposed=Y&NCAId=291)
