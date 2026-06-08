@@ -96,6 +96,7 @@ export interface GrowItem {
   reason: string;
   coverage: number;
   nearest: string;
+  connectivity: number;
 }
 
 export interface GrowRunState {

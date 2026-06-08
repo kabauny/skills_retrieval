@@ -175,13 +175,35 @@ def dedup_and_rank(cands: list[dict], top: int, covered: float = COVERED) -> tup
     return kept[:top], dropped
 
 
+_REF_COUNT_RE = re.compile(r"referenced in (\d+) note")
+
+
+def _connectivity(question: str, reason: str, graph_deg: dict[str, int]) -> int:
+    """How much answering this question would strengthen the graph.
+    Referential: the entity's note-degree (parsed from the reason — exact).
+    Else: the degree of the biggest graph hub the question text touches."""
+    m = _REF_COUNT_RE.search(reason)
+    if m:
+        return int(m.group(1))
+    text = f"{question} {reason}".lower()
+    best = 0
+    for node, d in graph_deg.items():
+        name = node.replace("-", " ")
+        if len(name) >= 5 and name in text:
+            best = max(best, d)
+    return best
+
+
 def propose(depth_sample: int = DEPTH_SAMPLE, top: int = TOP, covered: float = COVERED) -> list[dict]:
     """Harvest candidates (all 3 strategies), dedup vs existing pages via
-    embeddings, rank by gap size. Returns the ranked list of {q, strategy,
-    reason, coverage, nearest}. Used by the API / Grow tab."""
+    embeddings, rank by gap size, and score connectivity payoff. Returns the
+    ranked list of {q, strategy, reason, coverage, nearest, connectivity}."""
     existing = _existing_keys()
     cands = harvest_referential(existing) + harvest_depth(depth_sample) + harvest_coverage()
     ranked, _ = dedup_and_rank(cands, top, covered)
+    graph_deg = {n: len(v) for n, v in core.build_link_graph().items()}
+    for item in ranked:
+        item["connectivity"] = _connectivity(item["q"], item.get("reason", ""), graph_deg)
     return ranked
 
 

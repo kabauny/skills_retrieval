@@ -35,6 +35,7 @@ export default function GrowTab({
 }) {
   const [proposing, setProposing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sortBy, setSortBy] = useState<"gap" | "connectivity">("gap");
 
   const propose = async () => {
     setProposing(true);
@@ -101,7 +102,14 @@ export default function GrowTab({
     onAfterChange();
   };
 
-  const grouped = (s: GrowItem["strategy"]) => (items || []).filter((i) => i.strategy === s);
+  const grouped = (s: GrowItem["strategy"]) => {
+    const list = (items || []).filter((i) => i.strategy === s);
+    return [...list].sort((a, b) =>
+      sortBy === "connectivity"
+        ? (b.connectivity ?? 0) - (a.connectivity ?? 0) // most graph-impactful first
+        : a.coverage - b.coverage, // biggest gap first
+    );
+  };
 
   return (
     <div className="px-6 py-5 max-w-3xl mx-auto">
@@ -123,6 +131,23 @@ export default function GrowTab({
         {items && (
           <span className="text-sm text-slate-500">
             {items.length} proposed · {selected.size} selected
+          </span>
+        )}
+        {items && items.length > 0 && (
+          <span className="ml-auto text-xs text-slate-500 flex items-center gap-1">
+            sort:
+            <button
+              onClick={() => setSortBy("gap")}
+              className={sortBy === "gap" ? "btn-primary" : "btn-ghost"}
+            >
+              gap size
+            </button>
+            <button
+              onClick={() => setSortBy("connectivity")}
+              className={sortBy === "connectivity" ? "btn-primary" : "btn-ghost"}
+            >
+              connectivity
+            </button>
           </span>
         )}
       </div>
@@ -181,7 +206,7 @@ export default function GrowTab({
                     <span>
                       <span className="font-medium">{it.q}</span>
                       <span className="block text-[11px] text-slate-400 mt-0.5">
-                        gap {it.coverage.toFixed(2)} · {it.reason}
+                        gap {it.coverage.toFixed(2)} · 🔗 connectivity {it.connectivity ?? 0} · {it.reason}
                       </span>
                     </span>
                   </label>
