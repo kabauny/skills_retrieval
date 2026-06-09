@@ -9,15 +9,17 @@ tags: [cancer/breast, biomarker/ctDNA, "evidence/RCT", "evidence/phase-3"]
 
 ## Overview
 
-Phase 3 randomized trial designed to evaluate whether ctDNA-based MRD surveillance and intervention could prevent breast cancer recurrence. **Closed early** due to challenges in patient randomization — too few MRD+ events in the eligible population. The trial's failure carries an important **design lesson** for the MRD-guided escalation field.
+ZEST was a phase 3, randomized, double-blind trial testing whether the PARP inhibitor niraparib could prevent or delay recurrence in early-stage breast cancer patients with molecular residual disease (ctDNA positivity) after curative-intent therapy. It enrolled stage I-III triple-negative or BRCA-mutated, HR-positive HER2-negative patients, using the personalized Signatera ctDNA assay for surveillance. The trial was **terminated early** because too few patients were ctDNA-positive and eligible, yielding a widely cited design lesson for MRD-guided escalation trials. Results were presented by Nicholas Turner at the 2024 San Antonio Breast Cancer Symposium (SABCS).
 
 ## Key facts
 
-- **Design intent:** prospectively test whether intervention triggered by ctDNA-detected MRD positivity could improve recurrence-free outcomes in early breast cancer [[mrd-her2-breast-cancer-residual-disease-2026]].
-- **Outcome: closed early** — randomization difficulties prevented adequate enrollment of MRD+ patients [[mrd-her2-breast-cancer-residual-disease-2026]].
-- **Lesson learned:** future MRD-guided adjuvant trials need **higher-risk enrichment** to ensure adequate MRD+ event rates. The Q3-style scenario (residual disease *and* MRD+) is precisely the kind of high-risk-within-high-risk population that future trials should target.
-- **Implication for current practice:** the absence of positive prospective data — and the inability of a major Phase 3 to even complete — is a primary reason NCCN/ASCO/ESMO **do not yet recommend MRD-guided adjuvant escalation** [[mrd-her2-breast-cancer-residual-disease-2026]].
-- **Successor trials:** [[circulating-tumor-dna]] page tracks the ongoing prospective MRD trials including NCT07136493.
+- **Design:** phase 3, randomized, double-blind, placebo-controlled trial of niraparib vs placebo in ctDNA-positive early breast cancer with no radiographic recurrence [[mrd-her2-breast-cancer-residual-disease-2026]]; [SABCS 2024, ASCO Post](https://ascopost.com/news/december-2024/learning-from-the-zest-trial-in-using-ctdna-to-predict-breast-cancer-recurrence/).
+- **Population:** stage I-III triple-negative breast cancer or BRCA-mutated HER2-negative breast cancer, monitored with the personalized Signatera ctDNA assay after definitive treatment [SABCS 2024, ASCO Post](https://ascopost.com/news/december-2024/learning-from-the-zest-trial-in-using-ctdna-to-predict-breast-cancer-recurrence/).
+- **Accrual failure:** of 1,901 patients tested for ctDNA, only ~147 (about 8%) were ctDNA-positive and eligible, and just 40 were randomized before early termination [Healio](https://www.healio.com/news/hematology-oncology/20241213/terminated-studys-challenges-may-guide-future-trials-of-mrdguided-breast-cancer-therapy).
+- **Critical design flaw:** roughly 55% of patients with initial ctDNA positivity already had imaging-detectable metastatic recurrence, leaving too small a window for MRD-only intervention [SABCS 2024, ASCO Post](https://ascopost.com/news/december-2024/learning-from-the-zest-trial-in-using-ctdna-to-predict-breast-cancer-recurrence/).
+- **Exploratory signal:** among the 40 randomized (18 niraparib, 22 placebo), median recurrence-free interval was 11.4 months with niraparib vs 5.4 months with placebo — hypothesis-generating only, given the tiny sample [Healio](https://www.healio.com/news/hematology-oncology/20241213/terminated-studys-challenges-may-guide-future-trials-of-mrdguided-breast-cancer-therapy).
+- **Lesson learned:** investigators recommended starting ctDNA testing earlier (e.g., during neoadjuvant therapy) and enriching for higher-risk populations to ensure adequate MRD+ event rates in future trials [AACR news release](https://www.aacr.org/about-the-aacr/newsroom/news-releases/zest-trial-offers-insights-for-using-ctdna-to-predict-breast-cancer-recurrence/).
+- **Significance:** ZEST's inability to complete underscores why guidelines do not yet recommend ctDNA/MRD-guided adjuvant escalation in breast cancer [[mrd-her2-breast-cancer-residual-disease-2026]].
 
 ## Related entities
 
@@ -27,6 +29,9 @@ Phase 3 randomized trial designed to evaluate whether ctDNA-based MRD surveillan
 ## Sources
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]]
+- https://ascopost.com/news/december-2024/learning-from-the-zest-trial-in-using-ctdna-to-predict-breast-cancer-recurrence/
+- https://www.healio.com/news/hematology-oncology/20241213/terminated-studys-challenges-may-guide-future-trials-of-mrdguided-breast-cancer-therapy
+- https://www.aacr.org/about-the-aacr/newsroom/news-releases/zest-trial-offers-insights-for-using-ctdna-to-predict-breast-cancer-recurrence/
 
 ## Related
 

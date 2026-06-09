@@ -9,21 +9,17 @@ tags: [cancer/breast, biomarker/oncotype-dx, biomarker/AMH, biomarker/ctDNA, "ev
 
 ## Overview
 
-Phase 3 prospective trial designed to **definitively settle the [[chemotherapy-induced-ovarian-suppression]] debate** by directly comparing **OFS + endocrine therapy** vs **chemotherapy + OFS + endocrine therapy** in premenopausal women with HR+/HER2− early breast cancer. Eligibility spans the populations where the chemo-vs-endocrine question is most contested: **intermediate-RS node-negative** (the Q4 population) and **low-RS node-positive**. Pending readout.
+OFSET (NRG-BR009, NCT05879926) is a phase III randomized trial run by NRG Oncology testing whether adding adjuvant chemotherapy provides benefit beyond ovarian function suppression (OFS) plus endocrine therapy in premenopausal women with pN0-1, ER+/HER2− early breast cancer and an Oncotype DX Recurrence Score ≤25. By delivering OFS in both arms, it isolates the effect of chemotherapy from chemotherapy-induced ovarian suppression — the leading explanation for the chemo benefit seen in TAILORx and RxPONDER premenopausal subgroups. The trial activated in August 2023, targets 3,960 patients, and is currently recruiting; the definitive readout is expected roughly a decade after activation.
 
 ## Key facts
 
-- **Trial registry:** NCT05879926 [[premenopausal-intermediate-oncotype-2026]].
-- **Population:** premenopausal women with HR+/HER2− early breast cancer, including:
-  - Intermediate Oncotype DX RS, node-negative (the [[tailorx-trial]] gray zone where the Q4 patient lives)
-  - Low Oncotype DX RS, node-positive (the [[rxponder-trial]] population the chemo benefit appeared in)
-  [[premenopausal-intermediate-oncotype-2026]]
-- **Design:** randomize to OFS + endocrine therapy vs chemotherapy + OFS + endocrine therapy.
-  - **The crucial design feature:** by giving OFS in *both* arms, OFSET controls for ovarian suppression — isolating the question of whether chemotherapy adds anything *beyond* what OFS provides [[premenopausal-intermediate-oncotype-2026]].
-- **Primary question:** is the chemo benefit observed in [[rxponder-trial]] (and in the [[tailorx-trial]] premenopausal high-risk subgroup) reproducible when both arms have ovarian suppression — or does it disappear, indicating it was [[chemotherapy-induced-ovarian-suppression]] in disguise?
-- **Why this matters for Q4:** OFSET is **the** prospective answer to whether the Q4 patient (39yo, RS 22, N0) needs chemotherapy or whether OFS+AI is non-inferior. Until OFSET reads out, all guidance is interpolation.
-- **Status:** enrolling; readout pending [[premenopausal-intermediate-oncotype-2026]].
-- **ctDNA component:** OFSET also incorporates ctDNA MRD assessment, contributing to the broader HR+/HER2− MRD evidence base alongside DARE, TRACKER, SURVIVE [[premenopausal-intermediate-oncotype-2026]].
+- **Design:** phase III, multicenter, randomized trial comparing OFS + aromatase inhibitor (5 years) vs adjuvant chemotherapy followed by OFS + aromatase inhibitor, target accrual 3,960 patients [NCT05879926, ClinicalTrials.gov](https://clinicaltrials.gov/study/NCT05879926).
+- **Population:** premenopausal women with functioning ovaries, ER+/HER2−, pN0-1 disease; eligibility requires RS 21–25 if node-negative or RS ≤25 if node-positive [NCT05879926, ClinicalTrials.gov](https://clinicaltrials.gov/study/NCT05879926).
+- **Primary endpoint:** invasive breast cancer-free survival (IBCFS) from randomization, statistically powered to detect a hazard ratio of 0.75 favoring the chemotherapy arm (one-sided α 0.025, 80% power, ~380 IBCFS events) [NRG-BR009 TPS612, JCO/ASCO 2024](https://ascopubs.org/doi/10.1200/JCO.2024.42.16_suppl.TPS612).
+- **Sponsor & registry:** NRG Oncology cooperative-group trial, NCT05879926 [NCT05879926, ClinicalTrials.gov](https://clinicaltrials.gov/study/NCT05879926).
+- **Rationale:** designed to test whether the chemotherapy benefit in RxPONDER (node-positive) and the TAILORx premenopausal high-risk subgroup persists when both arms receive OFS, or whether it was largely chemotherapy-induced ovarian suppression [NRG-BR009 TPS612, JCO/ASCO 2024](https://ascopubs.org/doi/10.1200/JCO.2024.42.16_suppl.TPS612).
+- **Timeline & status:** activated August 2023; accrual was 69 of 3,960 as of July 2024; estimated 7+ years of accrual with the primary IBCFS analysis ~11 years after initiation; status RECRUITING, readout pending [NCT05879926, ClinicalTrials.gov](https://clinicaltrials.gov/study/NCT05879926).
+- **Correlative science:** OFS is delivered via goserelin, triptorelin, or leuprolide at investigator discretion; the trial incorporates correlative biomarker work including ctDNA-based minimal residual disease assessment [NRG-BR009 P3-12-20, AACR 2025](https://aacrjournals.org/clincancerres/article/31/12_Supplement/P3-12-20/752804).
 
 ## Related entities
 
@@ -36,7 +32,9 @@ Phase 3 prospective trial designed to **definitively settle the [[chemotherapy-i
 
 ## Sources
 
-- [[premenopausal-intermediate-oncotype-2026]]
+- https://clinicaltrials.gov/study/NCT05879926
+- https://ascopubs.org/doi/10.1200/JCO.2024.42.16_suppl.TPS612
+- https://aacrjournals.org/clincancerres/article/31/12_Supplement/P3-12-20/752804
 
 ## Related
 

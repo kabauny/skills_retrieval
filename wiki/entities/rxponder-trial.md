@@ -9,33 +9,28 @@ tags: [cancer/breast, biomarker/oncotype-dx, "evidence/RCT", "evidence/phase-3"]
 
 ## Overview
 
-Phase 3 trial in HR+/HER2− **node-positive (1–3 nodes, pN1)** early breast cancer with Oncotype DX RS 0–25, randomizing patients to chemotherapy plus endocrine therapy vs. endocrine therapy alone. Established a **menopausal-status-divergent result**: postmenopausal women derived no benefit from added chemotherapy, but premenopausal women did — which is the finding that ignited the [[chemotherapy-induced-ovarian-suppression]] debate.
+RxPONDER (SWOG S1007) is an NCI-sponsored, NCTN-conducted phase 3 randomized trial in HR+/HER2−, **node-positive (1–3 nodes)** early breast cancer with a 21-gene Oncotype DX Recurrence Score (RS) of 0–25. It randomized ~5,000 women to chemotherapy followed by endocrine therapy vs. endocrine therapy alone. The pivotal finding, published in NEJM (2021), was a **menopausal-status divergence**: postmenopausal women derived no benefit from added chemotherapy, while premenopausal women did — the result that ignited the [[chemotherapy-induced-ovarian-suppression]] debate.
 
 ## Key facts
 
-- **Population:** HR+, HER2−, **node-positive (1–3 nodes, pN1)** early breast cancer with RS 0–25 [[premenopausal-intermediate-oncotype-2026]].
-- **Postmenopausal result:** **no benefit** from added chemotherapy — endocrine therapy alone non-inferior [[premenopausal-intermediate-oncotype-2026]].
-- **Premenopausal result:** **significant benefit** from added chemotherapy.
-  - 5-year iDFS: 93.9% (chemo-endocrine) vs 89.0% (endocrine alone)
-  - **40% reduction in iDFS event risk** [[premenopausal-intermediate-oncotype-2026]]
-- **The CIOS debate (the trial's most discussed implication):** because the chemo benefit appeared only in premenopausal women, [[chemotherapy-induced-ovarian-suppression]] was hypothesized as the dominant mechanism rather than direct cytotoxicity. Kalinsky (lead investigator) argued patients who became amenorrheic had better outcomes regardless of arm [[premenopausal-intermediate-oncotype-2026]].
-- **Counter-evidence in the original analysis:** OFS rates were similar in both arms over time, so CIOS could not be established as the *sole* mechanism in the initial readout [[premenopausal-intermediate-oncotype-2026]].
-- **June 2024 AMH post-hoc analysis:** women with **low [[anti-mullerian-hormone]]** levels (lower ovarian reserve) **derived less chemotherapy benefit** than those with medium or high AMH — supporting the CIOS hypothesis [[premenopausal-intermediate-oncotype-2026]].
-- **December 2025 secondary analysis:** examined cancer-related cognitive impairment [[premenopausal-intermediate-oncotype-2026]].
-- **Successor trial:** [[ofset-trial]] (NCT05879926) is designed to definitively test OFS+ET vs chemo+OFS+ET, controlling for ovarian suppression — should resolve the CIOS question.
-- **Important Q4 caveat:** RxPONDER is **node-positive**, the Q4 patient is **node-negative**. The CIOS debate is philosophically relevant to the Q4 decision, but the *evidence base* for managing Q4-style patients is [[tailorx-trial]], not RxPONDER.
-
-## Related entities
-
-- [[oncotype-dx-recurrence-score]] — biomarker
-- [[anti-mullerian-hormone]] — predictive biomarker per 2024 post-hoc
-- [[tailorx-trial]] — companion trial in node-negative
-- [[ofset-trial]] — successor trial designed to settle CIOS
-- [[hr-positive-her2-negative-breast-cancer]] — disease setting
+- **Design:** Phase 3, randomized 1:1; 5,018 patients (chemo+ET 2,507 vs ET alone 2,511); median follow-up 5.3 years; primary endpoint invasive disease-free survival (iDFS) [[21-Gene Assay, NEJM](https://www.nejm.org/doi/full/10.1056/NEJMoa2108873)].
+- **Population:** HR+, HER2−, 1–3 positive nodes, no distant metastasis, Oncotype DX RS 0–25; ~67% postmenopausal, ~33% premenopausal [[RxPONDER, PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8963289/)].
+- **Postmenopausal result — no benefit:** iDFS HR 1.02 (95% CI 0.82–1.26, p=0.89); 5-yr iDFS 91.3% (chemo+ET) vs 91.9% (ET alone) — chemotherapy can be safely omitted [[RxPONDER, PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8963289/)].
+- **Premenopausal result — significant benefit:** iDFS HR 0.60 (95% CI 0.43–0.83, p=0.002), an ~40% reduction in iDFS events; 5-yr iDFS 93.9% (chemo+ET) vs 89.0% (ET alone) [[RxPONDER, PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8963289/)].
+- **Distant relapse:** 5-yr distant relapse-free survival in premenopausal women 96.1% (chemo) vs 92.8% (no chemo), HR 0.58; postmenopausal 94.4% in both arms, HR 1.05 [[RxPONDER, PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC8963289/)].
+- **CIOS debate:** because the benefit appeared only in premenopausal women, [[chemotherapy-induced-ovarian-suppression]] (rather than direct cytotoxicity) was hypothesized as the dominant mechanism, prompting practice questions about whether ovarian suppression could substitute for chemotherapy [[ASCO Post update](https://ascopost.com/issues/january-25-2022/rxponder-update-explores-benefit-of-chemotherapy-in-subgroups/)].
+- **AMH post-hoc (2024 ASCO):** premenopausal women with **low [[anti-mullerian-hormone]]** (lower ovarian reserve) derived less chemotherapy benefit than those with medium/high AMH; AMH outperformed self-reported menopausal status, age, estradiol, LH and FSH as a predictor — supporting the CIOS hypothesis [[ASCO Daily News, AMH](https://dailynews.ascopubs.org/do/rxponder-finds-anti-m-x00fc-llerian-hormone-levels-may-predict-chemotherapy-response)].
+- **Practice impact:** changed practice for postmenopausal node-positive HR+/HER2− patients, who can now forgo chemotherapy when RS ≤25 [[SWOG news](https://www.swog.org/news-events/news/2021/12/03/rxponder-results-published-nejm)].
+- **Successor trial:** [[ofset-trial]] (NCT05879926) tests OFS+ET vs chemo+OFS+ET, controlling for ovarian suppression, and should resolve the CIOS question.
+- **Q4 caveat:** RxPONDER is **node-positive**; a node-negative patient's evidence base is [[tailorx-trial]], not RxPONDER — the CIOS debate is philosophically relevant but the data do not transfer directly.
 
 ## Sources
 
-- [[premenopausal-intermediate-oncotype-2026]]
+- https://www.nejm.org/doi/full/10.1056/NEJMoa2108873
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC8963289/
+- https://www.swog.org/news-events/news/2021/12/03/rxponder-results-published-nejm
+- https://ascopost.com/issues/january-25-2022/rxponder-update-explores-benefit-of-chemotherapy-in-subgroups/
+- https://dailynews.ascopubs.org/do/rxponder-finds-anti-m-x00fc-llerian-hormone-levels-may-predict-chemotherapy-response
 
 ## Related
 
