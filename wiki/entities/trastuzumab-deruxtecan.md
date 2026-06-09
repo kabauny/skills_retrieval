@@ -9,29 +9,33 @@ tags: [therapy/ADC, biomarker/HER2, cancer/breast]
 
 ## Overview
 
-Antibody-drug conjugate (ADC) consisting of trastuzumab linked via a cleavable tetrapeptide linker to deruxtecan, a topoisomerase-1 inhibitor payload. Higher drug-to-antibody ratio (~8) than [[trastuzumab-emtansine]] and a bystander effect that gives activity in HER2-low and heterogeneous tumors. FDA-approved for several HER2-expressing tumor types; **adjuvant HER2+ residual disease indication is investigational pending July 7, 2026 PDUFA**.
+Trastuzumab deruxtecan (T-DXd, Enhertu) is a HER2-directed antibody-drug conjugate pairing a humanized anti-HER2 IgG1 antibody with deruxtecan (DXd), a topoisomerase-1 inhibitor payload, via a cleavable tetrapeptide linker. Its high drug-to-antibody ratio (~8) and membrane-permeable payload produce a bystander effect that yields activity even in HER2-low and heterogeneous tumors. It is FDA-approved across HER2-positive and HER2-low breast cancer, HER2-positive gastric cancer, HER2-mutant NSCLC, and as a tumor-agnostic option for HER2-overexpressing solid tumors. Interstitial lung disease is its defining serious toxicity.
 
 ## Key facts
 
-- **Adjuvant data: [[destiny-breast05]]** — Phase 3 head-to-head vs [[trastuzumab-emtansine]] in HER2+ residual invasive disease post-neoadjuvant. HR 0.47 for IDFS event (53% reduction); 3-year IDFS 92.4% vs 83.7%; consistent across HR+ and HR− subsets; reduced brain metastasis risk; OS trend favorable but immature. Presented ESMO 2025 and SABCS 2025 [[mrd-her2-breast-cancer-residual-disease-2026]].
-- **Regulatory status (April 2026):**
-  - FDA breakthrough therapy designation for adjuvant HER2+ residual disease — December 2025 [[mrd-her2-breast-cancer-residual-disease-2026]]
-  - sBLA priority review — granted March 2026 [[mrd-her2-breast-cancer-residual-disease-2026]]
-  - **PDUFA target action date: July 7, 2026** [[mrd-her2-breast-cancer-residual-disease-2026]]
-  - Until approval: investigational/off-label in this setting
-- **Principal toxicity concern: interstitial lung disease (ILD/pneumonitis)** — 9.6% in [[destiny-breast05]] vs 1.6% with T-DM1. **Two Grade 5 events on T-DXd; zero on T-DM1** [[destiny-breast05-april-2026-update]]. Trial protocol incorporated **proactive serial low-dose chest CT monitoring** for early ILD detection [[destiny-breast05-april-2026-update]]. **No incremental ILD risk observed with concurrent radiotherapy** [[destiny-breast05-april-2026-update]]. Clinical implication: baseline pulmonary assessment, vigilance for new respiratory symptoms, and steroid management protocols remain essential.
-- **Brain metastasis activity:** brain metastasis-free interval **HR 0.64 (95% CI 0.35–1.17), 36% reduction** vs T-DM1 in [[destiny-breast05]] [[destiny-breast05-april-2026-update]]. CI crosses 1.0 — directional finding consistent with T-DXd CNS penetration but not statistically definitive at conventional threshold. Relevant for HER2+ disease with high CNS recurrence risk.
-- **Anticipated practice change:** widely expected to supersede [[trastuzumab-emtansine]] as preferred adjuvant therapy for high-risk HER2+ residual disease post-approval, with NCCN/ASCO/ESMO updates anticipated mid-to-late 2026 [[mrd-her2-breast-cancer-residual-disease-2026]].
-
-## Related entities
-
-- [[trastuzumab-emtansine]] — current adjuvant standard, being superseded
-- [[tucatinib]] — alternate HER2-targeted agent
-- [[destiny-breast05]] — pivotal adjuvant trial
-- [[katherine-trial]] — historic comparator establishing T-DM1 as control arm
-- [[her2-positive-breast-cancer]] — disease entity
+- Mechanism: anti-HER2 monoclonal antibody (trastuzumab) conjugated to DXd, a topoisomerase-1 inhibitor, by a cleavable linker; binding to HER2 triggers internalization, linker cleavage, and release of cytotoxic payload that also diffuses into neighboring cells (bystander effect), with drug-to-antibody ratio ~8 [FDA label](https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/761139s011lbl.pdf).
+- HER2-positive metastatic breast cancer (DESTINY-Breast03, vs trastuzumab emtansine): primary PFS by BICR HR 0.28 (95% CI 0.22–0.37); median OS 52.6 vs 42.7 mo, HR 0.73 (95% CI 0.56–0.94) — established T-DXd as preferred second-line therapy [DESTINY-Breast03 long-term analysis](https://www.nature.com/articles/s41591-024-03021-7).
+- HER2-low metastatic breast cancer (DESTINY-Breast04, vs physician's-choice chemotherapy): median OS 23.4 vs 16.8 mo, HR 0.64 (p=0.001); ~4.8 mo PFS and ~6.6 mo OS gain — first regimen to validate HER2-low as an actionable category [DESTINY-Breast04, NEJM](https://www.nejm.org/doi/full/10.1056/NEJMoa2203690).
+- HER2-positive gastric/GEJ adenocarcinoma (DESTINY-Gastric01) after a prior trastuzumab-based regimen: ORR 51% vs 14% with chemotherapy; approved at 6.4 mg/kg [Daiichi Sankyo DESTINY-Gastric](https://www.astrazeneca.com/media-centre/press-releases/2022/enhertu-approved-in-us-for-her2-mutant-nsclc.html).
+- HER2-mutant (ERBB2) metastatic NSCLC: FDA accelerated approval Aug 11, 2022 based on DESTINY-Lung02 — first HER2-directed therapy in this setting (5.4 mg/kg) [AstraZeneca NSCLC approval](https://www.astrazeneca.com/media-centre/press-releases/2022/enhertu-approved-in-us-for-her2-mutant-nsclc.html).
+- Tumor-agnostic indication (2024): first HER2-directed therapy approved for previously treated, unresectable/metastatic HER2-overexpressing (IHC 3+) solid tumors [AstraZeneca tumor-agnostic approval](https://www.astrazeneca-us.com/media/press-releases/2024/enhertu-approved-in-the-us-as-first-tumor-agnostic-her2-directed-therapy-for-previously-treated-patients-with-metastatic-her2-positive-solid-tumors.html).
+- Early HER2-positive breast cancer (2026): FDA approved separate neoadjuvant (T-DXd followed by taxane/trastuzumab/pertuzumab) and adjuvant (residual disease after neoadjuvant trastuzumab+taxane) indications; the adjuvant approval rests on DESTINY-Breast05 vs T-DM1 (IDFS HR ~0.47) [FDA early breast cancer approval](https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-two-separate-indications-fam-trastuzumab-deruxtecan-nxki-her2-positive-early-stage), [DESTINY-Breast05, NEJM](https://www.nejm.org/doi/abs/10.1056/NEJMoa2514661).
+- Serious adverse events: interstitial lung disease/pneumonitis (boxed warning; can be fatal — requires baseline and serial monitoring, prompt steroids, and dose interruption), embryo-fetal toxicity (boxed warning), and common toxicities including nausea/vomiting, fatigue, alopecia, neutropenia, anemia, and left-ventricular dysfunction [FDA label](https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/761139s011lbl.pdf).
 
 ## Sources
 
-- [[mrd-her2-breast-cancer-residual-disease-2026]] — original (Q3) ingest: drug profile, mechanism, Q3 regulatory and trial context
-- [[destiny-breast05-april-2026-update]] — supersedes prior CNS and ILD specifics with quantified data + monitoring protocol
+- [FDA prescribing information (label)](https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/761139s011lbl.pdf)
+- [DESTINY-Breast03 long-term survival analysis, Nature Medicine](https://www.nature.com/articles/s41591-024-03021-7)
+- [DESTINY-Breast04, NEJM](https://www.nejm.org/doi/full/10.1056/NEJMoa2203690)
+- [DESTINY-Breast05, NEJM](https://www.nejm.org/doi/abs/10.1056/NEJMoa2514661)
+- [FDA approval — HER2+ early-stage breast cancer (2026)](https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-two-separate-indications-fam-trastuzumab-deruxtecan-nxki-her2-positive-early-stage)
+- [AstraZeneca — HER2-mutant NSCLC approval](https://www.astrazeneca.com/media-centre/press-releases/2022/enhertu-approved-in-us-for-her2-mutant-nsclc.html)
+- [AstraZeneca — first tumor-agnostic HER2 approval (2024)](https://www.astrazeneca-us.com/media/press-releases/2024/enhertu-approved-in-the-us-as-first-tumor-agnostic-her2-directed-therapy-for-previously-treated-patients-with-metastatic-her2-positive-solid-tumors.html)
+
+## Related
+
+- [[efficacy]]
+- [[adverse-events]]
+- [[breast-cancer]]
+- [[gastric-cancer]]
+- [[non-small-cell-lung-cancer]]
