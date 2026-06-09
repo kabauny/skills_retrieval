@@ -44,3 +44,7 @@ Two parallel Phase 3 trials run by the International Breast Cancer Study Group t
 ## Sources
 
 - [[premenopausal-intermediate-oncotype-2026]]
+
+## Related
+
+- [[efficacy]]

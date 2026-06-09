@@ -21,3 +21,9 @@ The POTOMAC trial provided the pivotal evidence for the FDA approval of durvalum
 ## Sources
 
 - [[what-is-the-new-indication-for-durvalumab-in-non-muscle-invasive-bladder-cancer-2]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[durvalumab]]
+- [[urothelial-carcinoma]]
+- [[efficacy]]

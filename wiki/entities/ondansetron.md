@@ -5,6 +5,7 @@ aliases: []
 auto_source: "[[what-is-the-regimen-for-adjuvant-and-maintantence-tmz]]"
 auto_date: 2026-06-05
 tags: []
+contract_exempt: true
 ---
 
 # Ondansetron

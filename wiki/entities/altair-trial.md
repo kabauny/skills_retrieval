@@ -21,3 +21,9 @@ Provides critical data suggesting that intervening with chemotherapy based solel
 ## Sources
 
 - [[mrd-testing-for-colon-cancer-if-mrd-is-positive-but-no-evidence-of-disease-whats]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[trifluridine-tipiracil]]
+- [[colorectal-cancer]]
+- [[efficacy]]

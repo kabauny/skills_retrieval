@@ -21,3 +21,9 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[how-do-you-treat-her2-positive-metastatic-gastric-or-gastroesophageal-cancer]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[colorectal-cancer]]
+- [[efficacy]]
+- [[adverse-events]]

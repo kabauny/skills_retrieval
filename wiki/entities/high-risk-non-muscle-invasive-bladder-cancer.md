@@ -21,3 +21,8 @@ This specific patient population is the focus of the new durvalumab approval, hi
 ## Sources
 
 - [[what-is-the-new-indication-for-durvalumab-in-non-muscle-invasive-bladder-cancer-2]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[staging-and-resectability]]
+- [[biomarker-testing]]

@@ -21,3 +21,9 @@ This trial's data supports the earlier use of teclistamab in patients who have f
 ## Sources
 
 - [[what-are-treatment-options-for-second-line-multiple-myeloma-treatment-after-prog]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[teclistamab]]
+- [[multiple-myeloma]]
+- [[efficacy]]

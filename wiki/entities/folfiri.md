@@ -21,3 +21,9 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[colorectal-cancer]]
+- [[efficacy]]
+- [[adverse-events]]

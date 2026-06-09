@@ -21,3 +21,9 @@ It represents a highly effective, novel immunotherapeutic approach for early rel
 ## Sources
 
 - [[what-are-treatment-options-for-second-line-multiple-myeloma-treatment-after-prog]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[multiple-myeloma]]
+- [[efficacy]]
+- [[adverse-events]]

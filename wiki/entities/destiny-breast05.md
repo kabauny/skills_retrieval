@@ -36,3 +36,7 @@ Phase 3 randomized trial of [[trastuzumab-deruxtecan]] (T-DXd) vs [[trastuzumab-
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]] — original (Q3) ingest: trial design, primary IDFS endpoint, regulatory timeline
 - [[destiny-breast05-april-2026-update]] — supersedes prior CNS, ILD, and primary-publication claims (April 2026 update)
+
+## Related
+
+- [[efficacy]]

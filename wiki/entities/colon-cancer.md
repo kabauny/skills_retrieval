@@ -21,3 +21,8 @@ A major solid tumor type at the forefront of clinical research regarding liquid 
 ## Sources
 
 - [[mrd-testing-for-colon-cancer-if-mrd-is-positive-but-no-evidence-of-disease-whats]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[staging-and-resectability]]
+- [[biomarker-testing]]

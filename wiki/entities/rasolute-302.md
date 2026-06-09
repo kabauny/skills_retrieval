@@ -21,3 +21,9 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[tell-me-about-the-publication-associated-with-the-rasolute-302-trial]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[daraxonrasib]]
+- [[pancreatic-cancer]]
+- [[efficacy]]

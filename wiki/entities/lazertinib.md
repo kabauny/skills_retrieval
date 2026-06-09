@@ -21,3 +21,9 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[what-is-the-first-line-treatment-for-egfr-exon-19-deletion-metastatic-nsclc]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[non-small-cell-lung-cancer]]
+- [[efficacy]]
+- [[adverse-events]]

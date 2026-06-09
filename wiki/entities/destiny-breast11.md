@@ -21,3 +21,9 @@ This trial investigates a potential new neoadjuvant standard of care for HER2-po
 ## Sources
 
 - [[tell-me-about-destiny-breast-011]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[trastuzumab-deruxtecan]]
+- [[breast-cancer]]
+- [[efficacy]]

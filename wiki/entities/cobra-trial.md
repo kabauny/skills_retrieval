@@ -21,3 +21,9 @@ Demonstrates the current limitations and lack of clinical utility for using ctDN
 ## Sources
 
 - [[mrd-testing-for-colon-cancer-if-mrd-is-positive-but-no-evidence-of-disease-whats]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[folfox]]
+- [[colorectal-cancer]]
+- [[efficacy]]

@@ -5,6 +5,7 @@ aliases: []
 auto_source: "[[are-there-specific-patient-selection-criteria-or-biomarkers-beyond-general-ras-m]]"
 auto_date: 2026-06-08
 tags: []
+contract_exempt: true
 ---
 
 # MEK inhibitor

@@ -31,3 +31,7 @@ Phase 3 randomized open-label trial that established [[trastuzumab-emtansine]] (
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]] — original (Q3) ingest: population, design, primary IDFS, subgroup consistency, guideline status
 - [[destiny-breast05-april-2026-update]] — supersedes prior qualitative long-term follow-up phrasing with 7-year IDFS/OS quantification (Jan 2025 publication)
+
+## Related
+
+- [[efficacy]]

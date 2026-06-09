@@ -21,3 +21,9 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[please-provide-any-fda-indication-for-cancer-treatment-in-may-and-june-2026]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[breast-cancer]]
+- [[efficacy]]
+- [[adverse-events]]

@@ -47,3 +47,7 @@ Phase 3 randomized double-blind trial that established **neoadjuvant + adjuvant 
 ## Sources
 
 - [[tnbc-keynote-522-irae-rechallenge-2026]]
+
+## Related
+
+- [[efficacy]]

@@ -21,3 +21,9 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[what-are-some-options-for-second-line-treatment-for-egfr-mutated-nsclc-after-pro]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[non-small-cell-lung-cancer]]
+- [[efficacy]]
+- [[adverse-events]]

@@ -21,3 +21,9 @@ Provides key foundational evidence supporting the potential of ctDNA-guided adju
 ## Sources
 
 - [[mrd-testing-for-colon-cancer-if-mrd-is-positive-but-no-evidence-of-disease-whats]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[oxaliplatin]]
+- [[colorectal-cancer]]
+- [[efficacy]]

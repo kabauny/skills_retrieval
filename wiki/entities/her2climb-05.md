@@ -27,3 +27,7 @@ Phase 3 trial evaluating addition of [[tucatinib]] to trastuzumab + pertuzumab a
 ## Sources
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]]
+
+## Related
+
+- [[efficacy]]

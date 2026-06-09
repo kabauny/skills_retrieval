@@ -3,6 +3,7 @@ title: "Aromatase inhibitor (AI)"
 entity_type: drug
 aliases: ["AI", "aromatase inhibitor class", "anastrozole", "letrozole", "exemestane"]
 tags: [therapy/hormonal, cancer/breast, "mechanism"]
+contract_exempt: true
 ---
 
 # Aromatase inhibitor (AI)

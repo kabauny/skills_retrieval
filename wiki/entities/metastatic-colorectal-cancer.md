@@ -21,3 +21,8 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[how-do-you-treat-braf-v600e-mutated-metastatic-colorectal-cancer]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[staging-and-resectability]]
+- [[biomarker-testing]]

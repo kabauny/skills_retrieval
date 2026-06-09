@@ -37,3 +37,8 @@ Phase 3 prospective trial designed to **definitively settle the [[chemotherapy-i
 ## Sources
 
 - [[premenopausal-intermediate-oncotype-2026]]
+
+## Related
+
+- [[breast-cancer]]
+- [[efficacy]]

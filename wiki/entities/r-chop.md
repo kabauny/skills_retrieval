@@ -21,3 +21,9 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[how-do-you-treat-relapsed-or-refractory-dlbcl-with-car-t-cell-therapy]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[diffuse-large-b-cell-lymphoma]]
+- [[efficacy]]
+- [[adverse-events]]

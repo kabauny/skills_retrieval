@@ -21,3 +21,8 @@ This specific patient population represents a significant unmet need in bladder 
 ## Sources
 
 - [[what-is-the-new-indication-for-durvalumab-in-non-muscle-invasive-bladder-cancer-3]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[staging-and-resectability]]
+- [[biomarker-testing]]

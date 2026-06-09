@@ -21,3 +21,9 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[for-sonrotoclaxs-accelerated-approval-in-relapsedrefractory-mcl-what-are-the-det]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[chronic-lymphocytic-leukemia]]
+- [[efficacy]]
+- [[adverse-events]]

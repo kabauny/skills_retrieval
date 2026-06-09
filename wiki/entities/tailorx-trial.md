@@ -33,3 +33,9 @@ Phase 3 trial that established [[oncotype-dx-recurrence-score]] as the primary g
 ## Sources
 
 - [[premenopausal-intermediate-oncotype-2026]]
+
+## Related
+
+- [[tamoxifen]]
+- [[breast-cancer]]
+- [[efficacy]]

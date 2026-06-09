@@ -21,3 +21,8 @@ NMIBC is a common form of bladder cancer, and new treatment options like durvalu
 ## Sources
 
 - [[what-is-the-new-indication-for-durvalumab-in-non-muscle-invasive-bladder-cancer-2]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[staging-and-resectability]]
+- [[biomarker-testing]]

@@ -21,3 +21,8 @@ Paraganglioma is a rare form of cancer requiring specialized management, especia
 ## Sources
 
 - [[what-are-some-treatment-options-for-paraganglioma-that-is-not-resectable]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[staging-and-resectability]]
+- [[biomarker-testing]]

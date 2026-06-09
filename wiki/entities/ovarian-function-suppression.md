@@ -3,6 +3,7 @@ title: "Ovarian function suppression (OFS)"
 entity_type: drug
 aliases: ["OFS", "ovarian suppression", "GnRH agonist therapy", "LHRH agonist", "chemical oophorectomy"]
 tags: [therapy/hormonal, cancer/breast, "mechanism"]
+contract_exempt: true
 ---
 
 # Ovarian function suppression (OFS)

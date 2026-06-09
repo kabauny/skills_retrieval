@@ -5,6 +5,7 @@ aliases: []
 auto_source: "[[how-is-pd-l1-expression-used-to-guide-first-line-immunotherapy-in-metastatic-nsc]]"
 auto_date: 2026-06-08
 tags: []
+contract_exempt: true
 ---
 
 # Immune checkpoint inhibitor

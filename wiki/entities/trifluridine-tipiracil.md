@@ -21,3 +21,9 @@ An established systemic therapy in colorectal cancer that is actively being rese
 ## Sources
 
 - [[mrd-testing-for-colon-cancer-if-mrd-is-positive-but-no-evidence-of-disease-whats]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[colorectal-cancer]]
+- [[efficacy]]
+- [[adverse-events]]

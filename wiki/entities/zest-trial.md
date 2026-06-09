@@ -27,3 +27,9 @@ Phase 3 randomized trial designed to evaluate whether ctDNA-based MRD surveillan
 ## Sources
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]]
+
+## Related
+
+- [[niraparib]]
+- [[breast-cancer]]
+- [[efficacy]]

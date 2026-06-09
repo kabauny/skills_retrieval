@@ -5,6 +5,7 @@ aliases: []
 auto_source: "[[what-is-the-folfirinox-regimen-and-its-role-in-pancreatic-cancer]]"
 auto_date: 2026-06-08
 tags: []
+contract_exempt: true
 ---
 
 # Leucovorin

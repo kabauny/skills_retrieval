@@ -21,3 +21,9 @@ BCG has been the standard of care for high-risk NMIBC for decades, and its combi
 ## Sources
 
 - [[what-is-the-new-indication-for-durvalumab-in-non-muscle-invasive-bladder-cancer-2]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[urothelial-carcinoma]]
+- [[efficacy]]
+- [[adverse-events]]

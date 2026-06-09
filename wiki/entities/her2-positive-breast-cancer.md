@@ -30,3 +30,8 @@ Breast cancer subtype defined by overexpression or amplification of the human ep
 ## Sources
 
 - [[mrd-her2-breast-cancer-residual-disease-2026]]
+
+## Related
+
+- [[staging-and-resectability]]
+- [[biomarker-testing]]

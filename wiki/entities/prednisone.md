@@ -5,6 +5,7 @@ aliases: []
 auto_source: "[[what-is-the-first-line-treatment-for-diffuse-large-b-cell-lymphoma]]"
 auto_date: 2026-06-08
 tags: []
+contract_exempt: true
 ---
 
 # Prednisone

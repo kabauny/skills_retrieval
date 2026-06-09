@@ -201,6 +201,11 @@ def harvest_contract() -> list[dict]:
         except OSError:
             continue
         fm, _ = core.parse_frontmatter(text)
+        # Supportive-care agents (antiemetics, steroids), drug classes, and
+        # modalities are marked contract_exempt — the "must link a cancer" rule
+        # doesn't sensibly apply to an antiemetic, so don't flag them.
+        if str(fm.get("contract_exempt", "")).strip().strip('"').lower() in ("true", "yes", "1"):
+            continue
         etype = (fm.get("entity_type", "") or "").strip().strip('"').strip("'").lower()
         rule = contract.get(etype)
         if not rule:

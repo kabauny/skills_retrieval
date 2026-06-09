@@ -46,3 +46,8 @@ Most common breast cancer subtype (~70% of cases). Defined by hormone receptor p
 ## Sources
 
 - [[premenopausal-intermediate-oncotype-2026]]
+
+## Related
+
+- [[staging-and-resectability]]
+- [[biomarker-testing]]

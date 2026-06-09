@@ -3,6 +3,7 @@ title: "Infliximab (Remicade)"
 entity_type: drug
 aliases: ["Remicade", "anti-TNF", "TNF-alpha inhibitor"]
 tags: [therapy/targeted, "toxicity", "mechanism"]
+contract_exempt: true
 ---
 
 # Infliximab

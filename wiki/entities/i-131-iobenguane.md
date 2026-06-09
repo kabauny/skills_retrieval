@@ -21,3 +21,9 @@ It provides targeted radiation delivery directly to paraganglioma cells that exp
 ## Sources
 
 - [[what-are-some-treatment-options-for-paraganglioma-that-is-not-resectable]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[paraganglioma]]
+- [[efficacy]]
+- [[adverse-events]]

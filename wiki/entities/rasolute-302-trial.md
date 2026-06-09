@@ -21,3 +21,9 @@ Auto-created as a graph hub to connect related notes.
 ## Sources
 
 - [[are-there-specific-patient-selection-criteria-or-biomarkers-beyond-general-ras-m]] — origin search; see for full grounded citations and search queries
+
+## Related
+
+- [[daraxonrasib]]
+- [[pancreatic-cancer]]
+- [[efficacy]]

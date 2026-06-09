@@ -36,3 +36,9 @@ Phase 3 trial in HR+/HER2− **node-positive (1–3 nodes, pN1)** early breast c
 ## Sources
 
 - [[premenopausal-intermediate-oncotype-2026]]
+
+## Related
+
+- [[tamoxifen]]
+- [[breast-cancer]]
+- [[efficacy]]
