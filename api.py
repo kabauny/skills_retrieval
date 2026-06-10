@@ -450,6 +450,35 @@ def search(q: str = "", limit: int = 30) -> dict:
     return {"results": core.search_pages(q, limit=limit)}
 
 
+class FormularyRequest(BaseModel):
+    drug: str
+    status: str = ""  # "" clears the entry
+    note: str = ""
+
+
+class PathwayRequest(BaseModel):
+    disease: str
+    text: str = ""  # "" clears the entry
+
+
+@app.get("/api/institution")
+def institution() -> dict:
+    """Institutional formulary + preferred pathways, with the drug/cancer lists."""
+    return core.institution_editor_data()
+
+
+@app.post("/api/institution/formulary")
+def institution_formulary(req: FormularyRequest) -> dict:
+    core.set_formulary(req.drug, req.status, req.note)
+    return {"ok": True}
+
+
+@app.post("/api/institution/pathway")
+def institution_pathway(req: PathwayRequest) -> dict:
+    core.set_pathway(req.disease, req.text)
+    return {"ok": True}
+
+
 @app.get("/api/page")
 def get_page(id: str) -> dict:
     path = core._safe_resolve(id)

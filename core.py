@@ -60,11 +60,17 @@ NOTES_DIR = WIKI / "notes"
 # entity links to them (see _pin_linked_principles), rather than scored by the
 # graph — anti-hub weighting would otherwise suppress the most-linked lenses.
 PRINCIPLES_DIR = WIKI / "principles"
+# Institutional policy overlay — formulary status + preferred pathways ("what we
+# give here"). Separate from universal evidence; injected to PREFERENCE-WEIGHT
+# the recommendation at synthesis, not routed to as content.
+INSTITUTION_DIR = WIKI / "institution"
+_INSTITUTION_FILE = INSTITUTION_DIR / "preferences.json"
+FORMULARY_STATUSES = ["preferred", "on-formulary", "restricted", "non-formulary", "biosimilar"]
 
 # Directories under wiki/ that must never feed end-user query synthesis.
 # Note: wiki/notes/ is deliberately NOT here — auto-ingested notes are
 # searchable so a repeat question is answered locally instead of re-searching.
-_SYNTHESIS_EXCLUDED_DIRS = {"avatar", "stubs"}
+_SYNTHESIS_EXCLUDED_DIRS = {"avatar", "stubs", "institution"}
 
 # Link contract (the ontology): required edges per entity_type. Principle links
 # guarantee the reasoning lenses are reachable from real entities; entity links
@@ -256,6 +262,109 @@ def notes_curation() -> dict[str, dict]:
             "shadow_score": round(shadow_score, 3),
         }
     return out
+
+
+# ---------------------------------------------------------------------------
+# Institutional policy overlay (formulary + preferred pathways)
+# ---------------------------------------------------------------------------
+
+
+def load_institution() -> dict:
+    """Institutional preferences: {formulary: {drug: {status, note}}, pathways:
+    {disease: text}}. One shared institution (no multi-tenant scope yet)."""
+    if _INSTITUTION_FILE.exists():
+        try:
+            d = json.loads(_INSTITUTION_FILE.read_text(encoding="utf-8"))
+            d.setdefault("formulary", {})
+            d.setdefault("pathways", {})
+            return d
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {"formulary": {}, "pathways": {}}
+
+
+def _save_institution(data: dict) -> None:
+    INSTITUTION_DIR.mkdir(parents=True, exist_ok=True)
+    _INSTITUTION_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+
+def set_formulary(drug: str, status: str, note: str = "") -> None:
+    data = load_institution()
+    if status and status in FORMULARY_STATUSES:
+        data["formulary"][drug] = {"status": status, "note": note.strip()}
+    else:  # empty/invalid status clears the entry
+        data["formulary"].pop(drug, None)
+    _save_institution(data)
+
+
+def set_pathway(disease: str, text: str) -> None:
+    data = load_institution()
+    if text.strip():
+        data["pathways"][disease] = text.strip()
+    else:
+        data["pathways"].pop(disease, None)
+    _save_institution(data)
+
+
+def institution_editor_data() -> dict:
+    """Everything the Institution editor needs: current preferences + the drug
+    and cancer entity lists to set statuses/pathways against."""
+    data = load_institution()
+    drugs, diseases = [], []
+    for p in sorted((WIKI / "entities").glob("*.md")):
+        try:
+            fm, _ = parse_frontmatter(p.read_text(encoding="utf-8"))
+        except OSError:
+            continue
+        et = (fm.get("entity_type", "") or "").strip().strip('"').strip("'").lower()
+        title = (fm.get("title", p.stem) or p.stem).strip().strip('"')
+        if et == "drug":
+            drugs.append({"stem": p.stem, "title": title})
+        elif et == "cancer":
+            diseases.append({"stem": p.stem, "title": title})
+    return {
+        "formulary": data["formulary"],
+        "pathways": data["pathways"],
+        "statuses": FORMULARY_STATUSES,
+        "drugs": drugs,
+        "diseases": diseases,
+    }
+
+
+def institutional_context(picked: list[str]) -> str:
+    """A preference-weighting block for synthesis, built from the institutional
+    overlay and scoped to the picked pages' disease(s). Includes the relevant
+    preferred pathway(s) plus the full (compact) formulary so the synthesizer can
+    lead with preferred options and caveat off-formulary ones. '' if none set."""
+    data = load_institution()
+    formulary, pathways = data.get("formulary", {}), data.get("pathways", {})
+    if not formulary and not pathways:
+        return ""
+    diseases = set()
+    for s in picked:
+        d = s[: -len("-approach")] if s.endswith("-approach") else s
+        if d in pathways:
+            diseases.add(d)
+    path_lines = [f"- {d}: {pathways[d]}" for d in sorted(diseases)]
+    form_lines = [
+        f"- {drug}: {v['status']}" + (f" — {v['note']}" if v.get("note") else "")
+        for drug, v in sorted(formulary.items())
+    ]
+    blocks = []
+    if path_lines:
+        blocks.append("Institution preferred pathways (for the disease(s) in this question):\n"
+                      + "\n".join(path_lines))
+    if form_lines:
+        blocks.append("Institution drug formulary status:\n" + "\n".join(form_lines))
+    if not blocks:
+        return ""
+    return (
+        "\n\nINSTITUTIONAL PREFERENCES — preference-weight the recommendation: LEAD with the "
+        "institution's preferred option(s) and state formulary status inline; still present "
+        "evidence-based alternatives, but caveat any that are restricted (prior-auth) or "
+        "non-formulary here. Do not invent statuses beyond those listed.\n\n"
+        + "\n\n".join(blocks)
+    )
 
 
 _SEARCH_SKIP_STEMS = {"index", "log", "overview"}
@@ -858,7 +967,9 @@ If the wiki IS sufficient:
 """
 
 
-def synthesize_wiki_answer(query: str, page_contents: dict[str, str]) -> tuple[str, bool, TokenUsage]:
+def synthesize_wiki_answer(
+    query: str, page_contents: dict[str, str], institutional: str = ""
+) -> tuple[str, bool, TokenUsage]:
     if not page_contents:
         return (
             "INSUFFICIENT_WIKI_DATA\nNo relevant wiki pages were found for this question.",
@@ -874,7 +985,7 @@ QUESTION:
 {query}
 
 WIKI PAGES:
-{pages_text}
+{pages_text}{institutional}
 """
     resp = get_client().models.generate_content(model=MODEL_PRO, contents=prompt)
     answer = (resp.text or "").strip()
@@ -882,7 +993,7 @@ WIKI PAGES:
     return answer, sufficient, _tokens(resp)
 
 
-def synthesize_internet_answer(query: str, page_contents: dict[str, str]):
+def synthesize_internet_answer(query: str, page_contents: dict[str, str], institutional: str = ""):
     """Returns (answer, raw_response, tokens). Raw response is needed for raw/searches save."""
     pages_text = (
         "\n\n---\n\n".join(f"## wiki/{name}\n\n{content}" for name, content in page_contents.items())
@@ -903,7 +1014,7 @@ QUESTION:
 {query}
 
 WIKI CONTEXT:
-{pages_text}
+{pages_text}{institutional}
 """
     resp = get_client().models.generate_content(
         model=MODEL_PRO,
@@ -1686,7 +1797,8 @@ def run_query_phase1(question: str, user: str, idx: int):
     gemini_calls += 1
 
     page_contents = _load_pages(pages, user)
-    answer, sufficient, t2 = synthesize_wiki_answer(question, page_contents)
+    inst = institutional_context(pages)  # preference-weight by formulary/pathways
+    answer, sufficient, t2 = synthesize_wiki_answer(question, page_contents, inst)
     total_tokens = total_tokens + t2
     gemini_calls += 1
 
@@ -1694,7 +1806,7 @@ def run_query_phase1(question: str, user: str, idx: int):
     grounded_resp = None
 
     if not sufficient:
-        answer, grounded_resp, t3 = synthesize_internet_answer(question, page_contents)
+        answer, grounded_resp, t3 = synthesize_internet_answer(question, page_contents, inst)
         total_tokens = total_tokens + t3
         gemini_calls += 1
         origin = "internet" if not page_contents else "mixed"

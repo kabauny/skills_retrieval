@@ -123,6 +123,14 @@ export interface PageDetail {
   mtime: string;
 }
 
+export interface InstitutionData {
+  formulary: Record<string, { status: string; note: string }>;
+  pathways: Record<string, string>;
+  statuses: string[];
+  drugs: { stem: string; title: string }[];
+  diseases: { stem: string; title: string }[];
+}
+
 export interface SearchResult {
   id: string;
   stem: string;
@@ -245,6 +253,20 @@ export const api = {
     req<{ results: SearchResult[] }>(
       `/api/search?q=${encodeURIComponent(q)}&limit=${limit}`,
     ),
+
+  institution: () => req<InstitutionData>("/api/institution"),
+
+  setFormulary: (drug: string, status: string, note: string) =>
+    req<{ ok: boolean }>("/api/institution/formulary", {
+      method: "POST",
+      body: JSON.stringify({ drug, status, note }),
+    }),
+
+  setPathway: (disease: string, text: string) =>
+    req<{ ok: boolean }>("/api/institution/pathway", {
+      method: "POST",
+      body: JSON.stringify({ disease, text }),
+    }),
 
   page: (id: string) => req<PageDetail>(`/api/page?id=${encodeURIComponent(id)}`),
 

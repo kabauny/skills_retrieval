@@ -9,8 +9,9 @@ import ReviewTab from "./ReviewTab";
 import GrowTab from "./GrowTab";
 import PrinciplesTab from "./PrinciplesTab";
 import SearchTab from "./SearchTab";
+import InstitutionTab from "./InstitutionTab";
 
-type Tab = "chat" | "cases" | "review" | "grow" | "principles" | "search";
+type Tab = "chat" | "cases" | "review" | "grow" | "principles" | "search" | "institution";
 
 const DEFAULT_USER = "jim.chen";
 
@@ -77,6 +78,7 @@ export default function App() {
     },
     { id: "grow", label: "🌱 Grow" },
     { id: "principles", label: "🧭 Lenses" },
+    { id: "institution", label: "🏥 Institution" },
     { id: "search", label: "🔎 Search" },
   ];
 
@@ -150,6 +152,7 @@ export default function App() {
             />
           )}
           {tab === "principles" && <PrinciplesTab user={user} />}
+          {tab === "institution" && <InstitutionTab />}
           {tab === "search" && <SearchTab />}
         </div>
       </main>
