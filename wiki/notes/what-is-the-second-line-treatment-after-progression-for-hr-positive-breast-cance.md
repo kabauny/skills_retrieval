@@ -28,9 +28,17 @@ Depending on the molecular profile of the tumor at the time of progression, seco
 *   Wiki: [[what-is-the-recommended-sequencing-of-vepdegestrant-relative-to-other-non-endocr]], [[tell-me-about-akt-pathway-drugs-available-for-nsclc]], [[what-are-the-specific-toxicity-profiles-and-recommended-management-strategies-fo]]
 *   Web Search was utilized for current clinical guidelines, standard first-line context, and alternative SERD/ADC therapies.
 
+
 ## Related
 
+- [[her2]]
+- [[everolimus]]
+- [[capivasertib]]
+- [[breast-cancer]]
 - [[vepdegestrant]]
+- [[fulvestrant]]
+- [[sacituzumab-govitecan]]
+- [[estrogen-receptor]]
 
 ## Provenance
 

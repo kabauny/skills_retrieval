@@ -46,10 +46,15 @@ Rather than strictly sequencing these therapies one after the other, emerging st
 9. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC11325148/)
 10. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC11673253/)
 
+
 ## Related
 
-- [[vepdegestrant]]
+- [[her2]]
+- [[everolimus]]
 - [[capivasertib]]
+- [[breast-cancer]]
+- [[vepdegestrant]]
+- [[fulvestrant]]
 - [[estrogen-receptor]]
 
 ## Provenance

@@ -26,6 +26,14 @@ Urothelial carcinoma arises from the transitional epithelium lining the bladder,
 - https://www.auanet.org/guidelines-and-quality/guidelines/bladder-cancer-non-metastatic-muscle-invasive-guideline
 
 ## Related
+- [[avelumab]]
+- [[cisplatin]]
+- [[enfortumab-vedotin]]
+- [[erdafitinib]]
+- [[gemcitabine]]
+- [[mitomycin]]
+- [[pembrolizumab]]
+- [[sacituzumab-govitecan]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[urothelial-carcinoma-approach]]

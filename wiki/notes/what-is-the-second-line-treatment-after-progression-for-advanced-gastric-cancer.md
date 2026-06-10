@@ -38,16 +38,22 @@ Sources:
 7. [oncologynewscentral.com](https://www.oncologynewscentral.com/gastric-cancer/triplet-therapy-clears-early-hurdle-in-advanced-gastric-cancer)
 8. [youtube.com](https://www.youtube.com/watch?v=yAoyvPEXdj0)
 
+
 ## Related
 
-- [[gastric-cancer]]
 - [[her2]]
-- [[msi-hdmmr]]
 - [[ramucirumab]]
-- [[paclitaxel]]
 - [[fluorouracil]]
+- [[trastuzumab-deruxtecan]]
+- [[gastric-cancer]]
 - [[irinotecan]]
+- [[paclitaxel]]
+- [[msi-hdmmr]]
+- [[trastuzumab]]
 - [[docetaxel]]
+- [[folfiri]]
+- [[microsatellite-instability]]
+- [[dmmr]]
 
 ## Provenance
 

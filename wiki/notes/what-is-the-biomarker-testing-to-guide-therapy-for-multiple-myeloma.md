@@ -36,12 +36,18 @@ Biomarker testing in multiple myeloma is used to guide the selection of targeted
 *   Wiki pages cited: [[b-cell-maturation-antigen]], [[ciltacabtagene-autoleucel]], [[majestec-3-trial]], [[belantamab-mafodotin]], [[circulating-tumor-dna]], [[mrd-guided-therapy-escalation]]
 *   Web search was utilized to provide up-to-date guidelines on cytogenetics/FISH, specific chromosomal targets, mass spectrometry, and minimal residual disease practices specific to multiple myeloma.
 
+
 ## Related
 
-- [[multiple-myeloma]]
+- [[mrd-guided-therapy-escalation]]
+- [[circulating-tumor-dna]]
+- [[b-cell-maturation-antigen]]
 - [[ciltacabtagene-autoleucel]]
-- [[majestec-3-trial]]
+- [[teclistamab]]
+- [[breast-cancer]]
 - [[belantamab-mafodotin]]
+- [[majestec-3-trial]]
+- [[multiple-myeloma]]
 
 ## Provenance
 

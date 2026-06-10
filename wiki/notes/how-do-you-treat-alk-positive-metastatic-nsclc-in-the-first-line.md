@@ -42,9 +42,15 @@ Guidelines also emphasize that comprehensive molecular testing for ALK fusions s
 4. [harborsidestudio.com](https://sponsored.harborsidestudio.com/first-line-treatment-of-alk-positive-metastatic-nsclc/?utm_source=TAP&utm_medium=Website&utm_campaign=TAP_HP)
 5. [cancernetwork.com](https://www.cancernetwork.com/view/exploring-first-line-alk-inhibitors-tki-sequencing-in-alk-positive-nsclc)
 
+
 ## Related
 
+- [[alectinib]]
+- [[brigatinib]]
+- [[crizotinib]]
+- [[small-cell-lung-cancer]]
 - [[non-small-cell-lung-cancer]]
+- [[lorlatinib]]
 
 ## Provenance
 

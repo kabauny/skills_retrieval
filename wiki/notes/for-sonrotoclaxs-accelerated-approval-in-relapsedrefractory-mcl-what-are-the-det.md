@@ -31,8 +31,10 @@ As a highly potent next-generation BCL-2 inhibitor, sonrotoclax removes the "sur
 **Sources**
 * Web search was used to answer this query (no relevant internal wiki pages were found).
 
+
 ## Related
 
+- [[rituximab]]
 - [[sonrotoclax]]
 - [[zanubrutinib]]
 

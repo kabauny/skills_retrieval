@@ -31,6 +31,7 @@ Cervical cancer is the fourth most common cancer in women worldwide and is overw
 - https://ascopost.com/issues/november-25-2023/in-recurrent-cervical-cancer-tisotumab-vedotin-tftv-improves-overall-survival-in-phase-iii-trial/
 
 ## Related
+- [[ifosfamide]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[cervical-cancer-approach]]

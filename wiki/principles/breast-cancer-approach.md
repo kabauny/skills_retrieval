@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage and define subtype (ER/PR, HER2) — subtype dictates the entire systemic strategy. Decide curative-intent local therapy + (neo)adjuvant systemic per subtype/stage; in advanced disease, sequence by subtype and prior exposure.
 
 ## Related
+- [[breast-cancer]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

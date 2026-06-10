@@ -34,8 +34,10 @@ In summary, you should not restart the regimen at lower doses. The patient shoul
 - [[immune-related-adverse-events]]
 - Web search was used.
 
+
 ## Related
 
+- [[immune-related-adverse-events]]
 - [[immune-checkpoint-inhibitor]]
 - [[ipilimumab]]
 - [[nivolumab]]

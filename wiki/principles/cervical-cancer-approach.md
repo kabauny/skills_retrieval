@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage to choose curative chemoradiation vs surgery for localized disease. For advanced/recurrent disease, chemo + bevacizumab + immunotherapy by PD-L1 status.
 
 ## Related
+- [[cervical-cancer]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

@@ -27,6 +27,8 @@ Endometrial (uterine) cancer is the most common gynecologic malignancy and the f
 - https://pmc.ncbi.nlm.nih.gov/articles/PMC11172295/
 
 ## Related
+- [[dostarlimab]]
+- [[lenvatinib]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[endometrial-cancer-approach]]

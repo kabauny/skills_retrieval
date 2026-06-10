@@ -39,15 +39,32 @@ Sources:
 5. [emjreviews.com](https://www.emjreviews.com/wp-content/uploads/2020/09/Unmet-Medical-Need-in-Patients-with-Metastatic-Colorectal-Cancer-with-BRAF-V600E-Mutations-A-Review.pdf)
 6. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12154287/)
 
+
 ## Related
 
-- [[metastatic-colorectal-cancer]]
+- [[her2]]
 - [[circulating-tumor-dna]]
-- [[microsatellite-instability]]
-- [[pembrolizumab]]
-- [[nivolumab]]
-- [[ipilimumab]]
+- [[egfr]]
 - [[bevacizumab]]
+- [[trastuzumab-deruxtecan]]
+- [[ipilimumab]]
+- [[colorectal-cancer]]
+- [[cetuximab]]
+- [[braf-v600e]]
+- [[pembrolizumab]]
+- [[msi-hdmmr]]
+- [[atezolizumab]]
+- [[nivolumab]]
+- [[trastuzumab]]
+- [[msi-high]]
+- [[microsatellite-instability]]
+- [[metastatic-colorectal-cancer]]
+- [[folfox]]
+- [[tucatinib]]
+- [[dmmr]]
+- [[kras]]
+- [[panitumumab]]
+- [[pertuzumab]]
 
 ## Provenance
 

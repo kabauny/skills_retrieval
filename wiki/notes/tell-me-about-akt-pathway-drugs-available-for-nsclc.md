@@ -42,13 +42,17 @@ While no AKT-directed drugs are commercially available for NSCLC patients yet, m
 8. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC4592395/)
 9. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC7049515/)
 
+
 ## Related
 
-- [[capivasertib]]
-- [[non-small-cell-lung-cancer]]
-- [[erlotinib]]
-- [[osimertinib]]
 - [[egfr]]
+- [[osimertinib]]
+- [[capivasertib]]
+- [[breast-cancer]]
+- [[fulvestrant]]
+- [[erlotinib]]
+- [[small-cell-lung-cancer]]
+- [[non-small-cell-lung-cancer]]
 
 ## Provenance
 

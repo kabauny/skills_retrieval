@@ -33,6 +33,13 @@ Gastric (stomach) cancer is the fifth most common malignancy and third leading c
 
 ## Related
 
+- [[capecitabine]]
+- [[epirubicin]]
+- [[fluorouracil]]
+- [[oxaliplatin]]
+- [[ramucirumab]]
+- [[trastuzumab]]
+- [[trastuzumab-deruxtecan]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[gastric-cancer-approach]]

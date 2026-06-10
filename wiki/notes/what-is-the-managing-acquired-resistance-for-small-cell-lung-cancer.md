@@ -41,6 +41,12 @@ Historically, the choice of second-line therapy for relapsed SCLC relied heavily
 7. [mdpi.com](https://www.mdpi.com/2072-6694/18/11/1806)
 8. [pharmacytimes.com](https://www.pharmacytimes.com/view/lurbinectedin-and-tarlatamab-emerging-second-line-therapies-in-the-sclc-space)
 
+## Related
+
+- [[atezolizumab]]
+- [[topotecan]]
+- [[small-cell-lung-cancer]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-08 (auto, unverified)

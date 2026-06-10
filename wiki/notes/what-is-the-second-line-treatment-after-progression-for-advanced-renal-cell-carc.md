@@ -39,11 +39,20 @@ The selection of a second-line treatment for advanced clear cell renal cell carc
 3. [nccn.org](https://www.nccn.org/patients/guidelines/content/PDF/kidney-patient.pdf)
 4. [cancer.gov](https://www.cancer.gov/types/kidney/hp/kidney-treatment-pdq)
 
+
 ## Related
 
 - [[immune-checkpoint-inhibitor]]
+- [[belzutifan]]
+- [[everolimus]]
+- [[ipilimumab]]
+- [[pd-1]]
 - [[pembrolizumab]]
 - [[cabozantinib]]
+- [[nivolumab]]
+- [[axitinib]]
+- [[lenvatinib]]
+- [[renal-cell-carcinoma]]
 
 ## Provenance
 

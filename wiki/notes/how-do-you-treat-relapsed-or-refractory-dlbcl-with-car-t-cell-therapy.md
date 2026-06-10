@@ -43,13 +43,15 @@ Currently, there are three CD19-directed CAR-T cell therapies FDA-approved for t
 4. [cms.gov](https://www.cms.gov/medicare-coverage-database/view/ncacal-decision-memo.aspx?proposed=Y&NCAId=291)
 
 
+
 ## Related
 
 - [[r-chop]]
-- [[pola-r-chp]]
-- [[ciltacabtagene-autoleucel]]
 - [[b-cell-maturation-antigen]]
+- [[ciltacabtagene-autoleucel]]
 - [[multiple-myeloma]]
+- [[diffuse-large-b-cell-lymphoma]]
+- [[pola-r-chp]]
 
 ## Provenance
 

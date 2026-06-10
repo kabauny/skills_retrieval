@@ -42,11 +42,14 @@ Sources:
 7. [ascopubs.org](https://dailynews.ascopubs.org/do/rasolute-302-new-treatment-paradigm-metastatic-pdac-oncogenic-ras-targeting)
 8. [asco.org](https://www.asco.org/practice-patients/patient-resources/research-summaries/RASolute-302-pancreatic-cancer)
 
+
 ## Related
 
+- [[pancreatic-cancer]]
 - [[rasolute-302]]
+- [[rasolute-302-trial]]
+- [[pancreatic-ductal-adenocarcinoma]]
 - [[daraxonrasib]]
-- [[ras]]
 
 ## Provenance
 

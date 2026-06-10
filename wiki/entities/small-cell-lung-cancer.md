@@ -28,6 +28,10 @@ SCLC is a poorly differentiated, high-grade neuroendocrine carcinoma of the lung
 - https://aacrjournals.org/clincancerres/article/32/7/1191/775509/FDA-Approval-Summary-Tarlatamab-for-the-Treatment
 
 ## Related
+- [[atezolizumab]]
+- [[durvalumab]]
+- [[etoposide]]
+- [[topotecan]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[small-cell-lung-cancer-approach]]

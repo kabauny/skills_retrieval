@@ -39,10 +39,18 @@ When patients have advanced disease accompanied by symptoms, bulky disease, or a
 Sources:
 Web search was used to answer this query.
 
+
 ## Related
 
+- [[cyclophosphamide]]
+- [[obinutuzumab]]
 - [[rituximab]]
 - [[cd20]]
+- [[doxorubicin]]
+- [[follicular-lymphoma]]
+- [[prednisone]]
+- [[bendamustine]]
+- [[vincristine]]
 
 ## Provenance
 

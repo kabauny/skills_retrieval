@@ -55,6 +55,14 @@ Patients with FLT3-ITD mutations historically have a higher risk of relapse [sea
 12. [vjhemonc.com](https://www.vjhemonc.com/video/jjdposxlstq-long-term-survival-and-relapse-patterns-in-flt3-mutated-aml-treated-with-frontline-triplet-therapy/)
 13. [fda.gov](https://www.fda.gov/drugs/fda-approves-gilteritinib-relapsed-or-refractory-acute-myeloid-leukemia-aml-flt3-mutation)
 
+## Related
+
+- [[venetoclax]]
+- [[gilteritinib]]
+- [[midostaurin]]
+- [[cytarabine]]
+- [[acute-myeloid-leukemia]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

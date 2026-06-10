@@ -45,11 +45,17 @@ Web search was used to answer this query. (No internal wiki pages were cited as 
 6. [ascopost.com](https://ascopost.com/news/april-2026/elisrasib-demonstrates-high-dcr-in-kras-g12c-nsclc/)
 7. [aacr.org](https://www.aacr.org/about-the-aacr/newsroom/news-releases/next-generation-kras-g12c-inhibitor-elisrasib-elicited-promising-response-rates-in-patients-with-advanced-lung-cancer/)
 
+
 ## Related
 
+- [[ramucirumab]]
 - [[kras-g12c]]
-- [[kras]]
+- [[sotorasib]]
 - [[docetaxel]]
+- [[small-cell-lung-cancer]]
+- [[adagrasib]]
+- [[kras]]
+- [[non-small-cell-lung-cancer]]
 
 ## Provenance
 

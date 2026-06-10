@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Confirm diagnosis and stage (R-ISS). Induction with triplets/quadruplets, transplant by eligibility, then maintenance; relapse is sequenced through anti-CD38, immunomodulators, proteasome inhibitors, and BCMA-directed therapy.
 
 ## Related
+- [[multiple-myeloma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

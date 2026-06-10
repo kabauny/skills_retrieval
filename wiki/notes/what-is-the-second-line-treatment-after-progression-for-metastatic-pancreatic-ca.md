@@ -37,15 +37,29 @@ Recent breakthroughs highlighted at ASCO meetings have introduced promising new 
 * [[with-pmids-what-are-some-updates-with-pancreatic-cancer-that-was-recently-publis]]
 * Web search was used.
 
+
 ## Related
 
-- [[gemcitabine]]
-- [[nab-paclitaxel]]
-- [[leucovorin]]
-- [[irinotecan]]
-- [[folfiri]]
+- [[fluorouracil]]
 - [[oxaliplatin]]
+- [[nab-paclitaxel]]
+- [[pancreatic-cancer]]
+- [[olaparib]]
+- [[irinotecan]]
+- [[pembrolizumab]]
+- [[paclitaxel]]
+- [[msi-hdmmr]]
+- [[rasolute-302]]
+- [[rasolute-302-trial]]
+- [[leucovorin]]
+- [[mek-inhibitor]]
+- [[daraxonrasib]]
+- [[gemcitabine]]
+- [[folfiri]]
+- [[microsatellite-instability]]
 - [[folfox]]
+- [[dmmr]]
+- [[kras]]
 
 ## Provenance
 

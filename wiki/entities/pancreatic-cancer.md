@@ -35,6 +35,13 @@ Pancreatic cancer is among the most lethal solid tumors, with a 5-year relative 
 
 ## Related
 
+- [[erlotinib]]
+- [[fluorouracil]]
+- [[gemcitabine]]
+- [[irinotecan]]
+- [[nab-paclitaxel]]
+- [[olaparib]]
+- [[oxaliplatin]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[pancreatic-cancer-approach]]

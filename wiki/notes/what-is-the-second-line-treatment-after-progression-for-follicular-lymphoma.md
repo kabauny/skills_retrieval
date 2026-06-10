@@ -29,10 +29,15 @@ Sources:
 - No wiki pages were cited. 
 - Web search was used to answer this query.
 
+
 ## Related
 
-- [[diffuse-large-b-cell-lymphoma]]
+- [[epcoritamab]]
+- [[obinutuzumab]]
 - [[rituximab]]
+- [[follicular-lymphoma]]
+- [[diffuse-large-b-cell-lymphoma]]
+- [[bendamustine]]
 
 ## Provenance
 

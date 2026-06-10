@@ -28,6 +28,14 @@ Acute myeloid leukemia is an aggressive clonal malignancy of myeloid progenitors
 - https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-ivosidenib-relapsed-or-refractory-acute-myeloid-leukemia
 
 ## Related
+- [[azacitidine]]
+- [[cytarabine]]
+- [[enasidenib]]
+- [[gilteritinib]]
+- [[imatinib]]
+- [[ivosidenib]]
+- [[midostaurin]]
+- [[venetoclax]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[acute-myeloid-leukemia-approach]]

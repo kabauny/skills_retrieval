@@ -49,6 +49,15 @@ The adverse effects of PARP inhibitors are generally similar across the class an
 6. [targetedonc.com](https://www.targetedonc.com/view/parp-inhibitors-gain-indications-in-advanced-prostate-cancer)
 7. [urotoday.com](https://www.urotoday.com/library-resources/advanced-prostate-cancer/150515-parp-inhibitor-therapy-for-prostate-cancer-patients-emerging-combinations.html)
 
+## Related
+
+- [[prostate-cancer]]
+- [[olaparib]]
+- [[abiraterone]]
+- [[rucaparib]]
+- [[niraparib]]
+- [[enzalutamide]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-07

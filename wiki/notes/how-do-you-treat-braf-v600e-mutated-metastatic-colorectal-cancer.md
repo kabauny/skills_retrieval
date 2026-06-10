@@ -34,16 +34,23 @@ Sources:
 - [[which-biomarkers-should-be-tested-in-metastatic-colorectal-cancer-to-guide-thera]]
 - Web search was used.
 
+
 ## Related
 
-- [[metastatic-colorectal-cancer]]
+- [[fluorouracil]]
+- [[egfr]]
+- [[bevacizumab]]
+- [[ipilimumab]]
+- [[colorectal-cancer]]
+- [[cetuximab]]
 - [[braf-v600e]]
-- [[microsatellite-instability]]
-- [[msi-high]]
-- [[dmmr]]
 - [[pembrolizumab]]
 - [[nivolumab]]
-- [[ipilimumab]]
+- [[msi-high]]
+- [[folfiri]]
+- [[microsatellite-instability]]
+- [[metastatic-colorectal-cancer]]
+- [[dmmr]]
 - [[encorafenib]]
 
 ## Provenance

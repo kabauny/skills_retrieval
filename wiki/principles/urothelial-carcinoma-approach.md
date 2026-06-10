@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Distinguish non-muscle-invasive, muscle-invasive (curative-intent: neoadjuvant chemo + cystectomy), and metastatic. Assess cisplatin eligibility; test FGFR and HER2 for later-line targeted/ADC therapy.
 
 ## Related
+- [[urothelial-carcinoma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

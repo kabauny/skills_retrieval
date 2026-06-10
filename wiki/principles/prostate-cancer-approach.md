@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Define localized vs metastatic and castration-sensitive vs -resistant — this sets the line of therapy. Backbone is androgen deprivation + intensification; test HRR/BRCA and MSI for PARP and IO, and PSMA for radioligand therapy.
 
 ## Related
+- [[prostate-cancer]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

@@ -37,13 +37,23 @@ Web search was used. No wiki pages were cited.
 6. [facingourrisk.org](https://www.facingourrisk.org/XRAY/treating-unresectable-and-metastatic-CRC)
 7. [asco.org](https://www.asco.org/about-asco/press-center/news-releases/triple-punch-combo-therapy-slows-progression-some-metastatic-colorectal-cancers)
 
+
 ## Related
 
-- [[colon-cancer]]
-- [[msi-high]]
-- [[dmmr]]
-- [[pembrolizumab]]
+- [[bevacizumab]]
+- [[ipilimumab]]
+- [[colorectal-cancer]]
 - [[pd-1]]
+- [[colon-cancer]]
+- [[pembrolizumab]]
+- [[msi-hdmmr]]
+- [[atezolizumab]]
+- [[nivolumab]]
+- [[msi-high]]
+- [[microsatellite-instability]]
+- [[metastatic-colorectal-cancer]]
+- [[folfox]]
+- [[dmmr]]
 
 ## Provenance
 

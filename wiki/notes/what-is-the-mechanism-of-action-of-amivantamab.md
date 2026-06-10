@@ -36,10 +36,12 @@ Notably, amivantamab's efficacy does not require all three mechanisms to occur s
 3. [nih.gov](https://pubmed.ncbi.nlm.nih.gov/36481319/)
 4. [cancernetwork.com](https://www.cancernetwork.com/view/journal-expert-commentary-on-the-product-profile-of-amivantamab-vmjw)
 
+
 ## Related
 
-- [[amivantamab]]
+- [[egfr]]
 - [[epidermal-growth-factor-receptor-egfr]]
+- [[amivantamab]]
 
 ## Provenance
 

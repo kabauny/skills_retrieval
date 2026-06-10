@@ -28,6 +28,12 @@ Thyroid cancer is the most common endocrine malignancy, with roughly 44,000 new 
 - https://www.ncbi.nlm.nih.gov/books/NBK552390/
 
 ## Related
+- [[cabozantinib]]
+- [[dabrafenib]]
+- [[larotrectinib]]
+- [[lenvatinib]]
+- [[selpercatinib]]
+- [[sorafenib]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[thyroid-cancer-approach]]

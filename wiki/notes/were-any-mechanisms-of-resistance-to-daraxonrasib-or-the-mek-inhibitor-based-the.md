@@ -54,13 +54,24 @@ Because adaptive mechanisms frequently compromise long-term efficacy by making c
 9. [pnas.org](https://www.pnas.org/doi/10.1073/pnas.2523039122)
 10. [aacrjournals.org](https://aacrjournals.org/cancerres/article/85/8_Supplement_2/LB281/761862/Abstract-LB281-Mechanisms-of-resistance-to-the-RAS)
 
+
 ## Related
 
-- [[daraxonrasib]]
-- [[mek-inhibitor]]
-- [[kras]]
+- [[trametinib]]
+- [[her2]]
+- [[soft-text-trials]]
+- [[egfr]]
+- [[colorectal-cancer]]
+- [[cetuximab]]
+- [[braf-v600e]]
+- [[colon-cancer]]
 - [[cyclophilin-a]]
-- [[ras]]
+- [[nivolumab]]
+- [[mek-inhibitor]]
+- [[daraxonrasib]]
+- [[dabrafenib]]
+- [[encorafenib]]
+- [[kras]]
 
 ## Provenance
 

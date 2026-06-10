@@ -28,6 +28,9 @@ HNSCC comprises squamous cancers of the upper aerodigestive tract — chiefly th
 - https://ascopubs.org/doi/10.1200/JCO.21.02508
 
 ## Related
+- [[cetuximab]]
+- [[cisplatin]]
+- [[pembrolizumab]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[head-and-neck-squamous-cell-carcinoma-approach]]

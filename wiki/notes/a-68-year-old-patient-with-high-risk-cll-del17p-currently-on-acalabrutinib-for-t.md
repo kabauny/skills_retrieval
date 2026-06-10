@@ -38,9 +38,13 @@ She should **switch to a BCL-2 inhibitor** to safely manage her intolerance whil
 * [[what-is-the-frontline-treatment-for-chronic-lymphocytic-leukemia-cll]]
 * Web search was used to confirm acalabrutinib FDA prescribing information regarding dose modifications for Grade 3 non-hematologic toxicities, as well as clinical management strategies for BTK inhibitor intolerance.
 
+
 ## Related
 
 - [[venetoclax]]
+- [[chronic-lymphocytic-leukemia]]
+- [[zanubrutinib]]
+- [[acalabrutinib]]
 
 ## Provenance
 

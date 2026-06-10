@@ -40,17 +40,24 @@ Because acquired resistance dynamically alters the tumor's genetic makeup, repea
 - [[what-is-the-second-line-treatment-after-progression-for-advanced-gastric-cancer]]
 - Web search was used to supplement information on molecular resistance mechanisms and investigational therapies.
 
+
 ## Related
 
+- [[her2-receptor]]
 - [[her2]]
-- [[msi-hdmmr]]
 - [[ramucirumab]]
-- [[paclitaxel]]
-- [[folfiri]]
 - [[fluorouracil]]
+- [[trastuzumab-deruxtecan]]
+- [[pemigatinib]]
+- [[gastric-cancer]]
 - [[irinotecan]]
-- [[docetaxel]]
+- [[paclitaxel]]
+- [[msi-hdmmr]]
 - [[trastuzumab]]
+- [[docetaxel]]
+- [[folfiri]]
+- [[microsatellite-instability]]
+- [[dmmr]]
 
 ## Provenance
 

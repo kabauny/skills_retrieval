@@ -27,6 +27,14 @@ Prostate cancer is the most common non-skin cancer in U.S. men and the second le
 - https://www.nejm.org/doi/full/10.1056/NEJMoa2107322
 
 ## Related
+- [[abiraterone]]
+- [[apalutamide]]
+- [[darolutamide]]
+- [[docetaxel]]
+- [[enzalutamide]]
+- [[leuprolide]]
+- [[olaparib]]
+- [[rucaparib]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[prostate-cancer-approach]]

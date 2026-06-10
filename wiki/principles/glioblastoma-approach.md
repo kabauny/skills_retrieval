@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Maximal safe resection, then chemoradiation with temozolomide. MGMT methylation predicts temozolomide benefit; IDH status reclassifies the tumor. Functional status heavily constrains options.
 
 ## Related
+- [[glioblastoma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

@@ -56,9 +56,13 @@ The management of vepdegestrant relies on standard oncologic monitoring, careful
 10. [rxlist.com](https://www.rxlist.com/veppanu-drug.htm)
 11. [clinicaltrials.gov](https://cdn.clinicaltrials.gov/large-docs/52/NCT05463952/Prot_000.pdf)
 
+
 ## Related
 
+- [[palbociclib]]
+- [[breast-cancer]]
 - [[vepdegestrant]]
+- [[fulvestrant]]
 - [[estrogen-receptor]]
 
 ## Provenance

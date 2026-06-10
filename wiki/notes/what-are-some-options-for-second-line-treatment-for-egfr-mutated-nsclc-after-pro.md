@@ -52,14 +52,17 @@ Identifying specific resistance mechanisms can qualify patients for targeted app
 9. [onclive.com](https://www.onclive.com/view/nccn-releases-nsclc-guideline-update-dato-dxd-designated-as-a-preferred-second-line-regimen-in-egfr-mutated-disease)
 10. [healio.com](https://www.healio.com/news/hematology-oncology/20251114/updated-nccn-guidelines-on-nsclc-put-spotlight-on-biomarker-testing)
 
+
 ## Related
 
 - [[egfr]]
-- [[non-small-cell-lung-cancer]]
 - [[osimertinib]]
-- [[amivantamab]]
-- [[carboplatin]]
+- [[cisplatin]]
 - [[pemetrexed]]
+- [[carboplatin]]
+- [[small-cell-lung-cancer]]
+- [[non-small-cell-lung-cancer]]
+- [[amivantamab]]
 
 ## Provenance
 

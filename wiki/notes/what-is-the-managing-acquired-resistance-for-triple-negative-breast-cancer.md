@@ -54,16 +54,22 @@ As patients are living longer, tumors are beginning to develop secondary acquire
 8. [portlandpress.com](https://portlandpress.com/biochemsoctrans/article/48/2/657/222712/Targeted-therapy-and-drug-resistance-in-triple)
 9. [mdpi.com](https://www.mdpi.com/1422-0067/27/6/2792)
 
+
 ## Related
 
-- [[triple-negative-breast-cancer]]
-- [[estrogen-receptor]]
 - [[her2-receptor]]
-- [[keynote-522]]
-- [[pembrolizumab]]
-- [[carboplatin]]
-- [[paclitaxel]]
+- [[her2]]
 - [[cyclophosphamide]]
+- [[olaparib]]
+- [[breast-cancer]]
+- [[pembrolizumab]]
+- [[paclitaxel]]
+- [[capecitabine]]
+- [[carboplatin]]
+- [[sacituzumab-govitecan]]
+- [[estrogen-receptor]]
+- [[keynote-522]]
+- [[triple-negative-breast-cancer]]
 
 ## Provenance
 

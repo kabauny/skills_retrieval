@@ -34,10 +34,15 @@ Sources:
 - [[belzutifan]]
 - Web search was used.
 
+
 ## Related
 
-- [[cabozantinib]]
+- [[belzutifan]]
 - [[pembrolizumab]]
+- [[cabozantinib]]
+- [[nivolumab]]
+- [[sunitinib]]
+- [[renal-cell-carcinoma]]
 
 ## Provenance
 

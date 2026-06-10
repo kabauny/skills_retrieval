@@ -44,11 +44,13 @@ The best clinical decision is to **initiate a BCL-2 inhibitor** or pursue **clin
 6. [oncpracticemanagement.com](https://www.oncpracticemanagement.com/issues/2023/may-2023-vol-13-no-5/new-nccn-guidelines-for-cll-sll-include-second-generation-btk-inhibitors)
 7. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC10891251/)
 
+
 ## Related
 
-- [[chronic-lymphocytic-leukemia]]
 - [[venetoclax]]
+- [[chronic-lymphocytic-leukemia]]
 - [[zanubrutinib]]
+- [[acalabrutinib]]
 
 ## Provenance
 

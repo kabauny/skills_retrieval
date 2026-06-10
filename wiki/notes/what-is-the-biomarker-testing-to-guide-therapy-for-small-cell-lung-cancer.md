@@ -26,10 +26,13 @@ Sources:
 - No wiki pages were cited as the provided context did not contain relevant information.
 - Web search was used to answer this question.
 
+
 ## Related
 
-- [[atezolizumab]]
 - [[durvalumab]]
+- [[atezolizumab]]
+- [[small-cell-lung-cancer]]
+- [[non-small-cell-lung-cancer]]
 
 ## Provenance
 

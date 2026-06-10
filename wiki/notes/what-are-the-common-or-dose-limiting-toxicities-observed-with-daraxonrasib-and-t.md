@@ -46,10 +46,17 @@ Sources:
 - [[what-are-treatment-options-for-metastatic-colon-cancer-with-braf-v600e-mutation-]]
 - Web search was used.
 
+
 ## Related
 
-- [[daraxonrasib]]
+- [[trametinib]]
+- [[egfr]]
+- [[colorectal-cancer]]
+- [[braf-v600e]]
+- [[colon-cancer]]
 - [[mek-inhibitor]]
+- [[daraxonrasib]]
+- [[dabrafenib]]
 
 ## Provenance
 

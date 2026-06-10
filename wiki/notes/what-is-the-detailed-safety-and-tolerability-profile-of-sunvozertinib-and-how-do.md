@@ -41,10 +41,15 @@ Because EGFR exon 20 insertions are structurally similar to wild-type EGFR, deve
 Sources:
 * Web search was used to compile this response (no wiki context was provided or cited).
 
+
 ## Related
 
-- [[sunvozertinib]]
+- [[egfr]]
+- [[pemetrexed]]
 - [[epidermal-growth-factor-receptor-egfr]]
+- [[sunvozertinib]]
+- [[carboplatin]]
+- [[amivantamab]]
 
 ## Provenance
 

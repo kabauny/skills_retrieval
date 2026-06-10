@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage and assess fitness. Frontline anti-CD20 immunochemotherapy with curative intent; relapsed/refractory disease is risk-stratified toward CAR-T and bispecifics. Manage CRS/ICANS toxicity actively.
 
 ## Related
+- [[diffuse-large-b-cell-lymphoma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

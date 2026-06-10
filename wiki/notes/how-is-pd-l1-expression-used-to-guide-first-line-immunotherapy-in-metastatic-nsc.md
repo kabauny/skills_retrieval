@@ -45,13 +45,25 @@ When combination chemoimmunotherapy is used (for any PD-L1 expression level), th
 4. [ascopubs.org](https://ascopubs.org/doi/10.1200/JCO-24-02786)
 5. [cancerbiomed.org](https://www.cancerbiomed.org/content/21/2/117)
 
+
 ## Related
 
-- [[non-small-cell-lung-cancer]]
 - [[egfr]]
+- [[tremelimumab]]
+- [[nab-paclitaxel]]
+- [[cisplatin]]
 - [[immune-checkpoint-inhibitor]]
+- [[bevacizumab]]
+- [[pd-1]]
+- [[pemetrexed]]
 - [[pembrolizumab]]
+- [[durvalumab]]
+- [[paclitaxel]]
 - [[atezolizumab]]
+- [[cemiplimab]]
+- [[carboplatin]]
+- [[small-cell-lung-cancer]]
+- [[non-small-cell-lung-cancer]]
 
 ## Provenance
 

@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage and assess resectability. Obtain NGS early — FGFR2 fusions, IDH1, HER2 each unlock targeted therapy. Gemcitabine/cisplatin + immunotherapy is the systemic backbone.
 
 ## Related
+- [[cholangiocarcinoma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

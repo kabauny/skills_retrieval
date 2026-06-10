@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Confirm grade and rule out transformation. Asymptomatic low-burden disease often warrants observation; treat by symptoms/burden, then sequence anti-CD20 combinations, lenalidomide, and bispecifics on relapse.
 
 ## Related
+- [[follicular-lymphoma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

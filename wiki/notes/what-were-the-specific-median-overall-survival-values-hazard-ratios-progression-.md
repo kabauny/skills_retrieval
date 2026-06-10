@@ -32,11 +32,14 @@ Based on the findings from the RASolute 302 trial, the specific efficacy values 
 1. [onclive.com](https://www.onclive.com/view/daraxonrasib-meets-all-primary-key-secondary-efficacy-end-points-in-pretreated-pdac)
 2. [asco.org](https://www.asco.org/about-asco/press-center/multi-selective-ras-inhibitor-nearly-doubles-survival-pancreatic-cancer)
 
+
 ## Related
 
+- [[pancreatic-cancer]]
+- [[rasolute-302]]
 - [[rasolute-302-trial]]
-- [[daraxonrasib]]
 - [[pancreatic-ductal-adenocarcinoma]]
+- [[daraxonrasib]]
 
 ## Provenance
 

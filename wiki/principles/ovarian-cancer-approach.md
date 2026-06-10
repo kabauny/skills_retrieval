@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Assess for primary vs interval cytoreductive surgery; platinum-based chemo is standard. Test BRCA/HRD to select PARP-inhibitor maintenance — the key determinant of progression-free benefit.
 
 ## Related
+- [[ovarian-cancer]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

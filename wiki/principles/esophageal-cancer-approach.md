@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage and assess resectability; trimodality (neoadjuvant chemoradiation + surgery) for locally advanced. Histology and HER2/PD-L1 status guide systemic and adjuvant immunotherapy choices.
 
 ## Related
+- [[esophageal-cancer]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

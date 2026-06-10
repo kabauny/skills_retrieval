@@ -43,15 +43,32 @@ Sources:
 - [[trifluridine-tipiracil]]
 - Web search was used.
 
+
 ## Related
 
+- [[trametinib]]
+- [[ramucirumab]]
+- [[oxaliplatin]]
+- [[egfr]]
+- [[regorafenib]]
+- [[bevacizumab]]
+- [[ipilimumab]]
+- [[colorectal-cancer]]
+- [[cetuximab]]
+- [[irinotecan]]
+- [[braf-v600e]]
+- [[colon-cancer]]
+- [[pembrolizumab]]
+- [[msi-hdmmr]]
+- [[nivolumab]]
+- [[trifluridine-tipiracil]]
+- [[mek-inhibitor]]
+- [[folfiri]]
+- [[microsatellite-instability]]
 - [[metastatic-colorectal-cancer]]
 - [[folfox]]
-- [[folfiri]]
-- [[bevacizumab]]
-- [[pembrolizumab]]
-- [[nivolumab]]
-- [[ipilimumab]]
+- [[dmmr]]
+- [[dabrafenib]]
 - [[encorafenib]]
 
 ## Provenance

@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage surgically. Use molecular classification (MMR/MSI, p53, POLE) for prognosis and to select immunotherapy; advanced disease increasingly uses chemo + IO.
 
 ## Related
+- [[endometrial-cancer]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

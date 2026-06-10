@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage and assess resectability (perioperative chemo for resectable; palliative systemic for metastatic). Test HER2, PD-L1 CPS, MSI, CLDN18.2 up front — each opens a distinct first-line combination.
 
 ## Related
+- [[gastric-cancer]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

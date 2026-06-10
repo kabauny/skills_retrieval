@@ -31,18 +31,21 @@ Amivantamab is a fully human, low-fucose IgG1 bispecific monoclonal antibody [[w
 * [[what-is-the-mechanism-of-action-of-amivantamab]]
 * Web search was used to source current clinical guidelines, trial data, and FDA-approved first-line therapies.
 
+
 ## Related
 
-- [[egfr-exon-19-deletion]]
-- [[non-small-cell-lung-cancer]]
 - [[egfr]]
 - [[osimertinib]]
-- [[erlotinib]]
+- [[cisplatin]]
 - [[pemetrexed]]
 - [[carboplatin]]
-- [[cisplatin]]
-- [[amivantamab]]
+- [[gefitinib]]
+- [[egfr-exon-19-deletion]]
+- [[erlotinib]]
+- [[small-cell-lung-cancer]]
+- [[non-small-cell-lung-cancer]]
 - [[lazertinib]]
+- [[amivantamab]]
 
 ## Provenance
 

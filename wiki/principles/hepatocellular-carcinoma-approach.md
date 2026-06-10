@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage with BCLC integrating tumor burden, liver function, and performance status. Curative options (resection, ablation, transplant) for early disease; systemic IO-based therapy for advanced — gated by adequate liver function.
 
 ## Related
+- [[hepatocellular-carcinoma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

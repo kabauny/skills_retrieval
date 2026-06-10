@@ -48,11 +48,13 @@ Sunvozertinib received FDA accelerated approval in July 2025 for adult patients 
 6. [fda.gov](https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-sunvozertinib-metastatic-non-small-cell-lung-cancer-egfr-exon-20)
 7. [cancernetwork.com](https://www.cancernetwork.com/view/sunvozertinib-exhibits-favorable-responses-in-egfr-mutated-nsclc)
 
+
 ## Related
 
-- [[sunvozertinib]]
-- [[non-small-cell-lung-cancer]]
 - [[egfr]]
+- [[sunvozertinib]]
+- [[small-cell-lung-cancer]]
+- [[non-small-cell-lung-cancer]]
 
 ## Provenance
 

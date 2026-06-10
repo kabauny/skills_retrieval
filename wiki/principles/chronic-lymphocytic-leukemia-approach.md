@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Confirm diagnosis and test del(17p)/TP53 and IGHV before treating. Observe asymptomatic disease; at indication, choose BTK inhibitors or venetoclax-based therapy guided by TP53 status and patient factors.
 
 ## Related
+- [[chronic-lymphocytic-leukemia]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

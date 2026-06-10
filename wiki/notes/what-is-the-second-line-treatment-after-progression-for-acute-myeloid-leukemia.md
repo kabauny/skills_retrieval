@@ -57,6 +57,18 @@ Across all subgroups, participating in a clinical trial is highly recommended by
 12. [nccn.org](https://www.nccn.org/patients/guidelines/content/PDF/aml-patient.pdf)
 13. [geriatrikhematoloji.org](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFN5W8f9abwW6H1CXXaQIruhWIjCvlb3SUhWm3tEJVBw3SfSqzf0IPpg4Y2t1ENg52kGTjXDfg_r11LhWYl-5CvpjMRloUmNVc39mIYshEl_vFgCEGQLwVibL71IXXHbQ3rX5DwlAEIDrNEgLvv09E5FSBBYT9PFsdiD6I56-M0EwxYe9v4HsAo2bsnxUFO)
 
+## Related
+
+- [[sorafenib]]
+- [[venetoclax]]
+- [[azacitidine]]
+- [[gilteritinib]]
+- [[etoposide]]
+- [[ivosidenib]]
+- [[cytarabine]]
+- [[enasidenib]]
+- [[acute-myeloid-leukemia]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-08 (auto, unverified)

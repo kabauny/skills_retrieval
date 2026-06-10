@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage; localized disease is often cured surgically. For advanced disease, stratify by IMDC risk and histology, then select IO-IO or IO-TKI combinations; weigh toxicity against benefit.
 
 ## Related
+- [[renal-cell-carcinoma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

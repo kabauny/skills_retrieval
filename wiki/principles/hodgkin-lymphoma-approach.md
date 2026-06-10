@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage and risk-stratify; use PET-adapted therapy to balance cure against late toxicity. Brentuximab vedotin and checkpoint inhibitors anchor advanced and relapsed disease.
 
 ## Related
+- [[hodgkin-lymphoma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stage and define HPV status. Curative-intent surgery or chemoradiation for localized disease; recurrent/metastatic disease uses immunotherapy by PD-L1 CPS +/- chemo.
 
 ## Related
+- [[head-and-neck-squamous-cell-carcinoma]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

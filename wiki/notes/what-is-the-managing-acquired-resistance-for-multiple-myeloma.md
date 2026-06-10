@@ -40,11 +40,16 @@ To overcome resistance to standard immunomodulatory drugs (IMiDs) and proteasome
 - [[wiki/majestec-3-trial]]
 - Web search
 
+
 ## Related
 
-- [[multiple-myeloma]]
+- [[venetoclax]]
 - [[b-cell-maturation-antigen]]
 - [[ciltacabtagene-autoleucel]]
+- [[teclistamab]]
+- [[belantamab-mafodotin]]
+- [[majestec-3-trial]]
+- [[multiple-myeloma]]
 
 ## Provenance
 

@@ -40,9 +40,15 @@ S [nccn.org](https://www.nccn.org/patients/guidelines/content/PDF/cll-patient.pd
 6. [cllsociety.org](https://cllsociety.org/2026/04/first-line-therapies-and-biomarker-testing-in-patients-with-cll/)
 7. [onclive.com](https://www.onclive.com/view/obinutuzumab-and-liso-cel-revisions-to-cll-sll-nccn-guidelines-mark-most-notable-changes-of-2024)
 
+
 ## Related
 
+- [[ibrutinib]]
+- [[venetoclax]]
+- [[obinutuzumab]]
 - [[chronic-lymphocytic-leukemia]]
+- [[zanubrutinib]]
+- [[acalabrutinib]]
 
 ## Provenance
 

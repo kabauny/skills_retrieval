@@ -38,9 +38,12 @@ Ultimately, the choice depends on assessing whether the patient is at a higher r
 - [[what-is-the-managing-acquired-resistance-for-small-cell-lung-cancer]]
 - Web search was used to gather updated trial information, FDA label indications, and real-world clinical data regarding ECOG PS 2.
 
+
 ## Related
 
+- [[topotecan]]
 - [[carboplatin]]
+- [[small-cell-lung-cancer]]
 
 ## Provenance
 

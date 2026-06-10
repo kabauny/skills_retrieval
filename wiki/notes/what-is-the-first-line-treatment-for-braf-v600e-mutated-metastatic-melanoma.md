@@ -50,12 +50,20 @@ Approved targeted combinations include:
 8. [lifewisewa.com](https://www.lifewisewa.com/medicalpolicies-group/5.01.589.pdf)
 9. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC10177463/)
 
+
 ## Related
 
-- [[braf-v600e]]
-- [[nivolumab]]
+- [[trametinib]]
+- [[vemurafenib]]
 - [[ipilimumab]]
+- [[binimetinib]]
 - [[pd-1]]
+- [[braf-v600e]]
+- [[pembrolizumab]]
+- [[nivolumab]]
+- [[melanoma]]
+- [[dabrafenib]]
+- [[encorafenib]]
 
 ## Provenance
 

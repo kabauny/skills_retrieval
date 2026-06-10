@@ -28,6 +28,18 @@ Colorectal cancer is the third most common cancer and the second leading cause o
 - https://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-tucatinib-trastuzumab-colorectal-cancer
 
 ## Related
+- [[adagrasib]]
+- [[bevacizumab]]
+- [[capecitabine]]
+- [[cetuximab]]
+- [[encorafenib]]
+- [[fluorouracil]]
+- [[irinotecan]]
+- [[oxaliplatin]]
+- [[panitumumab]]
+- [[regorafenib]]
+- [[sotorasib]]
+- [[tucatinib]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[colorectal-cancer-approach]]

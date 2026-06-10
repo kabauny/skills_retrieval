@@ -25,6 +25,8 @@ Hodgkin lymphoma is a B-cell–derived lymphoma defined by rare malignant Hodgki
 - https://www.annalsofoncology.org/article/S0923-7534(19)31794-6/fulltext
 
 ## Related
+- [[brentuximab-vedotin]]
+- [[vincristine]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[hodgkin-lymphoma-approach]]

@@ -426,7 +426,26 @@ CANDIDATE PAGES:
     # inverse-hub weighting would suppress exactly the lenses we most want.
     pinned = _pin_linked_principles(picked)
     picked = picked + [p for p in pinned if p not in picked]
+    # Companion pin: when a disease FRAMEWORK (e.g. nsclc-approach) is picked, also
+    # pull in its cancer ENTITY (nsclc), which carries the grounded drug/trial
+    # facts. Otherwise a disease-level question routes to the framework + lenses
+    # only and re-grounds for content we already have on the entity page.
+    companions = _pin_companion_entities(picked)
+    picked = picked + [c for c in companions if c not in picked]
     return picked, _tokens(resp)
+
+
+def _pin_companion_entities(picked: list[str]) -> list[str]:
+    """For each picked disease-framework (stem '<cancer>-approach'), pin the
+    matching cancer entity if it exists and is synthesis-eligible."""
+    princ = _principle_stems()
+    out: list[str] = []
+    for p in picked:
+        if p in princ and p.endswith("-approach"):
+            entity = p[: -len("-approach")]
+            if entity not in picked and entity not in out and _synthesis_page_path(entity) is not None:
+                out.append(entity)
+    return out
 
 
 _PRINCIPLE_STEMS: set[str] | None = None
@@ -643,9 +662,27 @@ def _set_related_section(text: str, stems: list[str]) -> str:
     return text.rstrip() + "\n\n" + block
 
 
+def _scan_body_for_entities(body: str, keymap: dict[str, str], exclude_stem: str) -> list[str]:
+    """Deterministic backstop for note linking: whole-word match every known
+    entity name/alias against the note body. Reliable where the LLM extractor is
+    flaky — if the text says 'pembrolizumab', it links [[pembrolizumab]]. Min key
+    length 4 + word boundaries avoid short/substring false positives."""
+    low = body.lower()
+    out: list[str] = []
+    for key, stem in keymap.items():
+        if len(key) < 4 or stem == exclude_stem:
+            continue
+        if re.search(r"\b" + re.escape(key) + r"\b", low):
+            if stem not in out:
+                out.append(stem)
+    return out
+
+
 def link_note_to_graph(note_path: Path) -> list[str]:
-    """Extract entities from a note and link it to EXISTING pages/hubs via a
-    `## Related` section. One Flash call. Returns the linked stems."""
+    """Link a note to EXISTING pages/hubs via a `## Related` section. Combines an
+    LLM entity extraction with a deterministic keymap body-scan (the scan is the
+    reliable floor; the LLM adds canonical names phrased differently). One Flash
+    call. Returns the linked stems."""
     try:
         text = note_path.read_text(encoding="utf-8")
     except OSError:
@@ -654,13 +691,20 @@ def link_note_to_graph(note_path: Path) -> list[str]:
     title = (fm.get("title", note_path.stem) or note_path.stem).strip().strip('"')
     keymap = _entity_link_keymap()
     stems: list[str] = []
-    for name in extract_note_entities(title, body):
-        for cand in (name.lower(), kebab(name), kebab(name).replace("-", " ")):
-            if cand in keymap:
-                s = keymap[cand]
-                if s != note_path.stem and s not in stems:
-                    stems.append(s)
-                break
+    try:
+        for name in extract_note_entities(title, body):
+            for cand in (name.lower(), kebab(name), kebab(name).replace("-", " ")):
+                if cand in keymap:
+                    s = keymap[cand]
+                    if s != note_path.stem and s not in stems:
+                        stems.append(s)
+                    break
+    except Exception:  # noqa: BLE001 — LLM extraction is best-effort; scan is the floor
+        pass
+    # Deterministic backstop — guarantees named existing entities get linked.
+    for s in _scan_body_for_entities(body, keymap, note_path.stem):
+        if s not in stems:
+            stems.append(s)
     if stems:
         note_path.write_text(_set_related_section(text, stems), encoding="utf-8")
     return stems

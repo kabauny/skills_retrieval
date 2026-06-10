@@ -45,9 +45,14 @@ tags: [auto-ingested]
 8. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC10225594/)
 9. [onclive.com](https://www.onclive.com/view/meta-analysis-shows-efficacy-safety-of-car-t-cell-therapy-in-r-r-mantle-cell-lymphoma)
 
+
 ## Related
 
+- [[b-cell-maturation-antigen]]
+- [[ciltacabtagene-autoleucel]]
 - [[chronic-lymphocytic-leukemia]]
+- [[multiple-myeloma]]
+- [[diffuse-large-b-cell-lymphoma]]
 
 ## Provenance
 

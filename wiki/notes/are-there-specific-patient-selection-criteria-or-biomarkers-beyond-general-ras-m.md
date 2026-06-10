@@ -51,16 +51,23 @@ Treatment paradigms are shifting toward combinations and next-generation drugs t
 3. [aacrjournals.org](https://aacrjournals.org/cancerres/article/84/6_Supplement/581/735317/Abstract-581-Identification-of-potential)
 4. [k-dense.ai](https://www.k-dense.ai/examples/session_20260512_103421_e632f388fbf3/writing_outputs/final/daraxonrasib_pdac_tumor_board_brief.pdf)
 
+
 ## Related
 
-- [[daraxonrasib]]
-- [[kras]]
+- [[her2]]
+- [[circulating-tumor-dna]]
+- [[egfr]]
 - [[kras-g12c]]
+- [[cetuximab]]
+- [[cyclophilin-a]]
+- [[rasolute-302]]
 - [[rasolute-302-trial]]
 - [[pancreatic-ductal-adenocarcinoma]]
-- [[cyclophilin-a]]
-- [[circulating-tumor-dna]]
+- [[nivolumab]]
 - [[mek-inhibitor]]
+- [[daraxonrasib]]
+- [[encorafenib]]
+- [[kras]]
 
 ## Provenance
 

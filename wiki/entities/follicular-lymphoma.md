@@ -29,6 +29,12 @@ Follicular lymphoma is the most common indolent B-cell non-Hodgkin lymphoma, acc
 - https://www.fda.gov/drugs/fda-granted-accelerated-approval-tazemetostat-follicular-lymphoma
 
 ## Related
+- [[bendamustine]]
+- [[epcoritamab]]
+- [[mosunetuzumab]]
+- [[obinutuzumab]]
+- [[rituximab]]
+- [[zanubrutinib]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[follicular-lymphoma-approach]]

@@ -58,9 +58,26 @@ It is important to note that the most common first-line systemic therapies for a
 14. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC12010826/)
 15. [oaepublish.com](https://www.oaepublish.com/articles/2394-5079.2018.76)
 
+
 ## Related
 
+- [[sorafenib]]
 - [[ramucirumab]]
+- [[regorafenib]]
+- [[tremelimumab]]
+- [[dostarlimab]]
+- [[bevacizumab]]
+- [[pd-1]]
+- [[pembrolizumab]]
+- [[cabozantinib]]
+- [[durvalumab]]
+- [[msi-hdmmr]]
+- [[atezolizumab]]
+- [[hepatocellular-carcinoma]]
+- [[microsatellite-instability]]
+- [[lenvatinib]]
+- [[dmmr]]
+- [[tumor-mutational-burden]]
 
 ## Provenance
 

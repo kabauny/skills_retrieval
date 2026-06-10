@@ -36,6 +36,16 @@ Sources:
 6. [superpower.com](https://superpower.com/guides/non-hodgkin-lymphoma)
 7. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC9057666/)
 
+## Related
+
+- [[brentuximab-vedotin]]
+- [[hodgkin-lymphoma]]
+- [[rituximab]]
+- [[pd-1]]
+- [[pembrolizumab]]
+- [[cd20]]
+- [[nivolumab]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-08 (auto, unverified)

@@ -34,6 +34,9 @@ Multiple myeloma is a malignant plasma-cell neoplasm of the bone marrow, the sec
 
 ## Related
 
+- [[daratumumab]]
+- [[isatuximab]]
+- [[teclistamab]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[multiple-myeloma-approach]]

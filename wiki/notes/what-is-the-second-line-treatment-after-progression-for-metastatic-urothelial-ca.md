@@ -38,11 +38,22 @@ S [actaoncologicaturcica.com](https://actaoncologicaturcica.com/articles/second-
 4. [nih.gov](https://pubmed.ncbi.nlm.nih.gov/38797658/)
 5. [actaoncologicaturcica.com](https://actaoncologicaturcica.com/articles/second-line-chemotherapy-for-advanced-bladder-cancer-taxanes-versus-vinflunine/ahot.galenos.2025.2025-7-2)
 
+
 ## Related
 
-- [[pembrolizumab]]
+- [[her2]]
 - [[cisplatin]]
+- [[trastuzumab-deruxtecan]]
+- [[urothelial-carcinoma]]
+- [[pembrolizumab]]
+- [[paclitaxel]]
+- [[enfortumab-vedotin]]
+- [[trastuzumab]]
+- [[docetaxel]]
 - [[carboplatin]]
+- [[erdafitinib]]
+- [[sacituzumab-govitecan]]
+- [[avelumab]]
 
 ## Provenance
 

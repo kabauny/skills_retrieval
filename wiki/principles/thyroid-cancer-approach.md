@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Surgery +/- radioactive iodine for differentiated disease. In RAI-refractory or medullary/anaplastic disease, NGS drives RET/BRAF/NTRK-targeted therapy or multikinase inhibitors.
 
 ## Related
+- [[thyroid-cancer]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

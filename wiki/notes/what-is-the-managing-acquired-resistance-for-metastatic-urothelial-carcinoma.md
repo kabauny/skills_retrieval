@@ -39,10 +39,21 @@ Currently, there is no single, established standard of care for managing mUC fol
 4. [frontiersin.org](https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2025.1654771/full)
 5. [vjoncology.com](https://www.vjoncology.com/video/xjt9svpuol4-treatment-sequencing-after-ev-plus-pembrolizumab-in-metastatic-bladder-cancer/)
 
+
 ## Related
 
-- [[pembrolizumab]]
+- [[her2]]
+- [[cisplatin]]
 - [[immune-checkpoint-inhibitor]]
+- [[trastuzumab-deruxtecan]]
+- [[urothelial-carcinoma]]
+- [[pembrolizumab]]
+- [[enfortumab-vedotin]]
+- [[trastuzumab]]
+- [[carboplatin]]
+- [[erdafitinib]]
+- [[gemcitabine]]
+- [[sacituzumab-govitecan]]
 
 ## Provenance
 

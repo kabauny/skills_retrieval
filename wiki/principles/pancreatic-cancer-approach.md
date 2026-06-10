@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Classify resectable / borderline / locally advanced / metastatic — this defines intent. Multi-agent chemo (FOLFIRINOX or gem/nab-paclitaxel) by fitness; test BRCA/PALB2 for maintenance PARP inhibition.
 
 ## Related
+- [[pancreatic-cancer]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

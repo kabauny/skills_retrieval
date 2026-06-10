@@ -29,6 +29,13 @@ Hepatocellular carcinoma is the dominant primary liver malignancy and a leading 
 - https://www.onclive.com/view/treatment-options-for-advanced-hcc-in-the-second-line-and-beyond
 
 ## Related
+- [[atezolizumab]]
+- [[cabozantinib]]
+- [[lenvatinib]]
+- [[ramucirumab]]
+- [[regorafenib]]
+- [[sorafenib]]
+- [[tremelimumab]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[hepatocellular-carcinoma-approach]]

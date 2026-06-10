@@ -38,12 +38,17 @@ Sources:
 4. [sitcancer.org](https://www.sitcancer.org/publications/cpg/kidney)
 5. [ascopubs.org](https://ascopubs.org/doi/10.1200/JCO.22.00868)
 
+
 ## Related
 
-- [[pembrolizumab]]
-- [[nivolumab]]
-- [[cabozantinib]]
+- [[belzutifan]]
 - [[ipilimumab]]
+- [[pembrolizumab]]
+- [[cabozantinib]]
+- [[nivolumab]]
+- [[axitinib]]
+- [[lenvatinib]]
+- [[renal-cell-carcinoma]]
 
 ## Provenance
 

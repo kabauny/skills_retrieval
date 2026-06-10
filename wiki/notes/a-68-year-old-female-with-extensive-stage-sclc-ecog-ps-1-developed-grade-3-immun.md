@@ -43,11 +43,20 @@ Therefore, the safest and most guideline-concordant approach is to permanently d
 5. [cancernetwork.com](https://www.cancernetwork.com/view/pneumonitis-antipd-1-pd-l1-therapy)
 6. [nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC8523897/)
 
+
 ## Related
 
-- [[atezolizumab]]
-- [[immune-checkpoint-inhibitor]]
 - [[immune-related-adverse-events]]
+- [[pembrolizumab-rechallenge-after-severe-irae]]
+- [[tnbc-keynote-522-irae-rechallenge-2026]]
+- [[cisplatin]]
+- [[immune-checkpoint-inhibitor]]
+- [[pembrolizumab]]
+- [[atezolizumab]]
+- [[etoposide]]
+- [[keynote-522]]
+- [[triple-negative-breast-cancer]]
+- [[small-cell-lung-cancer]]
 
 ## Provenance
 

@@ -14,6 +14,7 @@ tags: [principle, disease-framework]
 Stratify by cytogenetics/molecular markers and fitness urgently. Fit patients: intensive induction +/- targeted add-ons (FLT3, IDH); unfit: hypomethylating agent + venetoclax. Plan transplant by risk.
 
 ## Related
+- [[acute-myeloid-leukemia]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[tolerability-and-comorbidity]]

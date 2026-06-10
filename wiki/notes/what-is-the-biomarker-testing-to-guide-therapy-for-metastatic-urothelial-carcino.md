@@ -43,6 +43,24 @@ S [bcbsks.com](https://www.bcbsks.com/medical-policies/genetic-biomarker-testing
 11. [carelonmedicalbenefitsmanagement.com](https://guidelines.carelonmedicalbenefitsmanagement.com/somatic-tumor-testing-2025-11-15-updated-2026-04-01/)
 12. [bcbsks.com](https://www.bcbsks.com/medical-policies/genetic-biomarker-testing-including-liquid-biopsy-targeted-treatment-advanced)
 
+## Related
+
+- [[her2]]
+- [[circulating-tumor-dna]]
+- [[immune-checkpoint-inhibitor]]
+- [[trastuzumab-deruxtecan]]
+- [[urothelial-carcinoma]]
+- [[pembrolizumab]]
+- [[enfortumab-vedotin]]
+- [[atezolizumab]]
+- [[trastuzumab]]
+- [[erdafitinib]]
+- [[microsatellite-instability]]
+- [[sacituzumab-govitecan]]
+- [[dmmr]]
+- [[avelumab]]
+- [[tumor-mutational-burden]]
+
 ## Provenance
 
 - **Ingested:** 2026-06-08 (auto, unverified)

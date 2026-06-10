@@ -27,6 +27,14 @@ Renal cell carcinoma is the most common form of kidney cancer, accounting for ro
 - https://www.nejm.org/doi/full/10.1056/NEJMoa2035716
 
 ## Related
+- [[axitinib]]
+- [[belzutifan]]
+- [[cabozantinib]]
+- [[everolimus]]
+- [[ipilimumab]]
+- [[nivolumab]]
+- [[pazopanib]]
+- [[sunitinib]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[renal-cell-carcinoma-approach]]

@@ -35,6 +35,7 @@ Glioblastoma is the most common and most aggressive primary malignant brain tumo
 
 ## Related
 
+- [[temozolomide]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[glioblastoma-approach]]

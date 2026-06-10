@@ -29,6 +29,15 @@ Melanoma is an aggressive malignancy arising from melanocytes, most commonly in 
 - https://ascopost.com/issues/september-25-2024/adjuvant-dabrafenib-plus-trametinib-for-stage-iii-braf-v600-mutated-melanoma-final-results-of-the-combi-ad-trial
 
 ## Related
+- [[binimetinib]]
+- [[dabrafenib]]
+- [[encorafenib]]
+- [[ipilimumab]]
+- [[nivolumab]]
+- [[pembrolizumab]]
+- [[temozolomide]]
+- [[trametinib]]
+- [[vemurafenib]]
 - [[staging-and-resectability]]
 - [[biomarker-testing]]
 - [[melanoma-approach]]

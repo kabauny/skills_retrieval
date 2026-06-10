@@ -30,9 +30,12 @@ In current clinical practice, validated clinical risk models (such as the IMDC r
 *   No wiki pages were cited as none were relevant.
 *   Information was sourced using web search.
 
+
 ## Related
 
 - [[circulating-tumor-dna]]
+- [[urothelial-carcinoma]]
+- [[renal-cell-carcinoma]]
 
 ## Provenance
 

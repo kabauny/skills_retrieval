@@ -37,14 +37,18 @@ Sources:
 4. [vjoncology.com](https://www.vjoncology.com/video/fuxiy_fonv4-keynote-966-pembrolizumab-gemcis-vs-gemccis-alone-in-advanced-biliary-tract-cancer/)
 5. [oncodaily.com](https://oncodaily.com/oncolibrary/cancer-types/cholangiocarcinoma-2025)
 
+
 ## Related
 
-- [[cholangiocarcinoma]]
-- [[gemcitabine]]
+- [[her2]]
 - [[cisplatin]]
 - [[immune-checkpoint-inhibitor]]
-- [[durvalumab]]
 - [[pembrolizumab]]
+- [[durvalumab]]
+- [[msi-hdmmr]]
+- [[gemcitabine]]
+- [[dmmr]]
+- [[cholangiocarcinoma]]
 
 ## Provenance
 

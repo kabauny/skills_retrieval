@@ -40,13 +40,19 @@ The following factors guide the selection between these therapies:
 *   No internal wiki pages were cited. 
 *   All information is drawn from external web searches.
 
+
 ## Related
 
-- [[metastatic-colorectal-cancer]]
-- [[folfiri]]
-- [[bevacizumab]]
 - [[ramucirumab]]
+- [[oxaliplatin]]
+- [[egfr]]
+- [[bevacizumab]]
+- [[colorectal-cancer]]
+- [[cetuximab]]
+- [[folfiri]]
+- [[metastatic-colorectal-cancer]]
 - [[folfox]]
+- [[panitumumab]]
 
 ## Provenance
 
