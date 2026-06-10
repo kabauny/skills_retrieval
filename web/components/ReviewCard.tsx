@@ -113,6 +113,27 @@ export default function ReviewCard({
                   🌱 unverified
                 </span>
               ))}
+            {isNote && (item.shadow_score ?? 0) >= 0.9 && (
+              <span
+                className="text-[10px] px-1.5 py-0.5 rounded-full bg-violet-100 text-violet-700"
+                title={`cosine ${item.shadow_score?.toFixed(2)} to the entity page`}
+              >
+                🪞 shadows [[{item.shadow_entity}]]
+              </span>
+            )}
+            {isNote && (item.dup_score ?? 0) >= 0.92 && (
+              <span
+                className="text-[10px] px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-700"
+                title={`cosine ${item.dup_score?.toFixed(2)} to another note`}
+              >
+                🔁 ~dup: {item.dup_note}
+              </span>
+            )}
+            {isNote && (item.link_count ?? 99) <= 1 && (
+              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500">
+                🔗 {item.link_count} link{item.link_count === 1 ? "" : "s"}
+              </span>
+            )}
           </div>
           <p className="text-[11px] text-slate-400 mt-0.5">
             <code>{item.id}</code>

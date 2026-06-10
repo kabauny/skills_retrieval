@@ -88,6 +88,12 @@ export interface ReviewItem {
   verified_by?: string;
   verified_date?: string;
   auto_date?: string;
+  // Curation signals (notes only) — link graph + embedding overlap.
+  link_count?: number;
+  dup_note?: string | null;
+  dup_score?: number;
+  shadow_entity?: string | null;
+  shadow_score?: number;
 }
 
 export interface GrowItem {

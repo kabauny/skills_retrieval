@@ -4,6 +4,24 @@ import { useCallback, useEffect, useState } from "react";
 import { api, ReviewItem } from "@/lib/api";
 import ReviewCard from "./ReviewCard";
 
+// Curation thresholds (embedding cosine). Above these, a note is flagged as a
+// likely near-duplicate of another note / a shadow of curated entity content.
+export const DUP_T = 0.92;
+export const SHADOW_T = 0.9;
+
+export const isFlagged = (n: ReviewItem) =>
+  !n.verified ||
+  (n.link_count ?? 99) <= 1 ||
+  (n.dup_score ?? 0) >= DUP_T ||
+  (n.shadow_score ?? 0) >= SHADOW_T;
+
+// Higher = more in need of review: unverified, redundant, or weakly linked.
+const triageScore = (n: ReviewItem) =>
+  (n.verified ? 0 : 3) +
+  ((n.shadow_score ?? 0) >= SHADOW_T ? 2 : 0) +
+  ((n.dup_score ?? 0) >= DUP_T ? 2 : 0) +
+  ((n.link_count ?? 99) <= 1 ? 1 : 0);
+
 export default function ReviewTab({
   user,
   onAfterChange,
@@ -12,6 +30,8 @@ export default function ReviewTab({
   onAfterChange: () => void;
 }) {
   const [sub, setSub] = useState<"notes" | "stubs" | "searches">("notes");
+  const [noteSort, setNoteSort] = useState<"triage" | "newest" | "overlap">("triage");
+  const [flaggedOnly, setFlaggedOnly] = useState(false);
   const [notes, setNotes] = useState<ReviewItem[]>([]);
   const [stubs, setStubs] = useState<ReviewItem[]>([]);
   const [searches, setSearches] = useState<ReviewItem[]>([]);
@@ -60,7 +80,21 @@ export default function ReviewTab({
     onAfterChange();
   };
 
-  const items = sub === "notes" ? notes : sub === "stubs" ? stubs : searches;
+  let items = sub === "notes" ? notes : sub === "stubs" ? stubs : searches;
+  if (sub === "notes") {
+    let ns = [...notes];
+    if (flaggedOnly) ns = ns.filter(isFlagged);
+    ns.sort((a, b) => {
+      if (noteSort === "overlap")
+        return Math.max(b.shadow_score ?? 0, b.dup_score ?? 0) -
+          Math.max(a.shadow_score ?? 0, a.dup_score ?? 0);
+      if (noteSort === "newest")
+        return (b.auto_date || "").localeCompare(a.auto_date || "");
+      // triage: most-in-need first, then oldest
+      return triageScore(b) - triageScore(a) || (a.auto_date || "").localeCompare(b.auto_date || "");
+    });
+    items = ns;
+  }
 
   return (
     <div className="px-6 py-5 max-w-3xl mx-auto">
@@ -122,6 +156,29 @@ export default function ReviewTab({
           💾 Searches ({searches.length})
         </button>
       </div>
+
+      {sub === "notes" && notes.length > 0 && (
+        <div className="flex items-center gap-2 mb-3 text-xs text-slate-500">
+          sort:
+          {(["triage", "newest", "overlap"] as const).map((s) => (
+            <button
+              key={s}
+              onClick={() => setNoteSort(s)}
+              className={noteSort === s ? "btn-primary" : "btn-ghost"}
+            >
+              {s === "triage" ? "needs review" : s === "newest" ? "newest" : "most overlap"}
+            </button>
+          ))}
+          <label className="ml-auto flex items-center gap-1.5 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={flaggedOnly}
+              onChange={(e) => setFlaggedOnly(e.target.checked)}
+            />
+            flagged only ({notes.filter(isFlagged).length})
+          </label>
+        </div>
+      )}
 
       {loading && <p className="text-sm text-slate-400">Loading…</p>}
 

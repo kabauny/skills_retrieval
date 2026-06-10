@@ -219,6 +219,45 @@ def list_wiki_pages() -> list[Path]:
     return pages
 
 
+def notes_curation() -> dict[str, dict]:
+    """Per-note triage signals for the Review tab (no LLM — reuses the embedding
+    index + link graph): graph link_count, the most-similar OTHER note (duplicate
+    candidate), and the most-similar ENTITY (a note that shadows curated content).
+    Returns a dict keyed by note stem."""
+    build_page_embeddings()
+    cache = _embed_cache_load()
+    adj = build_link_graph()
+    notes = list(NOTES_DIR.glob("*.md"))
+    note_stems = {p.stem for p in notes}
+    entity_stems = {p.stem for p in (WIKI / "entities").glob("*.md")}
+    out: dict[str, dict] = {}
+    for p in notes:
+        stem = p.stem
+        v = cache.get(stem, {}).get("vec")
+        dup_note = shadow_entity = None
+        dup_score = shadow_score = 0.0
+        if v:
+            for other, d in cache.items():
+                if other == stem:
+                    continue
+                dv = d.get("vec")
+                if not dv:
+                    continue
+                s = _cosine(v, dv)
+                if other in note_stems and s > dup_score:
+                    dup_score, dup_note = s, other
+                elif other in entity_stems and s > shadow_score:
+                    shadow_score, shadow_entity = s, other
+        out[stem] = {
+            "link_count": len(adj.get(stem, ())),
+            "dup_note": dup_note,
+            "dup_score": round(dup_score, 3),
+            "shadow_entity": shadow_entity,
+            "shadow_score": round(shadow_score, 3),
+        }
+    return out
+
+
 _SEARCH_SKIP_STEMS = {"index", "log", "overview"}
 
 

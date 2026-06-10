@@ -414,7 +414,13 @@ def review_searches() -> dict:
 
 @app.get("/api/review/notes")
 def review_notes() -> dict:
-    return {"items": [_review_item(p, "note") for p in core.list_note_pages()]}
+    cur = core.notes_curation()
+    items = []
+    for p in core.list_note_pages():
+        it = _review_item(p, "note")
+        it.update(cur.get(p.stem, {}))
+        items.append(it)
+    return {"items": items}
 
 
 @app.get("/api/review/index-gaps")
