@@ -219,6 +219,61 @@ def list_wiki_pages() -> list[Path]:
     return pages
 
 
+_SEARCH_SKIP_STEMS = {"index", "log", "overview"}
+
+
+def _search_snippet(body: str, terms: list[str], width: int = 180) -> str:
+    """A one-line context window around the first matched term."""
+    low = body.lower()
+    pos = min((i for i in (low.find(t) for t in terms) if i != -1), default=-1)
+    if pos == -1:
+        chunk = body.strip()[:width]
+    else:
+        start = max(0, pos - width // 3)
+        chunk = body[start:start + width]
+    return re.sub(r"\s+", " ", chunk).strip()
+
+
+def search_pages(query: str, limit: int = 30) -> list[dict]:
+    """Lexical known-item search over the knowledge pages. AND-matches all terms
+    across stem/title/aliases/body; ranks name hits above body-frequency. No LLM,
+    no embeddings — instant. Returns {id, stem, title, kind, snippet, score}."""
+    terms = [t for t in re.split(r"\s+", query.strip().lower()) if t]
+    if not terms:
+        return []
+    out: list[dict] = []
+    for p in list_wiki_pages():
+        if p.stem in _SEARCH_SKIP_STEMS:
+            continue
+        try:
+            text = p.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        fm, body = parse_frontmatter(text)
+        title = (fm.get("title", "") or p.stem).strip().strip('"').strip("'")
+        aliases = " ".join(re.findall(r'"([^"]+)"', fm.get("aliases", "") or ""))
+        name_hay = f"{p.stem.replace('-', ' ')} {title} {aliases}".lower()
+        body_low = body.lower()
+        hay = name_hay + " " + body_low
+        if not all(t in hay for t in terms):
+            continue
+        score = 0
+        for t in terms:
+            if t in name_hay:
+                score += 25
+            score += body_low.count(t)
+        out.append({
+            "id": str(p.relative_to(ROOT)),
+            "stem": p.stem,
+            "title": title,
+            "kind": p.parent.name,
+            "snippet": _search_snippet(body, terms),
+            "score": score,
+        })
+    out.sort(key=lambda r: -r["score"])
+    return out[:limit]
+
+
 def _synthesis_page_path(stem: str) -> Path | None:
     """Resolve a stem to a synthesis-eligible page path, or None."""
     for path in WIKI.rglob(f"{stem}.md"):

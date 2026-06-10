@@ -438,6 +438,12 @@ def verify_note(req: StubActionRequest) -> dict:
     return {"ok": True}
 
 
+@app.get("/api/search")
+def search(q: str = "", limit: int = 30) -> dict:
+    """Instant lexical known-item search over the knowledge pages (no LLM)."""
+    return {"results": core.search_pages(q, limit=limit)}
+
+
 @app.get("/api/page")
 def get_page(id: str) -> dict:
     path = core._safe_resolve(id)

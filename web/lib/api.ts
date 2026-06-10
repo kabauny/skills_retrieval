@@ -117,6 +117,15 @@ export interface PageDetail {
   mtime: string;
 }
 
+export interface SearchResult {
+  id: string;
+  stem: string;
+  title: string;
+  kind: string;
+  snippet: string;
+  score: number;
+}
+
 export interface PrincipleStatus {
   stem: string;
   title: string;
@@ -225,6 +234,11 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ id, user, reason }),
     }),
+
+  search: (q: string, limit = 30) =>
+    req<{ results: SearchResult[] }>(
+      `/api/search?q=${encodeURIComponent(q)}&limit=${limit}`,
+    ),
 
   page: (id: string) => req<PageDetail>(`/api/page?id=${encodeURIComponent(id)}`),
 
