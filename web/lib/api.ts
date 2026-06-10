@@ -123,9 +123,15 @@ export interface PageDetail {
   mtime: string;
 }
 
-export interface InstitutionData {
+export interface Initiative {
+  label: string;
+  role: string; // "primary" | "secondary"
   formulary: Record<string, { status: string; note: string }>;
   pathways: Record<string, string>;
+}
+
+export interface InstitutionData {
+  initiatives: Record<string, Initiative>;
   statuses: string[];
   drugs: { stem: string; title: string }[];
   diseases: { stem: string; title: string }[];
@@ -256,16 +262,16 @@ export const api = {
 
   institution: () => req<InstitutionData>("/api/institution"),
 
-  setFormulary: (drug: string, status: string, note: string) =>
+  setFormulary: (initiative: string, drug: string, status: string, note: string) =>
     req<{ ok: boolean }>("/api/institution/formulary", {
       method: "POST",
-      body: JSON.stringify({ drug, status, note }),
+      body: JSON.stringify({ initiative, drug, status, note }),
     }),
 
-  setPathway: (disease: string, text: string) =>
+  setPathway: (initiative: string, disease: string, text: string) =>
     req<{ ok: boolean }>("/api/institution/pathway", {
       method: "POST",
-      body: JSON.stringify({ disease, text }),
+      body: JSON.stringify({ initiative, disease, text }),
     }),
 
   page: (id: string) => req<PageDetail>(`/api/page?id=${encodeURIComponent(id)}`),

@@ -11,81 +11,115 @@ const STATUS_COLOR: Record<string, string> = {
   biosimilar: "bg-violet-100 text-violet-700",
 };
 
-// Institutional policy overlay — formulary status + preferred pathways. These
-// preference-weight the recommendation at answer time (lead with preferred, flag
-// off-formulary). Shared across providers (one institution).
+// Preference programs ("initiatives"): a PRIMARY institution that leads the
+// recommendation + SECONDARY payer programs (e.g. Evolent) surfaced as alignment
+// flags. Each initiative holds its own formulary + preferred pathways.
 export default function InstitutionTab() {
   const [data, setData] = useState<InstitutionData | null>(null);
+  const [initId, setInitId] = useState("institution");
   const [sub, setSub] = useState<"formulary" | "pathways">("formulary");
   const [filter, setFilter] = useState("");
   const [disease, setDisease] = useState("");
   const [pathwayText, setPathwayText] = useState("");
   const [saved, setSaved] = useState<string | null>(null);
 
-  const load = () => api.institution().then(setData);
   useEffect(() => {
-    load();
+    api.institution().then(setData);
   }, []);
 
+  const init = data?.initiatives[initId];
   const flash = (m: string) => {
     setSaved(m);
     setTimeout(() => setSaved(null), 1500);
   };
 
   const saveFormulary = async (drug: string, status: string, note: string) => {
-    setData((d) =>
-      d
-        ? {
-            ...d,
-            formulary: status
-              ? { ...d.formulary, [drug]: { status, note } }
-              : Object.fromEntries(Object.entries(d.formulary).filter(([k]) => k !== drug)),
-          }
-        : d,
-    );
-    await api.setFormulary(drug, status, note);
+    setData((d) => {
+      if (!d) return d;
+      const inits = { ...d.initiatives };
+      const cur = { ...inits[initId] };
+      const f = { ...cur.formulary };
+      if (status) f[drug] = { status, note };
+      else delete f[drug];
+      cur.formulary = f;
+      inits[initId] = cur;
+      return { ...d, initiatives: inits };
+    });
+    await api.setFormulary(initId, drug, status, note);
     flash(`Saved ${drug}`);
   };
 
   const savePathway = async () => {
     if (!disease) return;
-    await api.setPathway(disease, pathwayText);
-    setData((d) =>
-      d
-        ? {
-            ...d,
-            pathways: pathwayText.trim()
-              ? { ...d.pathways, [disease]: pathwayText.trim() }
-              : Object.fromEntries(Object.entries(d.pathways).filter(([k]) => k !== disease)),
-          }
-        : d,
-    );
+    await api.setPathway(initId, disease, pathwayText);
+    setData((d) => {
+      if (!d) return d;
+      const inits = { ...d.initiatives };
+      const cur = { ...inits[initId] };
+      const p = { ...cur.pathways };
+      if (pathwayText.trim()) p[disease] = pathwayText.trim();
+      else delete p[disease];
+      cur.pathways = p;
+      inits[initId] = cur;
+      return { ...d, initiatives: inits };
+    });
     flash("Pathway saved");
   };
 
   const drugs = useMemo(() => {
-    if (!data) return [];
+    if (!data || !init) return [];
     const f = filter.trim().toLowerCase();
-    // show drugs with a status set first, then matches to the filter
     return data.drugs
-      .filter((d) => (f ? d.title.toLowerCase().includes(f) || d.stem.includes(f) : data.formulary[d.stem]))
+      .filter((d) =>
+        f ? d.title.toLowerCase().includes(f) || d.stem.includes(f) : init.formulary[d.stem],
+      )
       .slice(0, 60);
-  }, [data, filter]);
+  }, [data, init, filter]);
 
-  if (!data) return <div className="px-6 py-5 text-sm text-slate-400">Loading…</div>;
+  if (!data || !init) return <div className="px-6 py-5 text-sm text-slate-400">Loading…</div>;
 
-  const setCount = Object.keys(data.formulary).length;
-  const pathCount = Object.keys(data.pathways).length;
+  const setCount = Object.keys(init.formulary).length;
+  const pathCount = Object.keys(init.pathways).length;
 
   return (
     <div className="px-6 py-5 max-w-3xl mx-auto">
-      <h2 className="text-lg font-semibold mb-1">Institutional preferences</h2>
+      <h2 className="text-lg font-semibold mb-1">Preference programs</h2>
       <p className="text-sm text-slate-500 mb-4">
-        Your institution&apos;s formulary status and preferred pathways. These{" "}
-        <span className="font-medium">preference-weight</span> answers — the
-        recommendation leads with the preferred option and flags off-formulary
-        choices, without hiding the evidence.
+        Your <span className="font-medium">primary</span> institution leads the
+        recommendation; <span className="font-medium">secondary</span> programs
+        (e.g. Evolent) are surfaced as alignment flags — when a recommendation is
+        also on their pathway, the answer says so; when it diverges, it flags a
+        possible prior-auth.
       </p>
+
+      <div className="flex items-center gap-2 mb-4">
+        <select
+          value={initId}
+          onChange={(e) => {
+            setInitId(e.target.value);
+            setDisease("");
+            setPathwayText("");
+            setFilter("");
+          }}
+          className="border border-slate-300 rounded-lg px-3 py-2 text-sm"
+        >
+          {Object.entries(data.initiatives).map(([id, v]) => (
+            <option key={id} value={id}>
+              {v.label} {v.role === "primary" ? "(primary)" : "(secondary)"}
+            </option>
+          ))}
+        </select>
+        <span
+          className={`text-[10px] px-2 py-0.5 rounded-full ${
+            init.role === "primary"
+              ? "bg-emerald-100 text-emerald-700"
+              : "bg-slate-100 text-slate-500"
+          }`}
+        >
+          {init.role}
+        </span>
+        {saved && <span className="ml-auto text-xs text-green-700">✓ {saved}</span>}
+      </div>
 
       <div className="flex gap-2 mb-4">
         <button
@@ -100,7 +134,6 @@ export default function InstitutionTab() {
         >
           🧭 Preferred pathways ({pathCount})
         </button>
-        {saved && <span className="ml-auto text-xs text-green-700 self-center">✓ {saved}</span>}
       </div>
 
       {sub === "formulary" && (
@@ -118,7 +151,7 @@ export default function InstitutionTab() {
           )}
           <div className="space-y-1.5">
             {drugs.map((d) => {
-              const cur = data.formulary[d.stem];
+              const cur = init.formulary[d.stem];
               return (
                 <div
                   key={d.stem}
@@ -140,9 +173,12 @@ export default function InstitutionTab() {
                         {s}
                       </option>
                     ))}
+                    {/* secondary programs may use a free 'on-pathway' status */}
+                    {init.role !== "primary" && <option value="on-pathway">on-pathway</option>}
                   </select>
                   <input
                     defaultValue={cur?.note || ""}
+                    key={`${d.stem}-${cur?.note || ""}`}
                     onBlur={(e) => {
                       if (cur && e.target.value !== cur.note)
                         saveFormulary(d.stem, cur.status, e.target.value);
@@ -163,7 +199,7 @@ export default function InstitutionTab() {
             value={disease}
             onChange={(e) => {
               setDisease(e.target.value);
-              setPathwayText(data.pathways[e.target.value] || "");
+              setPathwayText(init.pathways[e.target.value] || "");
             }}
             className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm mb-3"
           >
@@ -171,7 +207,7 @@ export default function InstitutionTab() {
             {data.diseases.map((d) => (
               <option key={d.stem} value={d.stem}>
                 {d.title}
-                {data.pathways[d.stem] ? "  ✓" : ""}
+                {init.pathways[d.stem] ? "  ✓" : ""}
               </option>
             ))}
           </select>

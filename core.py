@@ -265,51 +265,74 @@ def notes_curation() -> dict[str, dict]:
 
 
 # ---------------------------------------------------------------------------
-# Institutional policy overlay (formulary + preferred pathways)
+# Preference programs ("initiatives") — formulary + preferred pathways.
+# One PRIMARY (your institution, leads the recommendation) + any number of
+# SECONDARY programs (payer pathways like Evolent — surfaced as alignment flags,
+# never overriding the primary).
 # ---------------------------------------------------------------------------
 
+_DEFAULT_INITIATIVES = {
+    "institution": {"label": "Our institution", "role": "primary"},
+    "evolent": {"label": "Evolent Pathways", "role": "secondary"},
+}
 
-def load_institution() -> dict:
-    """Institutional preferences: {formulary: {drug: {status, note}}, pathways:
-    {disease: text}}. One shared institution (no multi-tenant scope yet)."""
+
+def load_initiatives() -> dict:
+    """{id: {label, role, formulary{drug:{status,note}}, pathways{disease:text}}}.
+    Migrates the old single-institution shape; always ensures the institution
+    (primary) + evolent (secondary) defaults exist."""
+    raw = {}
     if _INSTITUTION_FILE.exists():
         try:
-            d = json.loads(_INSTITUTION_FILE.read_text(encoding="utf-8"))
-            d.setdefault("formulary", {})
-            d.setdefault("pathways", {})
-            return d
+            raw = json.loads(_INSTITUTION_FILE.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
-            pass
-    return {"formulary": {}, "pathways": {}}
+            raw = {}
+    inits = raw.get("initiatives")
+    if inits is None:  # migrate {formulary, pathways} -> institution (primary)
+        inits = {"institution": {
+            "label": "Our institution", "role": "primary",
+            "formulary": raw.get("formulary", {}), "pathways": raw.get("pathways", {}),
+        }}
+    for iid, default in _DEFAULT_INITIATIVES.items():
+        inits.setdefault(iid, {**default})
+    for v in inits.values():
+        v.setdefault("formulary", {})
+        v.setdefault("pathways", {})
+        v.setdefault("role", "secondary")
+        v.setdefault("label", "")
+    return inits
 
 
-def _save_institution(data: dict) -> None:
+def _save_initiatives(inits: dict) -> None:
     INSTITUTION_DIR.mkdir(parents=True, exist_ok=True)
-    _INSTITUTION_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    _INSTITUTION_FILE.write_text(json.dumps({"initiatives": inits}, indent=2), encoding="utf-8")
 
 
-def set_formulary(drug: str, status: str, note: str = "") -> None:
-    data = load_institution()
-    if status and status in FORMULARY_STATUSES:
-        data["formulary"][drug] = {"status": status, "note": note.strip()}
-    else:  # empty/invalid status clears the entry
-        data["formulary"].pop(drug, None)
-    _save_institution(data)
+def set_formulary(initiative: str, drug: str, status: str, note: str = "") -> None:
+    inits = load_initiatives()
+    init = inits.setdefault(initiative, {"label": initiative, "role": "secondary",
+                                         "formulary": {}, "pathways": {}})
+    if status:
+        init["formulary"][drug] = {"status": status, "note": note.strip()}
+    else:  # empty status clears the entry
+        init["formulary"].pop(drug, None)
+    _save_initiatives(inits)
 
 
-def set_pathway(disease: str, text: str) -> None:
-    data = load_institution()
+def set_pathway(initiative: str, disease: str, text: str) -> None:
+    inits = load_initiatives()
+    init = inits.setdefault(initiative, {"label": initiative, "role": "secondary",
+                                         "formulary": {}, "pathways": {}})
     if text.strip():
-        data["pathways"][disease] = text.strip()
+        init["pathways"][disease] = text.strip()
     else:
-        data["pathways"].pop(disease, None)
-    _save_institution(data)
+        init["pathways"].pop(disease, None)
+    _save_initiatives(inits)
 
 
 def institution_editor_data() -> dict:
-    """Everything the Institution editor needs: current preferences + the drug
-    and cancer entity lists to set statuses/pathways against."""
-    data = load_institution()
+    """Editor payload: all initiatives + the drug/cancer entity lists + the
+    primary-formulary status vocabulary."""
     drugs, diseases = [], []
     for p in sorted((WIKI / "entities").glob("*.md")):
         try:
@@ -323,48 +346,62 @@ def institution_editor_data() -> dict:
         elif et == "cancer":
             diseases.append({"stem": p.stem, "title": title})
     return {
-        "formulary": data["formulary"],
-        "pathways": data["pathways"],
+        "initiatives": load_initiatives(),
         "statuses": FORMULARY_STATUSES,
         "drugs": drugs,
         "diseases": diseases,
     }
 
 
+def _initiative_section(init: dict, diseases: set[str], include_formulary: bool) -> str:
+    paths, form = init.get("pathways", {}), init.get("formulary", {})
+    rel_paths = [f"  - {d}: {paths[d]}" for d in sorted(diseases) if d in paths]
+    parts = []
+    if rel_paths:
+        parts.append("Preferred pathway(s) for this disease:\n" + "\n".join(rel_paths))
+    if include_formulary and form:
+        parts.append("Drug formulary status:\n" + "\n".join(
+            f"  - {drug}: {v['status']}" + (f" — {v['note']}" if v.get("note") else "")
+            for drug, v in sorted(form.items())))
+    if not parts:
+        return ""
+    return f"### {init.get('label', '')}\n" + "\n".join(parts)
+
+
 def institutional_context(picked: list[str]) -> str:
-    """A preference-weighting block for synthesis, built from the institutional
-    overlay and scoped to the picked pages' disease(s). Includes the relevant
-    preferred pathway(s) plus the full (compact) formulary so the synthesizer can
-    lead with preferred options and caveat off-formulary ones. '' if none set."""
-    data = load_institution()
-    formulary, pathways = data.get("formulary", {}), data.get("pathways", {})
-    if not formulary and not pathways:
+    """Preference-weighting block for synthesis. PRIMARY initiatives lead (pathways
+    + full formulary); SECONDARY initiatives (e.g. Evolent) contribute their
+    disease-scoped pathway so the model can flag where a recommendation ALSO sits
+    on them. '' if nothing relevant is set."""
+    inits = load_initiatives()
+    diseases = {s[: -len("-approach")] if s.endswith("-approach") else s for s in picked}
+    primary, secondary = [], []
+    for v in inits.values():
+        if v.get("role") == "primary":
+            sec = _initiative_section(v, diseases, include_formulary=True)
+            if sec:
+                primary.append(sec)
+        else:
+            sec = _initiative_section(v, diseases, include_formulary=False)
+            if sec:
+                secondary.append(sec)
+    if not primary and not secondary:
         return ""
-    diseases = set()
-    for s in picked:
-        d = s[: -len("-approach")] if s.endswith("-approach") else s
-        if d in pathways:
-            diseases.add(d)
-    path_lines = [f"- {d}: {pathways[d]}" for d in sorted(diseases)]
-    form_lines = [
-        f"- {drug}: {v['status']}" + (f" — {v['note']}" if v.get("note") else "")
-        for drug, v in sorted(formulary.items())
-    ]
     blocks = []
-    if path_lines:
-        blocks.append("Institution preferred pathways (for the disease(s) in this question):\n"
-                      + "\n".join(path_lines))
-    if form_lines:
-        blocks.append("Institution drug formulary status:\n" + "\n".join(form_lines))
-    if not blocks:
-        return ""
+    if primary:
+        blocks.append(
+            "PRIMARY — lead the recommendation with these; state formulary status inline; "
+            "still present evidence-based alternatives but caveat restricted (prior-auth) or "
+            "non-formulary ones.\n\n" + "\n\n".join(primary))
+    if secondary:
+        blocks.append(
+            "SECONDARY preference programs — do NOT override the primary. For the recommended "
+            "option(s), note alignment: when a recommendation is ALSO on a secondary program's "
+            "pathway, say so (e.g. '✓ also on Evolent pathway'); when it diverges, flag possible "
+            "prior-authorization.\n\n" + "\n\n".join(secondary))
     return (
-        "\n\nINSTITUTIONAL PREFERENCES — preference-weight the recommendation: LEAD with the "
-        "institution's preferred option(s) and state formulary status inline; still present "
-        "evidence-based alternatives, but caveat any that are restricted (prior-auth) or "
-        "non-formulary here. Do not invent statuses beyond those listed.\n\n"
-        + "\n\n".join(blocks)
-    )
+        "\n\nPREFERENCE PROGRAMS — preference-weight the recommendation; do not invent statuses "
+        "beyond those listed:\n\n" + "\n\n".join(blocks))
 
 
 _SEARCH_SKIP_STEMS = {"index", "log", "overview"}
