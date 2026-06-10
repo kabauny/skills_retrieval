@@ -1,0 +1,595 @@
+{
+  "initiatives": {
+    "institution": {
+      "label": "Our institution",
+      "role": "primary",
+      "formulary": {
+        "daratumumab": {
+          "status": "preferred",
+          "note": ""
+        },
+        "osimertinib": {
+          "status": "preferred",
+          "note": ""
+        }
+      },
+      "pathways": {}
+    },
+    "evolent": {
+      "label": "Evolent Pathways",
+      "role": "secondary",
+      "formulary": {
+        "osimertinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "pemetrexed": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "carboplatin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "cisplatin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "amivantamab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "alectinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "crizotinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "entrectinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "dabrafenib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "trametinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "capmatinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "tepotinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "selpercatinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "cemiplimab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "pembrolizumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "nivolumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "ipilimumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "atezolizumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "paclitaxel": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "docetaxel": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "gemcitabine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "etoposide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "durvalumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "lurbinectedin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "topotecan": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "irinotecan": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "tarlatamab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "ribociclib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "palbociclib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "abemaciclib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "letrozole": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "anastrozole": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "exemestane": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "tamoxifen": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "fulvestrant": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "alpelisib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "capivasertib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "everolimus": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "olaparib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "capecitabine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "vinorelbine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "eribulin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "doxorubicin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "cyclophosphamide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "leuprolide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "trastuzumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "pertuzumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "ado-trastuzumab-emtansine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "fam-trastuzumab-deruxtecan": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "tucatinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "lapatinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "sacituzumab-govitecan": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "fluorouracil": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "leucovorin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "oxaliplatin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "bevacizumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "cetuximab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "panitumumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "encorafenib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "dostarlimab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "trifluridine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "tipiracil": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "ramucirumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "ziv-aflibercept": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "tislelizumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "fam-trastuzumab-deruxtecan-nxki": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "nab-paclitaxel": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "lenvatinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "tremelimumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "regorafenib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "ivosidenib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "zanidatamab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "axitinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "cabozantinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "pazopanib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "methotrexate": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "vinblastine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "enfortumab-vedotin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "avelumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "abiraterone": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "prednisone": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "darolutamide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "enzalutamide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "apalutamide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "cabazitaxel": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "niraparib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "liposomal-doxorubicin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "5-fluorouracil": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "cobimetinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "vemurafenib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "dacarbazine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "temozolomide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "tebentafusp": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "procarbazine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "lomustine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "vincristine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "carmustine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "rituximab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "dexamethasone": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "axicabtagene-ciloleucel": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "lisocabtagene-maraleucel": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "tisagenlecleucel": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "epcoritamab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "glofitamab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "bendamustine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "bleomycin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "ifosfamide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "cytarabine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "melphalan": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "mesna": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "mitoxantrone": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "brentuximab-vedotin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "acalabrutinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "ibrutinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "zanubrutinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "fludarabine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "venetoclax": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "obinutuzumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "daunorubicin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "idarubicin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "azacitidine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "decitabine": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "midostaurin": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "quizartinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "enasidenib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "gilteritinib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "lenalidomide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "bortezomib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "daratumumab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "carfilzomib": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "pomalidomide": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "ciltacabtagene-autoleucel": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "idecabtagene-vicleucel": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "teclistamab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "talquetamab": {
+          "status": "on-pathway",
+          "note": ""
+        },
+        "elranatamab": {
+          "status": "on-pathway",
+          "note": ""
+        }
+      },
+      "pathways": {
+        "non-small-cell-lung-cancer": "First-line by biomarker (advanced/metastatic): EGFR (ex19del/L858R/etc): osimertinib, or osimertinib + pemetrexed + carboplatin/cisplatin; EGFR exon20ins: amivantamab + carboplatin + pemetrexed; ALK+: alectinib; ROS1+: crizotinib or entrectinib; BRAF V600E: dabrafenib + trametinib; MET ex14: capmatinib or tepotinib; RET fusion: selpercatinib. Biomarker-negative: PD-L1>=50%: cemiplimab mono; PD-L1 1-49%: chemo + cemiplimab or platinum chemo; PD-L1<1% non-squamous: carboplatin + pemetrexed + pembrolizumab or nivolumab + ipilimumab; PD-L1<1% squamous: carboplatin + paclitaxel + pembrolizumab or nivolumab + ipilimumab. Second-line: docetaxel/paclitaxel, gemcitabine, platinum combos, checkpoint inhibitors if naive.",
+        "small-cell-lung-cancer": "Limited-stage first-line: cisplatin + etoposide or carboplatin + etoposide (with or without radiation); durvalumab consolidation after chemoradiotherapy. Extensive-stage first-line: cisplatin + etoposide or carboplatin + etoposide; atezolizumab + carboplatin + etoposide then maintenance lurbinectedin + atezolizumab; durvalumab + (carboplatin or cisplatin) + etoposide then maintenance durvalumab. Second-line/subsequent: paclitaxel, docetaxel, topotecan, irinotecan, tarlatamab, or re-treatment with platinum + etoposide (including atezolizumab- or durvalumab-containing regimens with maintenance).",
+        "breast-cancer": "HR+/HER2-: first-line adv: CDK4/6 inhibitor (ribociclib/palbociclib/abemaciclib) + aromatase inhibitor or fulvestrant; PIK3CA-mut: alpelisib + fulvestrant; PIK3CA/AKT1/PTEN-altered: capivasertib + fulvestrant; later: everolimus + exemestane, single-agent chemo (capecitabine, gemcitabine, paclitaxel, eribulin). HER2+: first-line adv: THP (taxane + trastuzumab + pertuzumab); later: trastuzumab deruxtecan, ado-trastuzumab emtansine, tucatinib + trastuzumab + capecitabine. TNBC: first-line adv PD-L1 CPS>=10: pembrolizumab + chemo (paclitaxel or carbo/gemcitabine); else platinum/taxane chemo; BRCA-mut: olaparib; later: sacituzumab govitecan. HER2-low: trastuzumab deruxtecan; sacituzumab govitecan. Early HR+ high-risk: abemaciclib/ribociclib + endocrine.",
+        "colorectal-cancer": "Early stage II-III neoadjuvant (rectal): fluorouracil+RT or capecitabine+RT. Adjuvant: fluorouracil+leucovorin, capecitabine, CapeOx, or FOLFOX. Stage IV KRAS/NRAS-mutated first-line: FOLFOX/CapeOx/FOLFIRI \u00b1 bevacizumab. KRAS/NRAS wild-type first-line: FOLFIRI/FOLFOX/CapeOx \u00b1 bevacizumab or + cetuximab/panitumumab. BRAF V600E first-line: encorafenib + cetuximab/panitumumab + FOLFOX; subsequent: encorafenib + cetuximab. dMMR/MSI-H or POLE/POLD1: pembrolizumab or dostarlimab. Subsequent lines add irinotecan, IROX, trifluridine+tipiracil+bevacizumab.",
+        "gastric-cancer": "Neoadjuvant (unresectable): carboplatin + paclitaxel. Perioperative: FLOT (5-fluorouracil + leucovorin + oxaliplatin + docetaxel). Adjuvant: capecitabine + oxaliplatin, or 5-fluorouracil + leucovorin. First-line metastatic: capecitabine/5-FU + oxaliplatin; FOLFIRI; HER2+: add trastuzumab; HER2+ & PD-L1 CPS>=1: fluoropyrimidine + platinum + trastuzumab + pembrolizumab; PD-L1 CPS>=5: nivolumab + CAPOX/FOLFOX, or tislelizumab + platinum + fluoropyrimidine. Subsequent: paclitaxel, docetaxel, or irinotecan; HER2+: fam-trastuzumab deruxtecan-nxki.",
+        "esophageal-cancer": "Neoadjuvant: carboplatin + paclitaxel. Adjuvant: nivolumab. Perioperative: FLOT (5FU/leucovorin/oxaliplatin/docetaxel), or oxaliplatin/cisplatin + 5FU or capecitabine. Metastatic first-line: HER2+ adeno: capecitabine or 5FU/leucovorin + oxaliplatin + trastuzumab; HER2+ & CPS>=1: add pembrolizumab; PD-L1 CPS>=10: pembrolizumab + cisplatin/oxaliplatin + fluorouracil/capecitabine; squamous CPS>=1: nivolumab + 5FU + cisplatin; adeno CPS>=5: nivolumab + FOLFOX or CAPEOX; general: cisplatin/FOLFOX/CAPEOX + fluoropyrimidine. Subsequent: paclitaxel, docetaxel, irinotecan (+/-5FU), fam-trastuzumab deruxtecan (HER2+).",
+        "pancreatic-cancer": "First-line (advanced/metastatic): FOLFIRINOX or modified FOLFIRINOX (5-fluorouracil + leucovorin + irinotecan + oxaliplatin); nab-paclitaxel + gemcitabine; gemcitabine mono; 5-fluorouracil mono; BRCA1/2-mutated: gemcitabine + cisplatin. Second-line and beyond: FOLFIRINOX/mFOLFIRINOX, nab-paclitaxel + gemcitabine, gemcitabine mono, FOLFOX (5-FU + leucovorin + oxaliplatin), FOLFIRI (5-FU + leucovorin + irinotecan), 5-FU mono, BRCA1/2: gemcitabine + cisplatin; or best supportive care/clinical trial. Neoadjuvant: 5-FU + radiation, nab-paclitaxel + gemcitabine, FOLFIRINOX. Adjuvant: 5-FU + radiation, capecitabine + radiation, gemcitabine + capecitabine, FOLFIRINOX.",
+        "hepatocellular-carcinoma": "first-line (unresectable/metastatic): lenvatinib monotherapy; atezolizumab + bevacizumab (Child-Pugh A only); tremelimumab + durvalumab (Child-Pugh A only). second-line: regorafenib. No biomarker-specific distinctions listed for HCC.",
+        "cholangiocarcinoma": "Adjuvant: cisplatin+gemcitabine, carboplatin+gemcitabine, fluorouracil (+/- RT), capecitabine (+/- RT). Unresectable/metastatic first-line: durvalumab+gemcitabine+cisplatin (immunochemo); also cisplatin+gemcitabine, carboplatin+gemcitabine, gemcitabine, fluorouracil, capecitabine. Subsequent-line: FOLFOX (leucovorin+fluorouracil+oxaliplatin). Biomarker-driven: IDH1-mutant - ivosidenib (subsequent line); HER2-positive - fam-trastuzumab deruxtecan preferred over zanidatamab. No FGFR2, MSI-H/dMMR, or BRAF regimens listed.",
+        "renal-cell-carcinoma": "First-line advanced clear-cell RCC, favorable risk: axitinib + pembrolizumab. First-line any risk (favorable/intermediate/poor): lenvatinib + pembrolizumab. First-line intermediate/poor risk: nivolumab +/- ipilimumab (then nivolumab maintenance). Subsequent (second-line+) therapy: cabozantinib, pazopanib, or nivolumab; best supportive care or clinical trial. Non-preferred/low-value options include single-agent axitinib or cabozantinib and axitinib + avelumab.",
+        "urothelial-carcinoma": "NMIBC BCG-unresponsive (cystectomy-ineligible): intravesical gemcitabine + docetaxel. Muscle-invasive neoadjuvant/adjuvant: DD-MVAC (methotrexate, vinblastine, doxorubicin, cisplatin) or cisplatin + gemcitabine. Perioperative: durvalumab + gemcitabine + cisplatin then durvalumab; or enfortumab vedotin + pembrolizumab. Advanced/metastatic first-line: cisplatin + gemcitabine, carboplatin + gemcitabine, nivolumab + gemcitabine + cisplatin, or enfortumab vedotin + pembrolizumab. Platinum-ineligible: gemcitabine mono or pembrolizumab mono. Maintenance after platinum (no progression): avelumab. Subsequent: gemcitabine, pembrolizumab, gemcitabine + cisplatin/carboplatin, paclitaxel, docetaxel. No biomarker-stratified regimens listed.",
+        "prostate-cancer": "Neoadjuvant/adjuvant \u00b1 RT: leuprolide. Metastatic castrate-sensitive: abiraterone + prednisone (high-risk); abiraterone or darolutamide + prednisone + ADT + docetaxel; leuprolide. Non-metastatic castrate-resistant (M0): enzalutamide, apalutamide, or darolutamide (\u00b1 leuprolide). Castrate-resistant metastatic: abiraterone + prednisone, docetaxel + steroid, enzalutamide, apalutamide, leuprolide; third-line cabazitaxel + steroid; BRCA1/2-mutated: olaparib. Neuroendocrine metastatic: cisplatin + etoposide or carboplatin + etoposide. Low-value (avoid): relugolix, sipuleucel-T.",
+        "ovarian-cancer": "Neoadjuvant/adjuvant: cisplatin + paclitaxel, or carboplatin + paclitaxel (alt: carboplatin + docetaxel). Primary first-line (stage II-IV): carboplatin + paclitaxel. Maintenance post-primary: niraparib (all-comers); olaparib (BRCA+ only). Platinum-sensitive recurrence: cisplatin + paclitaxel (preferred); alternatives cisplatin + docetaxel, carboplatin or cisplatin + liposomal doxorubicin, cisplatin + gemcitabine. Maintenance post-recurrence (BRCA+): niraparib or olaparib. Platinum-resistant recurrence: single-agent gemcitabine, paclitaxel, or liposomal doxorubicin (alt: topotecan, docetaxel).",
+        "endometrial-cancer": "Primary/adjuvant: carboplatin + paclitaxel (+/- radiation); carboplatin + paclitaxel + pembrolizumab (except carcinosarcoma); carboplatin + paclitaxel + dostarlimab. First-line advanced/metastatic: carboplatin + paclitaxel; carboplatin + paclitaxel + pembrolizumab (except carcinosarcoma); carboplatin + paclitaxel + dostarlimab. Subsequent: doxorubicin, topotecan, paclitaxel, carboplatin, or cisplatin; MSI-H/dMMR: pembrolizumab monotherapy; pMMR/non-MSI-H: lenvatinib + pembrolizumab; HER2-positive serous (stage III/IV or recurrent): carboplatin + paclitaxel + trastuzumab.",
+        "cervical-cancer": "Chemoradiation (non-metastatic): cisplatin (or carboplatin if cisplatin-intolerant); FIGO 2014 stage III-IVA: add pembrolizumab. Adjuvant: cisplatin. Metastatic/recurrent first-line: cisplatin or carboplatin + paclitaxel + pembrolizumab (CPS >=1); or cisplatin/carboplatin + paclitaxel +/- bevacizumab. Second-line and beyond: single-agent paclitaxel, gemcitabine, cisplatin, or carboplatin; cisplatin/carboplatin + paclitaxel + pembrolizumab (CPS >=1); best supportive care or clinical trial. Pembrolizumab requires CPS >=1; no HER2-specific regimens listed.",
+        "head-and-neck-squamous-cell-carcinoma": "Chemoradiation: cisplatin (preferred); cetuximab if platinum-ineligible. Adjuvant: cisplatin. Advanced/metastatic first-line: carboplatin or cisplatin + paclitaxel; pembrolizumab monotherapy if PD-L1 CPS>=1; pembrolizumab + cisplatin/carboplatin + 5-fluorouracil; pembrolizumab + carboplatin + paclitaxel. Advanced/metastatic subsequent-line: carboplatin or cisplatin + paclitaxel, carboplatin mono, paclitaxel mono, cetuximab mono, nivolumab or pembrolizumab (if PD-inhibitor naive).",
+        "melanoma": "Stage III neoadjuvant/adjuvant: nivolumab + ipilimumab, or pembrolizumab; high-risk adjuvant: nivolumab or pembrolizumab. Advanced/metastatic, BRAF-negative/unknown first-line: pembrolizumab, nivolumab, or nivolumab + ipilimumab x4 then nivolumab. BRAF-mutated first-line: cobimetinib + vemurafenib, pembrolizumab, nivolumab, or nivolumab + ipilimumab then nivolumab. Subsequent line (either): anti-PD-1 (if not used), cobimetinib + vemurafenib (BRAF+, if not 1L), paclitaxel, dacarbazine, temozolomide, or best supportive care/trial. Uveal melanoma, unresectable/metastatic, HLA-A*02:01-positive: tebentafusp-tebn.",
+        "glioblastoma": "Adjuvant (+/- radiation): temozolomide; or PCV (procarbazine + lomustine + vincristine). Recurrent disease: bevacizumab monotherapy; bevacizumab + temozolomide; bevacizumab + irinotecan; carmustine; temozolomide; or best supportive care / clinical trial. The pathway does not stratify by MGMT methylation or other biomarkers.",
+        "diffuse-large-b-cell-lymphoma": "First-line: R-CHOP (rituximab + cyclophosphamide + doxorubicin + vincristine + prednisone). Double/triple-hit: dose-adjusted R-EPOCH (rituximab + etoposide + prednisone + vincristine + cyclophosphamide + doxorubicin) or R-HyperCVAD (rituximab + cyclophosphamide + vincristine + doxorubicin + dexamethasone). Second-line: R-CHOP, R-CEOP (substitutes etoposide for doxorubicin), R-EPOCH / dose-adjusted R-EPOCH; CAR-T candidates axicabtagene ciloleucel or lisocabtagene maraleucel; non-CAR-T: epcoritamab or glofitamab + gemcitabine + oxaliplatin. Third-line+: axicabtagene ciloleucel, lisocabtagene maraleucel, tisagenlecleucel, epcoritamab, glofitamab, or best supportive care / clinical trial.",
+        "follicular-lymphoma": "First-line (preferred): R-CVP (rituximab + cyclophosphamide + vincristine + prednisone); R-CHOP (rituximab + cyclophosphamide + doxorubicin + vincristine + prednisone); BR (bendamustine + rituximab); or rituximab monotherapy. Maintenance/consolidation: rituximab maintenance up to 2 years. Second-line and beyond (preferred): rituximab monotherapy, R-CVP, R-CHOP, or BR (bendamustine + rituximab). The pathway does not distinguish treatment by grade or biomarker. Lenalidomide + rituximab is flagged as low-value with superior alternatives preferred.",
+        "hodgkin-lymphoma": "Classical HL first-line: ABVD (doxorubicin, bleomycin, vinblastine, dacarbazine) or nivolumab + AVD. Relapsed/refractory CHL: ABVD, ICE (ifosfamide, carboplatin, etoposide), GCD (gemcitabine, carboplatin, dexamethasone), DHAP (dexamethasone, cytarabine, cisplatin), GVD (gemcitabine, vinorelbine, doxorubicin), MINI-BEAM (carmustine, etoposide, cytarabine, melphalan), MINE (mesna, ifosfamide, mitoxantrone, etoposide), or pembrolizumab. Post-auto-HSCT consolidation: brentuximab vedotin. NLPHL first-line: R-ABVD, R-CHOP (rituximab, cyclophosphamide, doxorubicin, vincristine, prednisone), or R-CVP; relapsed adds R-DHAP, R-ICE, rituximab mono. No biomarker/stage criteria listed.",
+        "chronic-lymphocytic-leukemia": "First-line, no del(17p)/TP53: acalabrutinib, ibrutinib, or zanubrutinib (BTKi); bendamustine + rituximab; FCR (fludarabine + cyclophosphamide + rituximab) for mutated IGHV; venetoclax + obinutuzumab (fixed ~12mo). First-line with del(17p)/TP53: acalabrutinib, ibrutinib, zanubrutinib, or venetoclax + obinutuzumab. Relapsed/refractory without del(17p)/TP53: acalabrutinib, zanubrutinib, bendamustine + rituximab, venetoclax, or venetoclax + rituximab. Relapsed/refractory with del(17p)/TP53: acalabrutinib, zanubrutinib, venetoclax, or venetoclax + rituximab.",
+        "acute-myeloid-leukemia": "Induction, fit: cytarabine + daunorubicin (or idarubicin); liposomal daunorubicin+cytarabine (age>=60, t-AML/MDS-related). Unfit/elderly: azacitidine or decitabine + venetoclax. FLT3-mutated induction: 7+3 (cytarabine+daunorubicin/idarubicin) + midostaurin; FLT3-ITD: quizartinib + cytarabine + daunorubicin/idarubicin. IDH1-mutated: ivosidenib + azacitidine. Consolidation: high-dose cytarabine, 7+3 regimens, +midostaurin or quizartinib (FLT3). Maintenance: quizartinib (FLT3-ITD, no HCT). Relapsed/refractory: cytarabine+anthracycline, fludarabine+cytarabine, FLAG-IDA; ivosidenib (IDH1), enasidenib (IDH2), gilteritinib (FLT3).",
+        "multiple-myeloma": "No biomarker/cytogenetic stratification given; organized by transplant eligibility and line. First-line, transplant-eligible: lenalidomide + bortezomib + dexamethasone (RVd), or daratumumab + lenalidomide + bortezomib + dexamethasone (D-RVd); alternative cyclophosphamide + bortezomib + dexamethasone (CyBorD). First-line, transplant-ineligible: RVd, daratumumab + lenalidomide + dexamethasone (DRd), or D-RVd; alternative CyBorD. Maintenance: lenalidomide or bortezomib. Previously treated: DVd, DRd, daratumumab + carfilzomib + dexamethasone (DKd), daratumumab + pomalidomide + dexamethasone (DPd), carfilzomib + lenalidomide + dexamethasone (KRd); CAR-T (ciltacabtagene autoleucel, idecabtagene vicleucel); bispecifics (teclistamab, talquetamab, elranatamab)."
+      }
+    }
+  }
+}
