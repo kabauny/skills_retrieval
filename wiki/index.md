@@ -18,6 +18,7 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ### Notes
 
+- [[treatment-options-for-stage-iii-bladder-cancer]] — Treatment options for stage III bladder cancer
 - [[a-68-year-old-female-with-extensive-stage-sclc-ecog-ps-1-developed-grade-3-immun]] — A 68-year-old female with extensive-stage SCLC, ECOG PS 1, developed grade 3 immune-related pneumonitis requiring high-dose corticosteroids 
 - [[a-78-year-old-male-with-relapsedrefractory-aml-an-idh1-mutation-and-poor-perform]] — A 78-year-old male with relapsed/refractory AML, an IDH1 mutation, and poor performance status (ECOG 3) due to significant cardiac comorbidi
 - [[a-72-year-old-patient-with-del17p-cll-and-good-performance-status-has-progressed]] — A 72-year-old patient with del(17p) CLL and good performance status has progressed after two years on a BTK inhibitor. Should she initiate a
@@ -104,6 +105,100 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ## Entities
 
+- [[entrectinib]] — Entrectinib (Rozlytrek) is an orally available, CNS-penetrant tyrosine kinase inhibitor of the TRK family (TRKA/B/C, encoded by NTRK1/2/3), 
+- [[exemestane]] — Exemestane (Aromasin) is an oral steroidal (type I) aromatase inhibitor that irreversibly inactivates the aromatase enzyme, depriving estrog
+- [[avelumab]] — Avelumab (Bavencio) is a fully human IgG1 monoclonal antibody against PD-L1 that blocks PD-L1/PD-1 (and PD-L1/B7.1) interaction to restore a
+- [[endometrial-cancer]] — Endometrial (uterine) cancer is the most common gynecologic malignancy and the fourth-most common cancer in U.S. (aka uterine cancer, endome
+- [[acute-myeloid-leukemia]] — Acute myeloid leukemia is an aggressive clonal malignancy of myeloid progenitors marked by rapid accumulation of immature blasts in marrow a
+- [[panitumumab]] — Panitumumab (Vectibix) is a fully human IgG2 monoclonal antibody that targets the epidermal growth factor receptor (EGFR).
+- [[vincristine]] — Vincristine (Oncovin, Vincasar PFS) is a vinca alkaloid chemotherapy agent given intravenously, almost always as part of multi-agent regimen
+- [[isatuximab]] — Isatuximab (Sarclisa, isatuximab-irfc) is an IgG1 monoclonal antibody targeting a specific epitope of CD38, used to treat multiple myeloma.
+- [[lorlatinib]] — Lorlatinib (LORBRENA) is a third-generation, brain-penetrant ALK/ROS1 tyrosine kinase inhibitor engineered to overcome resistance mutations 
+- [[enasidenib]] — Enasidenib (brand name IDHIFA) is an oral, small-molecule inhibitor of mutant isocitrate dehydrogenase-2 (IDH2).
+- [[cytarabine]] — Cytarabine (cytosine arabinoside, Ara-C) is a pyrimidine nucleoside antimetabolite and a backbone agent in the treatment of acute myeloid le
+- [[bendamustine]] — Bendamustine is a bifunctional nitrogen-mustard alkylating agent with structural features of both an alkylator and a purine analog.
+- [[dabrafenib]] — Dabrafenib (Tafinlar) is an oral, ATP-competitive RAF kinase inhibitor that targets the constitutively activated mutant BRAF V600E/V600K/V60
+- [[capmatinib]] — Capmatinib (Tabrecta) is an oral, selective MET tyrosine kinase inhibitor developed by Novartis.
+- [[renal-cell-carcinoma]] — Renal cell carcinoma is the most common form of kidney cancer, accounting for roughly 85% of kidney tumors, with clear cell histology (ccRCC
+- [[adagrasib]] — Adagrasib (KRAZATI, formerly MRTX849) is an orally available, irreversible small-molecule inhibitor of the KRAS G12C oncoprotein.
+- [[ifosfamide]] — Ifosfamide (IFEX) is an oxazaphosphorine alkylating agent and a structural analog of cyclophosphamide.
+- [[mitomycin]] — Mitomycin C is an alkylating antitumor antibiotic that, after intracellular reductive activation, cross-links complementary DNA strands to i
+- [[small-cell-lung-cancer]] — SCLC is a poorly differentiated, high-grade neuroendocrine carcinoma of the lung, accounting for roughly 13–17% of lung cancers and strongly
+- [[ivosidenib]] — Ivosidenib (Tibsovo) is an oral, small-molecule inhibitor of mutated isocitrate dehydrogenase-1 (IDH1).
+- [[acalabrutinib]] — Acalabrutinib (Calquence) is a second-generation, highly selective covalent Bruton tyrosine kinase (BTK) inhibitor used to treat B-cell mali
+- [[lenvatinib]] — Lenvatinib (LENVIMA) is an oral multitargeted receptor tyrosine kinase inhibitor used across several solid tumors.
+- [[midostaurin]] — Midostaurin (Rydapt, PKC412) is an oral multitargeted small-molecule kinase inhibitor that inhibits FLT3 (both internal tandem duplication a
+- [[gefitinib]] — Gefitinib (Iressa) is an oral, reversible epidermal growth factor receptor (EGFR) tyrosine kinase inhibitor (TKI).
+- [[enzalutamide]] — Enzalutamide (Xtandi) is an oral second-generation androgen receptor (AR) signaling inhibitor used across the spectrum of advanced prostate 
+- [[esophageal-cancer]] — Esophageal cancer comprises two dominant histologies with divergent biology: squamous cell carcinoma (SCC), which arises in the upper/mid es
+- [[melanoma]] — Melanoma is an aggressive malignancy arising from melanocytes, most commonly in the skin. (aka cutaneous melanoma, malignant melanoma)
+- [[sacituzumab-govitecan]] — Sacituzumab govitecan (Trodelvy) is a Trop-2-directed antibody-drug conjugate in which a humanized anti-Trop-2 monoclonal antibody is linked
+- [[erdafitinib]] — Erdafitinib (Balversa) is an oral pan-fibroblast growth factor receptor (FGFR1–4) tyrosine kinase inhibitor.
+- [[thyroid-cancer]] — Thyroid cancer is the most common endocrine malignancy, with roughly 44,000 new U.S. (aka differentiated thyroid cancer, medullary thyroid c
+- [[fulvestrant]] — Fulvestrant (Faslodex) is a selective estrogen receptor degrader (SERD) given by intramuscular injection.
+- [[larotrectinib]] — Larotrectinib (Vitrakvi) is a first-in-class, oral, highly selective small-molecule inhibitor of the tropomyosin receptor kinases TRKA, TRKB
+- [[hepatocellular-carcinoma]] — Hepatocellular carcinoma is the dominant primary liver malignancy and a leading cause of cancer death worldwide, arising almost always on a 
+- [[cemiplimab]] — Cemiplimab (Libtayo, cemiplimab-rwlc) is a fully human IgG4 monoclonal antibody that blocks the PD-1 immune checkpoint, restoring antitumor 
+- [[darolutamide]] — Darolutamide (NUBEQA) is a structurally distinct, highly potent oral androgen receptor (AR) inhibitor with low blood-brain barrier penetrati
+- [[axitinib]] — Axitinib (Inlyta) is an oral second-generation tyrosine kinase inhibitor that potently and selectively blocks VEGF receptors 1, 2, and 3.
+- [[sunitinib]] — Sunitinib (SUTENT) is an oral, small-molecule multitargeted receptor tyrosine kinase inhibitor that blocks VEGFRs, PDGFRs, KIT, FLT3, and RE
+- [[afatinib]] — Afatinib (Gilotrif) is an oral, irreversible inhibitor of the ErbB family of receptor tyrosine kinases (EGFR/ErbB1, HER2/ErbB2, and ErbB4).
+- [[crizotinib]] — Crizotinib is an oral, ATP-competitive small-molecule tyrosine kinase inhibitor of ALK, ROS1, and MET (c-Met/HGFR).
+- [[follicular-lymphoma]] — Follicular lymphoma is the most common indolent B-cell non-Hodgkin lymphoma, accounting for roughly 20-30% of all NHL, with a median surviva
+- [[etoposide]] — Etoposide is a topoisomerase II inhibitor (epipodophyllotoxin) used as a cytotoxic backbone in several cancers.
+- [[gilteritinib]] — Gilteritinib (Xospata, ASP2215) is an oral small-molecule tyrosine kinase inhibitor of FLT3 and AXL.
+- [[polatuzumab-vedotin]] — Polatuzumab vedotin (Polivy) is a CD79b-directed antibody-drug conjugate (ADC) used in diffuse large B-cell lymphoma (DLBCL).
+- [[leuprolide]] — Leuprolide is a synthetic nonapeptide gonadotropin-releasing hormone (GnRH) agonist used as androgen-deprivation therapy (ADT), most promine
+- [[capecitabine]] — Capecitabine (Xeloda) is an oral fluoropyrimidine carbamate, a prodrug enzymatically converted to 5-fluorouracil (5-FU) preferentially in tu
+- [[selpercatinib]] — Selpercatinib (Retevmo) is a highly selective, CNS-active small-molecule inhibitor of the RET (REarranged during Transfection) receptor tyro
+- [[topotecan]] — Topotecan is a semisynthetic camptothecin derivative that inhibits topoisomerase I.
+- [[azacitidine]] — Azacitidine is a pyrimidine nucleoside analog of cytidine that acts as a hypomethylating agent (HMA).
+- [[blinatumomab]] — Blinatumomab (BLINCYTO) is a CD19-directed CD3 T-cell engager (BiTE) bispecific antibody construct that redirects cytotoxic T cells to lyse 
+- [[niraparib]] — Niraparib is an orally bioavailable poly(ADP-ribose) polymerase (PARP-1 and PARP-2) inhibitor used as maintenance therapy in epithelial ovar
+- [[rucaparib]] — Rucaparib (Rubraca) is an oral small-molecule inhibitor of poly(ADP-ribose) polymerase (PARP-1, -2, and -3), exploiting synthetic lethality 
+- [[cervical-cancer]] — Cervical cancer is the fourth most common cancer in women worldwide and is overwhelmingly driven by persistent high-risk HPV infection (espe
+- [[enfortumab-vedotin]] — Enfortumab vedotin (Padcev) is a Nectin-4-directed antibody-drug conjugate that delivers the microtubule inhibitor monomethyl auristatin E (
+- [[imatinib]] — Imatinib (Gleevec) is an oral small-molecule tyrosine kinase inhibitor and the first targeted therapy approved for chronic myeloid leukemia.
+- [[methotrexate]] — Methotrexate is an antifolate antimetabolite that inhibits dihydrofolate reductase, blocking the folate-dependent synthesis of thymidylate a
+- [[abiraterone]] — Abiraterone (as abiraterone acetate, Zytiga) is an oral androgen-biosynthesis inhibitor that blocks CYP17, the enzyme required for testoster
+- [[sotorasib]] — Sotorasib (Lumakras) is a first-in-class small-molecule inhibitor that covalently and irreversibly binds the mutant KRAS G12C protein, locki
+- [[urothelial-carcinoma]] — Urothelial carcinoma arises from the transitional epithelium lining the bladder, ureters, and renal pelvis, with the bladder the dominant si
+- [[breast-cancer]] — Breast cancer is the most common cancer in women and is not one disease but a family of biologically distinct subtypes defined by hormone re
+- [[olaparib]] — Olaparib (Lynparza) is an oral poly(ADP-ribose) polymerase (PARP) inhibitor that exploits synthetic lethality in tumors with homologous reco
+- [[ribociclib]] — Ribociclib (Kisqali) is an oral selective cyclin-dependent kinase 4/6 (CDK4/6) inhibitor used in hormone receptor (HR)-positive, HER2-negati
+- [[binimetinib]] — Binimetinib (MEKTOVI) is an oral, reversible inhibitor of MEK1 and MEK2, kinases downstream of BRAF in the MAPK/ERK signaling pathway.
+- [[cetuximab]] — Cetuximab (ERBITUX) is a recombinant human/mouse chimeric monoclonal antibody that targets the epidermal growth factor receptor (EGFR).
+- [[colorectal-cancer]] — Colorectal cancer is the third most common cancer and the second leading cause of cancer death in the United States, with adenocarcinoma acc
+- [[hodgkin-lymphoma]] — Hodgkin lymphoma is a B-cell–derived lymphoma defined by rare malignant Hodgkin/Reed-Sternberg (HRS) cells in a reactive inflammatory backgr
+- [[teclistamab]] — Teclistamab (Tecvayli) is a humanized IgG4 bispecific T-cell engager that simultaneously binds B-cell maturation antigen (BCMA) on malignant
+- [[obinutuzumab]] — Obinutuzumab (Gazyva) is a glycoengineered, humanized type II anti-CD20 IgG1 monoclonal antibody.
+- [[pemigatinib]] — Pemigatinib (Pemazyre) is an oral, selective small-molecule inhibitor of fibroblast growth factor receptors FGFR1, FGFR2, and FGFR3.
+- [[head-and-neck-squamous-cell-carcinoma]] — HNSCC comprises squamous cancers of the upper aerodigestive tract — chiefly the oral cavity, oropharynx, larynx, and hypopharynx — and is am
+- [[mosunetuzumab]] — Mosunetuzumab (Lunsumio, mosunetuzumab-axgb) is a humanized CD20×CD3 T-cell-engaging bispecific monoclonal antibody that redirects endogenou
+- [[brigatinib]] — Brigatinib (Alunbrig) is a next-generation oral tyrosine kinase inhibitor of anaplastic lymphoma kinase (ALK) with activity against multiple
+- [[letrozole]] — Letrozole (Femara) is an oral nonsteroidal third-generation aromatase inhibitor used as endocrine therapy for hormone receptor-positive brea
+- [[vinorelbine]] — Vinorelbine (Navelbine) is a semisynthetic vinca alkaloid antimitotic agent given intravenously.
+- [[everolimus]] — Everolimus (Afinitor) is an oral inhibitor of the mammalian target of rapamycin (mTOR) serine-threonine kinase.
+- [[apalutamide]] — Apalutamide (ERLEADA) is an orally administered, second-generation androgen receptor (AR) inhibitor used to treat advanced prostate cancer.
+- [[alectinib]] — Alectinib (Alecensa) is an oral, second-generation small-molecule tyrosine kinase inhibitor of anaplastic lymphoma kinase (ALK).
+- [[vemurafenib]] — Vemurafenib (Zelboraf) is an orally administered, ATP-competitive small-molecule inhibitor of the mutated BRAF V600 kinase.
+- [[prostate-cancer]] — Prostate cancer is the most common non-skin cancer in U.S. (aka prostate adenocarcinoma, mCRPC, metastatic castration-resistant prostate can
+- [[brentuximab-vedotin]] — Brentuximab vedotin (Adcetris) is a CD30-directed antibody-drug conjugate (ADC) that delivers the microtubule-disrupting agent monomethyl au
+- [[eribulin]] — Eribulin (eribulin mesylate, Halaven) is a synthetic analogue of the marine natural product halichondrin B and a non-taxane microtubule dyna
+- [[anastrozole]] — Anastrozole (Arimidex) is an oral, nonsteroidal aromatase inhibitor used in postmenopausal women with hormone receptor-positive breast cance
+- [[ovarian-cancer]] — Ovarian cancer is the leading cause of gynecologic cancer death in the United States, and most patients present with advanced (FIGO stage II
+- [[epcoritamab]] — Epcoritamab (Epkinly, epcoritamab-bysp) is a subcutaneously administered bispecific antibody that engages CD3 on T cells and CD20 on maligna
+- [[pazopanib]] — Pazopanib (Votrient) is an oral multi-targeted tyrosine kinase inhibitor that blocks angiogenesis-related receptors, dosed 800 mg once daily
+- [[ibrutinib]] — Ibrutinib (Imbruvica) is a first-in-class oral Bruton's tyrosine kinase (BTK) inhibitor that forms a covalent bond with a cysteine residue (
+- [[dostarlimab]] — Dostarlimab (Jemperli) is a humanized anti-PD-1 monoclonal antibody (immune checkpoint inhibitor) developed by GSK.
+- [[tremelimumab]] — Tremelimumab (Imjudo) is a fully human IgG2 monoclonal antibody that blocks cytotoxic T-lymphocyte-associated antigen 4 (CTLA-4), releasing 
+- [[regorafenib]] — Regorafenib (Stivarga) is an oral small-molecule multikinase inhibitor that blocks angiogenic, stromal, and oncogenic kinases including VEGF
+- [[abemaciclib]] — Abemaciclib (Verzenio) is an oral inhibitor of cyclin-dependent kinases 4 and 6 (CDK4/6) used in hormone receptor-positive (HR+), HER2-negat
+- [[palbociclib]] — Palbociclib (IBRANCE) is an oral, selective inhibitor of cyclin-dependent kinases 4 and 6 (CDK4/6) used in hormone receptor-positive (HR+), 
+- [[epirubicin]] — Epirubicin (brand name Ellence) is an anthracycline cytotoxic antibiotic, the 4'-epimer of doxorubicin.
+- [[daratumumab]] — Daratumumab (Darzalex) is a human IgG1κ monoclonal antibody targeting CD38, a glycoprotein highly expressed on multiple myeloma cells.
+- [[trametinib]] — Trametinib (Mekinist) is an oral, reversible, highly selective allosteric inhibitor of MEK1 and MEK2, kinases downstream of BRAF in the MAPK
+- [[sorafenib]] — Sorafenib (Nexavar) is an oral small-molecule multikinase inhibitor that blocks RAF serine/threonine kinases and multiple receptor tyrosine 
 - [[daraxonrasib]] — daraxonrasib
 - [[kras]] — KRAS
 - [[kras-g12c]] — KRAS G12C
@@ -235,6 +330,7 @@ Content catalog for the oncology care wiki. Updated on every ingest.
 
 ## Concepts
 
+- [[retrieval-flow]] — System documentation (not clinical content).
 - [[stupp-protocol]] — Stupp protocol
 - [[pathologic-complete-response]] — A clinical endpoint where no residual invasive cancer is detected in the breast and lymph nodes at the time of surgery after neoadjuvant the
 - [[neoadjuvant-treatment]] — A pre-surgical therapy administered to patients to shrink tumors, eliminate microscopic disease, and assess treatment response before defini

@@ -1001,3 +1001,34 @@ A curated, categorized log of queries posed by `jim.chen`. Updated on every non-
 - **Tokens (Gemini):** 22285
 - **MC probe generated:** no
 - **Search saved:** [[a-68-year-old-female-with-extensive-stage-sclc-ecog-ps-1-developed-grade-3-immun]]
+
+### [2026-06-09] treatment-options-for-stage-iii-bladder-cancer
+
+- **Question:** "Treatment options for stage III bladder cancer"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[urothelial-carcinoma-approach]], [[adverse-events]], [[tolerability-and-comorbidity]], [[efficacy]], [[biomarker-testing]], [[staging-and-resectability]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 13813
+- **MC probe generated:** no
+- **Search saved:** [[treatment-options-for-stage-iii-bladder-cancer]]
+
+### [2026-06-09] what-is-the-first-line-treatment-for-metastatic-bladder-canc
+
+- **Question:** "What is the first line treatment for metastatic bladder cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe]], [[what-is-the-managing-acquired-resistance-for-metastatic-urothelial-carcinoma]], [[what-is-the-second-line-treatment-after-progression-for-metastatic-urothelial-ca]], [[pembrolizumab]], [[adverse-events]], [[efficacy]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 11277
+- **MC probe generated:** no
+
+### [2026-06-09] treatment-for-bladder-cancer-with-ln-and-unresectable-diseas
+
+- **Question:** "Treatment for bladder cancer with LN and unresectable disease without distant metastasis"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[treatment-options-for-stage-iii-bladder-cancer]], [[adverse-events]], [[tolerability-and-comorbidity]], [[efficacy]], [[biomarker-testing]], [[urothelial-carcinoma-approach]], [[staging-and-resectability]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 9942
+- **MC probe generated:** no

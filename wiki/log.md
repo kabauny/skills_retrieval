@@ -2809,3 +2809,149 @@ Session active user: `jim.chen` (default per CLAUDE.md).
 - **Answer origin:** mixed
 - **Tokens (Gemini):** 22285
 - **Search saved:** [[a-68-year-old-female-with-extensive-stage-sclc-ecog-ps-1-developed-grade-3-immun]]
+
+## [2026-06-09] auto-ingest-note | searchable internet answer
+
+- **User:** jim.chen
+- **Triggering query:** "Treatment options for stage III bladder cancer"
+- **Note page:** [[treatment-options-for-stage-iii-bladder-cancer]] (`wiki/notes/treatment-options-for-stage-iii-bladder-cancer.md`) — created
+- **Raw source:** [[treatment-options-for-stage-iii-bladder-cancer]]
+- **Status:** SEARCHABLE + indexed, `auto_generated: true`, unverified. Editable; mark verified to record reviewer + date.
+
+## [2026-06-09] query | Treatment options for stage III bladder cancer
+
+- **User:** jim.chen
+- **Question:** "Treatment options for stage III bladder cancer"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[urothelial-carcinoma-approach]], [[adverse-events]], [[tolerability-and-comorbidity]], [[efficacy]], [[biomarker-testing]], [[staging-and-resectability]]
+- **Gemini calls:** 3
+- **Answer origin:** mixed
+- **Tokens (Gemini):** 13813
+- **Search saved:** [[treatment-options-for-stage-iii-bladder-cancer]]
+
+## [2026-06-09] verify-note | treatment-options-for-stage-iii-bladder-cancer
+
+- **User:** jim.chen
+- **Page:** [[treatment-options-for-stage-iii-bladder-cancer]] (`wiki/notes/treatment-options-for-stage-iii-bladder-cancer.md`)
+- **Action:** marked verified; recorded reviewer (jim.chen) + date (2026-06-09).
+
+## [2026-06-09] query | What is the first line treatment for metastatic bladder cancer?
+
+- **User:** jim.chen
+- **Question:** "What is the first line treatment for metastatic bladder cancer?"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[how-do-you-treat-metastatic-urothelial-carcinoma-with-enfortumab-vedotin-plus-pe]], [[what-is-the-managing-acquired-resistance-for-metastatic-urothelial-carcinoma]], [[what-is-the-second-line-treatment-after-progression-for-metastatic-urothelial-ca]], [[pembrolizumab]], [[adverse-events]], [[efficacy]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 11277
+
+## [2026-06-09] reconcile-index | added 95 missing page(s)
+
+- **User:** jim.chen
+- **Why:** these pages existed on disk but were absent from index.md, so the router could not reach them (silent recall hole).
+- **Pages indexed (95):**
+  - [[retrieval-flow]]
+  - [[sorafenib]]
+  - [[trametinib]]
+  - [[daratumumab]]
+  - [[epirubicin]]
+  - [[palbociclib]]
+  - [[abemaciclib]]
+  - [[regorafenib]]
+  - [[tremelimumab]]
+  - [[dostarlimab]]
+  - [[ibrutinib]]
+  - [[pazopanib]]
+  - [[epcoritamab]]
+  - [[ovarian-cancer]]
+  - [[anastrozole]]
+  - [[eribulin]]
+  - [[brentuximab-vedotin]]
+  - [[prostate-cancer]]
+  - [[vemurafenib]]
+  - [[alectinib]]
+  - [[apalutamide]]
+  - [[everolimus]]
+  - [[vinorelbine]]
+  - [[letrozole]]
+  - [[brigatinib]]
+  - [[mosunetuzumab]]
+  - [[head-and-neck-squamous-cell-carcinoma]]
+  - [[pemigatinib]]
+  - [[obinutuzumab]]
+  - [[teclistamab]]
+  - [[hodgkin-lymphoma]]
+  - [[colorectal-cancer]]
+  - [[cetuximab]]
+  - [[binimetinib]]
+  - [[ribociclib]]
+  - [[olaparib]]
+  - [[breast-cancer]]
+  - [[urothelial-carcinoma]]
+  - [[sotorasib]]
+  - [[abiraterone]]
+  - [[methotrexate]]
+  - [[imatinib]]
+  - [[enfortumab-vedotin]]
+  - [[cervical-cancer]]
+  - [[rucaparib]]
+  - [[niraparib]]
+  - [[blinatumomab]]
+  - [[azacitidine]]
+  - [[topotecan]]
+  - [[selpercatinib]]
+  - [[capecitabine]]
+  - [[leuprolide]]
+  - [[polatuzumab-vedotin]]
+  - [[gilteritinib]]
+  - [[etoposide]]
+  - [[follicular-lymphoma]]
+  - [[crizotinib]]
+  - [[afatinib]]
+  - [[sunitinib]]
+  - [[axitinib]]
+  - [[darolutamide]]
+  - [[cemiplimab]]
+  - [[hepatocellular-carcinoma]]
+  - [[larotrectinib]]
+  - [[fulvestrant]]
+  - [[thyroid-cancer]]
+  - [[erdafitinib]]
+  - [[sacituzumab-govitecan]]
+  - [[melanoma]]
+  - [[esophageal-cancer]]
+  - [[enzalutamide]]
+  - [[gefitinib]]
+  - [[midostaurin]]
+  - [[lenvatinib]]
+  - [[acalabrutinib]]
+  - [[ivosidenib]]
+  - [[small-cell-lung-cancer]]
+  - [[mitomycin]]
+  - [[ifosfamide]]
+  - [[adagrasib]]
+  - [[renal-cell-carcinoma]]
+  - [[capmatinib]]
+  - [[dabrafenib]]
+  - [[bendamustine]]
+  - [[cytarabine]]
+  - [[enasidenib]]
+  - [[lorlatinib]]
+  - [[isatuximab]]
+  - [[vincristine]]
+  - [[panitumumab]]
+  - [[acute-myeloid-leukemia]]
+  - [[endometrial-cancer]]
+  - [[avelumab]]
+  - [[exemestane]]
+  - [[entrectinib]]
+
+## [2026-06-09] query | Treatment for bladder cancer with LN and unresectable disease without ...
+
+- **User:** jim.chen
+- **Question:** "Treatment for bladder cancer with LN and unresectable disease without distant metastasis"
+- **Trigger:** Web UI query
+- **Wiki pages consulted:** [[treatment-options-for-stage-iii-bladder-cancer]], [[adverse-events]], [[tolerability-and-comorbidity]], [[efficacy]], [[biomarker-testing]], [[urothelial-carcinoma-approach]], [[staging-and-resectability]]
+- **Gemini calls:** 2
+- **Answer origin:** wiki
+- **Tokens (Gemini):** 9942
