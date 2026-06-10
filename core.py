@@ -415,6 +415,14 @@ CANDIDATE PAGES:
     parsed = _extract_json(resp.text or "")
     allow = set(candidates)
     picked = [p for p in parsed if isinstance(p, str) and p in allow] if isinstance(parsed, list) else []
+    # Retrieval floor: an empty rerank ("none fit") must not discard the reasoning
+    # scaffold. Salvage the best-matched disease framework from the shortlist plus
+    # the cross-cutting lenses, so even a niche query that still grounds is shaped
+    # by the framework + lenses (companion-pin below then adds the framework's
+    # cancer entity, which carries grounded content) -> the answer becomes mixed,
+    # not web-only.
+    if not picked:
+        picked = _retrieval_floor(candidates)
     # Hybrid: expand the semantic picks with graph neighbors (note -> hub ->
     # related notes), so relationally-connected context the embedding missed
     # comes along. Conservative cap to bound synthesis cost.
@@ -435,16 +443,36 @@ CANDIDATE PAGES:
     return picked, _tokens(resp)
 
 
+def _retrieval_floor(candidates: list[str]) -> list[str]:
+    """Fallback when the reranker picks nothing. Returns the best-matched disease
+    framework in the embedding shortlist (highest-cosine '<cancer>-approach') plus
+    all cross-cutting lenses. The cross-cutting lenses are disease-agnostic, so
+    they are always a safe reasoning floor; the framework targets the query's
+    disease. Empty only if there are no principle pages at all."""
+    princ = _principle_stems()
+    lenses = sorted(s for s in princ if not s.endswith("-approach"))
+    framework = next((c for c in candidates if c in princ and c.endswith("-approach")), None)
+    floor = ([framework] if framework else []) + lenses
+    return [s for s in floor if _synthesis_page_path(s) is not None]
+
+
 def _pin_companion_entities(picked: list[str]) -> list[str]:
-    """For each picked disease-framework (stem '<cancer>-approach'), pin the
-    matching cancer entity if it exists and is synthesis-eligible."""
+    """Pin the companion across the framework<->entity pair, in both directions:
+    a picked disease-framework ('<cancer>-approach') pulls in its cancer entity
+    (which carries grounded drug/trial facts); a picked cancer entity pulls in its
+    framework (the reasoning order). This is how frameworks reach context — not via
+    lens-adjacency, which would cascade to every disease."""
     princ = _principle_stems()
     out: list[str] = []
     for p in picked:
+        companion = None
         if p in princ and p.endswith("-approach"):
-            entity = p[: -len("-approach")]
-            if entity not in picked and entity not in out and _synthesis_page_path(entity) is not None:
-                out.append(entity)
+            companion = p[: -len("-approach")]          # framework -> its cancer entity
+        elif f"{p}-approach" in princ:
+            companion = f"{p}-approach"                  # cancer entity -> its framework
+        if (companion and companion not in picked and companion not in out
+                and _synthesis_page_path(companion) is not None):
+            out.append(companion)
     return out
 
 
@@ -521,8 +549,12 @@ def list_principle_status(user: str) -> list[dict]:
 
 
 def _pin_linked_principles(picked: list[str]) -> list[str]:
-    """Principle nodes directly linked (1 hop) from any picked page — always
-    included so the reasoning lens travels with the entity into synthesis."""
+    """Cross-cutting LENSES directly linked (1 hop) from any picked page — always
+    included so the reasoning lens travels with the entity into synthesis. Disease
+    frameworks ('*-approach') are deliberately excluded here: every framework links
+    the lenses, so in the undirected graph a lens is adjacent to ALL frameworks —
+    pinning them would cascade to every disease. Frameworks ride in via the
+    companion relationship instead (_pin_companion_entities)."""
     princ = _principle_stems()
     if not picked or not princ:
         return []
@@ -530,7 +562,8 @@ def _pin_linked_principles(picked: list[str]) -> list[str]:
     out: list[str] = []
     for p in picked:
         for nb in adj.get(p, ()):
-            if nb in princ and nb not in out and _synthesis_page_path(nb) is not None:
+            if (nb in princ and not nb.endswith("-approach")
+                    and nb not in out and _synthesis_page_path(nb) is not None):
                 out.append(nb)
     return out
 
@@ -600,6 +633,8 @@ def graph_expand(picked: list[str], max_add: int = 3, min_score: float = 0.5) ->
     deg = {n: len(neigh) for n, neigh in adj.items()}
     score: dict[str, float] = defaultdict(float)
     for p in picked:
+        if p in princ:  # never expand FROM a lens/framework — its undirected
+            continue    # adjacency is ~the whole corpus (everything links efficacy)
         for hub in adj.get(p, ()):  # each hub the picked page links to
             if hub in princ:  # never traverse through a lens hub
                 continue
