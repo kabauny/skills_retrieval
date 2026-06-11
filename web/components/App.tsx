@@ -17,7 +17,7 @@ const DEFAULT_USER = "jim.chen";
 
 export default function App() {
   const [user, setUser] = useState(DEFAULT_USER);
-  const [autoIngest, setAutoIngest] = useState(false);
+  const [autoIngest, setAutoIngest] = useState(true);
   const [tab, setTab] = useState<Tab>("chat");
   const [state, setState] = useState<StateResp | null>(null);
   const [apiKeyMissing, setApiKeyMissing] = useState(false);

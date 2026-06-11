@@ -71,7 +71,7 @@ export default function Sidebar({
           <span className="text-sm font-medium">Auto-ingest grounded searches</span>
         </label>
         <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
-          Off by default. When on, an internet-fallback answer is saved as a
+          On by default. When on, an internet-fallback answer is saved as a
           searchable, editable note (Review → Notes) and indexed — so asking the
           same question again is answered locally, no re-search.
         </p>
