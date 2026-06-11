@@ -161,6 +161,7 @@ class Turn:
     stubs_created: list[str] = field(default_factory=list)  # legacy: entity stub paths
     note_created: str | None = None  # wiki/notes/{slug}.md if auto-ingested
     ts: str = ""  # stable creation timestamp; unique per turn (UI key + identity)
+    ref: str = ""  # stable reference number, e.g. Q-20260611-007 (cross-write trace)
 
 
 # ---------------------------------------------------------------------------
@@ -1327,7 +1328,8 @@ def _yaml_str(value: str) -> str:
 
 
 def write_answer_note(
-    question: str, answer: str, source_filename: str, sources: list[dict] | None = None
+    question: str, answer: str, source_filename: str, sources: list[dict] | None = None,
+    ref: str = "",
 ) -> Path | None:
     """Write the synthesized internet answer as a SEARCHABLE, editable note page
     in wiki/notes/. `answer` should be the citation-annotated text (inline
@@ -1365,6 +1367,7 @@ verified: false
 verified_by: ""
 verified_date: ""
 source_question: {_yaml_str(title)}
+source_ref: {ref or '""'}
 raw_source: "[[{source_stem}]]"
 tags: [auto-ingested]
 ---
@@ -1675,9 +1678,11 @@ def append_question_log(turn: Turn, user: str) -> None:
         stub_links = ", ".join(f"[[{Path(s).stem}]]" for s in turn.stubs_created)
         extras += f"\n- **Stub pages auto-created:** {stub_links}"
 
+    ref = turn.ref or "—"
     log_entry = f"""
-## [{today}] query | {turn.question[:70]}{'...' if len(turn.question) > 70 else ''}
+## [{today}] {ref} | query | {turn.question[:70]}{'...' if len(turn.question) > 70 else ''}
 
+- **Ref:** {ref}
 - **User:** {user}
 - **Question:** "{turn.question}"
 - **Trigger:** Web UI query
@@ -1687,8 +1692,9 @@ def append_question_log(turn: Turn, user: str) -> None:
 - **Tokens (Gemini):** {turn.tokens.total}{extras}
 """
     questions_entry = f"""
-### [{today}] {safe_label}
+### [{today}] {ref} — {safe_label}
 
+- **Ref:** {ref}
 - **Question:** "{turn.question}"
 - **Trigger:** Web UI query
 - **Wiki pages consulted:** {sources_str}
@@ -1740,6 +1746,27 @@ def session_file_for(user: str) -> Path:
     return SESSIONS_DIR / f"{user}-{date.today().isoformat()}.jsonl"
 
 
+_REF_FILE = RAW / "_question_seq.json"
+
+
+def next_ref() -> str:
+    """Allocate the next question reference number, e.g. Q-20260611-007. A daily
+    sequence (resets each day) backed by a persistent counter so refs are stable
+    and never collide across sessions/users. Same local date as the session file."""
+    today = date.today().strftime("%Y%m%d")
+    data: dict = {}
+    if _REF_FILE.exists():
+        try:
+            data = json.loads(_REF_FILE.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            data = {}
+    n = int(data.get(today, 0)) + 1
+    data[today] = n
+    RAW.mkdir(parents=True, exist_ok=True)
+    _REF_FILE.write_text(json.dumps(data), encoding="utf-8")
+    return f"Q-{today}-{n:03d}"
+
+
 def turn_to_dict(turn: Turn) -> dict:
     return {
         "idx": turn.idx,
@@ -1764,6 +1791,7 @@ def turn_to_dict(turn: Turn) -> dict:
         "saved_search_path": turn.saved_search_path,
         "stubs_created": list(turn.stubs_created),
         "note_created": turn.note_created,
+        "ref": turn.ref,
     }
 
 
@@ -1795,6 +1823,7 @@ def turn_from_dict(d: dict) -> Turn:
         stubs_created=list(d.get("stubs_created") or []),
         note_created=d.get("note_created"),
         ts=d.get("ts", ""),
+        ref=d.get("ref", ""),
     )
 
 
@@ -1846,6 +1875,7 @@ def run_query_phase1(question: str, user: str, idx: int, mode: str = "wiki"):
     existing entities/notes."""
     total_tokens = TokenUsage()
     gemini_calls = 0
+    ref = next_ref()  # stable reference number, threaded through every write path
 
     if mode == "internet_lenses":
         # Reasoning scaffold only: best-matched disease framework + the lenses,
@@ -1862,7 +1892,7 @@ def run_query_phase1(question: str, user: str, idx: int, mode: str = "wiki"):
             idx=idx, question=question, answer=answer, sources=pages, origin="internet",
             gemini_calls=gemini_calls, tokens=total_tokens, mc=None,
             saved_search_path=None, stubs_created=[],
-            ts=datetime.now(timezone.utc).isoformat(),
+            ts=datetime.now(timezone.utc).isoformat(), ref=ref,
         )
         return turn, grounded_resp
 
@@ -1900,6 +1930,7 @@ def run_query_phase1(question: str, user: str, idx: int, mode: str = "wiki"):
         saved_search_path=None,
         stubs_created=[],
         ts=datetime.now(timezone.utc).isoformat(),
+        ref=ref,
     )
     return turn, grounded_resp
 
@@ -1927,7 +1958,7 @@ def run_query_phase2(
             # sources section) as a SEARCHABLE, editable note, then re-index it so
             # the next identical question is answered from the wiki, not the web.
             note = write_answer_note(
-                question, cited_body or turn.answer, turn.saved_search_path, sources
+                question, cited_body or turn.answer, turn.saved_search_path, sources, turn.ref
             )
             slug = kebab(question)
             note_path = note if note is not None else (NOTES_DIR / f"{slug}.md")

@@ -92,6 +92,14 @@ function TurnCard({
           <span className={`px-2 py-0.5 rounded-full font-medium ${badge.cls}`}>
             {badge.label}
           </span>
+          {turn.ref && (
+            <span
+              className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-mono"
+              title="Question reference number"
+            >
+              {turn.ref}
+            </span>
+          )}
           <span>{turn.sources.length} pages</span>
           <span>·</span>
           <span>{turn.gemini_calls} Gemini calls</span>

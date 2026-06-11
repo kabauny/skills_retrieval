@@ -41,6 +41,7 @@ export interface Turn {
   saved_search_path: string | null;
   stubs_created: string[];
   note_created: string | null;
+  ref: string;
 }
 
 export interface Stats {
