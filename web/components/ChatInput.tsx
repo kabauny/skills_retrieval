@@ -9,6 +9,8 @@ export default function ChatInput({
   busy,
   blocked = false,
   onSubmit,
+  mode,
+  onModeChange,
 }: {
   busy: boolean;
   // True while a Grow run is active. Chat and Grow share the same session file
@@ -16,6 +18,8 @@ export default function ChatInput({
   // on turn-index assignment / session rewrite.
   blocked?: boolean;
   onSubmit: (text: string) => void;
+  mode: "wiki" | "internet_lenses";
+  onModeChange: (m: "wiki" | "internet_lenses") => void;
 }) {
   const [input, setInput] = useState("");
 
@@ -29,6 +33,27 @@ export default function ChatInput({
   return (
     <div className="border-t border-slate-200 bg-white px-6 py-3">
       <div className="max-w-3xl mx-auto">
+        <div className="flex items-center gap-1 mb-2 text-xs text-slate-500">
+          <span className="mr-1">mode:</span>
+          <button
+            onClick={() => onModeChange("wiki")}
+            className={mode === "wiki" ? "btn-primary" : "btn-ghost"}
+          >
+            📚 Wiki-first
+          </button>
+          <button
+            onClick={() => onModeChange("internet_lenses")}
+            className={mode === "internet_lenses" ? "btn-primary" : "btn-ghost"}
+            title="Skip existing wiki nodes — answer fresh from the internet, reasoned only through your lenses + disease framework (and institutional preferences)."
+          >
+            🌐 Internet + lenses
+          </button>
+          {mode === "internet_lenses" && (
+            <span className="text-[11px] text-slate-400">
+              fresh internet answer, no existing nodes — reasoned through your lenses
+            </span>
+          )}
+        </div>
         {blocked && (
           <div className="mb-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-3 py-1.5">
             🌱 A Grow run is in progress — chat is paused until it finishes (they

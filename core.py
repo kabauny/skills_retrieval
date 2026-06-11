@@ -691,7 +691,20 @@ def _retrieval_floor(candidates: list[str]) -> list[str]:
     disease. Empty only if there are no principle pages at all."""
     princ = _principle_stems()
     lenses = sorted(s for s in princ if not s.endswith("-approach"))
-    framework = next((c for c in candidates if c in princ and c.endswith("-approach")), None)
+    frameworks = {s for s in princ if s.endswith("-approach")}
+    framework = next((c for c in candidates if c in frameworks), None)
+    if framework is None and candidates:
+        # The framework often ranks below entities/notes, so embedding alone can
+        # miss it. Fall back to the graph — but ONLY 1 hop (a candidate directly
+        # links its framework). 2 hops wandered into confusable siblings (an NSCLC
+        # query reached small-cell-lung-cancer-approach), and a WRONG-disease
+        # framework is worse than none; the lenses alone are a safe floor.
+        adj = build_link_graph()
+        for c in candidates:
+            hit = next((nb for nb in adj.get(c, ()) if nb in frameworks), None)
+            if hit:
+                framework = hit
+                break
     floor = ([framework] if framework else []) + lenses
     return [s for s in floor if _synthesis_page_path(s) is not None]
 
@@ -1823,10 +1836,35 @@ def rewrite_session(user: str, turns: list[Turn]) -> None:
 # ---------------------------------------------------------------------------
 
 
-def run_query_phase1(question: str, user: str, idx: int):
-    """Route, synthesize, generate MC. Returns (Turn, grounded_response_or_None)."""
+def run_query_phase1(question: str, user: str, idx: int, mode: str = "wiki"):
+    """Route, synthesize, generate MC. Returns (Turn, grounded_response_or_None).
+
+    mode="wiki" (default): wiki-first retrieval, internet fallback when insufficient.
+    mode="internet_lenses": skip the knowledge nodes entirely — answer from the
+    live internet but reasoned through ONLY the lenses + the disease framework
+    (and institutional preferences). For a deliberately fresh take, unanchored to
+    existing entities/notes."""
     total_tokens = TokenUsage()
     gemini_calls = 0
+
+    if mode == "internet_lenses":
+        # Reasoning scaffold only: best-matched disease framework + the lenses,
+        # NO entity/note/concept nodes (the floor helper returns exactly that). Use
+        # a wider shortlist so the disease framework (which ranks below entities/
+        # notes) is captured among the candidates.
+        pages = _retrieval_floor(_embed_shortlist(question, n=15))
+        page_contents = _load_pages(pages, user)
+        inst = institutional_context(pages)
+        answer, grounded_resp, t = synthesize_internet_answer(question, page_contents, inst)
+        total_tokens = total_tokens + t
+        gemini_calls += 1
+        turn = Turn(
+            idx=idx, question=question, answer=answer, sources=pages, origin="internet",
+            gemini_calls=gemini_calls, tokens=total_tokens, mc=None,
+            saved_search_path=None, stubs_created=[],
+            ts=datetime.now(timezone.utc).isoformat(),
+        )
+        return turn, grounded_resp
 
     # Cheap embedding-shortlist + Flash rerank instead of sending the whole index.
     pages, t1 = select_relevant_pages_embed(question)

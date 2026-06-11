@@ -185,10 +185,10 @@ export const api = {
 
   state: (user: string) => req<StateResp>(`/api/state?user=${encodeURIComponent(user)}`),
 
-  query: (question: string, user: string, auto_ingest: boolean) =>
+  query: (question: string, user: string, auto_ingest: boolean, mode = "wiki") =>
     req<{ turn: Turn; needs_ingest: boolean; token: string | null }>("/api/query", {
       method: "POST",
-      body: JSON.stringify({ question, user, auto_ingest }),
+      body: JSON.stringify({ question, user, auto_ingest, mode }),
     }),
 
   finalize: (token: string, user: string) =>

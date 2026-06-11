@@ -26,6 +26,7 @@ export default function ChatTab({
 }) {
   const [ingestStatus, setIngestStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [mode, setMode] = useState<"wiki" | "internet_lenses">("wiki");
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -43,7 +44,7 @@ export default function ChatTab({
     setError(null);
     setBusy(true);
     try {
-      const res = await api.query(q, user, autoIngest);
+      const res = await api.query(q, user, autoIngest, mode);
       setHistory((prev) => [...prev, res.turn]);
       setBusy(false);
 
@@ -120,7 +121,13 @@ export default function ChatTab({
         </div>
       </div>
 
-      <ChatInput busy={busy} blocked={blocked} onSubmit={submit} />
+      <ChatInput
+        busy={busy}
+        blocked={blocked}
+        onSubmit={submit}
+        mode={mode}
+        onModeChange={setMode}
+      />
     </div>
   );
 }

@@ -88,6 +88,7 @@ class QueryRequest(BaseModel):
     question: str
     user: str = core.DEFAULT_USER
     auto_ingest: bool = False
+    mode: str = "wiki"  # "wiki" | "internet_lenses"
 
 
 class FinalizeRequest(BaseModel):
@@ -190,7 +191,7 @@ def query(req: QueryRequest) -> dict:
 
     idx = len(core.load_today_session(req.user))
     try:
-        turn, grounded_resp = core.run_query_phase1(req.question, req.user, idx)
+        turn, grounded_resp = core.run_query_phase1(req.question, req.user, idx, req.mode)
     except core.MissingAPIKey as exc:
         raise HTTPException(503, str(exc))
     except Exception as exc:  # noqa: BLE001 — surface model/network failures
